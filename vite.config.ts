@@ -28,10 +28,22 @@ export default defineConfig({
 		chunkSizeWarningLimit: 1000,
 		rollupOptions: {
 			output: {
-				manualChunks: {
-					'svelte-core': ['svelte', '@sveltejs/kit'],
-					'three': ['three'],
-					'utils': ['date-fns', 'fuse.js']
+				manualChunks: (id) => {
+					// Don't manually chunk @sveltejs/kit or svelte - let SvelteKit handle it
+					if (id.includes('node_modules')) {
+						if (id.includes('three')) {
+							return 'three';
+						}
+						if (id.includes('date-fns')) {
+							return 'date-fns';
+						}
+						if (id.includes('fuse.js')) {
+							return 'fuse';
+						}
+						if (id.includes('shiki')) {
+							return 'shiki';
+						}
+					}
 				}
 			}
 		}
