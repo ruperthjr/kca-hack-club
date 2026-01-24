@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		
+		<!-- Primary Meta Tags -->
+		<meta name="title" content="KCA Hack Club - Build, Learn, Innovate" />
+		<meta name="description" content="Student-led tech community at Karatina University. Join us for coding challenges, hackathons, and collaborative learning." />
+		<meta name="keywords" content="hack club, karatina university, coding, programming, hackathons, tech community, computer science" />
+		<meta name="author" content="KCA Hack Club" />
+		<meta name="robots" content="index, follow" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://kcahackclub.vercel.app/" />
+		<meta property="og:title" content="KCA Hack Club - Build, Learn, Innovate" />
+		<meta property="og:description" content="Student-led tech community at Karatina University. Join us for coding challenges, hackathons, and collaborative learning." />
+		<meta property="og:image" content="%sveltekit.assets%/og-image.png" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://kcahackclub.vercel.app/" />
+		<meta property="twitter:title" content="KCA Hack Club - Build, Learn, Innovate" />
+		<meta property="twitter:description" content="Student-led tech community at Karatina University. Join us for coding challenges, hackathons, and collaborative learning." />
+		<meta property="twitter:image" content="%sveltekit.assets%/og-image.png" />
+		
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon/favicon-96x96.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon/favicon.svg" />
+		<link rel="manifest" href="%sveltekit.assets%/favicon/site.webmanifest" />
+		
+		<!-- Theme Color -->
+		<meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)" />
+		
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover" class="antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+		<div style="display: contents">%sveltekit.body%</div>
+		
+		<script>
+			// Theme initialization to prevent flash
+			(function() {
+				const theme = localStorage.getItem('theme');
+				if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+			})();
+		</script>
+	</body>
+</html>

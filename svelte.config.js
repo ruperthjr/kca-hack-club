@@ -1,25 +1,35 @@
+import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { mdsvex } from 'mdsvex';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	extensions: ['.svelte', '.md'],
 	preprocess: [
 		vitePreprocess(),
 		mdsvex({
-			extensions: ['.md'],
-			smartypants: {
-				dashes: 'oldschool'
-			},
-			remarkPlugins: [],
-			rehypePlugins: []
+			extensions: ['.md']
 		})
 	],
+
+	extensions: ['.svelte', '.md'],
+
 	kit: {
 		adapter: adapter({
-			runtime: 'edge'
-		})
+			runtime: 'nodejs22.x',
+			regions: ['sin1'],
+			maxDuration: 10,
+			memory: 1024,
+			isr: {
+				expiration: 60
+			}
+		}),
+		
+		alias: {
+			$components: './src/lib/components',
+			$data: './src/lib/data',
+			$utils: './src/lib/utils',
+			$content: './src/lib/content'
+		}
 	}
 };
 

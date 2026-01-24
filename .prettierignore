@@ -1,5 +1,16 @@
+# Build outputs
 .svelte-kit/
 build/
+dist/
+.vercel/
+
+# Dependencies
 node_modules/
 pnpm-lock.yaml
-package-lock.json
+
+# Generated files
+*.min.js
+*.min.css
+
+# Documentation
+CHANGELOG.md
