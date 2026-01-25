@@ -12,7 +12,6 @@
 		],
 		about: [
 			{ name: 'Team', href: '/team' },
-			{ name: 'Manifesto', href: '/manifesto' },
 			{ name: 'RSS Feed', href: '/rss.xml' }
 		]
 	};
