@@ -2,10 +2,10 @@
 name: "Daniel Simiyu Nyongesa"
 role: "Budding Full-Stack Developer"
 year: 1
-github: "DNSDevv"
-linkedin: "" # (Please provide your LinkedIn username here)
-email: "" # (Please provide your email here)
-avatar: "" # (Please provide a photo for this path)
+github: "Geek-KE"
+linkedin: ""
+email: ""
+avatar: "/daniel.jpg"
 bio: "First-year Software Development student at KCA University, laying the foundation stone by stone. I'm currently immersed in the world of HTML, building my first web pages with focus and curiosity. My goal is to evolve into a proficient full-stack developer, creating solutions that are both functional and elegant. I believe in steady progress and am excited to document every milestone of this journey."
 joinedDate: "2026-01-16"
 skills:
