@@ -1,6 +1,6 @@
 <script lang="ts">
 	const stats = [
-		{ label: 'Active Members', value: '6' },
+		{ label: 'Active Members', value: '5' },
 		{ label: 'Projects Completed', value: '0' },
 		{ label: 'Hackathons Won', value: '0' },
 		{ label: 'Learning Hours', value: '0' }
