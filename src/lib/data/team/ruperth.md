@@ -1,5 +1,5 @@
 ---
-name: "Ruperth"
+name: "Ruperth Nyagesoa"
 role: "Software Engineer"
 year: 1
 github: "ruperthjr"
