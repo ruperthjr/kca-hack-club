@@ -20,16 +20,4 @@
 			<MemberCard {member} />
 		{/each}
 	</div>
-
-	<div class="mt-12 card bg-gradient-to-br from-primary-500 to-secondary-500 text-white">
-		<div class="p-8 text-center">
-			<h2 class="font-display font-bold text-2xl mb-4">Want to Join the Team?</h2>
-			<p class="text-lg mb-6 opacity-90">
-				We're always looking for passionate individuals to join our leadership team
-			</p>
-			<a href="mailto:kcahackclub@karatinauniversity.ac.ke" class="btn bg-white text-primary-600 hover:bg-gray-100">
-				Get in Touch
-			</a>
-		</div>
-	</div>
 </div>
