@@ -5,7 +5,7 @@ year: 1
 github: "ruperthjr"
 linkedin: "ruperth-nyagesoa"
 email: "iamnyagesoa@gmail.com"
-avatar: ""
+avatar: "/ruperthjr.jpeg"
 bio: "Nairobi-based Software Engineer and builder. My thing is turning first principles into products that work. Whether it's an LLM agent, a full-stack web app, or a cross-platform mobile experience, I'm focused on the path from 'what if' to 'here, use this.' Right now, that means RAG workflows, production AI systems, and Flutter. I'm driven by impact."
 joinedDate: "2026-01-15"
 skills:
