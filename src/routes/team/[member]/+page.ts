@@ -1,99 +1,70 @@
+import type { PageLoad } from './$types';
 import type { TeamMember } from '$utils/blog';
+import { error } from '@sveltejs/kit';
 
-export const load = async () => {
-	const member: TeamMember = {
-		slug: 'ruperth',
-		name: 'Ruperth',
-		role: 'Full-Stack Developer',
-		year: 1,
-		github: 'ruperthjr',
-		linkedin: 'ruperth-nyagesoa',
-		email: 'iamnyagesoa@gmail.com',
-		avatar: '',
-		bio: 'Passionate about building scalable web and mobile applications',
-		joinedDate: '2026-01-15',
-		skills: [
-			'Mobile & Flutter',
-			'Flutter',
-			'Dart',
-			'Riverpod',
-			'Cross-platform Development',
-			'Backend & Frameworks',
-			'FastAPI',
-			'Flask',
-			'Django',
-			'Ruby on Rails',
-			'RESTful APIs',
-			'GraphQL',
-			'AI & ML',
-			'LLM Fine-tuning (GPT, BERT, Gemma)',
-			'RAG Workflows',
-			'Vector Stores',
-			'TensorFlow',
-			'Scikit-learn',
-			'Web Development',
-			'React',
-			'Next.js',
-			'SvelteKit',
-			'Tailwind CSS',
-			'Redux',
-			'Express',
-			'JavaScript',
-			'TypeScript',
-			'Data Analysis',
-			'Pandas',
-			'NumPy',
-			'Matplotlib',
-			'Data Visualization',
-			'Statistical Analysis',
-			'DevOps & Tools',
-			'GitHub Actions',
-			'Docker',
-			'Git',
-			'CI/CD Pipelines',
-			'Vercel',
-			'Railway',
-			'Programming Languages',
-			'JavaScript',
-			'Python',
-			'Dart',
-			'TypeScript',
-			'Ruby',
-			'Soft Skills',
-			'Clear Communication',
-			'Creative Problem-Solving',
-			'Team Collaboration',
-			'Technical Writing'
-		],
-		content: `# About Ruperth
+export const load: PageLoad = async ({ params }) => {
+	const { member: memberSlug } = params;
 
-## Background
-First-year Software Development student at KCA University, passionate about building web and mobile solutions that make a difference.
-
-## Role at Hack Club
-As a Full-Stack Developer, I focus on:
-- Developing cross-platform mobile apps with Flutter and Dart
-- Building scalable backend APIs using FastAPI, Django, and Ruby on Rails
-- Integrating AI/ML workflows, including LLM fine-tuning and RAG pipelines
-- Leading workshops on modern web and mobile development
-
-
-## Tech Stack
-- **Frontend**: Flutter, React, SvelteKit, Next.js, Tailwind CSS
-- **Backend**: FastAPI, Django, Flask, Ruby on Rails, Express
-- **AI/ML**: TensorFlow, Scikit-learn, LLM fine-tuning, RAG, Vector Stores
-- **DevOps**: Docker, GitHub Actions, Vercel, Railway
-- **Data**: Pandas, NumPy, Matplotlib
-
-## Get in Touch
-Let's collaborate on innovative projects or chat about tech! Reach out via GitHub or email.`
-	};
-
-	return {
-		member,
-		meta: {
-			title: `${member.name} - KCA Hack Club Team`,
-			description: member.bio
+	try {
+		// Use import.meta.glob to get all team member files
+		const memberFiles = import.meta.glob('$lib/data/team/*.md', { eager: true });
+		
+		// Debug: log available files
+		console.log('Available files:', Object.keys(memberFiles));
+		console.log('Looking for:', memberSlug);
+		
+		// Find the specific member file - try different path formats
+		let memberModule: any = null;
+		
+		// Try to find the file with different path patterns
+		for (const path in memberFiles) {
+			const fileName = path.split('/').pop()?.replace('.md', '');
+			console.log('Checking file:', fileName, 'against', memberSlug);
+			
+			if (fileName === memberSlug) {
+				memberModule = memberFiles[path];
+				console.log('Found match!', path);
+				break;
+			}
 		}
-	};
+		
+		if (!memberModule) {
+			console.error(`No module found for ${memberSlug}`);
+			console.log('Available modules:', Object.keys(memberFiles));
+			throw error(404, `Team member "${memberSlug}" not found`);
+		}
+		
+		// Extract frontmatter metadata
+		const metadata = memberModule.metadata || {};
+		console.log('Metadata:', metadata);
+		
+		// Build the TeamMember object from the markdown frontmatter and content
+		const member: TeamMember = {
+			slug: memberSlug,
+			name: metadata.name || memberSlug,
+			role: metadata.role || 'Team Member',
+			year: metadata.year || 1,
+			github: metadata.github || '',
+			linkedin: metadata.linkedin || '',
+			email: metadata.email || '',
+			avatar: metadata.avatar || '',
+			bio: metadata.bio || '',
+			joinedDate: metadata.joinedDate || new Date().toISOString().split('T')[0],
+			skills: metadata.skills || [],
+			content: memberModule.default?.render ? memberModule.default.render().html : ''
+		};
+
+		console.log('Final member object:', member);
+
+		return {
+			member,
+			meta: {
+				title: `${member.name} - KCA Hack Club Team`,
+				description: member.bio
+			}
+		};
+	} catch (e) {
+		console.error('Error loading member:', e);
+		throw error(404, `Team member "${memberSlug}" not found - ${e}`);
+	}
 };

@@ -20,7 +20,7 @@
 	<meta name="description" content="Build. Learn. Innovate." />
 </svelte:head>
 
-<div class="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+<div class="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50">
 	<ReadingProgress />
 	<Navbar />
 	<main>

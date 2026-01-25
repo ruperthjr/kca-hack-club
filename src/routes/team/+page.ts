@@ -1,126 +1,46 @@
+import type { Load } from '@sveltejs/kit';
 import type { TeamMember } from '$utils/blog';
 
-export const load = async () => {
-	const team: TeamMember[] = [
-		{
-			slug: 'ruperth',
-			name: 'Ruperth',
-			role: 'Full-Stack Developer',
-			year: 1,
-			github: 'ruperth',
-			bio: 'Passionate about building scalable web and mobile applications',
-			joinedDate: '2026-01-15',
-			skills: [
-				'Mobile & Flutter',
-				'Flutter',
-				'Dart',
-				'Riverpod',
-				'Cross-platform Development',
-				'Backend & Frameworks',
-				'FastAPI',
-				'Flask',
-				'Django',
-				'Ruby on Rails',
-				'RESTful APIs',
-				'GraphQL',
-				'AI & ML',
-				'LLM Fine-tuning (GPT, BERT, Gemma)',
-				'RAG Workflows',
-				'Vector Stores',
-				'TensorFlow',
-				'Scikit-learn',
-				'Web Development',
-				'React',
-				'Next.js',
-				'SvelteKit',
-				'Tailwind CSS',
-				'Redux',
-				'Express',
-				'JavaScript',
-				'TypeScript',
-				'Data Analysis',
-				'Pandas',
-				'NumPy',
-				'Matplotlib',
-				'Data Visualization',
-				'Statistical Analysis',
-				'DevOps & Tools',
-				'GitHub Actions',
-				'Docker',
-				'Git',
-				'CI/CD Pipelines',
-				'Vercel',
-				'Railway',
-				'Programming Languages',
-				'JavaScript',
-				'Python',
-				'Dart',
-				'TypeScript',
-				'Ruby',
-				'Soft Skills',
-				'Clear Communication',
-				'Creative Problem-Solving',
-				'Team Collaboration',
-				'Technical Writing'
-			],
-			content: ''
-		},
-		{
-			slug: 'maryphin',
-			name: 'Maryphin',
-			role: '',
-			year: 1,
-			github: '',
-			bio: '',
-			joinedDate: '2026-01-16',
-			skills: [''],
-			content: ''
-		},
-		{
-			slug: 'daniel',
-			name: 'Daniel',
-			role: '',
-			year: 1,
-			github: '',
-			bio: '',
-			joinedDate: '2026-01-16',
-			skills: [''],
-			content: ''
-		},
-		{
-			slug: 'pauline',
-			name: 'Pauline',
-			role: '',
-			year: 1,
-			github: '',
-			bio: '',
-			joinedDate: '2026-01-14',
-			skills: [''],
-			content: ''
-		},
-		{
-			slug: 'javan',
-			name: 'Javan',
-			role: '',
-			year: 1,
-			github: '',
-			bio: '',
-			joinedDate: '2026-01-16',
-			skills: [''],
-			content: ''
-		},
-		{
-			slug: 'jasmine',
-			name: 'Jasmine',
-			role: '',
-			year: 1,
-			github: '',
-			bio: '',
-			joinedDate: '2026-01-16',
-			skills: [''],
-			content: ''
-		}
-	];
+export const load: Load = async () => {
+	// Import all markdown files from the team directory using the $lib alias
+	const memberFiles = import.meta.glob('$lib/data/team/*.md', { eager: true });
+	
+	console.log('Team page - Available files:', Object.keys(memberFiles));
+	
+	const team: TeamMember[] = [];
+
+	// Load each member file
+	for (const path in memberFiles) {
+		const memberModule = memberFiles[path] as any;
+		const metadata = memberModule.metadata || {};
+		
+		// Extract slug from file path (e.g., '$lib/data/team/ruperth.md' -> 'ruperth')
+		const slug = path.split('/').pop()?.replace('.md', '') || '';
+		
+		console.log(`Processing ${slug}:`, metadata);
+		
+		const member: TeamMember = {
+			slug,
+			name: metadata.name || slug,
+			role: metadata.role || 'Team Member',
+			year: metadata.year || 1,
+			github: metadata.github || '',
+			linkedin: metadata.linkedin || '',
+			email: metadata.email || '',
+			avatar: metadata.avatar || '',
+			bio: metadata.bio || '',
+			joinedDate: metadata.joinedDate || new Date().toISOString().split('T')[0],
+			skills: metadata.skills || [],
+			content: '' // We don't need full content for the listing page
+		};
+
+		team.push(member);
+	}
+
+	// Sort team members by joined date (newest first)
+	team.sort((a, b) => new Date(b.joinedDate).getTime() - new Date(a.joinedDate).getTime());
+
+	console.log('Final team array:', team);
 
 	return {
 		team,

@@ -1,7 +1,8 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import ThemeToggle from './ThemeToggle.svelte';
 	
-	let mobileMenuOpen = false;
+	let mobileMenuOpen = $state(false);
 	
 	const navigation = [
 		{ name: 'Home', href: '/' },
@@ -11,8 +12,7 @@
 		{ name: 'Hackathons', href: '/hackathons' },
 	];
 	
-	function isActive(href: string): boolean {
-		const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
+	function isActive(href: string, pathname: string): boolean {
 		if (href === '/') return pathname === '/';
 		return pathname.startsWith(href);
 	}
@@ -26,7 +26,7 @@
 	}
 </script>
 
-<nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+<nav class="sticky top-0 z-50 bg-neutral-50/80 dark:bg-neutral-950/80 backdrop-blur-lg border-b border-neutral-200 dark:border-neutral-800">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex justify-between items-center h-16">
 			<a href="/" class="flex items-center space-x-3 group">
@@ -34,12 +34,16 @@
 					<img 
 						src="/hackclub.jpg" 
 						alt="Hack Club Logo" 
-						class="w-10 h-10 rounded-lg"
-				/>
+						class="w-10 h-10 rounded-lg transition-transform duration-200 group-hover:scale-105"
+					/>
 				</div>
 				<div class="hidden sm:block">
-					<div class="font-display font-bold text-xl gradient-text">KCA Hack Club</div>
-					<div class="text-xs text-gray-600 dark:text-gray-400">Build. Learn. Innovate.</div>
+					<div class="font-display font-bold text-xl text-neutral-900 dark:text-neutral-50">
+						KCA Hack Club
+					</div>
+					<div class="text-xs text-neutral-600 dark:text-neutral-400">
+						Build. Learn. Innovate.
+					</div>
 				</div>
 			</a>
 			
@@ -47,7 +51,9 @@
 				{#each navigation as item}
 					<a
 						href={item.href}
-						class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 {isActive(item.href) ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-900 dark:text-primary-100' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}"
+						class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 {isActive(item.href, $page.url.pathname) 
+							? 'bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50' 
+							: 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-900'}"
 					>
 						{item.name}
 					</a>
@@ -57,8 +63,8 @@
 			<div class="flex items-center space-x-4">
 				<ThemeToggle />
 				<button
-					on:click={toggleMenu}
-					class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+					onclick={toggleMenu}
+					class="lg:hidden p-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all duration-200"
 					aria-label="Toggle menu"
 				>
 					{#if mobileMenuOpen}
@@ -76,13 +82,15 @@
 	</div>
 	
 	{#if mobileMenuOpen}
-		<div class="lg:hidden border-t border-gray-200 dark:border-gray-800 animate-fade-in">
+		<div class="lg:hidden border-t border-neutral-200 dark:border-neutral-800 animate-fade-in-up">
 			<div class="px-2 pt-2 pb-3 space-y-1">
 				{#each navigation as item}
 					<a
 						href={item.href}
-						on:click={closeMenu}
-						class="block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200 {isActive(item.href) ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-900 dark:text-primary-100' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}"
+						onclick={closeMenu}
+						class="block px-3 py-2 rounded-lg text-base font-medium transition-all duration-200 {isActive(item.href, $page.url.pathname) 
+							? 'bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50' 
+							: 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-900'}"
 					>
 						{item.name}
 					</a>

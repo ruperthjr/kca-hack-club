@@ -1,4 +1,4 @@
-import type { RequestHandler } from './$types';
+import type { RequestHandler } from '@sveltejs/kit';
 import type { BlogPost, Challenge } from '$utils/blog';
 
 const siteUrl = 'https://kcahackclub.vercel.app';

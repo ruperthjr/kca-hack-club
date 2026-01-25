@@ -13,8 +13,6 @@ KCA Hack Club is a student-led community dedicated to building, learning, and in
 - **Curated Learning Resources** - Books, tools, courses, and tutorials
 - **Daily/Weekly/Monthly Challenges** - Progressive skill-building system
 - **Team Profiles** - Showcase member achievements and projects
-- **Wins Tracking** - Monthly achievement highlights
-- **Academic Units** - Course materials and study guides
 - **Hackathon Hub** - Upcoming events and past victories
 - **Dark Mode** - Beautiful UI with theme switching
 - **Lightning Fast** - Optimized performance with SvelteKit
@@ -53,31 +51,9 @@ pnpm dev
 
 Visit `http://localhost:5173` to see the app.
 
-## Team
-
-- **Ruperth**
-- **Maryphin**
-- **Pauline**
-- **Daniel**
-- **Javan**
-- **Jasmine**
-
-## Contributing
-
-We welcome contributions! Here's how:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
 ## Contact
-
-- **Email:** 
-- **Discord:** [Join our server]()
+- **Discord:** [Join our server](https://discord.com/channels/1464698304406225106/1464698305823903867)
