@@ -8,7 +8,7 @@ units:
 recommendedFor:
   - "Everyone"
 links:
-  - name: "Curated Playlists Collection"
+  - name: "Playlists Collection"
     url: "https://www.youtube.com/playlists/kca-hack-club"
   - name: "Learning Schedule Template"
     url: "https://drive.google.com/spreadsheets/youtube-schedule"
