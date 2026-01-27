@@ -3,7 +3,7 @@ name: "Jasmine Ambiyo Ludwaro"
 role: "Aspiring Software Engineer"
 year: 1
 github: "JasmineLudwaro"
-linkedin: "jasmine-ludwaro-916baa32"
+linkedin: "jasmine-ludwaro"
 email: ""
 avatar: "/jasmine.jpg"
 bio: "Focused on mastering programming to become an expert software developer. Currently building skills across multiple languages and frameworks while working on practical projects. I enjoy understanding how things work under the hood and turning ideas into functional applications. My goal is to develop deep programming expertise and grow into a confident, skilled engineer."
