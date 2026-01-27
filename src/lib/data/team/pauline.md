@@ -3,7 +3,7 @@ name: "Pauline Oraro"
 role: "Full-Stack Developer"
 year: 1
 github: "Pauline-Oraro"
-linkedin: "pauline-oraro"
+linkedin: "pauline-oraro-0a2381274"
 email: ""
 avatar: "/pauline.jpg"
 bio: "Full Stack Web Developer passionate about building scalable, high-performing web applications with exceptional user experiences. I specialize in responsive frontends with React, TypeScript, and Tailwind CSS, and robust backends using Node.js, Express, and MongoDB. Currently pursuing a Bachelor of Science in Information Technology at KCA University while continuously expanding my technical expertise."
