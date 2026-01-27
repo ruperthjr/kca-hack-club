@@ -1,55 +1,56 @@
-export const load = async ({ params }) => {
+import type { PageLoad } from './$types';
+import { error } from '@sveltejs/kit';
+
+export const load: PageLoad = async ({ params }) => {
 	const { slug } = params;
-	
-	const resource = {
-		slug,
-		title: 'Programming Books Collection',
-		category: 'books',
-		subcategory: 'Programming',
-		lastUpdated: '2026-01-15',
-		content: `# Programming Books Collection
 
-## Beginner Level
-1. **Clean Code** by Robert C. Martin
-   - Learn to write maintainable and elegant code
-   
-2. **The Pragmatic Programmer** by Andrew Hunt
-   - Essential reading for every developer
-
-3. **JavaScript: The Good Parts** by Douglas Crockford
-   - Master JavaScript fundamentals
-
-## Intermediate Level
-1. **Design Patterns** by Gang of Four
-   - Essential design patterns every developer should know
-   
-2. **You Don't Know JS** by Kyle Simpson
-   - Deep dive into JavaScript
-
-3. **Refactoring** by Martin Fowler
-   - Improve existing code structure
-
-## Advanced Level
-1. **Introduction to Algorithms** by CLRS
-   - Comprehensive algorithms resource
-   
-2. **The Art of Computer Programming** by Donald Knuth
-   - The definitive guide to programming
-
-## Web Development
-1. **HTML and CSS** by Jon Duckett
-2. **Eloquent JavaScript** by Marijn Haverbeke
-3. **Learning React** by Alex Banks
-
-## Download Links
-All books are available in our Google Drive.`
-	};
-
-	return {
-		resource,
-		meta: {
-			title: `${resource.title} - KCA Hack Club`,
-			description: 'Access our curated programming books collection'
+	try {
+		// Use import.meta.glob to get all resource files
+		const resourceFiles = import.meta.glob('$lib/data/resources/*.md', { eager: true });
+		
+		// Find the specific resource file
+		let resourceModule: any = null;
+		let ResourceComponent: any = null;
+		
+		for (const path in resourceFiles) {
+			const fileName = path.split('/').pop()?.replace('.md', '');
+			if (fileName === slug) {
+				resourceModule = resourceFiles[path];
+				ResourceComponent = resourceModule.default;
+				break;
+			}
 		}
-	};
+		
+		if (!resourceModule) {
+			throw error(404, `Resource "${slug}" not found`);
+		}
+		
+		// Extract frontmatter metadata
+		const metadata = resourceModule.metadata || {};
+		
+		// Build the resource object
+		const resource = {
+			slug,
+			title: metadata.title || slug,
+			category: metadata.category || 'general',
+			subcategory: metadata.subcategory || 'Uncategorized',
+			description: metadata.description || '',
+			units: metadata.units || [],
+			recommendedFor: metadata.recommendedFor || [],
+			links: metadata.links || [],
+			lastUpdated: metadata.lastUpdated || new Date().toISOString().split('T')[0],
+			component: ResourceComponent
+		};
+
+		return {
+			resource,
+			meta: {
+				title: `${resource.title} - KCA Hack Club Resources`,
+				description: resource.description
+			}
+		};
+	} catch (e) {
+		console.error('Error loading resource:', e);
+		throw error(404, `Resource "${slug}" not found`);
+	}
 };
