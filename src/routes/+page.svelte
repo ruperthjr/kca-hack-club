@@ -4,7 +4,6 @@
 	const stats = [
 		{ label: 'Active Members', value: '5', icon: '', color: 'from-blue-500 to-cyan-500' },
 		{ label: 'Projects Completed', value: '0', icon: '', color: 'from-purple-500 to-pink-500' },
-		{ label: 'Hackathons Won', value: '0', icon: '', color: 'from-amber-500 to-orange-500' },
 		{ label: 'Learning Hours', value: '0', icon: '', color: 'from-green-500 to-emerald-500' }
 	];
 
@@ -103,38 +102,88 @@
 			</div>
 		</section>
 
-		<!-- Stats Section -->
+		<!-- Stats Section - UPDATED -->
 		<section class="py-16">
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-				{#each stats as stat, i}
-					<div 
-						class="group relative bg-white dark:bg-neutral-900 rounded-2xl shadow-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 animate-fade-in-up"
-						style="animation-delay: {(i + 1) * 100}ms"
-					>
-						<!-- Gradient Background on Hover -->
-						<div class="absolute inset-0 bg-gradient-to-br {stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-						
-						<div class="relative p-6 text-center">
-							<!-- Icon -->
-							<div class="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-								{stat.icon}
-							</div>
+			<div class="max-w-6xl mx-auto px-4">
+				<div class="flex flex-col items-center text-center mb-12">
+					<h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-3">
+						Our Impact
+					</h2>
+					<p class="text-neutral-600 dark:text-neutral-400 max-w-2xl">
+						Tracking our community's growth and achievements
+					</p>
+				</div>
+				
+				<!-- Centered Stats Grid -->
+				<div class="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-10">
+					{#each stats as stat, i}
+						<div 
+							class="group relative bg-white dark:bg-neutral-900 rounded-2xl shadow-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 animate-fade-in-up w-full sm:w-[280px] md:w-[300px]"
+							style="animation-delay: {(i + 1) * 100}ms"
+						>
+							<!-- Gradient Background on Hover -->
+							<div class="absolute inset-0 bg-gradient-to-br {stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
 							
-							<!-- Value -->
-							<div class="text-5xl font-black bg-gradient-to-br {stat.color} bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
-								{stat.value}
+							<div class="relative p-6 md:p-8 text-center">
+								<!-- Value with better handling for "0" values -->
+								<div class="mb-4">
+									<div class="text-5xl md:text-6xl font-black bg-gradient-to-br {stat.color} bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
+										{#if stat.value === '0'}
+											<span class="relative">
+												{stat.value}
+												<!-- Subtle indicator for "no data" -->
+												<span class="absolute -top-2 -right-4 text-xs font-normal text-neutral-400 dark:text-neutral-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+													(no data yet)
+												</span>
+											</span>
+										{:else}
+											{stat.value}
+										{/if}
+									</div>
+									
+									<!-- Optional + sign for values -->
+									{#if stat.value !== '0' && stat.label !== 'Learning Hours'}
+										<span class="text-3xl font-semibold bg-gradient-to-br {stat.color} bg-clip-text text-transparent">+</span>
+									{/if}
+								</div>
+								
+								<!-- Label -->
+								<div class="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-3">
+									{stat.label}
+								</div>
+								
+								<!-- Progress indicator for "0" values -->
+								{#if stat.value === '0'}
+									<div class="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
+										<div class="flex items-center justify-center gap-2">
+											<svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+												<path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+											</svg>
+											<span class="text-sm text-neutral-500 dark:text-neutral-400">
+												Awaiting first {stat.label.toLowerCase()}
+											</span>
+										</div>
+									</div>
+								{/if}
 							</div>
-							
-							<!-- Label -->
-							<div class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
-								{stat.label}
-							</div>
-						</div>
 
-						<!-- Decorative Corner -->
-						<div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br {stat.color} opacity-10 rounded-bl-full"></div>
+							<!-- Decorative Corner -->
+							<div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br {stat.color} opacity-10 rounded-bl-full"></div>
+						</div>
+					{/each}
+				</div>
+				
+				<!-- Stats Legend/Note -->
+				<div class="mt-12 text-center max-w-2xl mx-auto">
+					<div class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-100 dark:border-blue-800/30">
+						<svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+						</svg>
+						<p class="text-sm text-neutral-600 dark:text-neutral-400">
+							Stats update in real-time. Zero values indicate areas we're actively working on!
+						</p>
 					</div>
-				{/each}
+				</div>
 			</div>
 		</section>
 	</div>
