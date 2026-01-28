@@ -9,7 +9,6 @@
 		{ name: 'Team', href: '/team' },
 		{ name: 'Resources', href: '/resources' },
 		{ name: 'Challenges', href: '/challenges' },
-		{ name: 'Hackathons', href: '/hackathons' },
 	];
 	
 	function isActive(href: string, pathname: string): boolean {
