@@ -1,25 +1,21 @@
-import type { Challenge } from '$utils/blog';
+import type { PageLoad } from './$types';
+import { loadChallenges } from '$lib/data/challenges/loader';
 
-export const load = async () => {
-	const weeklyChallenges: Challenge[] = [
-		{
-			slug: 'week-1-todo-app',
-			title: 'Week 1: Build a Todo App',
-			week: 1,
-			startDate: '2026-01-06',
-			endDate: '2026-01-12',
-			difficulty: 'beginner',
-			points: 100,
-			category: 'web-development',
-			content: 'Create a fully functional todo application'
-		}
-	];
-
+export const load: PageLoad = async () => {
+	const challenges = await loadChallenges('weekly');
+	
+	const byDifficulty = {
+		beginner: challenges.filter(c => c.difficulty === 'beginner'),
+		intermediate: challenges.filter(c => c.difficulty === 'intermediate'),
+		advanced: challenges.filter(c => c.difficulty === 'advanced')
+	};
+	
 	return {
-		challenges: weeklyChallenges,
+		challenges,
+		byDifficulty,
 		meta: {
 			title: 'Weekly Challenges - KCA Hack Club',
-			description: 'Take on weekly coding projects and build real applications'
+			description: 'Complete project challenges to build real-world applications'
 		}
 	};
 };

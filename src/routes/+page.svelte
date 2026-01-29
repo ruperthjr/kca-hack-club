@@ -7,13 +7,10 @@
 		{ label: 'Learning Hours', value: '0', icon: '', color: 'from-green-500 to-emerald-500' }
 	];
 
-	let mounted = false;
 	let mouseX = 0;
 	let mouseY = 0;
 
 	onMount(() => {
-		mounted = true;
-		
 		const handleMouseMove = (e: MouseEvent) => {
 			mouseX = e.clientX;
 			mouseY = e.clientY;
