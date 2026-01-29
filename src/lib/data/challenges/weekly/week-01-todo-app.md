@@ -8,38 +8,64 @@ recommendedFor: ["Maryphin", "Daniel", "Pauline"]
 points: 50
 tags: ["javascript", "web-dev", "crud", "week-1"]
 prerequisites: ["HTML basics", "CSS basics", "JavaScript fundamentals"]
-learningObjectives: ["Master DOM manipulation", "Implement CRUD operations", "Work with Local Storage", "Handle user interactions"]
-deliverables: ["Fully functional todo app", "Responsive design", "Data persistence", "Code documentation"]
+learningObjectives: ["Master DOM manipulation", "Implement CRUD operations", "Work with Local Storage", "Handle user interactions", "Build responsive layouts"]
+deliverables: ["Fully functional todo app", "Responsive design", "Data persistence", "Code documentation", "GitHub repository"]
 ---
 
 # Build a Complete Todo List Application
 
 Create a production-ready todo list application with advanced features like categories, priorities, and local storage persistence.
 
-## Features Requirements
+## Project Overview
 
-### Core Features
-1. Add new todos with title and description
-2. Mark todos as complete/incomplete
-3. Edit existing todos
-4. Delete todos
-5. Filter todos (All, Active, Completed)
-6. Clear all completed todos
-7. Persist data in local storage
+Build a feature-rich todo application that allows users to create, read, update, and delete tasks with additional functionality like filtering, sorting, and data persistence.
 
-### Advanced Features
-8. Add categories/tags to todos
-9. Set priority levels (Low, Medium, High)
-10. Set due dates
-11. Search functionality
-12. Sort by different criteria
-13. Dark mode toggle
-14. Todo statistics
+## Core Features Required
 
-## Complete Implementation
+### 1. CRUD Operations
+- **Create:** Add new todos with title and description
+- **Read:** Display all todos in a clean interface
+- **Update:** Edit existing todos inline
+- **Delete:** Remove todos with confirmation
 
-### HTML Structure
+### 2. Todo Properties
+Each todo must have:
+- Unique ID (timestamp or UUID)
+- Title (required)
+- Description (optional)
+- Category (Work, Personal, Shopping, Health, Other)
+- Priority (Low, Medium, High)
+- Due date (optional)
+- Completion status (boolean)
+- Created timestamp
 
+### 3. Filtering System
+- View all todos
+- Filter by active/incomplete
+- Filter by completed
+- Filter by category
+- Search todos by title/description
+
+### 4. Sorting Options
+- Sort by date created (newest/oldest)
+- Sort by priority (high to low)
+- Sort by due date
+- Sort alphabetically
+
+### 5. Data Persistence
+- Save all todos to localStorage
+- Load todos on page refresh
+- Auto-save on every change
+
+### 6. User Interface
+- Clean, modern design
+- Responsive layout (mobile-first)
+- Dark mode toggle
+- Loading states
+- Empty states
+- Statistics dashboard
+
+## Complete HTML Structure
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -51,15 +77,11 @@ Create a production-ready todo list application with advanced features like cate
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <header class="header">
             <h1>My Todo List</h1>
-            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-                
-            </button>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
         </header>
 
-        <!-- Statistics -->
         <div class="stats">
             <div class="stat-item">
                 <span class="stat-value" id="totalTodos">0</span>
@@ -75,7 +97,6 @@ Create a production-ready todo list application with advanced features like cate
             </div>
         </div>
 
-        <!-- Add Todo Form -->
         <div class="add-todo-section">
             <form id="todoForm" class="todo-form">
                 <input 
@@ -95,16 +116,16 @@ Create a production-ready todo list application with advanced features like cate
                 <div class="form-row">
                     <select id="todoCategory" required>
                         <option value="">Category</option>
-                        <option value="work"> Work</option>
-                        <option value="personal"> Personal</option>
-                        <option value="shopping"> Shopping</option>
-                        <option value="health">Health</option>
-                        <option value="other"> Other</option>
+                        <option value="work">💼 Work</option>
+                        <option value="personal">👤 Personal</option>
+                        <option value="shopping">🛒 Shopping</option>
+                        <option value="health">❤️ Health</option>
+                        <option value="other">📌 Other</option>
                     </select>
                     <select id="todoPriority" required>
-                        <option value="low"> Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high"> High</option>
+                        <option value="low">🔵 Low</option>
+                        <option value="medium">🟡 Medium</option>
+                        <option value="high">🔴 High</option>
                     </select>
                     <input type="date" id="todoDueDate">
                 </div>
@@ -114,7 +135,6 @@ Create a production-ready todo list application with advanced features like cate
             </form>
         </div>
 
-        <!-- Filters and Search -->
         <div class="controls">
             <div class="search-box">
                 <input 
@@ -139,17 +159,14 @@ Create a production-ready todo list application with advanced features like cate
             </div>
         </div>
 
-        <!-- Todo List -->
         <div id="todoList" class="todo-list"></div>
 
-        <!-- Empty State -->
         <div id="emptyState" class="empty-state">
-            <div class="empty-icon"></div>
+            <div class="empty-icon">📝</div>
             <h3>No todos yet!</h3>
             <p>Add your first todo to get started</p>
         </div>
 
-        <!-- Footer Actions -->
         <div class="footer-actions">
             <button id="clearCompleted" class="btn btn-danger">
                 Clear Completed
@@ -162,11 +179,8 @@ Create a production-ready todo list application with advanced features like cate
 </html>
 ```
 
-### CSS Styling
-
+## Complete CSS Styling
 ```css
-/* styles.css */
-
 :root {
     --primary-color: #667eea;
     --secondary-color: #764ba2;
@@ -589,11 +603,8 @@ body {
 }
 ```
 
-### JavaScript Implementation
-
+## Complete JavaScript Implementation
 ```javascript
-// app.js
-
 class TodoApp {
     constructor() {
         this.todos = this.loadFromStorage();
@@ -671,10 +682,6 @@ class TodoApp {
         this.renderTodos();
         this.updateStats();
         this.elements.form.reset();
-    }
-
-    addTodo(todo) {
-        this.todos.push(todo);
     }
 
     toggleTodo(id) {
@@ -775,11 +782,11 @@ class TodoApp {
 
     createTodoHTML(todo) {
         const categoryIcons = {
-            work: '',
-            personal: '',
-            shopping: '',
-            health: '',
-            other: ''
+            work: '💼',
+            personal: '👤',
+            shopping: '🛒',
+            health: '❤️',
+            other: '📌'
         };
 
         const dueDateText = todo.dueDate ? new Date(todo.dueDate).toLocaleDateString() : '';
@@ -803,14 +810,14 @@ class TodoApp {
                             <span class="badge badge-priority-${todo.priority}">
                                 ${todo.priority}
                             </span>
-                            ${todo.dueDate ? `<span class="badge badge-due"> ${dueDateText}</span>` : ''}
+                            ${todo.dueDate ? `<span class="badge badge-due">📅 ${dueDateText}</span>` : ''}
                         </div>
                         <div class="todo-actions">
                             <button class="action-btn action-btn-edit" data-action="edit">
-                                 Edit
+                                ✏️ Edit
                             </button>
                             <button class="action-btn action-btn-delete" data-action="delete">
-                                 Delete
+                                🗑️ Delete
                             </button>
                         </div>
                     </div>
@@ -853,7 +860,7 @@ class TodoApp {
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         
         document.documentElement.setAttribute('data-theme', newTheme);
-        this.elements.themeToggle.textContent = newTheme === 'dark' ? '' : '';
+        this.elements.themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
         localStorage.setItem('theme', newTheme);
     }
 
@@ -873,7 +880,7 @@ class TodoApp {
         
         if (theme) {
             document.documentElement.setAttribute('data-theme', theme);
-            document.getElementById('themeToggle').textContent = theme === 'dark' ? '' : '';
+            document.getElementById('themeToggle').textContent = theme === 'dark' ? '☀️' : '🌙';
         }
         
         return stored ? JSON.parse(stored) : [];
@@ -883,49 +890,32 @@ class TodoApp {
 const app = new TodoApp();
 ```
 
-## Features Implemented
-
-**CRUD Operations:** Complete Create, Read, Update, Delete functionality
-
-**Data Persistence:** Local storage saves all todos between sessions
-
-**Filtering:** View all, active, or completed todos
-
-**Sorting:** Multiple sort options including date, priority, alphabetical
-
-**Search:** Real-time search through todos
-
-**Categories:** Organize todos by category with icons
-
-**Priorities:** Three priority levels with color coding
-
-**Due Dates:** Set and display due dates
-
-**Dark Mode:** Toggle between light and dark themes
-
-**Statistics:** Live counters for total, active, and completed todos
-
-**Responsive Design:** Works on mobile, tablet, and desktop
-
-**Animations:** Smooth transitions and hover effects
-
 ## Testing Checklist
 
-- [ ] Can add todos with all fields
-- [ ] Can edit existing todos
-- [ ] Can delete todos
-- [ ] Can toggle completion status
-- [ ] Search works correctly
-- [ ] All filters work (All, Active, Completed)
-- [ ] All sort options work correctly
-- [ ] Clear completed removes only completed todos
-- [ ] Dark mode toggles correctly
-- [ ] Statistics update in real-time
-- [ ] Data persists after page reload
-- [ ] Works on mobile devices
-- [ ] No console errors
+- Can add todos with all fields
+- Can edit existing todos
+- Can delete todos
+- Can toggle completion status
+- Search works correctly
+- All filters work (All, Active, Completed)
+- All sort options work correctly
+- Clear completed removes only completed todos
+- Dark mode toggles correctly
+- Statistics update in real-time
+- Data persists after page reload
+- Works on mobile devices
+- No console errors
 
-## Bonus Features to Add
+## Submission Requirements
+
+1. Create a GitHub repository
+2. Include all three files (HTML, CSS, JS)
+3. Add a detailed README.md
+4. Deploy to GitHub Pages or Netlify
+5. Test on multiple browsers
+6. Document any bugs or limitations
+
+## Bonus Features
 
 **Easy:**
 - Add todo count per category
@@ -940,9 +930,3 @@ const app = new TodoApp();
 - Add cloud sync with backend
 - Implement collaborative todos
 - Add reminders and notifications
-
-## Learning Resources
-
-- [MDN Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
-- [JavaScript DOM Manipulation](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
-- [CSS Grid & Flexbox](https://css-tricks.com/snippets/css/complete-guide-grid/)

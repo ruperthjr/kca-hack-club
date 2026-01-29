@@ -48,10 +48,7 @@ Build a full-stack web application with the following modules:
 - Cloudinary (File Storage)
 
 ## Database Schema
-
 ```sql
--- PostgreSQL Schema
-
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
@@ -139,79 +136,426 @@ CREATE TABLE attendance (
 );
 ```
 
-## Backend Implementation (Node.js + Express)
+## Backend API Endpoints
 
-### Server Setup
+### Authentication Routes
+POST /api/auth/register - Register new user
+POST /api/auth/login - Login user
+POST /api/auth/logout - Logout user
+POST /api/auth/refresh - Refresh access token
+POST /api/auth/forgot-password - Send password reset email
+POST /api/auth/reset-password - Reset password
+GET /api/auth/me - Get current user
 
-```javascript
-// server.js
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
-const rateLimit = require('express-rate-limit');
-require('dotenv').config();
+### Course Routes
+GET /api/courses - Get all courses
+GET /api/courses/:id - Get course by ID
+POST /api/courses - Create new course (admin/instructor)
+PUT /api/courses/:id - Update course (admin/instructor)
+DELETE /api/courses/:id - Delete course (admin)
+GET /api/courses/:id/students - Get enrolled students
+POST /api/courses/:id/enroll - Enroll in course
 
-const authRoutes = require('./routes/auth');
-const courseRoutes = require('./routes/courses');
-const assignmentRoutes = require('./routes/assignments');
-const gradeRoutes = require('./routes/grades');
-const announcementRoutes = require('./routes/announcements');
-const userRoutes = require('./routes/users');
+### Assignment Routes
+GET /api/assignments - Get all assignments
+GET /api/assignments/:id - Get assignment by ID
+POST /api/assignments - Create assignment (instructor)
+PUT /api/assignments/:id - Update assignment (instructor)
+DELETE /api/assignments/:id - Delete assignment (instructor)
+POST /api/assignments/:id/submit - Submit assignment
+GET /api/assignments/:id/submissions - Get all submissions (instructor)
 
-const app = express();
+### Grade Routes
+GET /api/grades/student/:id - Get student grades
+GET /api/grades/course/:id - Get course grades
+POST /api/grades - Create/update grade (instructor)
+GET /api/grades/summary/:studentId - Get grade summary
 
-app.use(helmet());
-app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-    credentials: true
-}));
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+### Announcement Routes
+GET /api/announcements - Get all announcements
+GET /api/announcements/:id - Get announcement by ID
+POST /api/announcements - Create announcement (instructor)
+PUT /api/announcements/:id - Update announcement (instructor)
+DELETE /api/announcements/:id - Delete announcement (instructor)
 
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100
-});
-app.use('/api/', limiter);
+## Frontend Features
 
-app.use('/api/auth', authRoutes);
-app.use('/api/courses', courseRoutes);
-app.use('/api/assignments', assignmentRoutes);
-app.use('/api/grades', gradeRoutes);
-app.use('/api/announcements', announcementRoutes);
-app.use('/api/users', userRoutes);
+### 1. Authentication Pages
 
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', timestamp: new Date() });
-});
+**Login Page:**
+- Email and password fields
+- Remember me checkbox
+- Forgot password link
+- Form validation
+- Error handling
+- Loading states
 
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(err.status || 500).json({
-        error: {
-            message: err.message || 'Internal Server Error',
-            ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
-        }
-    });
-});
+**Register Page:**
+- Full name, email, password, student ID
+- Password confirmation
+- Terms and conditions checkbox
+- Form validation
+- Success redirect
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
-```
+**Password Reset:**
+- Email submission form
+- Reset token validation
+- New password form
 
-### Database Connection
+### 2. Student Dashboard
 
-```javascript
-// db/connection.js
-const { Pool } = require('pg');
+**Overview Cards:**
+- Total courses enrolled
+- Pending assignments
+- Average GPA
+- Attendance percentage
 
-const pool = new Pool({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 5432,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database:
+**Quick Actions:**
+- View upcoming assignments
+- Check recent announcements
+- Access course materials
+- View schedule
+
+**Recent Activity:**
+- Latest grades received
+- New announcements
+- Upcoming deadlines
+
+### 3. Course Management
+
+**Course List:**
+- Grid/list view toggle
+- Search and filter
+- Course cards with:
+  - Course code and name
+  - Instructor name
+  - Credits
+  - Enrollment status
+
+**Course Detail Page:**
+- Course information
+- Syllabus
+- Announcements list
+- Assignment list
+- Enrolled students
+- Course materials
+- Attendance records
+
+### 4. Assignment Submission
+
+**Assignment List:**
+- Filter by course
+- Sort by due date
+- Status indicators (submitted, pending, graded)
+- Search functionality
+
+**Assignment Detail:**
+- Full description
+- Due date countdown
+- Attached files
+- Submission form
+- File upload
+- Previous submissions history
+
+**Submission Interface:**
+- File upload (drag-and-drop)
+- Text editor for written submissions
+- Multiple file support
+- Preview before submit
+- Confirmation dialog
+
+### 5. Grade Tracking
+
+**Grades Overview:**
+- Overall GPA display
+- Grade chart/graph
+- Course-wise breakdown
+- Semester comparison
+
+**Detailed Grades:**
+- Table view with:
+  - Course name
+  - Assignment name
+  - Points earned/possible
+  - Percentage
+  - Letter grade
+  - Feedback
+
+**Grade Analytics:**
+- Performance trends
+- Comparison with class average
+- Strengths and weaknesses analysis
+
+### 6. Profile Management
+
+**View Profile:**
+- Profile picture
+- Personal information
+- Contact details
+- Academic information
+
+**Edit Profile:**
+- Update personal info
+- Change profile picture
+- Update password
+- Manage notifications
+
+## Technical Implementation
+
+### Frontend Components Structure
+src/
+├── components/
+│   ├── auth/
+│   │   ├── LoginForm.svelte
+│   │   ├── RegisterForm.svelte
+│   │   └── ResetPasswordForm.svelte
+│   ├── dashboard/
+│   │   ├── StatCard.svelte
+│   │   ├── QuickActions.svelte
+│   │   └── RecentActivity.svelte
+│   ├── courses/
+│   │   ├── CourseCard.svelte
+│   │   ├── CourseList.svelte
+│   │   └── CourseDetail.svelte
+│   ├── assignments/
+│   │   ├── AssignmentCard.svelte
+│   │   ├── AssignmentList.svelte
+│   │   ├── SubmissionForm.svelte
+│   │   └── FileUpload.svelte
+│   ├── grades/
+│   │   ├── GradeTable.svelte
+│   │   ├── GradeChart.svelte
+│   │   └── GradeSummary.svelte
+│   └── common/
+│       ├── Navbar.svelte
+│       ├── Sidebar.svelte
+│       ├── Modal.svelte
+│       └── LoadingSpinner.svelte
+├── routes/
+│   ├── +layout.svelte
+│   ├── +page.svelte
+│   ├── auth/
+│   ├── dashboard/
+│   ├── courses/
+│   ├── assignments/
+│   ├── grades/
+│   └── profile/
+├── lib/
+│   ├── api/
+│   ├── stores/
+│   ├── utils/
+│   └── types/
+└── app.css
+
+### Backend Structure
+server/
+├── src/
+│   ├── config/
+│   │   ├── database.js
+│   │   └── multer.js
+│   ├── middleware/
+│   │   ├── auth.js
+│   │   ├── errorHandler.js
+│   │   └── validation.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── courses.js
+│   │   ├── assignments.js
+│   │   ├── grades.js
+│   │   ├── announcements.js
+│   │   └── users.js
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── courseController.js
+│   │   ├── assignmentController.js
+│   │   ├── gradeController.js
+│   │   └── userController.js
+│   ├── models/
+│   │   ├── User.js
+│   │   ├── Course.js
+│   │   ├── Assignment.js
+│   │   └── Grade.js
+│   ├── utils/
+│   │   ├── jwt.js
+│   │   ├── email.js
+│   │   └── upload.js
+│   └── server.js
+├── package.json
+└── .env.example
+
+## Security Considerations
+
+### Authentication
+- Use bcrypt for password hashing (salt rounds: 10+)
+- Implement JWT with access and refresh tokens
+- Set secure HTTP-only cookies
+- Implement CSRF protection
+- Rate limit authentication endpoints
+
+### Authorization
+- Role-based access control (RBAC)
+- Verify user permissions on every request
+- Implement middleware for protected routes
+- Validate student-course enrollment
+
+### Data Protection
+- Sanitize all user inputs
+- Use parameterized queries (prevent SQL injection)
+- Implement file type and size validation
+- Encrypt sensitive data at rest
+- Use HTTPS in production
+
+### File Uploads
+- Validate file types (whitelist)
+- Set maximum file size (10MB)
+- Scan files for malware
+- Use secure file naming
+- Store files outside web root
+
+## Testing Strategy
+
+### Unit Tests
+- Test individual functions
+- Mock external dependencies
+- Test edge cases
+- Aim for 80%+ coverage
+
+### Integration Tests
+- Test API endpoints
+- Test database operations
+- Test authentication flows
+- Test file uploads
+
+### E2E Tests
+- Test complete user flows
+- Test form submissions
+- Test navigation
+- Test error scenarios
+
+## Deployment Guide
+
+### Frontend Deployment (Vercel)
+1. Connect GitHub repository
+2. Configure build settings
+3. Set environment variables
+4. Deploy and test
+
+### Backend Deployment (Railway)
+1. Create new project
+2. Connect GitHub repository
+3. Add PostgreSQL database
+4. Set environment variables
+5. Deploy and monitor
+
+### Database Deployment
+1. Create production database
+2. Run migrations
+3. Seed initial data
+4. Set up backups
+5. Configure connection pooling
+
+### File Storage (Cloudinary)
+1. Create account
+2. Get API credentials
+3. Configure SDK
+4. Set up upload presets
+5. Implement CDN delivery
+
+## Documentation Requirements
+
+### Technical Documentation
+- Architecture overview
+- API documentation (Swagger/OpenAPI)
+- Database schema diagram
+- Setup instructions
+- Environment variables guide
+
+### User Documentation
+- User manual
+- FAQ section
+- Video tutorials
+- Troubleshooting guide
+
+### Code Documentation
+- JSDoc comments
+- README files
+- Inline comments
+- Code examples
+
+## Evaluation Criteria
+
+### Functionality (40%)
+- All core features working
+- No critical bugs
+- Good error handling
+- Smooth user experience
+
+### Code Quality (25%)
+- Clean, readable code
+- Proper structure
+- DRY principles
+- Best practices followed
+
+### Design (15%)
+- Professional appearance
+- Responsive design
+- Good UX
+- Accessibility
+
+### Documentation (10%)
+- Complete technical docs
+- User documentation
+- Code comments
+- Setup guide
+
+### Security (10%)
+- Authentication implemented
+- Authorization working
+- Input validation
+- Secure file handling
+
+## Bonus Features
+
+**Easy:**
+- Email notifications
+- Dark mode
+- Export grades to PDF
+- Calendar integration
+
+**Medium:**
+- Real-time chat
+- Collaborative notes
+- Video lectures integration
+- Mobile app
+
+**Hard:**
+- AI-powered study recommendations
+- Plagiarism detection
+- Virtual classroom
+- Advanced analytics dashboard
+
+## Resources
+
+- [SvelteKit Documentation](https://kit.svelte.dev/docs)
+- [Express.js Guide](https://expressjs.com/)
+- [PostgreSQL Tutorial](https://www.postgresql.org/docs/)
+- [JWT Authentication](https://jwt.io/introduction)
+- [Multer File Upload](https://github.com/expressjs/multer)
+- [Cloudinary SDK](https://cloudinary.com/documentation)
+
+## Timeline Suggestion
+
+**Week 1-2:** Database design, backend setup, authentication
+**Week 3-4:** Core API endpoints, frontend setup, authentication UI
+**Week 5-6:** Course and assignment features
+**Week 7-8:** Grades, announcements, testing, deployment
+
+## Submission Requirements
+
+1. GitHub repository with complete code
+2. Live demo URL (frontend and backend)
+3. README with setup instructions
+4. API documentation
+5. User manual
+6. Video demonstration (5-10 minutes)
+7. Project report documenting challenges and solutions
