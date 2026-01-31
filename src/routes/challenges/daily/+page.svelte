@@ -32,7 +32,8 @@
 		const matchesDifficulty = selectedDifficulty === 'all' || challenge.difficulty === selectedDifficulty;
 		const matchesMember = selectedMember === 'all' || 
 			challenge.recommendedFor.some(member => member.toLowerCase() === selectedMember.toLowerCase()) ||
-			(challenge.collaborators && challenge.collaborators.some(member => member.toLowerCase() === selectedMember.toLowerCase()));
+			(challenge.collaborators && challenge.collaborators.some(member => member.toLowerCase() === selectedMember.toLowerCase())) ||
+			(challenge.studyGroup && challenge.studyGroup.some(member => member.toLowerCase() === selectedMember.toLowerCase()));
 		const matchesSearch = searchQuery === '' || 
 			challenge.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
 			challenge.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -43,7 +44,8 @@
 	$: memberCounts = teamMembers.reduce((acc, member) => {
 		acc[member] = data.challenges.filter(c => 
 			c.recommendedFor.some(m => m.toLowerCase() === member.toLowerCase()) ||
-			(c.collaborators && c.collaborators.some(m => m.toLowerCase() === member.toLowerCase()))
+			(c.collaborators && c.collaborators.some(m => m.toLowerCase() === member.toLowerCase())) ||
+			(c.studyGroup && c.studyGroup.some(m => m.toLowerCase() === member.toLowerCase()))
 		).length;
 		return acc;
 	}, {} as Record<string, number>);
@@ -207,11 +209,20 @@
 								{/if}
 
 								{#if challenge.collaborators && challenge.collaborators.length > 0}
+									<div class="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400">
+										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+										</svg>
+										<span>Collaborators: {challenge.collaborators.join(', ')}</span>
+									</div>
+								{/if}
+
+								{#if challenge.studyGroup && challenge.studyGroup.length > 0}
 									<div class="flex items-center gap-2 text-xs text-purple-600 dark:text-purple-400">
 										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
 										</svg>
-										<span>With: {challenge.collaborators.join(', ')}</span>
+										<span>Study Group: {challenge.studyGroup.join(', ')}</span>
 									</div>
 								{/if}
 							</div>

@@ -4,14 +4,15 @@
 
 	export let data: PageData;
 
-	let selectedDifficulty = 'all';
+	type Difficulty = 'beginner' | 'intermediate' | 'advanced';
+	type DifficultyOrAll = Difficulty | 'all';
+
+	let selectedDifficulty: DifficultyOrAll = 'all';
 	let selectedMember = 'all';
 	let searchQuery = '';
 
-	type Difficulty = 'beginner' | 'intermediate' | 'advanced';
-	const difficultyKeys: Difficulty[] = ['beginner', 'intermediate', 'advanced'];
 	const teamMembers = ['Maryphin', 'Pauline', 'Ruperth', 'Daniel', 'Jasmine'];
-
+	
 	const difficultyConfig: Record<Difficulty, { color: string; bg: string; border: string }> = {
 		beginner: { color: 'text-green-600 dark:text-green-400', bg: 'bg-green-50 dark:bg-green-950/30', border: 'border-green-200 dark:border-green-800' },
 		intermediate: { color: 'text-yellow-600 dark:text-yellow-400', bg: 'bg-yellow-50 dark:bg-yellow-950/30', border: 'border-yellow-200 dark:border-yellow-800' },
@@ -22,7 +23,8 @@
 		const matchesDifficulty = selectedDifficulty === 'all' || challenge.difficulty === selectedDifficulty;
 		const matchesMember = selectedMember === 'all' || 
 			challenge.recommendedFor.some(member => member.toLowerCase() === selectedMember.toLowerCase()) ||
-			(challenge.collaborators && challenge.collaborators.some(member => member.toLowerCase() === selectedMember.toLowerCase()));
+			(challenge.collaborators && challenge.collaborators.some(member => member.toLowerCase() === selectedMember.toLowerCase())) ||
+			(challenge.studyGroup && challenge.studyGroup.some(member => member.toLowerCase() === selectedMember.toLowerCase()));
 		const matchesSearch = searchQuery === '' || 
 			challenge.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
 			challenge.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -33,7 +35,8 @@
 	$: memberCounts = teamMembers.reduce((acc, member) => {
 		acc[member] = data.challenges.filter(c => 
 			c.recommendedFor.some(m => m.toLowerCase() === member.toLowerCase()) ||
-			(c.collaborators && c.collaborators.some(m => m.toLowerCase() === member.toLowerCase()))
+			(c.collaborators && c.collaborators.some(m => m.toLowerCase() === member.toLowerCase())) ||
+			(c.studyGroup && c.studyGroup.some(m => m.toLowerCase() === member.toLowerCase()))
 		).length;
 		return acc;
 	}, {} as Record<string, number>);
@@ -45,7 +48,7 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
-	<div class="relative overflow-hidden border-b border-neutral-200 dark:border-neutral-800 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30">
+	<div class="relative overflow-hidden border-b border-neutral-200 dark:border-neutral-800 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30">
 		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 			<a href="/challenges" class="inline-flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 mb-6 transition-colors">
 				<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -55,16 +58,16 @@
 			</a>
 
 			<div class="text-center max-w-3xl mx-auto">
-				<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-neutral-900 border border-purple-200 dark:border-purple-800 mb-6">
-					<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Monthly Challenges</span>
+				<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-neutral-900 border border-blue-200 dark:border-blue-800 mb-6">
+					<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Weekly Challenges</span>
 				</div>
 				
 				<h1 class="font-display font-bold text-5xl md:text-6xl mb-6 text-neutral-900 dark:text-neutral-50">
-					Master Full-Stack <span class="bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-transparent">Development</span>
+					Build Real <span class="bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">Projects</span>
 				</h1>
 				
 				<p class="text-xl text-neutral-600 dark:text-neutral-400 mb-8">
-					{data.challenges.length} comprehensive full-stack projects. Spend 40-60 hours building production-ready applications.
+					{data.challenges.length} project-based challenges. Spend 6-15 hours building complete, functional applications.
 				</p>
 
 				<div class="relative max-w-2xl mx-auto">
@@ -76,23 +79,32 @@
 					<input
 						type="text"
 						bind:value={searchQuery}
-						placeholder="Search applications..."
-						class="w-full pl-12 pr-4 py-4 text-lg rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all outline-none text-neutral-900 dark:text-neutral-50 placeholder-neutral-400"
+						placeholder="Search projects..."
+						class="w-full pl-12 pr-4 py-4 text-lg rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800 focus:border-blue-500 dark:focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all outline-none text-neutral-900 dark:text-neutral-50 placeholder-neutral-400"
 					/>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 		<div class="mb-8">
 			<h3 class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Filter by Difficulty</h3>
 			<div class="flex flex-wrap gap-3">
-				<button on:click={() => selectedDifficulty = 'all'} class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedDifficulty === 'all' ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}">All ({data.challenges.length})</button>
-				{#each difficultyKeys as difficulty}
-					<button on:click={() => selectedDifficulty = difficulty} class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedDifficulty === difficulty ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}">
+				<button
+					on:click={() => selectedDifficulty = 'all'}
+					class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedDifficulty === 'all' ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
+				>
+					All ({data.challenges.length})
+				</button>
+				{#each ['beginner', 'intermediate', 'advanced'] as difficultyTyped (difficultyTyped)}
+					<button
+						on:click={() => selectedDifficulty = difficultyTyped as Difficulty}
+						class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedDifficulty === difficultyTyped ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
+					>
 						<span class="flex items-center gap-2">
-							<span class="capitalize">{difficulty}</span>
-							<span class="text-sm opacity-75">({data.byDifficulty[difficulty].length})</span>
+							<span class="capitalize">{difficultyTyped}</span>
+							<span class="text-sm opacity-75">({data.byDifficulty[difficultyTyped as Difficulty].length})</span>
 						</span>
 					</button>
 				{/each}
@@ -104,14 +116,14 @@
 			<div class="flex flex-wrap gap-3">
 				<button
 					on:click={() => selectedMember = 'all'}
-					class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedMember === 'all' ? 'bg-purple-600 text-white shadow-lg scale-105' : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
+					class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedMember === 'all' ? 'bg-blue-600 text-white shadow-lg scale-105' : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
 				>
 					All Members ({data.challenges.length})
 				</button>
 				{#each teamMembers as member}
 					<button
 						on:click={() => selectedMember = member}
-						class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedMember === member ? 'bg-purple-600 text-white shadow-lg scale-105' : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
+						class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedMember === member ? 'bg-blue-600 text-white shadow-lg scale-105' : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
 					>
 						<span class="flex items-center gap-2">
 							<span>{member}</span>
@@ -129,68 +141,74 @@
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 					</svg>
 				</div>
-				<h3 class="text-2xl font-bold text-neutral-900 dark:text-neutral-50 mb-2">No applications found</h3>
+				<h3 class="text-2xl font-bold text-neutral-900 dark:text-neutral-50 mb-2">No projects found</h3>
 				<p class="text-neutral-600 dark:text-neutral-400">Try adjusting your search or filters</p>
 			</div>
 		{:else}
-			<div class="space-y-6">
+			<div class="grid md:grid-cols-2 gap-8">
 				{#each filteredChallenges as challenge, i (challenge.slug)}
-					<a href="/challenges/monthly/{challenge.slug}" class="group block" in:fly={{ y: 20, duration: 400, delay: i * 50 }}>
-						<div class="p-8 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-							<div class="flex flex-col md:flex-row gap-6">
-								<div class="flex-1">
-									<div class="flex items-center gap-3 mb-4">
-										<span class="px-3 py-1 rounded-lg text-sm font-semibold {difficultyConfig[challenge.difficulty].bg} {difficultyConfig[challenge.difficulty].color}">
-											{challenge.difficulty}
-										</span>
-										<span class="text-sm text-neutral-500 dark:text-neutral-500">{challenge.estimatedTime}</span>
-										<span class="text-sm font-semibold text-purple-600 dark:text-purple-400">
-											{challenge.points} points
-										</span>
+					<a href="/challenges/weekly/{challenge.slug}" class="group block" in:fly={{ y: 20, duration: 400, delay: i * 50 }}>
+						<div class="h-full p-8 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+							<div class="flex items-start justify-between mb-4">
+								<span class="px-3 py-1 rounded-lg text-sm font-semibold {difficultyConfig[challenge.difficulty].bg} {difficultyConfig[challenge.difficulty].color}">
+									{challenge.difficulty}
+								</span>
+							</div>
+
+							<h3 class="font-bold text-2xl mb-3 text-neutral-900 dark:text-neutral-50 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-cyan-600 group-hover:to-teal-600 group-hover:bg-clip-text transition-all">
+								{challenge.title}
+							</h3>
+
+							<p class="text-neutral-600 dark:text-neutral-400 mb-4 line-clamp-3">
+								{challenge.description}
+							</p>
+
+							<div class="flex flex-wrap gap-2 mb-4">
+								{#each challenge.skills.slice(0, 4) as skill}
+									<span class="px-2 py-1 rounded-md text-xs font-medium bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800">
+										{skill}
+									</span>
+								{/each}
+								{#if challenge.skills.length > 4}
+									<span class="px-2 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">
+										+{challenge.skills.length - 4}
+									</span>
+								{/if}
+							</div>
+
+							<div class="space-y-2 mb-4">
+								{#if challenge.recommendedFor && challenge.recommendedFor.length > 0}
+									<div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-500">
+										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+										</svg>
+										<span>For: {challenge.recommendedFor.join(', ')}</span>
 									</div>
+								{/if}
 
-									<h3 class="font-bold text-3xl mb-3 text-neutral-900 dark:text-neutral-50 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:via-pink-600 group-hover:to-rose-600 group-hover:bg-clip-text transition-all">
-										{challenge.title}
-									</h3>
-
-									<p class="text-neutral-600 dark:text-neutral-400 mb-4 text-lg">
-										{challenge.description}
-									</p>
-
-									<div class="flex flex-wrap gap-2 mb-4">
-										{#each challenge.skills as skill}
-											<span class="px-3 py-1 rounded-md text-sm font-medium bg-purple-50 dark:bg-purple-950/30 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-800">
-												{skill}
-											</span>
-										{/each}
+								{#if challenge.collaborators && challenge.collaborators.length > 0}
+									<div class="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400">
+										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+										</svg>
+										<span>Collaborators: {challenge.collaborators.join(', ')}</span>
 									</div>
+								{/if}
 
-									<div class="space-y-2">
-										{#if challenge.recommendedFor && challenge.recommendedFor.length > 0}
-											<div class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-500">
-												<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-												</svg>
-												<span>For: {challenge.recommendedFor.join(', ')}</span>
-											</div>
-										{/if}
-
-										{#if challenge.collaborators && challenge.collaborators.length > 0}
-											<div class="flex items-center gap-2 text-sm text-purple-600 dark:text-purple-400">
-												<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-												</svg>
-												<span>With: {challenge.collaborators.join(', ')}</span>
-											</div>
-										{/if}
+								{#if challenge.studyGroup && challenge.studyGroup.length > 0}
+									<div class="flex items-center gap-2 text-xs text-green-600 dark:text-green-400">
+										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+										</svg>
+										<span>Study Group: {challenge.studyGroup.join(', ')}</span>
 									</div>
-								</div>
+								{/if}
+							</div>
 
-								<div class="flex items-center">
-									<svg class="w-12 h-12 text-neutral-300 dark:text-neutral-700 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-									</svg>
-								</div>
+							<div class="flex items-center justify-end">
+								<svg class="w-5 h-5 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+								</svg>
 							</div>
 						</div>
 					</a>

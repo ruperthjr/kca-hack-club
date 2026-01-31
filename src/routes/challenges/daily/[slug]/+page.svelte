@@ -25,6 +25,10 @@
 	};
 
 	const config = difficultyConfig[data.challenge.difficulty];
+	
+	const hasTeamInfo = (data.challenge.recommendedFor && data.challenge.recommendedFor.length > 0) ||
+	                     (data.challenge.collaborators && data.challenge.collaborators.length > 0) ||
+	                     (data.challenge.studyGroup && data.challenge.studyGroup.length > 0);
 </script>
 
 <svelte:head>
@@ -108,47 +112,64 @@
 				</div>
 			{/if}
 
-			<div class="p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800">
-				<h3 class="font-bold text-lg mb-4 text-neutral-900 dark:text-neutral-50 flex items-center gap-2">
-					<div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-950/30">
-						<svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-						</svg>
-					</div>
-					Team Information
-				</h3>
-				<div class="space-y-4">
-					{#if data.challenge.recommendedFor && data.challenge.recommendedFor.length > 0}
-						<div>
-							<h4 class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
-								Recommended For
-							</h4>
-							<div class="flex flex-wrap gap-2">
-								{#each data.challenge.recommendedFor as person}
-									<span class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 text-purple-700 dark:text-purple-300 border-2 border-purple-200 dark:border-purple-800">
-										{person}
-									</span>
-								{/each}
-							</div>
+			{#if hasTeamInfo}
+				<div class="p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800">
+					<h3 class="font-bold text-lg mb-4 text-neutral-900 dark:text-neutral-50 flex items-center gap-2">
+						<div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-950/30">
+							<svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+							</svg>
 						</div>
-					{/if}
+						Team Information
+					</h3>
+					<div class="space-y-4">
+						{#if data.challenge.recommendedFor && data.challenge.recommendedFor.length > 0}
+							<div>
+								<h4 class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+									Recommended For
+								</h4>
+								<div class="flex flex-wrap gap-2">
+									{#each data.challenge.recommendedFor as person}
+										<span class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 text-purple-700 dark:text-purple-300 border-2 border-purple-200 dark:border-purple-800">
+											{person}
+										</span>
+									{/each}
+								</div>
+							</div>
+						{/if}
 
-					{#if data.challenge.collaborators && data.challenge.collaborators.length > 0}
-						<div>
-							<h4 class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
-								Study Group / Collaborators
-							</h4>
-							<div class="flex flex-wrap gap-2">
-								{#each data.challenge.collaborators as collaborator}
-									<span class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 text-blue-700 dark:text-blue-300 border-2 border-blue-200 dark:border-blue-800">
-										{collaborator}
-									</span>
-								{/each}
+						{#if data.challenge.collaborators && data.challenge.collaborators.length > 0}
+							<div>
+								<h4 class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+									Collaborators
+								</h4>
+								<div class="flex flex-wrap gap-2">
+									{#each data.challenge.collaborators as collaborator}
+										<span class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 text-blue-700 dark:text-blue-300 border-2 border-blue-200 dark:border-blue-800">
+											{collaborator}
+										</span>
+									{/each}
+								</div>
 							</div>
-						</div>
-					{/if}
+						{/if}
+
+						{#if data.challenge.studyGroup && data.challenge.studyGroup.length > 0}
+							<div>
+								<h4 class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+									Study Group
+								</h4>
+								<div class="flex flex-wrap gap-2">
+									{#each data.challenge.studyGroup as member}
+										<span class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 text-green-700 dark:text-green-300 border-2 border-green-200 dark:border-green-800">
+											{member}
+										</span>
+									{/each}
+								</div>
+							</div>
+						{/if}
+					</div>
 				</div>
-			</div>
+			{/if}
 		</div>
 
 		<div class="prose prose-lg prose-neutral dark:prose-invert max-w-none

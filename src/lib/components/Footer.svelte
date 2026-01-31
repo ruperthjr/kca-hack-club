@@ -11,7 +11,6 @@
 			{ name: 'Resources', href: '/resources' }
 		],
 		about: [
-			{ name: 'Team', href: '/team' },
 			{ name: 'RSS Feed', href: '/rss.xml' }
 		]
 	};
