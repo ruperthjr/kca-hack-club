@@ -1,8 +1,7 @@
 <script lang="ts">
-  // import type { PageData } from '../../routes/challenges/[slug]/$types';
   // type PageData = App.PageData; // Uncomment and define this type if needed
 
-  export let data: any; // Use 'any' or define your own type for 'data'
+  export let data: any;
 
   const difficultyConfig = {
     beginner: {

@@ -5,21 +5,18 @@
 
 	const difficultyConfig = {
 		beginner: {
-			icon: '',
 			gradient: 'from-green-500 to-emerald-500',
 			bg: 'bg-green-50 dark:bg-green-950/30',
 			border: 'border-green-200 dark:border-green-800',
 			text: 'text-green-600 dark:text-green-400'
 		},
 		intermediate: {
-			icon: '',
 			gradient: 'from-yellow-500 to-orange-500',
 			bg: 'bg-yellow-50 dark:bg-yellow-950/30',
 			border: 'border-yellow-200 dark:border-yellow-800',
 			text: 'text-yellow-600 dark:text-yellow-400'
 		},
 		advanced: {
-			icon: '',
 			gradient: 'from-red-500 to-pink-500',
 			bg: 'bg-red-50 dark:bg-red-950/30',
 			border: 'border-red-200 dark:border-red-800',
@@ -55,14 +52,13 @@
 			<div class="relative">
 				<div class="flex flex-wrap items-center gap-3 mb-6">
 					<span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r {config.gradient} text-white shadow-lg">
-						<span class="text-xl">{config.icon}</span>
 						<span class="capitalize">{data.challenge.difficulty}</span>
 					</span>
 					<span class="px-4 py-2 rounded-xl text-sm font-semibold {config.bg} {config.text} border {config.border}">
 						Daily Challenge
 					</span>
 					<span class="px-4 py-2 rounded-xl text-sm font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
-						 {data.challenge.estimatedTime}
+						{data.challenge.estimatedTime}
 					</span>
 				</div>
 				
@@ -76,7 +72,7 @@
 				
 				<div class="flex items-center gap-4 text-sm">
 					<span class="font-semibold text-orange-600 dark:text-orange-400">
-						 {data.challenge.points} points
+						{data.challenge.points} points
 					</span>
 					<span class="text-neutral-500 dark:text-neutral-500">•</span>
 					<div class="flex flex-wrap gap-2">
@@ -112,25 +108,47 @@
 				</div>
 			{/if}
 
-			{#if data.challenge.recommendedFor && data.challenge.recommendedFor.length > 0}
-				<div class="p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800">
-					<h3 class="font-bold text-lg mb-4 text-neutral-900 dark:text-neutral-50 flex items-center gap-2">
-						<div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-950/30">
-							<svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-							</svg>
-						</div>
-						Recommended For
-					</h3>
-					<div class="flex flex-wrap gap-2">
-						{#each data.challenge.recommendedFor as person}
-							<span class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 text-purple-700 dark:text-purple-300 border-2 border-purple-200 dark:border-purple-800">
-								{person}
-							</span>
-						{/each}
+			<div class="p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800">
+				<h3 class="font-bold text-lg mb-4 text-neutral-900 dark:text-neutral-50 flex items-center gap-2">
+					<div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-950/30">
+						<svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+						</svg>
 					</div>
+					Team Information
+				</h3>
+				<div class="space-y-4">
+					{#if data.challenge.recommendedFor && data.challenge.recommendedFor.length > 0}
+						<div>
+							<h4 class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+								Recommended For
+							</h4>
+							<div class="flex flex-wrap gap-2">
+								{#each data.challenge.recommendedFor as person}
+									<span class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 text-purple-700 dark:text-purple-300 border-2 border-purple-200 dark:border-purple-800">
+										{person}
+									</span>
+								{/each}
+							</div>
+						</div>
+					{/if}
+
+					{#if data.challenge.collaborators && data.challenge.collaborators.length > 0}
+						<div>
+							<h4 class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+								Study Group / Collaborators
+							</h4>
+							<div class="flex flex-wrap gap-2">
+								{#each data.challenge.collaborators as collaborator}
+									<span class="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 text-blue-700 dark:text-blue-300 border-2 border-blue-200 dark:border-blue-800">
+										{collaborator}
+									</span>
+								{/each}
+							</div>
+						</div>
+					{/if}
 				</div>
-			{/if}
+			</div>
 		</div>
 
 		<div class="prose prose-lg prose-neutral dark:prose-invert max-w-none
@@ -198,7 +216,7 @@
 							class="group p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-all hover:shadow-lg"
 						>
 							<div class="text-sm font-semibold mb-2 {difficultyConfig[related.difficulty].text}">
-								{difficultyConfig[related.difficulty].icon} {related.difficulty}
+								{related.difficulty}
 							</div>
 							<h3 class="font-bold text-lg mb-2 text-neutral-900 dark:text-neutral-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
 								{related.title}

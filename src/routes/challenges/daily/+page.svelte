@@ -5,23 +5,23 @@
 	export let data: PageData;
 
 	let selectedDifficulty = 'all';
+	let selectedMember = 'all';
 	let searchQuery = '';
+
+	const teamMembers = ['Maryphin', 'Pauline', 'Ruperth', 'Daniel', 'Jasmine'];
 
 	const difficultyConfig = {
 		beginner: {
-			icon: '',
 			color: 'text-green-600 dark:text-green-400',
 			bg: 'bg-green-50 dark:bg-green-950/30',
 			border: 'border-green-200 dark:border-green-800'
 		},
 		intermediate: {
-			icon: '',
 			color: 'text-yellow-600 dark:text-yellow-400',
 			bg: 'bg-yellow-50 dark:bg-yellow-950/30',
 			border: 'border-yellow-200 dark:border-yellow-800'
 		},
 		advanced: {
-			icon: '',
 			color: 'text-red-600 dark:text-red-400',
 			bg: 'bg-red-50 dark:bg-red-950/30',
 			border: 'border-red-200 dark:border-red-800'
@@ -30,12 +30,23 @@
 
 	$: filteredChallenges = data.challenges.filter(challenge => {
 		const matchesDifficulty = selectedDifficulty === 'all' || challenge.difficulty === selectedDifficulty;
+		const matchesMember = selectedMember === 'all' || 
+			challenge.recommendedFor.some(member => member.toLowerCase() === selectedMember.toLowerCase()) ||
+			(challenge.collaborators && challenge.collaborators.some(member => member.toLowerCase() === selectedMember.toLowerCase()));
 		const matchesSearch = searchQuery === '' || 
 			challenge.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
 			challenge.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
 			challenge.skills.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase()));
-		return matchesDifficulty && matchesSearch;
+		return matchesDifficulty && matchesMember && matchesSearch;
 	});
+
+	$: memberCounts = teamMembers.reduce((acc, member) => {
+		acc[member] = data.challenges.filter(c => 
+			c.recommendedFor.some(m => m.toLowerCase() === member.toLowerCase()) ||
+			(c.collaborators && c.collaborators.some(m => m.toLowerCase() === member.toLowerCase()))
+		).length;
+		return acc;
+	}, {} as Record<string, number>);
 </script>
 
 <svelte:head>
@@ -84,29 +95,58 @@
 	</div>
 
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-		<div class="flex flex-wrap gap-3 justify-center mb-12">
-			<button
-				on:click={() => selectedDifficulty = 'all'}
-				class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedDifficulty === 'all' 
-					? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' 
-					: 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
-			>
-				All ({data.challenges.length})
-			</button>
-			{#each ['beginner', 'intermediate', 'advanced'] as difficulty}
+		<div class="mb-8">
+			<h3 class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Filter by Difficulty</h3>
+			<div class="flex flex-wrap gap-3">
 				<button
-					on:click={() => selectedDifficulty = difficulty}
-					class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedDifficulty === difficulty 
+					on:click={() => selectedDifficulty = 'all'}
+					class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedDifficulty === 'all' 
 						? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' 
 						: 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
 				>
-					<span class="flex items-center gap-2">
-						<span>{difficultyConfig[difficulty as keyof typeof difficultyConfig].icon}</span>
-						<span class="capitalize">{difficulty}</span>
-						<span class="text-sm opacity-75">({data.byDifficulty[difficulty as keyof typeof data.byDifficulty].length})</span>
-					</span>
+					All ({data.challenges.length})
 				</button>
-			{/each}
+				{#each ['beginner', 'intermediate', 'advanced'] as difficulty}
+					<button
+						on:click={() => selectedDifficulty = difficulty}
+						class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedDifficulty === difficulty 
+							? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' 
+							: 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
+					>
+						<span class="flex items-center gap-2">
+							<span class="capitalize">{difficulty}</span>
+							<span class="text-sm opacity-75">({data.byDifficulty[difficulty as keyof typeof data.byDifficulty].length})</span>
+						</span>
+					</button>
+				{/each}
+			</div>
+		</div>
+
+		<div class="mb-12">
+			<h3 class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Filter by Team Member</h3>
+			<div class="flex flex-wrap gap-3">
+				<button
+					on:click={() => selectedMember = 'all'}
+					class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedMember === 'all' 
+						? 'bg-purple-600 text-white shadow-lg scale-105' 
+						: 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
+				>
+					All Members ({data.challenges.length})
+				</button>
+				{#each teamMembers as member}
+					<button
+						on:click={() => selectedMember = member}
+						class="px-6 py-3 rounded-xl font-medium transition-all duration-200 {selectedMember === member 
+							? 'bg-purple-600 text-white shadow-lg scale-105' 
+							: 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
+					>
+						<span class="flex items-center gap-2">
+							<span>{member}</span>
+							<span class="text-sm opacity-75">({memberCounts[member]})</span>
+						</span>
+					</button>
+				{/each}
+			</div>
 		</div>
 
 		{#if filteredChallenges.length === 0}
@@ -117,7 +157,7 @@
 					</svg>
 				</div>
 				<h3 class="text-2xl font-bold text-neutral-900 dark:text-neutral-50 mb-2">No challenges found</h3>
-				<p class="text-neutral-600 dark:text-neutral-400">Try adjusting your search or filter</p>
+				<p class="text-neutral-600 dark:text-neutral-400">Try adjusting your search or filters</p>
 			</div>
 		{:else}
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -130,7 +170,7 @@
 						<div class="h-full p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
 							<div class="flex items-start justify-between mb-4">
 								<span class="px-3 py-1 rounded-lg text-sm font-semibold {difficultyConfig[challenge.difficulty as keyof typeof difficultyConfig].bg} {difficultyConfig[challenge.difficulty as keyof typeof difficultyConfig].color}">
-									{difficultyConfig[challenge.difficulty as keyof typeof difficultyConfig].icon} {challenge.difficulty}
+									{challenge.difficulty}
 								</span>
 								<span class="text-sm text-neutral-500 dark:text-neutral-500">{challenge.estimatedTime}</span>
 							</div>
@@ -156,14 +196,25 @@
 								{/if}
 							</div>
 
-							{#if challenge.recommendedFor && challenge.recommendedFor.length > 0}
-								<div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-500 mb-3">
-									<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-									</svg>
-									<span>For: {challenge.recommendedFor.join(', ')}</span>
-								</div>
-							{/if}
+							<div class="space-y-2 mb-3">
+								{#if challenge.recommendedFor && challenge.recommendedFor.length > 0}
+									<div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-500">
+										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+										</svg>
+										<span>For: {challenge.recommendedFor.join(', ')}</span>
+									</div>
+								{/if}
+
+								{#if challenge.collaborators && challenge.collaborators.length > 0}
+									<div class="flex items-center gap-2 text-xs text-purple-600 dark:text-purple-400">
+										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+										</svg>
+										<span>With: {challenge.collaborators.join(', ')}</span>
+									</div>
+								{/if}
+							</div>
 
 							<div class="flex items-center justify-between">
 								<span class="text-sm font-semibold text-orange-600 dark:text-orange-400">

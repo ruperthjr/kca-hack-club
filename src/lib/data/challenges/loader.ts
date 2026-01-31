@@ -7,6 +7,7 @@ export interface Challenge {
   estimatedTime: string;
   skills: string[];
   recommendedFor: string[];
+  collaborators?: string[];
   points: number;
   content: string;
   solutions?: string[];
@@ -74,6 +75,7 @@ function parseChallenge(content: string, slug: string, category: 'daily' | 'week
     estimatedTime: metadata.estimatedTime || '1 hour',
     skills: metadata.skills || [],
     recommendedFor: metadata.recommendedFor || [],
+    collaborators: metadata.collaborators || [],
     points: parseInt(metadata.points) || 0,
     solutions: metadata.solutions || [],
     hints: metadata.hints || [],
@@ -120,6 +122,13 @@ export function getChallengesByDifficulty(difficulty: 'beginner' | 'intermediate
 export function getChallengesByRecommendedFor(member: string): Challenge[] {
   return loadAllChallenges().filter(c => 
     c.recommendedFor.some(rec => rec.toLowerCase().includes(member.toLowerCase()))
+  );
+}
+
+export function getChallengesByMember(member: string): Challenge[] {
+  return loadAllChallenges().filter(c => 
+    c.recommendedFor.some(rec => rec.toLowerCase() === member.toLowerCase()) ||
+    (c.collaborators && c.collaborators.some(collab => collab.toLowerCase() === member.toLowerCase()))
   );
 }
 
