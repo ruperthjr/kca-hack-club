@@ -1,28 +1,22 @@
 import type { PageLoad } from './$types';
-import { loadChallenges } from '$lib/data/challenges/loader';
+import { 
+	getChallengeBySlug, 
+	getPreviousChallenge, 
+	getNextChallenge, 
+	getRelatedChallenges 
+} from '$lib/data/challenges/loader';
 import { error } from '@sveltejs/kit';
 
 export const load: PageLoad = async ({ params }) => {
-	const allWeeklyChallenges = await loadChallenges('weekly');
-	const challenge = allWeeklyChallenges.find(c => c.slug === params.slug);
+	const challenge = getChallengeBySlug(params.slug, 'weekly');
 	
 	if (!challenge) {
 		throw error(404, { message: 'Challenge not found' });
 	}
 	
-	const currentIndex = allWeeklyChallenges.findIndex(c => c.slug === params.slug);
-	
-	const relatedChallenges = allWeeklyChallenges
-		.filter(c => 
-			c.slug !== params.slug && (
-				c.difficulty === challenge.difficulty ||
-				c.skills.some(skill => challenge.skills.includes(skill))
-			)
-		)
-		.slice(0, 3);
-	
-	const previousChallenge = currentIndex > 0 ? allWeeklyChallenges[currentIndex - 1] : null;
-	const nextChallenge = currentIndex < allWeeklyChallenges.length - 1 ? allWeeklyChallenges[currentIndex + 1] : null;
+	const previousChallenge = getPreviousChallenge(params.slug, 'weekly');
+	const nextChallenge = getNextChallenge(params.slug, 'weekly');
+	const relatedChallenges = getRelatedChallenges(params.slug, 'weekly', 3);
 	
 	return {
 		challenge,

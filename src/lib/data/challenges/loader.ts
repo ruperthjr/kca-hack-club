@@ -115,7 +115,7 @@ function parseChallenge(content: string, slug: string, category: 'daily' | 'week
   };
 }
 
-export function loadChallenges(category: 'daily' | 'weekly' | 'monthly'): Challenge[] {
+function getAllChallengesRaw(category: 'daily' | 'weekly' | 'monthly'): Challenge[] {
   const challenges = category === 'daily' ? dailyChallenges : 
                      category === 'weekly' ? weeklyChallenges : 
                      monthlyChallenges;
@@ -126,17 +126,68 @@ export function loadChallenges(category: 'daily' | 'weekly' | 'monthly'): Challe
   }).sort((a, b) => a.unlockDate.getTime() - b.unlockDate.getTime());
 }
 
+export function loadChallenges(category: 'daily' | 'weekly' | 'monthly'): Challenge[] {
+  return getAllChallengesRaw(category);
+}
+
 export function loadAllChallenges(): Challenge[] {
   return [
-    ...loadChallenges('daily'),
-    ...loadChallenges('weekly'),
-    ...loadChallenges('monthly')
+    ...getAllChallengesRaw('daily'),
+    ...getAllChallengesRaw('weekly'),
+    ...getAllChallengesRaw('monthly')
   ];
 }
 
 export function getChallengeBySlug(slug: string, category: 'daily' | 'weekly' | 'monthly'): Challenge | null {
-  const challenges = loadChallenges(category);
+  const challenges = getAllChallengesRaw(category);
   return challenges.find(c => c.slug === slug) || null;
+}
+
+export function getPreviousChallenge(currentSlug: string, category: 'daily' | 'weekly' | 'monthly'): Challenge | null {
+  const allChallenges = getAllChallengesRaw(category);
+  const unlockedChallenges = allChallenges.filter(c => !c.isLocked);
+  const currentIndex = unlockedChallenges.findIndex(c => c.slug === currentSlug);
+  
+  if (currentIndex <= 0) return null;
+  return unlockedChallenges[currentIndex - 1] ?? null;
+}
+
+export function getNextChallenge(currentSlug: string, category: 'daily' | 'weekly' | 'monthly'): Challenge | null {
+  const allChallenges = getAllChallengesRaw(category);
+  const unlockedChallenges = allChallenges.filter(c => !c.isLocked);
+  const currentIndex = unlockedChallenges.findIndex(c => c.slug === currentSlug);
+  
+  if (currentIndex === -1 || currentIndex >= unlockedChallenges.length - 1) return null;
+  return unlockedChallenges[currentIndex + 1] ?? null;
+}
+
+export function getRelatedChallenges(currentSlug: string, category: 'daily' | 'weekly' | 'monthly', limit: number = 3): Challenge[] {
+  const current = getChallengeBySlug(currentSlug, category);
+  if (!current) return [];
+
+  const allChallenges = getAllChallengesRaw(category);
+  const unlockedChallenges = allChallenges.filter(c => !c.isLocked && c.slug !== currentSlug);
+  
+  const scored = unlockedChallenges.map(challenge => {
+    let score = 0;
+    
+    if (challenge.difficulty === current.difficulty) score += 3;
+    
+    const sharedSkills = challenge.skills.filter(skill => current.skills.includes(skill));
+    score += sharedSkills.length * 2;
+    
+    const sharedTags = challenge.tags?.filter(tag => current.tags?.includes(tag)) || [];
+    score += sharedTags.length;
+    
+    const sharedRecommended = challenge.recommendedFor.filter(rec => current.recommendedFor.includes(rec));
+    score += sharedRecommended.length;
+    
+    return { challenge, score };
+  });
+  
+  scored.sort((a, b) => b.score - a.score);
+  
+  return scored.slice(0, limit).map(item => item.challenge);
 }
 
 export function getChallengesByDifficulty(difficulty: 'beginner' | 'intermediate' | 'advanced'): Challenge[] {

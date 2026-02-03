@@ -1,5 +1,10 @@
 import type { PageLoad } from './$types';
-import { getChallengeBySlug, loadChallenges } from '$lib/data/challenges/loader';
+import { 
+	getChallengeBySlug, 
+	getPreviousChallenge, 
+	getNextChallenge, 
+	getRelatedChallenges 
+} from '$lib/data/challenges/loader';
 import { error } from '@sveltejs/kit';
 
 export const load: PageLoad = async ({ params }) => {
@@ -11,20 +16,9 @@ export const load: PageLoad = async ({ params }) => {
 		});
 	}
 	
-	const allDailyChallenges = loadChallenges('daily');
-	const currentIndex = allDailyChallenges.findIndex(c => c.slug === params.slug);
-	
-	const relatedChallenges = allDailyChallenges
-		.filter(c => 
-			c.slug !== params.slug && (
-				c.difficulty === challenge.difficulty ||
-				c.skills.some(skill => challenge.skills.includes(skill))
-			)
-		)
-		.slice(0, 3);
-	
-	const previousChallenge = currentIndex > 0 ? allDailyChallenges[currentIndex - 1] : null;
-	const nextChallenge = currentIndex < allDailyChallenges.length - 1 ? allDailyChallenges[currentIndex + 1] : null;
+	const previousChallenge = getPreviousChallenge(params.slug, 'daily');
+	const nextChallenge = getNextChallenge(params.slug, 'daily');
+	const relatedChallenges = getRelatedChallenges(params.slug, 'daily', 3);
 	
 	return {
 		challenge,

@@ -1,5 +1,10 @@
 import type { PageLoad } from './$types';
-import { getChallengeBySlug, loadChallenges } from '$lib/data/challenges/loader';
+import { 
+	getChallengeBySlug, 
+	getPreviousChallenge, 
+	getNextChallenge, 
+	getRelatedChallenges 
+} from '$lib/data/challenges/loader';
 import { error } from '@sveltejs/kit';
 
 export const load: PageLoad = async ({ params }) => {
@@ -9,20 +14,9 @@ export const load: PageLoad = async ({ params }) => {
 		throw error(404, { message: 'Challenge not found' });
 	}
 	
-	const allMonthlyChallenges = loadChallenges('monthly');
-	const currentIndex = allMonthlyChallenges.findIndex(c => c.slug === params.slug);
-	
-	const relatedChallenges = allMonthlyChallenges
-		.filter(c => 
-			c.slug !== params.slug && (
-				c.difficulty === challenge.difficulty ||
-				c.skills.some(skill => challenge.skills.includes(skill))
-			)
-		)
-		.slice(0, 3);
-	
-	const previousChallenge = currentIndex > 0 ? allMonthlyChallenges[currentIndex - 1] : null;
-	const nextChallenge = currentIndex < allMonthlyChallenges.length - 1 ? allMonthlyChallenges[currentIndex + 1] : null;
+	const previousChallenge = getPreviousChallenge(params.slug, 'monthly');
+	const nextChallenge = getNextChallenge(params.slug, 'monthly');
+	const relatedChallenges = getRelatedChallenges(params.slug, 'monthly', 3);
 	
 	return {
 		challenge,
