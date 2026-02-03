@@ -18,6 +18,9 @@ export interface Challenge {
   learningObjectives?: string[];
   deliverables?: string[];
   tags?: string[];
+  unlockDate: Date;
+  deadline?: Date;
+  isLocked: boolean;
 }
 
 const dailyChallenges = import.meta.glob('./daily/*.md', { 
@@ -38,8 +41,17 @@ const monthlyChallenges = import.meta.glob('./monthly/*.md', {
   import: 'default'
 });
 
+function parseDate(dateString: string): Date {
+  return new Date(dateString);
+}
+
+function isChallengeLocked(unlockDate: Date): boolean {
+  const now = new Date();
+  return now < unlockDate;
+}
+
 function parseChallenge(content: string, slug: string, category: 'daily' | 'weekly' | 'monthly'): Challenge {
-  const frontmatterRegex = /^---\n([\s\S]*?)\n---/;
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*$/m;
   const match = content.match(frontmatterRegex);
   
   if (!match) {
@@ -47,29 +59,40 @@ function parseChallenge(content: string, slug: string, category: 'daily' | 'week
   }
 
   const frontmatter = match[1];
-  const body = content.slice(match[0].length).trim();
-
-  if (frontmatter === undefined) {
-    throw new Error(`Invalid frontmatter in challenge: ${slug}`);
-  }
+  const bodyStartIndex = match[0].length;
+  const body = content.slice(bodyStartIndex).trim();
 
   const metadata: any = {};
-  frontmatter.split('\n').forEach(line => {
-    const [key, ...valueParts] = line.split(':');
-    if (key && valueParts.length) {
-      const value = valueParts.join(':').trim();
+  
+  if (frontmatter) {
+    frontmatter.split('\n').forEach(line => {
+      const colonIndex = line.indexOf(':');
+      if (colonIndex === -1) return;
+      
+      const key = line.slice(0, colonIndex).trim();
+      const value = line.slice(colonIndex + 1).trim();
+      
+      if (!key || !value) return;
+      
       if (value.startsWith('[') && value.endsWith(']')) {
-        metadata[key.trim()] = value.slice(1, -1).split(',').map(v => v.trim().replace(/['"]/g, ''));
+        metadata[key] = value
+          .slice(1, -1)
+          .split(',')
+          .map(v => v.trim().replace(/^['"]|['"]$/g, ''))
+          .filter(v => v.length > 0);
       } else {
-        metadata[key.trim()] = value.replace(/['"]/g, '');
+        metadata[key] = value.replace(/^['"]|['"]$/g, '');
       }
-    }
-  });
+    });
+  }
+
+  const unlockDate = metadata.unlockDate ? parseDate(metadata.unlockDate) : new Date();
+  const deadline = metadata.deadline ? parseDate(metadata.deadline) : undefined;
 
   return {
     slug,
     category,
-    content: body,
+    content: body || '',
     title: metadata.title || '',
     description: metadata.description || '',
     difficulty: metadata.difficulty || 'beginner',
@@ -85,7 +108,10 @@ function parseChallenge(content: string, slug: string, category: 'daily' | 'week
     prerequisites: metadata.prerequisites || [],
     learningObjectives: metadata.learningObjectives || [],
     deliverables: metadata.deliverables || [],
-    tags: metadata.tags || []
+    tags: metadata.tags || [],
+    unlockDate,
+    deadline,
+    isLocked: isChallengeLocked(unlockDate)
   };
 }
 
@@ -97,11 +123,7 @@ export function loadChallenges(category: 'daily' | 'weekly' | 'monthly'): Challe
   return Object.entries(challenges).map(([path, content]) => {
     const slug = path.split('/').pop()?.replace('.md', '') || '';
     return parseChallenge(content as string, slug, category);
-  }).sort((a, b) => {
-    const aNum = parseInt(a.slug.match(/\d+/)?.[0] || '0');
-    const bNum = parseInt(b.slug.match(/\d+/)?.[0] || '0');
-    return aNum - bNum;
-  });
+  }).sort((a, b) => a.unlockDate.getTime() - b.unlockDate.getTime());
 }
 
 export function loadAllChallenges(): Challenge[] {
@@ -118,32 +140,53 @@ export function getChallengeBySlug(slug: string, category: 'daily' | 'weekly' | 
 }
 
 export function getChallengesByDifficulty(difficulty: 'beginner' | 'intermediate' | 'advanced'): Challenge[] {
-  return loadAllChallenges().filter(c => c.difficulty === difficulty);
+  return loadAllChallenges().filter(c => c.difficulty === difficulty && !c.isLocked);
 }
 
 export function getChallengesByRecommendedFor(member: string): Challenge[] {
   return loadAllChallenges().filter(c => 
-    c.recommendedFor.some(rec => rec.toLowerCase().includes(member.toLowerCase()))
+    !c.isLocked && c.recommendedFor.some(rec => rec.toLowerCase().includes(member.toLowerCase()))
   );
 }
 
 export function getChallengesByMember(member: string): Challenge[] {
   return loadAllChallenges().filter(c => 
-    c.recommendedFor.some(rec => rec.toLowerCase() === member.toLowerCase()) ||
-    (c.collaborators && c.collaborators.some(collab => collab.toLowerCase() === member.toLowerCase())) ||
-    (c.studyGroup && c.studyGroup.some(sg => sg.toLowerCase() === member.toLowerCase()))
+    !c.isLocked && (
+      c.recommendedFor.some(rec => rec.toLowerCase() === member.toLowerCase()) ||
+      (c.collaborators && c.collaborators.some(collab => collab.toLowerCase() === member.toLowerCase())) ||
+      (c.studyGroup && c.studyGroup.some(sg => sg.toLowerCase() === member.toLowerCase()))
+    )
   );
 }
 
 export function getChallengeStats() {
   const all = loadAllChallenges();
+  const unlocked = all.filter(c => !c.isLocked);
+  
   return {
     total: all.length,
-    daily: all.filter(c => c.category === 'daily').length,
-    weekly: all.filter(c => c.category === 'weekly').length,
-    monthly: all.filter(c => c.category === 'monthly').length,
-    beginner: all.filter(c => c.difficulty === 'beginner').length,
-    intermediate: all.filter(c => c.difficulty === 'intermediate').length,
-    advanced: all.filter(c => c.difficulty === 'advanced').length
+    unlocked: unlocked.length,
+    locked: all.length - unlocked.length,
+    daily: unlocked.filter(c => c.category === 'daily').length,
+    weekly: unlocked.filter(c => c.category === 'weekly').length,
+    monthly: unlocked.filter(c => c.category === 'monthly').length,
+    beginner: unlocked.filter(c => c.difficulty === 'beginner').length,
+    intermediate: unlocked.filter(c => c.difficulty === 'intermediate').length,
+    advanced: unlocked.filter(c => c.difficulty === 'advanced').length
   };
+}
+
+export function getTimeUntilUnlock(challenge: Challenge): string {
+  if (!challenge.isLocked) return 'Available now';
+  
+  const now = new Date();
+  const diff = challenge.unlockDate.getTime() - now.getTime();
+  
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  
+  if (days > 0) return `Unlocks in ${days}d ${hours}h`;
+  if (hours > 0) return `Unlocks in ${hours}h ${minutes}m`;
+  return `Unlocks in ${minutes}m`;
 }

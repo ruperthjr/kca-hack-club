@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { fly } from 'svelte/transition';
+	import ChallengeCard from '$lib/components/ChallengeCard.svelte';
 
 	export let data: PageData;
 
@@ -10,30 +11,10 @@
 
 	const teamMembers = ['Maryphin', 'Pauline', 'Ruperth', 'Daniel', 'Jasmine'];
 
-	const difficultyConfig = {
-		beginner: {
-			color: 'text-green-600 dark:text-green-400',
-			bg: 'bg-green-50 dark:bg-green-950/30',
-			border: 'border-green-200 dark:border-green-800'
-		},
-		intermediate: {
-			color: 'text-yellow-600 dark:text-yellow-400',
-			bg: 'bg-yellow-50 dark:bg-yellow-950/30',
-			border: 'border-yellow-200 dark:border-yellow-800'
-		},
-		advanced: {
-			color: 'text-red-600 dark:text-red-400',
-			bg: 'bg-red-50 dark:bg-red-950/30',
-			border: 'border-red-200 dark:border-red-800'
-		}
-	};
-
 	$: filteredChallenges = data.challenges.filter(challenge => {
 		const matchesDifficulty = selectedDifficulty === 'all' || challenge.difficulty === selectedDifficulty;
 		const matchesMember = selectedMember === 'all' || 
-			challenge.recommendedFor.some(member => member.toLowerCase() === selectedMember.toLowerCase()) ||
-			(challenge.collaborators && challenge.collaborators.some(member => member.toLowerCase() === selectedMember.toLowerCase())) ||
-			(challenge.studyGroup && challenge.studyGroup.some(member => member.toLowerCase() === selectedMember.toLowerCase()));
+			challenge.recommendedFor.some(member => member.toLowerCase() === selectedMember.toLowerCase());
 		const matchesSearch = searchQuery === '' || 
 			challenge.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
 			challenge.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -43,9 +24,7 @@
 
 	$: memberCounts = teamMembers.reduce((acc, member) => {
 		acc[member] = data.challenges.filter(c => 
-			c.recommendedFor.some(m => m.toLowerCase() === member.toLowerCase()) ||
-			(c.collaborators && c.collaborators.some(m => m.toLowerCase() === member.toLowerCase())) ||
-			(c.studyGroup && c.studyGroup.some(m => m.toLowerCase() === member.toLowerCase()))
+			c.recommendedFor.some(m => m.toLowerCase() === member.toLowerCase())
 		).length;
 		return acc;
 	}, {} as Record<string, number>);
@@ -164,79 +143,9 @@
 		{:else}
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 				{#each filteredChallenges as challenge, i (challenge.slug)}
-					<a
-						href="/challenges/daily/{challenge.slug}"
-						class="group block"
-						in:fly={{ y: 20, duration: 400, delay: i * 50 }}
-					>
-						<div class="h-full p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-							<div class="flex items-start justify-between mb-4">
-								<span class="px-3 py-1 rounded-lg text-sm font-semibold {difficultyConfig[challenge.difficulty as keyof typeof difficultyConfig].bg} {difficultyConfig[challenge.difficulty as keyof typeof difficultyConfig].color}">
-									{challenge.difficulty}
-								</span>
-								<span class="text-sm text-neutral-500 dark:text-neutral-500">{challenge.estimatedTime}</span>
-							</div>
-
-							<h3 class="font-bold text-xl mb-3 text-neutral-900 dark:text-neutral-50 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-600 group-hover:via-orange-600 group-hover:to-red-600 group-hover:bg-clip-text transition-all">
-								{challenge.title}
-							</h3>
-
-							<p class="text-neutral-600 dark:text-neutral-400 text-sm mb-4 line-clamp-2">
-								{challenge.description}
-							</p>
-
-							<div class="flex flex-wrap gap-2 mb-4">
-								{#each challenge.skills.slice(0, 3) as skill}
-									<span class="px-2 py-1 rounded-md text-xs font-medium bg-orange-50 dark:bg-orange-950/30 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800">
-										{skill}
-									</span>
-								{/each}
-								{#if challenge.skills.length > 3}
-									<span class="px-2 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">
-										+{challenge.skills.length - 3}
-									</span>
-								{/if}
-							</div>
-
-							<div class="space-y-2 mb-3">
-								{#if challenge.recommendedFor && challenge.recommendedFor.length > 0}
-									<div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-500">
-										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-										</svg>
-										<span>For: {challenge.recommendedFor.join(', ')}</span>
-									</div>
-								{/if}
-
-								{#if challenge.collaborators && challenge.collaborators.length > 0}
-									<div class="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400">
-										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-										</svg>
-										<span>Collaborators: {challenge.collaborators.join(', ')}</span>
-									</div>
-								{/if}
-
-								{#if challenge.studyGroup && challenge.studyGroup.length > 0}
-									<div class="flex items-center gap-2 text-xs text-purple-600 dark:text-purple-400">
-										<svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-										</svg>
-										<span>Study Group: {challenge.studyGroup.join(', ')}</span>
-									</div>
-								{/if}
-							</div>
-
-							<div class="flex items-center justify-between">
-								<span class="text-sm font-semibold text-orange-600 dark:text-orange-400">
-									{challenge.points} points
-								</span>
-								<svg class="w-5 h-5 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-								</svg>
-							</div>
-						</div>
-					</a>
+					<div in:fly={{ y: 20, duration: 400, delay: i * 50 }}>
+						<ChallengeCard {challenge} index={i} category="daily" />
+					</div>
 				{/each}
 			</div>
 		{/if}

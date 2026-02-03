@@ -4,9 +4,10 @@
   export let icon: string;
   export let color: string;
   export let description: string;
+  export let locked: number = 0;
   
   let counter = 0;
-  let duration = 1000; // ms
+  let duration = 1000;
   let startTime: number;
   let animationFrame: number;
   
@@ -58,8 +59,6 @@
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      
-      // Ease out function
       const easeOut = 1 - Math.pow(1 - progress, 3);
       counter = Math.floor(easeOut * value);
       
@@ -81,18 +80,14 @@
 </script>
 
 <div class="group relative h-full">
-  <!-- Background Glow -->
   <div class="absolute -inset-1 bg-gradient-to-r {config.gradient} rounded-2xl opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500"></div>
   
-  <!-- Main Card -->
   <div class="relative h-full bg-white dark:bg-neutral-900 rounded-2xl border-2 {config.border} p-6 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl overflow-hidden">
-    <!-- Animated Background Pattern -->
     <div class="absolute inset-0 opacity-[0.02]">
       <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0); background-size: 20px 20px; color: {color};"></div>
     </div>
     
     <div class="relative">
-      <!-- Header -->
       <div class="flex items-start justify-between mb-6">
         <div>
           <h3 class="font-bold text-lg text-neutral-900 dark:text-white mb-2">
@@ -103,7 +98,6 @@
           </p>
         </div>
         
-        <!-- Icon -->
         <div class="relative">
           <div class="absolute inset-0 {config.iconBg} rounded-full blur-lg opacity-30"></div>
           <div class="relative w-12 h-12 rounded-full {config.bg} border-2 {config.border} flex items-center justify-center text-2xl">
@@ -112,33 +106,36 @@
         </div>
       </div>
       
-      <!-- Value Display -->
       <div class="mb-4">
         <div class="flex items-baseline gap-2">
           <span class="font-bold text-5xl text-neutral-900 dark:text-white">
             {counter}
           </span>
           <span class="text-sm font-medium {config.text}">
-            Challenges
+            Available
           </span>
         </div>
         
-        <!-- Animated Progress Bar -->
+        {#if locked > 0}
+          <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-2">
+            🔒 {locked} locked, unlocking soon
+          </p>
+        {/if}
+        
         <div class="mt-4">
           <div class="h-2 bg-neutral-200 dark:bg-neutral-800 rounded-full overflow-hidden">
             <div 
               class="h-full bg-gradient-to-r {config.gradient} rounded-full transition-all duration-1000 ease-out"
-              style="width: {counter / value * 100}%"
+              style="width: {counter / (value + locked) * 100}%"
             ></div>
           </div>
           <div class="flex justify-between text-xs text-neutral-500 dark:text-neutral-400 mt-1">
             <span>0</span>
-            <span>{value}</span>
+            <span>{value + locked} total</span>
           </div>
         </div>
       </div>
       
-      <!-- Detail Indicator -->
       <div class="flex items-center justify-between text-sm">
         <span class={config.text}>
           View all →
@@ -154,7 +151,6 @@
       </div>
     </div>
     
-    <!-- Corner Accents -->
     <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br {config.gradient} rounded-bl-full opacity-5"></div>
     <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr {config.gradient} rounded-tr-full opacity-5"></div>
   </div>
