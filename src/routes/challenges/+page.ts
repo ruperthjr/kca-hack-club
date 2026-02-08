@@ -1,37 +1,85 @@
-// src/routes/challenges/+page.ts
 import type { PageLoad } from './$types';
-import { loadAllChallenges } from '$lib/data/challenges/loader';
 
 export const load: PageLoad = async () => {
-	const challenges = await loadAllChallenges();
-	
-	const daily = challenges.filter(c => c.category === 'daily');
-	const weekly = challenges.filter(c => c.category === 'weekly');
-	const monthly = challenges.filter(c => c.category === 'monthly');
-	
-	const difficultyBreakdown = {
-		beginner: challenges.filter(c => c.difficulty === 'beginner').length,
-		intermediate: challenges.filter(c => c.difficulty === 'intermediate').length,
-		advanced: challenges.filter(c => c.difficulty === 'advanced').length
-	};
-	
-	const teamRecommendations = {
-		maryphin: challenges.filter(c => c.recommendedFor.includes('Maryphin')).length,
-		pauline: challenges.filter(c => c.recommendedFor.includes('Pauline')).length,
-		ruperth: challenges.filter(c => c.recommendedFor.includes('Ruperth')).length,
-		daniel: challenges.filter(c => c.recommendedFor.includes('Daniel')).length,
-		jasmine: challenges.filter(c => c.recommendedFor.includes('Jasmine')).length
-	};
-	
-	return {
-		challenges,
-		daily,
-		weekly,
-		monthly,
-		difficultyBreakdown,
-		teamRecommendations,
-		meta: {
-			description: 'Daily, weekly, and monthly coding challenges to level up your programming skills'
+	try {
+		const challengeFiles = import.meta.glob('$lib/data/challenges/**/*.md', { eager: true });
+		
+		const challenges: any[] = [];
+		
+		for (const path in challengeFiles) {
+			const challengeModule: any = challengeFiles[path];
+			const pathParts = path.split('/');
+			const fileName = pathParts.pop()?.replace('.md', '') || '';
+			const type = pathParts[pathParts.length - 1] || 'daily';
+			const member = pathParts[pathParts.length - 2] || 'unknown';
+			const metadata = challengeModule.metadata || {};
+			
+			challenges.push({
+				slug: fileName,
+				title: metadata.title || fileName,
+				member: member,
+				type: type,
+				description: metadata.description || '',
+				difficulty: metadata.difficulty || 'intermediate',
+				unit: metadata.unit || '',
+				week: metadata.week || null,
+				day: metadata.day || null,
+				month: metadata.month || null,
+				technologies: metadata.technologies || [],
+				learningOutcomes: metadata.learningOutcomes || [],
+				estimatedTime: metadata.estimatedTime || '',
+				dateAdded: metadata.dateAdded || new Date().toISOString().split('T')[0]
+			});
 		}
-	};
+
+		// Group challenges by member and type
+		const groupedChallenges = challenges.reduce((acc: Record<string, Record<string, any[]>>, challenge) => {
+			if (!acc[challenge.member]) {
+				acc[challenge.member] = {};
+			}
+			const memberGroup = acc[challenge.member]!;
+			if (!memberGroup[challenge.type]) {
+				memberGroup[challenge.type] = [];
+			}
+			memberGroup[challenge.type]!.push(challenge);
+			return acc;
+		}, {} as Record<string, Record<string, any[]>>);
+
+		// Sort challenges within each group
+		Object.keys(groupedChallenges).forEach(member => {
+			const memberChallenges = groupedChallenges[member];
+			if (memberChallenges) {
+				Object.keys(memberChallenges).forEach(type => {
+					const typeChallenges = memberChallenges[type];
+					if (typeChallenges) {
+						typeChallenges.sort((a, b) => {
+							if (type === 'daily') return (a.day || 0) - (b.day || 0);
+							if (type === 'weekly') return (a.week || 0) - (b.week || 0);
+							if (type === 'monthly') return (a.month || 0) - (b.month || 0);
+							return 0;
+						});
+					}
+				});
+			}
+		});
+
+		return {
+			challenges,
+			groupedChallenges,
+			meta: {
+				title: 'KCA Hack Club Challenges - Feb 9 to Apr 10, 2026',
+				description: 'Daily, weekly, and monthly coding challenges for all team members'
+			}
+		};
+	} catch (e) {
+		console.error('Error loading challenges:', e);
+		return {
+			challenges: [],
+			groupedChallenges: {},
+			meta: {
+				title: 'KCA Hack Club Challenges',
+				description: 'Coding challenges for team members'
+			}
+		};
+	}
 };
