@@ -1,10 +1,12 @@
+// src/routes/challenges/+page.ts
 import type { PageLoad } from './$types';
+import type { Challenge } from '$lib/utils/challengeUtils';
 
 export const load: PageLoad = async () => {
 	try {
 		const challengeFiles = import.meta.glob('$lib/data/challenges/**/*.md', { eager: true });
 		
-		const challenges: any[] = [];
+		const challenges: Challenge[] = [];
 		
 		for (const path in challengeFiles) {
 			const challengeModule: any = challengeFiles[path];
@@ -18,13 +20,14 @@ export const load: PageLoad = async () => {
 				slug: fileName,
 				title: metadata.title || fileName,
 				member: member,
-				type: type,
+				type: type as 'daily' | 'weekly' | 'monthly',
 				description: metadata.description || '',
 				difficulty: metadata.difficulty || 'intermediate',
 				unit: metadata.unit || '',
 				week: metadata.week || null,
 				day: metadata.day || null,
 				month: metadata.month || null,
+				unlockDate: metadata.unlockDate || metadata.dateAdded || new Date().toISOString().split('T')[0],
 				technologies: metadata.technologies || [],
 				learningOutcomes: metadata.learningOutcomes || [],
 				estimatedTime: metadata.estimatedTime || '',
@@ -32,8 +35,7 @@ export const load: PageLoad = async () => {
 			});
 		}
 
-		// Group challenges by member and type
-		const groupedChallenges = challenges.reduce((acc: Record<string, Record<string, any[]>>, challenge) => {
+		const groupedChallenges = challenges.reduce((acc: Record<string, Record<string, Challenge[]>>, challenge) => {
 			if (!acc[challenge.member]) {
 				acc[challenge.member] = {};
 			}
@@ -43,9 +45,8 @@ export const load: PageLoad = async () => {
 			}
 			memberGroup[challenge.type]!.push(challenge);
 			return acc;
-		}, {} as Record<string, Record<string, any[]>>);
+		}, {} as Record<string, Record<string, Challenge[]>>);
 
-		// Sort challenges within each group
 		Object.keys(groupedChallenges).forEach(member => {
 			const memberChallenges = groupedChallenges[member];
 			if (memberChallenges) {

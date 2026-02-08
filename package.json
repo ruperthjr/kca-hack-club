@@ -46,6 +46,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "date-fns": "^4.1.0",
     "fuse.js": "^7.1.0",
+    "lucide-svelte": "^0.563.0",
     "shiki": "^1.29.2",
     "three": "^0.181.1"
   }

@@ -1,10 +1,12 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { fly } from 'svelte/transition';
+	import { challengeProgress } from '$lib/stores/challengeProgress';
+	import { isChallengeUnlocked, getDaysUntilUnlock, getChallengeStreak, type Challenge } from '$lib/utils/challengeUtils';
+	import { Check, Lock, Flame, Trophy, Calendar } from 'lucide-svelte';
 
 	export let data: PageData;
 
-	// Member configuration
 	type MemberConfig = {
 		name: string;
 		program: string;
@@ -18,7 +20,7 @@
 	const memberConfig: { [key: string]: MemberConfig } = {
 		jasmine: {
 			name: 'Jasmine',
-			program: 'BAC Software Engineering',
+			program: 'Bachelor of Science in Applied Computing',
 			gradient: 'from-purple-500 via-pink-500 to-rose-500',
 			bgGradient: 'from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30',
 			border: 'border-purple-200 dark:border-purple-800',
@@ -27,7 +29,7 @@
 		},
 		pauline: {
 			name: 'Pauline',
-			program: 'BIT Information Technology',
+			program: 'Bachelor of Science in Information Technology',
 			gradient: 'from-emerald-500 via-green-500 to-teal-500',
 			bgGradient: 'from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30',
 			border: 'border-emerald-200 dark:border-emerald-800',
@@ -36,7 +38,7 @@
 		},
 		daniel: {
 			name: 'Daniel',
-			program: 'BSD Software Development',
+			program: 'Bachelor of Science in Software Development',
 			gradient: 'from-blue-500 via-indigo-500 to-purple-500',
 			bgGradient: 'from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30',
 			border: 'border-blue-200 dark:border-blue-800',
@@ -45,7 +47,7 @@
 		},
 		ruperth: {
 			name: 'Ruperth',
-			program: 'BSD Software Development',
+			program: 'Bachelor of Science in Software Development',
 			gradient: 'from-orange-500 via-red-500 to-pink-500',
 			bgGradient: 'from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30',
 			border: 'border-orange-200 dark:border-orange-800',
@@ -54,7 +56,7 @@
 		},
 		maryphin: {
 			name: 'Maryphin',
-			program: 'BSD Software Development',
+			program: 'Bachelor of Science in Software Development',
 			gradient: 'from-yellow-500 via-amber-500 to-orange-500',
 			bgGradient: 'from-yellow-50 to-amber-50 dark:from-yellow-950/30 dark:to-amber-950/30',
 			border: 'border-yellow-200 dark:border-yellow-800',
@@ -78,8 +80,10 @@
 	let selectedMember = 'all';
 	let selectedType = 'all';
 	let searchQuery = '';
+	let currentStreak = 0;
+	let totalCompleted = 0;
 
-	$: filteredChallenges = data.challenges.filter((challenge: any) => {
+	$: filteredChallenges = data.challenges.filter((challenge: Challenge) => {
 		const matchesMember = selectedMember === 'all' || challenge.member === selectedMember;
 		const matchesType = selectedType === 'all' || challenge.type === selectedType;
 		const matchesSearch = searchQuery === '' || 
@@ -90,21 +94,44 @@
 	});
 
 	$: groupedByMember = filteredChallenges.reduce(
-		(acc: Record<string, Record<string, any[]>>, challenge: any) => {
+		(acc: Record<string, Record<string, Challenge[]>>, challenge: Challenge) => {
 			if (!acc[challenge.member]) {
 				acc[challenge.member] = {};
 			}
-			const memberGroup = acc[challenge.member]!;
+			const memberGroup = acc[challenge.member] ?? (acc[challenge.member] = {});
 			if (!memberGroup[challenge.type]) {
 				memberGroup[challenge.type] = [];
 			}
-			memberGroup[challenge.type]!.push(challenge);
+			(memberGroup[challenge.type] ?? (memberGroup[challenge.type] = [])).push(challenge);
 			return acc;
 		},
-		{} as Record<string, Record<string, any[]>>
+		{} as Record<string, Record<string, Challenge[]>>
 	);
 
 	$: totalChallenges = data.challenges.length;
+
+	$: {
+		totalCompleted = Object.values($challengeProgress).filter(p => p.completed).length;
+		currentStreak = getChallengeStreak(data.challenges, $challengeProgress);
+	}
+
+	function getChallengeClass(challenge: Challenge): string {
+		const isCompleted = $challengeProgress[challenge.slug]?.completed;
+		const isUnlocked = isChallengeUnlocked(challenge);
+		
+		if (isCompleted) return 'border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-950/20';
+		if (!isUnlocked) return 'opacity-60 cursor-not-allowed border-neutral-300 dark:border-neutral-700';
+		return '';
+	}
+
+	function handleChallengeClick(challenge: Challenge, event: MouseEvent) {
+		const isCompleted = $challengeProgress[challenge.slug]?.completed;
+		const isUnlocked = isChallengeUnlocked(challenge);
+		
+		if (!isUnlocked && !isCompleted) {
+			event.preventDefault();
+		}
+	}
 </script>
 
 <svelte:head>
@@ -113,7 +140,6 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
-	<!-- Hero Section -->
 	<div class="relative overflow-hidden border-b border-neutral-200 dark:border-neutral-800 bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950">
 		<div class="absolute inset-0 bg-grid-neutral-200/50 dark:bg-grid-neutral-800/50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -134,7 +160,6 @@
 					Daily, weekly, and monthly challenges designed to sharpen your programming skills
 				</p>
 
-				<!-- Search Bar -->
 				<div class="relative max-w-2xl mx-auto mb-8">
 					<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 						<svg class="h-5 w-5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -149,7 +174,6 @@
 					/>
 				</div>
 
-				<!-- Stats -->
 				<div class="flex flex-wrap justify-center gap-6 text-sm">
 					<div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
 						<svg class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -158,16 +182,18 @@
 						<span>{totalChallenges} Total Challenges</span>
 					</div>
 					<div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
+						<Trophy class="w-5 h-5 text-green-500" />
+						<span>{totalCompleted} Completed</span>
+					</div>
+					<div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
+						<Flame class="w-5 h-5 text-orange-500" />
+						<span>{currentStreak} Day Streak</span>
+					</div>
+					<div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
 						<svg class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
 						</svg>
 						<span>5 Team Members</span>
-					</div>
-					<div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
-						<svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-						</svg>
-						<span>9 Weeks Duration</span>
 					</div>
 				</div>
 			</div>
@@ -175,9 +201,7 @@
 	</div>
 
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-		<!-- Filters -->
 		<div class="mb-12 space-y-6">
-			<!-- Member Filter -->
 			<div>
 				<h3 class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Filter by Member</h3>
 				<div class="flex flex-wrap gap-3">
@@ -206,7 +230,6 @@
 				</div>
 			</div>
 
-			<!-- Type Filter -->
 			<div>
 				<h3 class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Filter by Type</h3>
 				<div class="flex flex-wrap gap-3">
@@ -224,7 +247,6 @@
 			</div>
 		</div>
 
-		<!-- Challenges Grid by Member -->
 		{#if Object.keys(groupedByMember).length === 0}
 			<div class="text-center py-16">
 				<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-neutral-100 dark:bg-neutral-800 mb-4">
@@ -241,7 +263,6 @@
 					class="mb-16"
 					in:fly={{ y: 20, duration: 400, delay: i * 100 }}
 				>
-					<!-- Member Header -->
 					<div class="flex items-center gap-4 mb-8">
 						<div class="flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r {memberConfig[member]?.gradient ?? 'from-neutral-500 to-neutral-600'} text-white shadow-xl">
 							<div>
@@ -252,10 +273,9 @@
 						<div class="h-px flex-1 bg-gradient-to-r from-neutral-200 dark:from-neutral-800 to-transparent"></div>
 					</div>
 
-					<!-- Challenge Types -->
-					{#each Object.entries(types) as [type, challenges]}
+					{#each Object.entries(types as Record<string, Challenge[]>) as [type, challengesRaw]}
+						{@const challenges = challengesRaw as Challenge[]}
 						<div class="mb-10">
-							<!-- Type Header -->
 							<div class="flex items-center gap-3 mb-6">
 								<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r {memberConfig[member]?.bgGradient ?? 'from-neutral-50 to-neutral-100 dark:from-neutral-950/30 dark:to-neutral-900/30'} border {memberConfig[member]?.border ?? 'border-neutral-200 dark:border-neutral-800'}">
 									<div class="w-6 h-6 rounded-md bg-white dark:bg-neutral-900 flex items-center justify-center text-xs font-bold {memberConfig[member]?.accent ?? 'text-neutral-600 dark:text-neutral-400'}">
@@ -266,17 +286,29 @@
 								</div>
 							</div>
 
-							<!-- Challenge Cards -->
 							<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 								{#each challenges as challenge}
+									{@const isCompleted = $challengeProgress[challenge.slug]?.completed}
+									{@const isUnlocked = isChallengeUnlocked(challenge)}
+									{@const daysUntil = getDaysUntilUnlock(challenge)}
 									<a
 										href="/challenges/{challenge.slug}"
-										class="group relative p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 {memberConfig[member]?.border ?? 'border-neutral-200 dark:border-neutral-800'} {memberConfig[member]?.hover ?? 'hover:border-neutral-400 dark:hover:border-neutral-600'} transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+										on:click={(e) => handleChallengeClick(challenge, e)}
+										class="group relative p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 {memberConfig[member]?.border ?? 'border-neutral-200 dark:border-neutral-800'} {memberConfig[member]?.hover ?? 'hover:border-neutral-400 dark:hover:border-neutral-600'} transition-all duration-300 hover:shadow-xl hover:-translate-y-1 {getChallengeClass(challenge)}"
 									>
-										<!-- Challenge Header -->
+										{#if isCompleted}
+											<div class="absolute top-4 right-4 p-2 rounded-full bg-green-500 shadow-lg">
+												<Check class="w-4 h-4 text-white" />
+											</div>
+										{:else if !isUnlocked}
+											<div class="absolute top-4 right-4 p-2 rounded-full bg-orange-500 shadow-lg">
+												<Lock class="w-4 h-4 text-white" />
+											</div>
+										{/if}
+
 										<div class="mb-4">
 											<div class="flex items-start justify-between mb-3">
-												<div class="flex-1">
+												<div class="flex-1 pr-8">
 													<h4 class="font-bold text-xl mb-2 text-neutral-900 dark:text-neutral-50 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:{memberConfig[member]?.gradient ?? 'from-neutral-500 to-neutral-600'} group-hover:bg-clip-text transition-all">
 														{challenge.title}
 													</h4>
@@ -286,12 +318,8 @@
 														</p>
 													{/if}
 												</div>
-												<svg class="w-6 h-6 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-												</svg>
 											</div>
 
-											<!-- Badges -->
 											<div class="flex flex-wrap gap-2 mb-3">
 												{#if challenge.difficulty}
 													<span class="text-xs px-2 py-1 rounded-md font-semibold border {difficultyColors[challenge.difficulty as keyof typeof difficultyColors]}">
@@ -316,8 +344,13 @@
 											</div>
 										</div>
 
-										<!-- Challenge Meta -->
 										<div class="space-y-2 text-xs text-neutral-500 dark:text-neutral-500">
+											{#if !isUnlocked && !isCompleted}
+												<div class="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold">
+													<Calendar class="w-4 h-4" />
+													<span>Unlocks in {daysUntil} {daysUntil === 1 ? 'day' : 'days'}</span>
+												</div>
+											{/if}
 											{#if challenge.unit}
 												<div class="flex items-center gap-2">
 													<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -336,7 +369,6 @@
 											{/if}
 										</div>
 
-										<!-- Hover Effect -->
 										<div class="absolute inset-0 rounded-2xl bg-gradient-to-r {memberConfig[member]?.gradient ?? 'from-neutral-500 to-neutral-600'} opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
 									</a>
 								{/each}
