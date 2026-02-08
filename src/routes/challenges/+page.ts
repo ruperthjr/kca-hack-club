@@ -1,4 +1,3 @@
-// src/routes/challenges/+page.ts
 import type { PageLoad } from './$types';
 import type { Challenge } from '$lib/utils/challengeUtils';
 
@@ -16,6 +15,16 @@ export const load: PageLoad = async () => {
 			const member = pathParts[pathParts.length - 2] || 'unknown';
 			const metadata = challengeModule.metadata || {};
 			
+			// Parse date properly, handling YYYY-MM-DD format
+			let unlockDate = metadata.unlockDate || metadata.dateAdded || new Date().toISOString().split('T')[0];
+			
+			// If it's in YYYY-MM-DD format, convert to proper Date string
+			if (/^\d{4}-\d{2}-\d{2}$/.test(unlockDate)) {
+				const [year, month, day] = unlockDate.split('-').map(Number);
+				const dateObj = new Date(year, month - 1, day);
+				unlockDate = dateObj.toISOString();
+			}
+			
 			challenges.push({
 				slug: fileName,
 				title: metadata.title || fileName,
@@ -27,7 +36,7 @@ export const load: PageLoad = async () => {
 				week: metadata.week || null,
 				day: metadata.day || null,
 				month: metadata.month || null,
-				unlockDate: metadata.unlockDate || metadata.dateAdded || new Date().toISOString().split('T')[0],
+				unlockDate: unlockDate,
 				technologies: metadata.technologies || [],
 				learningOutcomes: metadata.learningOutcomes || [],
 				estimatedTime: metadata.estimatedTime || '',

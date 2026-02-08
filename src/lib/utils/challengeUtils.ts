@@ -13,7 +13,25 @@ export interface Challenge {
 }
 
 export function isChallengeUnlocked(challenge: Challenge, currentDate: Date = new Date()): boolean {
-  const unlockDate = new Date(challenge.unlockDate);
+  // Try to parse the date string with timezone handling
+  let unlockDate: Date;
+  
+  // Check if the date string is in YYYY-MM-DD format
+  if (/^\d{4}-\d{2}-\d{2}$/.test(challenge.unlockDate)) {
+    // Parse as local date (not UTC)
+    const parts = challenge.unlockDate.split('-').map(Number);
+    const [year, month, day] = [parts[0] || 0, parts[1] || 1, parts[2] || 1];
+    unlockDate = new Date(year, month - 1, day);
+  } else {
+    // Try parsing as ISO or other format
+    unlockDate = new Date(challenge.unlockDate);
+    
+    // If still invalid, fall back to current date
+    if (isNaN(unlockDate.getTime())) {
+      unlockDate = new Date();
+    }
+  }
+  
   unlockDate.setHours(0, 0, 0, 0);
   currentDate.setHours(0, 0, 0, 0);
   return currentDate >= unlockDate;
@@ -80,7 +98,24 @@ export function getChallengeStatus(
 }
 
 export function getDaysUntilUnlock(challenge: Challenge, currentDate: Date = new Date()): number {
-  const unlockDate = new Date(challenge.unlockDate);
+  // Try to parse the date string with timezone handling
+  let unlockDate: Date;
+  
+  // Check if the date string is in YYYY-MM-DD format
+  if (/^\d{4}-\d{2}-\d{2}$/.test(challenge.unlockDate)) {
+    // Parse as local date (not UTC)
+    const [year, month, day] = challenge.unlockDate.split('-').map(Number);
+    unlockDate = new Date(year ?? 0, (month ?? 1) - 1, day ?? 1);
+  } else {
+    // Try parsing as ISO or other format
+    unlockDate = new Date(challenge.unlockDate);
+    
+    // If still invalid, fall back to current date
+    if (isNaN(unlockDate.getTime())) {
+      unlockDate = new Date();
+    }
+  }
+  
   unlockDate.setHours(0, 0, 0, 0);
   currentDate.setHours(0, 0, 0, 0);
   const diffTime = unlockDate.getTime() - currentDate.getTime();
