@@ -30,6 +30,10 @@ resources:
     url: "https://www.mathsisfun.com/sets/sets-introduction.html"
   - name: "Brilliant.org - Set Theory"
     url: "https://brilliant.org/wiki/sets/"
+  - name: "MIT OpenCourseWare - Mathematics for Computer Science (Set Theory Lectures)"
+    url: "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-2-sets/"
+  - name: "Python Official Documentation - Set Types"
+    url: "https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

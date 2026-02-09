@@ -30,6 +30,10 @@ resources:
     url: "https://www.mathsisfun.com/exponent.html"
   - name: "Online Exponent Calculator"
     url: "https://www.calculator.net/exponent-calculator.html"
+  - name: "Exponents in Computer Science (GeeksforGeeks)"
+    url: "https://www.geeksforgeeks.org/exponents-in-computer-science/"
+  - name: "Exponentiation in Python (Python Docs)"
+    url: "https://docs.python.org/3/library/math.html#math.pow"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

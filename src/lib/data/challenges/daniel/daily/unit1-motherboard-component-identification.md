@@ -29,6 +29,10 @@ resources:
     url: "https://pcpartpicker.com/products/motherboard/"
   - name: "Motherboard Anatomy Guide"
     url: "https://www.crucial.com/articles/about-motherboards/support-what-is-a-motherboard"
+  - name: "ASUS Motherboard Layout Reference"
+    url: "https://www.asus.com/support/FAQ/1040820/"
+  - name: "MSI Motherboard User Manuals"
+    url: "https://www.msi.com/support/motherboard"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

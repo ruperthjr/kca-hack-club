@@ -27,14 +27,16 @@ deliverables:
   - "Responsive design that works on mobile devices"
   - "README.md with deployment URL and screenshots"
 resources:
-  - name: "HTML & CSS by Jon Duckett"
-    url: "https://www.htmlandcssbook.com/"
-  - name: "MDN Web Docs - HTML"
-    url: "https://developer.mozilla.org/en-US/docs/Web/HTML"
-  - name: "CSS Tricks - Flexbox Guide"
-    url: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
-  - name: "GitHub Pages Deployment Guide"
-    url: "https://pages.github.com/"
+    - name: "MDN Web Docs - HTML"
+      url: "https://developer.mozilla.org/en-US/docs/Web/HTML"
+    - name: "MDN Web Docs - CSS"
+      url: "https://developer.mozilla.org/en-US/docs/Web/CSS"
+    - name: "CSS Tricks - Flexbox Guide"
+      url: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+    - name: "GitHub Pages Deployment Guide"
+      url: "https://pages.github.com/"
+    - name: "Google Fonts"
+      url: "https://fonts.google.com/"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---
@@ -97,8 +99,7 @@ Build and deploy a professional personal website that showcases your identity, s
 
 ## Step-by-Step Guide
 
-### Phase 1: Planning (30 minutes)
-
+### Phase 1: Planning
 **1. Sketch Your Layout**
 
 Draw rough wireframes for each page:
@@ -130,234 +131,10 @@ Choose 2 fonts:
 - One for body text (readable, clean)
 - Google Fonts recommendations: Poppins + Open Sans, Montserrat + Lato, Raleway + Roboto
 
-### Phase 2: HTML Structure (2 hours)
-
-**Create Your File Structure:**
-```
-my-portfolio/
-│
-├── index.html
-├── about.html
-├── projects.html
-├── css/
-│   └── style.css
-├── images/
-│   └── (your photos/icons)
-└── README.md
-```
-
-**Basic HTML Template:**
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Home</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">Your Name</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Your content here -->
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Your Name. All rights reserved.</p>
-    </footer>
-</body>
-</html>
-```
-
-**Home Page Content Structure:**
-
-```html
-<main>
-    <section class="hero">
-        <h1>Hi, I'm [Your Name]</h1>
-        <p class="tagline">Aspiring Web Developer | Student | Tech Enthusiast</p>
-        <a href="projects.html" class="cta-button">View My Goals</a>
-    </section>
-
-    <section class="intro">
-        <h2>Welcome!</h2>
-        <p>Brief introduction about yourself (2-3 sentences)</p>
-    </section>
-</main>
-```
-
-### Phase 3: CSS Styling (2-3 hours)
-
-**Reset and Base Styles:**
-
-```css
-/* style.css */
-
-/* Reset default browser styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Base styles */
-body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-}
-
-h1, h2, h3 {
-    font-family: 'Montserrat', Arial, sans-serif;
-    margin-bottom: 1rem;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-```
-
-**Navigation Styling:**
-
-```css
-header {
-    background-color: #2C3E50;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #18BC9C;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    color: white;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #18BC9C;
-}
-```
-
-**Hero Section:**
-
-```css
-.hero {
-    text-align: center;
-    padding: 4rem 2rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.tagline {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-}
-
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: #18BC9C;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-```
-
-**Responsive Design (Mobile):**
-
-```css
-/* Mobile Styles */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .nav-links {
-        flex-direction: column;
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .tagline {
-        font-size: 1rem;
-    }
-}
-```
-
-### Phase 4: Content Creation (1 hour)
-
-**Write Authentic Content:**
-
-For Home Page:
-```markdown
-Hi, I'm Daniel!
-
-I'm a first-year computer science student passionate about building things with code. I'm currently learning HTML, CSS, and starting my journey into web development. This portfolio is my first major project, and I'm excited to showcase my growth as a developer.
-
-When I'm not coding, you'll find me exploring new technologies, reading tech blogs, or working on personal projects.
-```
-
-For About Page:
-- Your educational background
-- How you got interested in programming
-- Your learning style and approach
-- Technologies you've explored (even briefly)
-- What drives you to code
-
-For Projects Page:
-- List this portfolio as your first project
-- Outline 3-5 projects you want to build this semester
-- Describe technologies you're learning
-- Set specific goals (e.g., "Master responsive CSS by March")
-
-### Phase 5: Deployment (30 minutes)
+### Phase 2: HTML Structure
+### Phase 3: CSS Styling
+### Phase 4: Content Creation
+### Phase 5: Deployment
 
 **Option 1: GitHub Pages (Recommended)**
 
@@ -504,7 +281,6 @@ Once your static site is live:
 2. Add the URL to your email signature
 3. Use it when applying for internships
 4. Plan your next feature additions
-5. Start working on Week 2 challenge (JavaScript interactivity)
 
 This portfolio is just the beginning—you'll continue to improve and expand it throughout your learning journey!
 
