@@ -60,10 +60,10 @@
 				<div class="flex flex-wrap gap-4 justify-center items-center pt-4 animate-fade-in-up animation-delay-600">
 					
 					<a 
-						href="/resources" 
+						href="/challenges" 
 						class="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-lg border-2 border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300 hover:scale-105"
 					>
-						Explore Resources
+						Explore Challenges
 					</a>
 				</div>
 			</div>

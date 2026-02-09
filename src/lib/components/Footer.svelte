@@ -7,8 +7,7 @@
 			{ name: 'Discord', href: 'https://discord.gg/kcahackclub', icon: 'discord' }
 		],
 		resources: [
-			{ name: 'Challenges', href: '/challenges' },
-			{ name: 'Resources', href: '/resources' }
+			{ name: 'Challenges', href: '/challenges' }
 		],
 		about: [
 			{ name: 'RSS Feed', href: '/rss.xml' }
