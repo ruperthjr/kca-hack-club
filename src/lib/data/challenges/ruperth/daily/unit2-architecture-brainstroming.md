@@ -91,7 +91,7 @@ Best for: small teams, fast prototyping, simple coordination needs
 Architecture name: Event-Driven Microservices Mesh
 
 High-level diagram (ASCII):
-Clients -> API Gateway -> Service Mesh -> {Presence, Messaging, Media, User} -> Message Bus (Kafka) -> Analytics/Search/Consumers
+Clients -> API Gateway -> Service Mesh -> (Presence, Messaging, Media, User) -> Message Bus (Kafka) -> Analytics/Search/Consumers
 
 Component specs:
 - API Gateway: Kong / AWS API GW — auth, rate limit, WS termination
