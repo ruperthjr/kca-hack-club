@@ -1,153 +1,182 @@
 ---
-title: "Process Lifecycle State Identification"
-description: "Identify and describe the five states in a process lifecycle: New, Ready, Running, Waiting, Terminated"
+title: "Calculus Derivative - Polynomial Function Analysis"
+description: "Compute the derivative of f(x) = x² + 3x + 1 using first principles and the power rule; verify and interpret results."
 difficulty: "beginner"
-unit: "Unit 4: Operating Systems"
+unit: "Unit 5: Computing Mathematics"
 day: 2
 technologies:
-    - "Operating Systems"
-    - "Process Management"
-    - "System Calls"
+    - "Calculus"
+    - "Derivatives"
+    - "Limits"
+    - "Polynomial Functions"
 learningOutcomes:
-    - "Identify all five process lifecycle states"
-    - "Understand transitions between process states"
-    - "Recognize system events that trigger state changes"
-    - "Diagram process state transitions"
-estimatedTime: "25-35 minutes"
+    - "Apply the limit definition of the derivative"
+    - "Use the power rule for differentiation"
+    - "Interpret derivative as rate of change and slope"
+    - "Verify results numerically and symbolically"
+estimatedTime: "45-60 minutes"
 requirements:
-    - "Textbook: Operating System Concepts, 10th Edition"
-    - "Diagramming tool (draw.io, Lucidchart, or paper/pencil)"
-    - "Access to UNIX/Linux command line (optional)"
+    - "Algebra proficiency"
+    - "Understanding of limits"
+    - "Familiarity with function notation"
 deliverables:
-    - "Diagram showing all five process states with arrows indicating transitions"
-    - "Brief description (1-2 sentences) of each state"
-    - "Three real-world examples of when a process might enter the Waiting state"
+    - "Derivative via limit definition"
+    - "Derivative via power rule"
+    - "Complete algebraic steps"
+    - "Numerical and symbolic verification"
+    - "Interpretation of rate of change"
 resources:
-  - name: "Process States in Operating Systems"
-    url: "https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/"
-  - name: "Operating Systems: Three Easy Pieces - Process API"
-    url: "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
-  - name: "Linux Process States"
-    url: "https://www.baeldung.com/linux/process-states"
-  - name: "Process Management in OS"
-    url: "https://www.javatpoint.com/process-management-in-os"
-  - name: "Process State Transition Diagram"
-    url: "https://www.tutorialspoint.com/process-states-in-operating-system"
+  - name: "Stewart: Calculus Early Transcendentals, 9th Ed. - Chapter 3.1"
+    url: "https://www.cengage.com/c/calculus-early-transcendentals-9e-stewart/9781337613927/"
+  - name: "Khan Academy: Derivatives Introduction"
+    url: "https://www.khanacademy.org/math/differential-calculus/dc-diff-intro"
+  - name: "Paul's Online Math Notes: Derivatives"
+    url: "https://tutorial.math.lamar.edu/classes/calci/DerivativeIntro.aspx"
+  - name: "MIT OpenCourseWare: Single Variable Calculus"
+    url: "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/"
+  - name: "Wolfram Alpha Derivative Calculator"
+    url: "https://www.wolframalpha.com/calculators/derivative-calculator"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---
 
-# Process Lifecycle State Identification Challenge
+# Calculus Derivative Challenge: f(x) = x² + 3x + 1
 
 ## Overview
-
-In this operating systems challenge, you'll master one of the fundamental concepts in process management: the five states in a process lifecycle. Understanding these states is crucial for grasping how operating systems schedule and manage multiple processes efficiently.
+Compute f'(x) and show work using both the limit (first principles) and the power rule. Verify both methods match numerically and symbolically, and interpret the derivative as slope and rate of change.
 
 ## Objective
+Find f'(x) for f(x) = x² + 3x + 1, verify with sample points, and interpret results (tangent line, critical point, and applied meanings).
 
-Identify all five process lifecycle states (New, Ready, Running, Waiting, Terminated) and create a diagram showing how processes transition between these states based on system events.
+---
 
-## Instructions
+## Part 1 — Function Analysis
+- Type: quadratic polynomial (degree 2), continuous and differentiable ∀ x
+- Vertex: x = -b/(2a) = -3/(2·1) = -1.5
+- y-intercept: f(0) = 1
+- Parabola opens upward (a = 1 > 0)
 
-### Part 1: Research Process States
+---
 
-Use your textbook and online resources to understand each state:
+## Part 2 - Derivative via Limit Definition
+`f'(x) = lim_{h → 0} (f(x + h) - f(x)) / h`
 
-- **New**  
-        The process is being created. The operating system allocates memory and sets up the process control block (PCB). This is the initialization phase before the process can be scheduled.
+1. f(x+h) = (x+h)^2 + 3(x+h) + 1 = x^2 + 2xh + h^2 + 3x + 3h + 1  
+2. f(x+h) - f(x) = 2xh + h^2 + 3h = h(2x + h + 3)  
+3. Difference quotient = (2x + h + 3) for h != 0  
+4. Take limit h → 0: f'(x) = 2x + 3
 
-- **Ready**  
-        The process is loaded into main memory and has all resources except CPU time. It waits in the ready queue for the CPU scheduler.
+Therefore f'(x) = 2x + 3.
 
-- **Running**  
-        The process instructions are being executed. The CPU is actively processing this process. Only one process per CPU core can be in this state at a time.
+---
 
-- **Waiting**  
-        The process cannot proceed until some event occurs (also called the "blocked" state). Examples: waiting for I/O completion or user input.
+## Part 3 — Derivative via Power Rule
+d/dx [x²] = 2x  
+d/dx [3x] = 3  
+d/dx [1] = 0  
+Combine: f'(x) = 2x + 3
 
-- **Terminated**  
-        The process has finished execution. The operating system cleans up resources and deletes the process control block.
+Matches limit result.
 
-### Part 2: Create State Transition Diagram
+---
 
-Create a diagram showing transitions between states. Required transitions:
+## Part 4 — Verification (Numerical & Symbolic)
+Numerical checks:
+- x = 0: f'(0) = 3. Approximation with h = 0.001 gives ≈ 3.001 → close.
+- x = 2: f'(2) = 7. Approximation with h = 0.001 gives ≈ 7.001 → close.
 
-- New → Ready (Process admitted)
-- Ready → Running (CPU scheduler dispatch)
-- Running → Ready (Time quantum expired)
-- Running → Waiting (I/O request, wait for event)
-- Waiting → Ready (I/O completion, event occurs)
-- Running → Terminated (Process completes)
+Symbolic (e.g., SymPy) yields f'(x) = 2*x + 3.
 
-Use any diagramming tool (draw.io, Lucidchart, or paper/pencil).
+---
 
-**Diagram requirements:**
+## Part 5 — Geometric Interpretation
+- Tangent at x0: y − f(x0) = f'(x0)(x − x0)  
+    Example x0 = 1: f(1) = 5, f'(1) = 5 → tangent: y − 5 = 5(x − 1) ⇒ y = 5x
+- Slope behavior:
+    - x = −2 → f' = −1 (locally decreasing)
+    - x = 0 → f' = 3 (increasing)
+- Critical point where f'(x) = 0: 2x + 3 = 0 ⇒ x = −1.5 (vertex at (−1.5, −1.25))
+- Concavity: f''(x) = 2 > 0 ⇒ concave up everywhere
 
-- Clear boxes for each state
-- Arrows showing all six transitions
-- Brief label on each arrow (e.g., "admitted", "I/O request")
-- Professional appearance with consistent styling
+---
 
-### Part 3: Write State Descriptions
+## Part 6 — Rate of Change (Applications)
+- If x = time, f'(x) is velocity: v(x) = 2x + 3 (units/s)  
+- Acceleration: f''(x) = 2 (constant)  
+- If x = production units, f' = marginal cost: at x = 10 → 23 dollars/unit
 
-For each state, write 1-2 sentences covering:
+---
 
-- What characterizes this state
-- What triggers entry into this state
-- What triggers exit from this state
+## Part 7 — Computational Examples
 
-### Part 4: Identify Waiting State Examples
+Python — numerical derivative (limit approximation)
+```python
+def derivative_limit(f, x, h=1e-5):
+        return (f(x + h) - f(x)) / h
 
-Provide three specific examples of when a process would enter the Waiting state. Example format:
+def f(x): return x**2 + 3*x + 1
 
-- **Situation:** Process requests keyboard input from user  
-        **Reason:** Process cannot continue until user types something  
-        **Transition:** Running → Waiting
+for h in [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]:
+        print(h, derivative_limit(f, 2, h))
+# Converges to 7
+```
 
-- [Your second example]
-- [Your third example]
+SymPy — symbolic
+```python
+from sympy import symbols, diff
+x = symbols('x')
+f = x**2 + 3*x + 1
+diff(f, x)  # 2*x + 3
+```
 
-### Part 5: Assessment Criteria
+---
 
-**Required Deliverables:**
+## Part 8 — Higher-Order Derivatives
+- f'(x) = 2x + 3  
+- f''(x) = 2  
+- f'''(x) = 0 and all higher derivatives are 0
 
-- State transition diagram
-- Five state descriptions
-- Three Waiting state examples
+---
 
-**Grading Rubric:**
+## Part 9 — Related Examples
+- x² → 2x  
+- x² + 5x → 2x + 5  
+- 2x² + 3x + 1 → 4x + 3  
+- Exponential/log/trig contrasts:
+    - e^x → e^x, ln x → 1/x, sin x → cos x
 
-- **Completeness (40%)**: All five states and six transitions included
-- **Accuracy (30%)**: Correct understanding of state definitions and transitions
-- **Examples (20%)**: Realistic, specific Waiting state examples
-- **Presentation (10%)**: Clean, readable diagram and descriptions
+---
 
-### Part 6: Common Errors to Avoid
+## Part 10 — Assessment Criteria (Brief)
+- Accuracy of limit and power rule work (40%)
+- Verification with ≥2 numerical checks (30%)
+- Interpretation: geometric and applied meaning (20%)
+- Clarity and completeness of steps (10%)
 
-- Confusing "Ready" with "Waiting" (Ready = needs CPU, Waiting = needs I/O/event)
-- Missing the "New" state (creation phase is important)
-- Forgetting that "Terminated" is a state
-- Not showing transitions back from Waiting to Ready
-- Creating overly complex diagrams (keep it to the five basic states)
+---
 
-### Part 7: Real-World Application
+## Part 11 — Common Errors
+- Mis-expanding (x+h)² (must include 2xh)
+- Cancelling h incorrectly (forgetting to factor h)
+- Failing to take the h → 0 limit
+- Mis-differentiating constants or coefficients
 
-Understanding process states helps you:
+---
 
-- Write more efficient multi-threaded programs
-- Debug performance issues in applications
-- Understand system monitoring tools (like top or Task Manager)
-- Design systems that effectively manage resources
-- Prepare for operating system interviews and certifications
+## Part 12 — Extension Challenges
+1. Use limit as z→x form and show equivalence.  
+2. Use derivative to find minimum and compare with vertex.  
+3. Related rates: if dx/dt = 2, find df/dt at x = 3.  
+4. Error analysis for numerical derivative for various h.  
+5. Implement a function that returns derivative of ax² + bx + c.
 
-### Part 8: Submission Format
+---
 
-Submit a single PDF or image containing:
+## Submission Checklist
+- Complete limit derivation and algebra shown  
+- Power rule application demonstrated  
+- Methods agree and numeric checks included  
+- Tangent line and rate-of-change interpretation provided  
+- No algebraic errors; clear notation
 
-- State transition diagram
-- Five state descriptions
-- Three Waiting state examples
-
-**Filename:** `process-states-[yourname].pdf` (or `.png`/`.jpg`)
-
-This fundamental OS concept is key to understanding how modern computers multitask and manage resources efficiently.
+This exercise builds core skills for optimization, simulation, and gradient-based methods used in computing and data science.

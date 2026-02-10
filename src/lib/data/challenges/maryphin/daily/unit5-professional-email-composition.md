@@ -34,8 +34,8 @@ resources:
     url: "https://hbr.org/2015/01/a-checklist-for-more-productive-meetings"
   - name: "Networking Communication Skills"
     url: "https://www.mindtools.com/CommSkll/EmailCommunication.htm"
-dateAdded: "2026-02-11"
-unlockDate: "2026-02-11"
+dateAdded: "2026-02-10"
+unlockDate: "2026-02-10"
 ---
 
 # Professional Email Composition Challenge
