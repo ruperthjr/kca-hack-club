@@ -44,6 +44,10 @@ resources:
       url: "https://testdriven.io/blog/dockerizing-fastapi-with-postgres-gunicorn-and-uvicorn/"
     - name: "Ollama + LangChain"
       url: "https://python.langchain.com/docs/integrations/llms/ollama"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

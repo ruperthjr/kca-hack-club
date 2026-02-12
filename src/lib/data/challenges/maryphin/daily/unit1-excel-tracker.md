@@ -35,6 +35,10 @@ resources:
     url: "https://www.ablebits.com/office-addins-blog/excel-charts-tutorial/"
   - name: "Productivity Tracking Methods"
     url: "https://www.notion.so/templates/study-tracker"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"   
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

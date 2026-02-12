@@ -32,6 +32,10 @@ resources:
     url: "https://en.wikipedia.org/wiki/Set_(mathematics)"
   - name: "TutorialsPoint: Discrete Mathematics - Sets"
     url: "https://www.tutorialspoint.com/discrete_mathematics/discrete_mathematics_sets.htm"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

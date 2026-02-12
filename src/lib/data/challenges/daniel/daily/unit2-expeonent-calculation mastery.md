@@ -34,6 +34,10 @@ resources:
     url: "https://www.geeksforgeeks.org/exponents-in-computer-science/"
   - name: "Exponentiation in Python (Python Docs)"
     url: "https://docs.python.org/3/library/math.html#math.pow"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

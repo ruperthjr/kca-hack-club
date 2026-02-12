@@ -40,6 +40,10 @@ resources:
       url: "https://docs.docker.com"
     - name: "JWT with FastAPI"
       url: "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

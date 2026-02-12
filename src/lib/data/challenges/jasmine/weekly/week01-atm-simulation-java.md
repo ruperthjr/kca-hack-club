@@ -45,6 +45,10 @@ resources:
     - name: "Refactoring Guru: Design Patterns in Java"
       url: "https://refactoring.guru/design-patterns/java"
       description: "An excellent resource for understanding and applying common software design patterns to build robust and maintainable applications like the ATM simulation."
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

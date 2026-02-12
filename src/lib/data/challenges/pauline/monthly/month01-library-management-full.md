@@ -43,6 +43,10 @@ resources:
     url: "https://restfulapi.net/"
   - name: "Docker — Get Started"
     url: "https://docs.docker.com/get-started/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

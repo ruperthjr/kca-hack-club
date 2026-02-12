@@ -35,6 +35,10 @@ resources:
     url: "https://docs.python.org/3/library/functions.html#bin"
   - name: "Wikipedia: Binary numeral system"
     url: "https://en.wikipedia.org/wiki/Binary_numeral_system"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

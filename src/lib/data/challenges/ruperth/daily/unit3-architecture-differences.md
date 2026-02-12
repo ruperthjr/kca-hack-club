@@ -35,6 +35,10 @@ resources:
     url: "https://www.amazon.com/RISC-V-Reader-Open-Architecture-Atlas/dp/0999249118"
   - name: "Intel® 64 and IA-32 Architectures Software Developer Manuals"
     url: "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

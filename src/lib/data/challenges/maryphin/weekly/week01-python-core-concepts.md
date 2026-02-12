@@ -41,6 +41,10 @@ resources:
     url: "https://docs.python.org/3/library/csv.html"
   - name: "Python JSON Module"
     url: "https://docs.python.org/3/library/json.html"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

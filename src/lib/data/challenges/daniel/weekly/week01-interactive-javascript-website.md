@@ -36,6 +36,10 @@ resources:
       url: "https://css-tricks.com/a-dark-mode-toggle-with-react-and-theme-provider/"
     - name: "freeCodeCamp: JavaScript DOM Manipulation"
       url: "https://www.freecodecamp.org/news/javascript-dom-manipulation/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

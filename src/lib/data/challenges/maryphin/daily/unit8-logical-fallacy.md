@@ -34,6 +34,10 @@ resources:
     url: "https://www.visualcapitalist.com/wp-content/uploads/2020/09/cognitive-bias-codex-1.jpg"
   - name: "Media Literacy Resources"
     url: "https://medialiteracynow.org/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

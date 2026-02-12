@@ -35,6 +35,10 @@ resources:
       url: "https://www.google.com/search?q=Effective+C%2B%2B+3rd+Edition"
     - name: "The C++ Programming Language, 4th Edition"
       url: "https://www.google.com/search?q=The+C%2B%2B+Programming+Language+4th"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

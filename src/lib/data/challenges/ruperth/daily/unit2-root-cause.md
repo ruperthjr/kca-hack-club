@@ -35,6 +35,10 @@ resources:
     url: "https://www.amazon.com/Toyota-Production-System-Beyond-Large-Scale/dp/0915299143"
   - name: "Root Cause Analysis: The Core of Problem Solving and Corrective Action by Duke Okes"
     url: "https://www.asq.org/quality-press/display-item?item=H1443"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

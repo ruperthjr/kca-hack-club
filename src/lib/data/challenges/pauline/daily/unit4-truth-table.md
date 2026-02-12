@@ -35,6 +35,10 @@ resources:
     url: "https://www.electronics-tutorials.ws/boolean/bool_1.html"
   - name: "Truth Table Generator Tool"
     url: "https://web.stanford.edu/class/cs103/tools/truth-table-tool/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

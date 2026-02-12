@@ -36,6 +36,10 @@ resources:
     url: "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/"
   - name: "Wolfram Alpha Derivative Calculator"
     url: "https://www.wolframalpha.com/calculators/derivative-calculator"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

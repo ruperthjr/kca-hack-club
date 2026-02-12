@@ -34,6 +34,10 @@ resources:
     url: "https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/general_format.html"
   - name: "Unsplash - Free High-Resolution Photos"
     url: "https://unsplash.com/s/photos/computer-hardware"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"    
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

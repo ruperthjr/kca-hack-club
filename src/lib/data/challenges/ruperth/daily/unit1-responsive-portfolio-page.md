@@ -35,6 +35,10 @@ resources:
       url: "https://webaim.org/articles/semanticstructure/"
     - name: "WAVE Accessibility Tool"
       url: "https://wave.webaim.org/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

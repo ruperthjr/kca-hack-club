@@ -40,6 +40,10 @@ resources:
       url: "https://computing.llnl.gov/tutorials/pthreads/"
     - name: "Beej's Guide to Unix IPC"
       url: "https://beej.us/guide/bgipc/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

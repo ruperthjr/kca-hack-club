@@ -33,6 +33,10 @@ resources:
     url: "https://www.asus.com/support/FAQ/1040820/"
   - name: "MSI Motherboard User Manuals"
     url: "https://www.msi.com/support/motherboard"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

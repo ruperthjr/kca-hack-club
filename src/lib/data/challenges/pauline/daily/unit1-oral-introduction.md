@@ -36,6 +36,10 @@ resources:
     url: "https://hbr.org/2022/08/how-to-introduce-yourself-professionally"
   - name: "Communication Skills Self-Assessment"
     url: "https://www.mindtools.com/pages/article/newCS_99.htm"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

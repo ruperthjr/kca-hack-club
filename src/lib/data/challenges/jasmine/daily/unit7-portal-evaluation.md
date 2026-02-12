@@ -35,6 +35,10 @@ resources:
       url: "https://www.google.com/search?q=Interaction+Design+Beyond+HCI"
     - name: "100 Things Every Designer Needs to Know About People"
       url: "https://www.google.com/search?q=100+Things+Every+Designer+Needs+to+Know"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

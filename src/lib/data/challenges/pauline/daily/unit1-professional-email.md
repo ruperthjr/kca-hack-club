@@ -29,6 +29,10 @@ resources:
     url: "https://www.wrike.com/blog/requirements-gathering-guide/"
   - name: "Business Communication Guide"
     url: "https://www.indeed.com/career-advice/career-development/business-email-format"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

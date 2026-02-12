@@ -38,6 +38,10 @@ resources:
       url: "https://openweathermap.org/api"
     - name: "GitHub REST API"
       url: "https://docs.github.com/en/rest"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

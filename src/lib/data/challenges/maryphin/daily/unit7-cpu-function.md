@@ -33,6 +33,10 @@ resources:
     url: "https://www.hp.com/us-en/shop/tech-takes/cpu-vs-gpu"
   - name: "Modern Processor Design"
     url: "https://computer.howstuffworks.com/microprocessor.htm"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

@@ -35,6 +35,10 @@ resources:
     url: "https://samnewman.io/books/building-microservices/"
   - name: "Real-Time Communication with WebRTC by Salvatore Loreto and Simon Pietro Romano"
     url: "https://www.oreilly.com/library/view/real-time-communication-with/9781449371876/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

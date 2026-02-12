@@ -33,6 +33,10 @@ resources:
     url: "https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628"
   - name: "Logic Gates Tutorial - Electronics Tutorials"
     url: "https://www.electronics-tutorials.ws/logic/logic_1.html"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

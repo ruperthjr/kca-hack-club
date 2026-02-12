@@ -42,6 +42,10 @@ resources:
     url: "https://www.kaggle.com/datasets"
   - name: "Streamlit Cloud Deployment"
     url: "https://streamlit.io/cloud"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

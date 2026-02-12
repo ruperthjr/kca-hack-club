@@ -37,6 +37,10 @@ resources:
       url: "https://pages.github.com/"
     - name: "Google Fonts"
       url: "https://fonts.google.com/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

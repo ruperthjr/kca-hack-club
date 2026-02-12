@@ -33,6 +33,10 @@ resources:
     url: "https://www.interaction-design.org/literature/topics/task-analysis"
   - name: "Daily Routine Optimization"
     url: "https://jamesclear.com/daily-routines"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

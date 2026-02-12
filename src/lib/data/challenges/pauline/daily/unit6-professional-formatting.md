@@ -36,6 +36,10 @@ resources:
     url: "https://support.microsoft.com/en-us/office/apply-create-or-remove-a-cell-style-in-excel-623410a1-17d7-4b6e-911f-14e911e3e8ac"
   - name: "APA Format in Microsoft Word"
     url: "https://apastyle.apa.org/instructional-aids/student-paper-setup-guide.pdf"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

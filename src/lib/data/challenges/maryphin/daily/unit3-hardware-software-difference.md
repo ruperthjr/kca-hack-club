@@ -33,6 +33,10 @@ resources:
     url: "https://www.khanacademy.org/computing/computer-science/computers-and-internet/hardware-software/a/hardware-and-software"
   - name: "TechTarget: What is Firmware?"
     url: "https://www.techtarget.com/searchstorage/definition/firmware"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

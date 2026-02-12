@@ -30,6 +30,10 @@ resources:
   - name: "Linux Kernel Documentation"
     url: "https://www.kernel.org/doc/html/latest/"
   - name: "Microsoft Learn: Operating System Fundamentals"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

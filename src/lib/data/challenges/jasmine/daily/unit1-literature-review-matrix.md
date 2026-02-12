@@ -33,6 +33,10 @@ resources:
       url: "https://www.zotero.org/"
     - name: "Purdue OWL: APA Style (7th Edition)"
       url: "https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_style_introduction.html"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

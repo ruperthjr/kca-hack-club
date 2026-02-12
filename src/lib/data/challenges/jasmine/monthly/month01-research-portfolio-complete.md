@@ -39,6 +39,10 @@ resources:
       url: "https://www.netlify.com/blog/2016/10/27/a-step-by-step-guide-deploying-a-static-site-or-single-page-app/"
     - name: "Awwwards: Portfolio Examples"
       url: "https://www.awwwards.com/websites/portfolio/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

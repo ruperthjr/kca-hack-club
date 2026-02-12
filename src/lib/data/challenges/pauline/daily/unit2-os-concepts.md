@@ -36,6 +36,10 @@ resources:
     url: "http://pages.cs.wisc.edu/~remzi/OSTEP/"
   - name: "Stanford OS Course Materials"
     url: "https://cs.stanford.edu/~ouster/cgi-bin/cs140-winter21/index.php"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

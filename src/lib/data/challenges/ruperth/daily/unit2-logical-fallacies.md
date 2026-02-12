@@ -34,6 +34,10 @@ resources:
     url: "https://www.criticalthinking.org/store/products/critical-thinking-tools-for-taking-charge-of-your-professional-amp-personal-life/239"
   - name: "Fallacies — Stanford Encyclopedia of Philosophy"
     url: "https://plato.stanford.edu/entries/fallacies/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

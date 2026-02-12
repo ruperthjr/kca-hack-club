@@ -34,6 +34,10 @@ resources:
     url: "https://www.w3.org/WAI/standards-guidelines/wcag/"
   - name: "HTML Semantic Elements Best Practices"
     url: "https://web.dev/learn/html/semantic-html/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

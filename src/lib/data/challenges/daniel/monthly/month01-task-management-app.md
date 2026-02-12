@@ -40,6 +40,10 @@ resources:
       url: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
     - name: "MDN: Handling Events"
       url: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

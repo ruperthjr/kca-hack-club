@@ -34,8 +34,10 @@ function generateRssItem(item: {
 }
 
 export const GET: RequestHandler = async () => {
-	const blogFiles = import.meta.glob('/src/lib/content/blog/*.md', { eager: true });
-	const challengeFiles = import.meta.glob('/src/lib/content/challenges/*.md', { eager: true });
+	const challengeFiles = import.meta.glob('/src/lib/components/data/challenges/*.md', { eager: true });
+	
+	// Import blog markdown files (eagerly import metadata)
+	const blogFiles = import.meta.glob('/src/lib/components/data/blog/*.md', { eager: true });
 	
 	const blogPosts: BlogPost[] = [];
 	for (const path in blogFiles) {

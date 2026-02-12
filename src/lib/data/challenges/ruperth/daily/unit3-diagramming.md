@@ -33,6 +33,10 @@ resources:
     url: "https://csapp.cs.cmu.edu/"
   - name: "MIT OCW — Computation Structures"
     url: "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

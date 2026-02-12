@@ -34,6 +34,10 @@ resources:
     url: "https://code.visualstudio.com/docs/languages/html"
   - name: "HTML5 Cheat Sheet"
     url: "https://htmlcheatsheet.com/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

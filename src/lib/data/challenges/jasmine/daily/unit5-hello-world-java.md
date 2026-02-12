@@ -36,6 +36,10 @@ resources:
       url: "https://www.w3schools.com/java/"
     - name: "OpenJDK Downloads"
       url: "https://jdk.java.net/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

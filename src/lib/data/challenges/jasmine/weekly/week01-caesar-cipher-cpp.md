@@ -45,6 +45,10 @@ resources:
     - name: "Object-Oriented Programming in C++"
       url: "https://www.learncpp.com/cpp-tutorial/introduction-to-object-oriented-programming/"
       description: "An introduction to the core concepts of object-oriented programming (OOP) in C++."
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

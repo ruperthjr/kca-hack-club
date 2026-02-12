@@ -39,6 +39,10 @@ resources:
     url: "https://support.microsoft.com/en-us/excel/pivot-tables"
   - name: "Google Sheets Data Visualization Guide"
     url: "https://support.google.com/docs/answer/190718"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

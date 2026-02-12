@@ -46,6 +46,10 @@ resources:
       url: "https://docs.flutter.dev/deployment"
     - name: "RESTful API Best Practices"
       url: "https://restfulapi.net/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

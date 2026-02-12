@@ -35,6 +35,10 @@ resources:
     url: "https://nandgame.com/"
   - name: "Binary Calculator Tool"
     url: "https://www.calculator.net/binary-calculator.html"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

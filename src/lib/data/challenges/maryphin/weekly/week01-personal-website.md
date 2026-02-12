@@ -39,6 +39,10 @@ resources:
     url: "https://docs.github.com/en/pages"
   - name: "W3C WCAG (Accessibility Guidelines)"
     url: "https://www.w3.org/WAI/standards-guidelines/wcag/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

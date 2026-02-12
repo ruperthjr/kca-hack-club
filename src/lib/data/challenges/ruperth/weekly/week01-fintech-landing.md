@@ -37,6 +37,10 @@ resources:
     url: "https://web.dev/responsive-web-design-basics/"
   - name: "Deploying to GitHub Pages"
     url: "https://docs.github.com/en/pages"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

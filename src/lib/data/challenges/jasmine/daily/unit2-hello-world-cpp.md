@@ -34,6 +34,10 @@ resources:
       url: "https://code.visualstudio.com/docs/cpp/config-mingw"
     - name: "C++ Basic I/O (cplusplus.com)"
       url: "http://www.cplusplus.com/doc/tutorial/basic_io/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

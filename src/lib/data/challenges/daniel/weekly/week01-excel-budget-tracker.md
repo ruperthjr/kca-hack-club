@@ -38,6 +38,10 @@ resources:
       url: "https://support.microsoft.com/en-us/excel"
     - name: "Excel Easy Tutorials"
       url: "https://www.excel-easy.com/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

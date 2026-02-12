@@ -47,6 +47,10 @@ resources:
     url: "https://getbootstrap.com/docs/5.0/getting-started/introduction/"
   - name: "Deploying Flask on Heroku"
     url: "https://devcenter.heroku.com/articles/getting-started-with-python"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

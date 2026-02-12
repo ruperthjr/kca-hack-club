@@ -33,6 +33,10 @@ resources:
     url: "https://www.freecodecamp.org/news/semantic-html5-elements/"
   - name: "HTML Validation Service"
     url: "https://validator.w3.org/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

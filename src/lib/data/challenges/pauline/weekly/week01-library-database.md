@@ -39,6 +39,10 @@ resources:
       url: "https://sql-performance-explained.com/"
     - name: "PostgreSQL: Up and Running (Regina O. Obe, Leo S. Hsu)"
       url: "https://www.oreilly.com/library/view/postgresql-up-and/9781491963418/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

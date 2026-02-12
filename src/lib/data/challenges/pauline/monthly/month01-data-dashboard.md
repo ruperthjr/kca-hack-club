@@ -43,6 +43,10 @@ resources:
       url: "https://www.kaggle.com/datasets"
     - name: "Streamlit Deployment Guide"
       url: "https://docs.streamlit.io/streamlit-community-cloud/get-started"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

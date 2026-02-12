@@ -34,6 +34,10 @@ resources:
       url: "https://www.google.com/search?q=Running+Lean+3rd+Edition"
     - name: "The Mom Test by Rob Fitzpatrick"
       url: "https://www.google.com/search?q=The+Mom+Test"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

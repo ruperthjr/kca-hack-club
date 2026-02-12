@@ -33,6 +33,10 @@ resources:
     url: "https://www.tutorialspoint.com/system_analysis_and_design/index.htm"
   - name: "Question Formulation Technique"
     url: "https://rightquestion.org/what-is-the-qft/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

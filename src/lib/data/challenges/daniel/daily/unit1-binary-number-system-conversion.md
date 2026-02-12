@@ -33,6 +33,10 @@ resources:
     url: "https://www.tutorialspoint.com/computer_logical_organization/binary_arithmetic.htm"
   - name: "Number Systems in Computing"
     url: "https://www.geeksforgeeks.org/number-system-and-base-conversions/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

@@ -33,6 +33,10 @@ resources:
     url: "https://library.stanford.edu/research/data-management-services/data-best-practices/best-practices-file-naming"
   - name: "Digital File Organization Strategies"
     url: "https://www.theverge.com/21327753/how-to-organize-digital-files-folders-photos-files-management"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

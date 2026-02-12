@@ -36,6 +36,10 @@ resources:
       url: "https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"
     - name: "Can I Use: Flexbox"
       url: "https://caniuse.com/flexbox"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

@@ -48,6 +48,11 @@ export const load: PageLoad = async ({ params }) => {
 			deliverables: metadata.deliverables || [],
 			resources: metadata.resources || [],
 			dateAdded: metadata.dateAdded || new Date().toISOString().split('T')[0],
+			unlockDate: metadata.unlockDate || metadata.dateAdded || new Date().toISOString().split('T')[0],
+			// NEW: Completion metadata from markdown frontmatter
+			completed: metadata.completed || false,
+			completedDate: metadata.completedDate || null,
+			watermarkStyle: metadata.watermarkStyle || 'diagonal', // options: diagonal, corner, stamp, minimal
 			component: ChallengeComponent
 		};
 

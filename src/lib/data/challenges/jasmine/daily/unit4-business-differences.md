@@ -34,6 +34,10 @@ resources:
       url: "https://www.google.com/search?q=Introduction+to+Electronic+Commerce"
     - name: "The E-Business Handbook by Paul Timmers"
       url: "https://www.google.com/search?q=The+E-Business+Handbook"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---

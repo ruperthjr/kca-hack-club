@@ -36,6 +36,10 @@ resources:
     url: "https://www.khanacademy.org/computing/computer-science/cryptography/crypt/v/propositional-logic"
   - name: "Wikipedia: Proposition"
     url: "https://en.wikipedia.org/wiki/Proposition"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

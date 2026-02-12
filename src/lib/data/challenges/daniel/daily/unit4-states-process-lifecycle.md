@@ -33,6 +33,10 @@ resources:
     url: "https://www.javatpoint.com/process-management-in-os"
   - name: "Process State Transition Diagram"
     url: "https://www.tutorialspoint.com/process-states-in-operating-system"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

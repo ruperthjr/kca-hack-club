@@ -34,6 +34,10 @@ resources:
       url: "https://www.google.com/search?q=Code+Complete+2nd+Edition"
     - name: "Clean Code by Robert C. Martin"
       url: "https://www.google.com/search?q=Clean+Code"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

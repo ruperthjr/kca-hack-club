@@ -34,6 +34,10 @@ resources:
     url: "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/lecture-2-sets/"
   - name: "Python Official Documentation - Set Types"
     url: "https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset"
+    
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

@@ -34,6 +34,10 @@ resources:
       url: "https://www.google.com/search?q=Writing+for+Computer+Science+3rd+Edition"
     - name: "Research Proposal: A Step-by-Step Guide for Beginners"
       url: "https://www.google.com/search?q=Research+Proposal+Step+by+Step+Guide"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---

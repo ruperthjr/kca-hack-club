@@ -41,6 +41,10 @@ resources:
       url: "https://rogerdudler.github.io/git-guide/"
     - name: "Awwwards - Portfolio Inspiration"
       url: "https://www.awwwards.com/websites/portfolio/"
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---

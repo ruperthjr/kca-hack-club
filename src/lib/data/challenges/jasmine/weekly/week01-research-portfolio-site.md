@@ -44,6 +44,10 @@ resources:
     - name: "Awwwards: Academic Website Examples"
       url: "https://www.awwwards.com/websites/academic/"
       description: "A curated collection of well-designed academic websites for design inspiration."
+
+completed: false
+completedDate: ""
+watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---
