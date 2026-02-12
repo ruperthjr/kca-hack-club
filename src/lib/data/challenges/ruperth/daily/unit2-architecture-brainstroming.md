@@ -1,9 +1,11 @@
 ---
-title: "Brainstorming Three Alternative Architectures for a Chat Application"
-description: "Design and compare three distinct architectural approaches for a modern chat application"
+title: "Designing and Comparing Chat Application Architectures"
+description: "Explore, design, and evaluate three distinct architectural approaches for a scalable, real-time chat application."
 difficulty: "advanced"
 unit: "Unit 2: FOUNDATIONS OF CRITICAL AND CREATIVE THINKING"
 day: 2
+week: 1
+month: 1
 technologies:
   - "System Architecture"
   - "Software Design"
@@ -35,7 +37,6 @@ resources:
     url: "https://samnewman.io/books/building-microservices/"
   - name: "Real-Time Communication with WebRTC by Salvatore Loreto and Simon Pietro Romano"
     url: "https://www.oreilly.com/library/view/real-time-communication-with/9781449371876/"
-
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -43,139 +44,79 @@ dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---
 
-# Chat Application Architecture Brainstorm
+# Brainstorming Three Alternative Architectures for a Chat Application
 
-## Part 1: Requirements Analysis
-Primary functional and non-functional requirements (summary):
-- Support 1M+ concurrent users, 99.9% SLA, real-time messaging &lt;200ms, group chats (≤500 participants), 7-year retention, typing/delivery/read indicators, media up to 100MB, optional E2EE, Web/iOS/Android, initial infra cap $50K/month.
+## Overview
 
-Derived NFRs:
-- Scalability: horizontal scaling where possible
-- Reliability: fault tolerance, deduplication, DR
-- Performance: low end-to-end latency for real-time paths
-- Security: transport + at-rest encryption; optional E2EE in client
-- Maintainability: modular, observable, CI/CD friendly
-- Cost efficiency: meet budget until proven scale
+In this challenge, you will design and compare three different architectural approaches for a modern, large-scale chat application. You'll analyze requirements, create architecture diagrams, specify components, and evaluate trade-offs to recommend the best fit for various scenarios.
 
-## Part 2: Architecture 1 — Monolithic Core with Real-time Edge
-Architecture name: Monolithic Core with Real-time Edge
+## Objective
 
-High-level diagram (ASCII):
-┌───────────── Clients ─────────────┐
-│ (Web / iOS / Android via WS/HTTP) │
-└───────────────────────────────────┘
-              │
-              ▼
-┌───────────── Load Balancer (sticky WS) ─────────────┐
-              │
-      ┌───────┴────────┐
-      ▼                ▼
-┌──────────┐    ┌──────────────────────────┐
-│Realtime  │    │ Monolithic Application   │
-│Gateway   │    │ (Business logic, DB ops) │
-│(Socket)  │    └──────────────────────────┘
-└──────────┘           │   │    │
-                   PostgreSQL Redis S3
+By completing this challenge, you will be able to generate, document, and critically compare multiple system architectures for a real-time chat platform, considering scalability, reliability, cost, and maintainability.
 
-Component specs (concise):
-- Real-time Gateway: Node.js/Socket.IO or Elixir/Phoenix — handles connections, routing, presence; stateless layer preferred.
-- Monolith: Java Spring / Django — business logic, media processing; start vertical, plan sharding.
-- Data: PostgreSQL (messages, users) with read replicas; Redis for sessions/presence; S3 for media.
+## Prerequisites
 
-Pros:
-- Simple deployment and debugging
-- Lower operational overhead initially
-Cons:
-- Hard to scale partial workloads
-- Single large failure surface, team bottlenecks
+- Familiarity with system architecture concepts
+- Experience with real-time communication technologies
+- Access to diagramming tools (digital or paper)
+- Understanding of trade-off analysis frameworks
 
-Best for: small teams, fast prototyping, simple coordination needs
+## Instructions
 
-## Part 3: Architecture 2 — Event-Driven Microservices Mesh
-Architecture name: Event-Driven Microservices Mesh
+### Part 1: Requirements Analysis
 
-High-level diagram (ASCII):
-Clients -> API Gateway -> Service Mesh -> (Presence, Messaging, Media, User) -> Message Bus (Kafka) -> Analytics/Search/Consumers
+- Review the provided chat application requirements, including scalability, reliability, performance, security, and cost constraints.
+- Summarize both functional and non-functional requirements.
 
-Component specs:
-- API Gateway: Kong / AWS API GW — auth, rate limit, WS termination
-- Presence: Elixir/Phoenix or Go — distributed connections, Redis for ephemeral state
-- Messaging: Java/Go with partitioning by roomId; Cassandra for immutable message store
-- Event Bus: Kafka/Pulsar — decoupling, replayability
-- Media: dedicated service handling upload/transcode + CDN
+### Part 2: Design Three Distinct Architectures
 
-Pros:
-- Independent scaling, fault isolation, team autonomy
-Cons:
-- Higher ops complexity, distributed debugging, possible increased latency
+For each architecture:
+- Name and briefly describe the approach.
+- Draw a high-level architecture diagram (ASCII or digital).
+- List and specify major components, including technology suggestions.
+- Discuss pros and cons, and identify best-fit scenarios.
 
-Best for: large teams, long-lived product aiming at high scale and feature velocity
+Suggested approaches:
+1. Monolithic Core with Real-time Edge
+2. Event-Driven Microservices Mesh
+3. Serverless / FaaS Real-time Platform
 
-## Part 4: Architecture 3 — Serverless / FaaS Real-time Platform
-Architecture name: Serverless Real-time Platform
+### Part 3: Comparative Analysis & Recommendations
 
-High-level diagram (ASCII):
-Clients -> Managed Real-time Service (SignalR/AppSync/Pusher) -> FaaS (Lambda/Functions) -> Managed DB (DynamoDB) & S3/CDN
+- Create a comparison table evaluating each architecture against key criteria (e.g., time to market, scaling, cost, reliability).
+- Provide scenario-based recommendations for each architecture.
+- Suggest a possible hybrid approach and outline an evaluation checklist for graders.
 
-Component specs:
-- Managed real-time: Azure SignalR / Pusher / Ably — handle pub/sub and scaling
-- FaaS: ProcessMessage, StoreMessage, NotifyPresence, MediaHandler — event-driven functions
-- Data: DynamoDB (GSI on roomId+timestamp), S3 + CDN for media, optional Redis for low-lat TTL presence
+## Deliverables
 
-Pros:
-- No server management, automatic scaling, fast delivery
-Cons:
-- Vendor lock-in, cold starts, hard to predict cost at massive scale
+1. A single Markdown or PDF file containing:
+   - Three architecture sections with diagrams and component specs
+   - Comparative analysis table
+   - Scenario recommendations
+2. Supporting documentation (e.g., assumptions, evaluation checklist)
 
-Best for: MVPs, small teams, unpredictable traffic
+## Evaluation Criteria
 
-## Part 5: Comparative Analysis & Recommendations
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Architectural Diversity | 30%    | Three distinct, well-documented architectures    |
+| Trade-off Analysis      | 30%    | Clear comparison and scenario recommendations    |
+| Technical Detail        | 25%    | Accurate component specs and diagrams            |
+| Clarity & Completeness  | 15%    | Well-structured, explicit, and thorough delivery |
 
-Comparison table (summary):
-| Criteria | Monolith | Microservices | Serverless |
-|---|---:|---:|---:|
-| Time to Market | Fast | Slow | Very Fast |
-| Scaling Effort | High | Moderate | Automatic |
-| Operational Cost | Low (small) | High | Variable |
-| Team Flexibility | Low | High | Moderate |
-| Reliability | Moderate | High | High |
-| Latency (real-time) | Low | Moderate | Variable |
-| Vendor Lock-in | Low | Low | High |
-| Debugging Ease | Easy | Hard | Hard |
+## Tips & Common Mistakes
 
-Scenario recommendations:
-1. Startup (5 engineers, MVP 3 months): Serverless — minimize ops, fast delivery.
-2. Large enterprise (100+ engineers, 10M+ users): Microservices — team scaling and isolation.
-3. Medium company (20 engineers, predictable growth): Start monolith with a real-time edge; iterate to microservices as needed.
+- Explicitly address long-term retention and E2EE in each design.
+- Include failure modes and recovery strategies.
+- Focus diagrams on data and control flow.
+- Avoid vague component descriptions—be specific.
 
-Hybrid approach suggestion:
-- Use managed real-time (Pusher/Ably/SignalR) + microservices or monolith for business logic + serverless media handlers + CDN.
+## Bonus Challenges (Optional)
 
-Evaluation checklist (what graders should verify):
-- Three distinct architectures with clear trade-offs
-- Component-level specs and tech suggestions
-- Real-time handling and persistence strategies
-- Cost, scaling, and failure scenarios considered
-- Clear deliverables: diagrams, component specs, comparison, recommendations
+1. Estimate monthly costs at 1M users for each architecture.
+2. Draft a migration path from monolith to microservices.
+3. Design a multi-region deployment and disaster recovery plan.
 
-Tips:
-- Ensure each architecture addresses the 7-year retention and E2EE requirement explicitly
-- Include failure modes and recovery strategies per design
-- Keep diagrams focused on data and control flow
+## Submission
 
-Bonus challenges (optional):
-- Estimate monthly costs at 1M users for each architecture
-- Draft migration path from monolith → microservices
-- Design multi-region deployment and DR plan
-
-Submission deliverables (required):
-- Single Markdown or PDF with three architecture sections, diagrams, component specs, pros/cons, comparison table, and three scenario recommendations
-
-Example component (short):
-Presence Service (microservices):
-- Tech: Elixir/Phoenix for concurrency
-- Data: Redis cluster for ephemeral state (TTL + heartbeats), optional write-through to analytics store
-- Scaling: Partition by user hash, auto-scale by connection count
-- Failure: graceful reconnects, state rebuild from other nodes
-
-Good luck. Follow the checklist and be explicit about assumptions.
+Submit your completed Markdown or PDF file.

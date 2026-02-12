@@ -1,33 +1,36 @@
 ---
-title: "Data Analysis Dashboard with COVID-19 Dataset"
-description: "Create an interactive Excel/Google Sheets dashboard analyzing COVID-19 case data with visualizations and insights"
+title: "COVID-19 Data Analysis Dashboard"
+description: "Build an interactive dashboard in Excel or Google Sheets to analyze and visualize COVID-19 data, uncover trends, and present actionable insights."
 difficulty: "intermediate"
 unit: "Week 1 Project: Computer Applications"
 week: 1
+month: 1
 technologies:
-  - "Microsoft Excel/Google Sheets"
+  - "Microsoft Excel"
+  - "Google Sheets"
   - "Pivot Tables"
   - "Data Visualization"
   - "Statistical Analysis"
   - "Dashboard Design"
 learningOutcomes:
-  - "Import and clean real-world datasets in spreadsheet software"
-  - "Create interactive pivot tables for data analysis"
-  - "Design multiple chart types for effective data visualization"
-  - "Implement dynamic dashboards with slicers and filters"
-  - "Derive insights from data and present findings professionally"
+  - "Import, clean, and structure real-world datasets in spreadsheet software"
+  - "Design interactive dashboards with slicers, filters, and dynamic charts"
+  - "Apply statistical analysis to derive meaningful insights"
+  - "Communicate findings through professional reports and visualizations"
+  - "Utilize advanced spreadsheet features for business intelligence"
 estimatedTime: "8-12 hours"
 requirements:
-  - "Intermediate Excel/Sheets knowledge"
-  - "Understanding of basic statistics"
-  - "Access to Microsoft Excel or Google Sheets"
-  - "Ability to download and handle CSV files"
+  - "Intermediate proficiency with Excel or Google Sheets"
+  - "Basic understanding of statistics and data analysis"
+  - "Ability to download and manipulate CSV datasets"
+  - "Familiarity with creating charts and pivot tables"
+  - "Access to a computer with spreadsheet software"
 deliverables:
-  - "Complete dashboard with 3+ interactive visualizations"
-  - "Pivot tables summarizing key metrics"
-  - "Data cleaning and preparation steps documented"
-  - "Written analysis report with insights"
-  - "Dashboard user guide"
+  - "Interactive dashboard with at least 5 visualization types"
+  - "4+ pivot tables summarizing key metrics"
+  - "Documented data cleaning and preparation steps"
+  - "Written analysis report (2-3 pages) with insights and screenshots"
+  - "User guide for dashboard navigation"
 resources:
   - name: "Our World in Data: COVID-19 Dataset"
     url: "https://ourworldindata.org/covid-cases"
@@ -39,7 +42,6 @@ resources:
     url: "https://support.microsoft.com/en-us/excel/pivot-tables"
   - name: "Google Sheets Data Visualization Guide"
     url: "https://support.google.com/docs/answer/190718"
-
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -47,213 +49,79 @@ dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---
 
-# COVID-19 Data Analysis Dashboard Project
+# COVID-19 Data Analysis Dashboard
 
 ## Overview
 
-Build a professional data analysis dashboard using COVID-19 case data to practice data manipulation, visualization, and insight generation. This project aligns with your interest in data science and analysis while developing practical spreadsheet skills.
+This challenge guides you through building a professional, interactive dashboard in Excel or Google Sheets using real COVID-19 data. You'll practice data cleaning, analysis, and visualization, developing skills essential for business intelligence and data-driven decision making.
 
 ## Objective
 
-Create an interactive dashboard in Excel or Google Sheets that analyzes COVID-19 case data, provides visual insights into trends and patterns, and allows users to explore the data through filters and slicers. The dashboard should tell a data story about the pandemic's progression.
+Create a dynamic dashboard that analyzes COVID-19 case data, visualizes trends and patterns, and enables users to explore insights interactively through filters and slicers.
+
+## Prerequisites
+
+- Intermediate knowledge of Excel or Google Sheets
+- Basic statistics (mean, rates, moving averages)
+- Ability to download and handle CSV files
 
 ## Instructions
 
-### Phase 1: Data Acquisition and Preparation
+### Part 1: Data Acquisition & Preparation
 
-**Data Sources:**
-- Download COVID-19 dataset from reliable source (e.g., WHO, Johns Hopkins, Our World in Data)
-- Choose dataset with: Date, Country/Region, Confirmed Cases, Deaths, Recovered
-- Ensure data covers at least 6 months for trend analysis
+- Download a COVID-19 dataset (see Resources) with at least 6 months of data for 10+ countries.
+- Clean the data: remove unnecessary columns, handle missing values, standardize date and country formats.
+- Add calculated columns: daily new cases, case fatality rate, recovery rate, 7-day moving average.
 
-**Data Cleaning Steps:**
-1. Remove unnecessary columns
-2. Handle missing values appropriately
-3. Convert date formats consistently
-4. Standardize country/region names
-5. Create calculated columns:
-   - Daily new cases (difference from previous day)
-   - Case fatality rate (deaths/confirmed cases)
-   - Recovery rate (recovered/confirmed cases)
-   - 7-day moving average for smoothing
+### Part 2: Pivot Table Analysis
 
-**Dataset Requirements:**
-- At least 10 countries/regions
-- Minimum 180 days of data
-- Clean, structured format ready for analysis
+- Create at least 4 pivot tables:
+  - Country summary (totals, averages, peaks)
+  - Time series (monthly/weekly trends)
+  - Comparative analysis (rates by country/region)
+  - Regional aggregation (continent/region totals)
+- Use calculated fields, slicers, and conditional formatting.
 
-### Phase 2: Pivot Table Analysis
+### Part 3: Visualization & Dashboard Design
 
-**Create 4+ Pivot Tables:**
+- Build at least 5 chart types: line, bar, stacked area, scatter, heat map, or combo chart.
+- Assemble a dashboard layout with KPIs, slicers, and interactive elements.
+- Ensure clear titles, legends, and accessible color schemes.
+- Document your methodology and insights in a separate tab or report.
 
-1. **Country Summary Table:**
-   - Total cases, deaths, recoveries by country
-   - Average daily cases
-   - Peak case count and date
+## Deliverables
 
-2. **Time Series Analysis:**
-   - Monthly case progression
-   - Week-over-week growth rates
-   - Daily trends with date grouping
-
-3. **Comparative Analysis:**
-   - Cases per capita (if population data available)
-   - Fatality rates by country
-   - Recovery rates comparison
-
-4. **Regional Aggregation:**
-   - Group countries by continent/region
-   - Regional totals and averages
-   - Regional growth patterns
-
-**Pivot Table Features:**
-- Calculated fields for rates and percentages
-- Grouping by date (months, weeks)
-- Slicers for country and date range selection
-- Timeline control for date filtering
-- Conditional formatting for highlights
-
-### Phase 3: Visualization Development
-
-**Create 5+ Chart Types:**
-
-1. **Line Chart:** Daily new cases with 7-day moving average
-2. **Bar Chart:** Total cases by country (top 10)
-3. **Stacked Area Chart:** Cumulative cases over time
-4. **Scatter Plot:** Cases vs deaths with trendline
-5. **Heat Map:** Case intensity by country and month
-6. **Combo Chart:** Cases and deaths on dual axis
-7. **Dashboard Indicators:** Key metrics in KPI boxes
-
-**Chart Requirements:**
-- Professional color schemes (consider colorblind accessibility)
-- Clear titles and axis labels
-- Data labels where appropriate
-- Legends positioned for clarity
-- Dynamic ranges that update with filters
-
-### Phase 4: Dashboard Assembly
-
-**Dashboard Layout:**
-+-----------------------+
-| HEADER: Title & Date |
-+-----------------------+
-| KPIs | Slicers | Filters |
-+-----------------------+
-| Chart 1 | Chart 2 |
-+-----------------------+
-| Chart 3 | Chart 4 |
-+-----------------------+
-| Pivot Table | Insights |
-+-----------------------+
-
-**Interactive Elements:**
-- Slicers for country, date range, case thresholds
-- Timeline control for date selection
-- Dropdown for metric selection (cases, deaths, recoveries)
-- Reset button to clear all filters
-- Dynamic titles that update with filters
-
-**Design Principles:**
-- Consistent spacing and alignment
-- Logical visual hierarchy
-- Minimal clutter, maximum insight
-- Mobile-friendly layout considerations
-- Print-ready formatting
-
-### Phase 5: Analysis and Reporting
-
-**Insight Generation:**
-1. **Trend Analysis:** Identify peaks, troughs, and patterns
-2. **Comparative Insights:** Which countries handled it best/worst?
-3. **Rate Analysis:** Fatality and recovery rate trends
-4. **Growth Patterns:** Exponential vs linear growth phases
-5. **Seasonal Effects:** Any weekly or monthly patterns?
-
-**Report Creation:**
-- Executive summary of key findings
-- Methodology explanation
-- Data limitations and assumptions
-- Recommendations based on data
-- Future analysis possibilities
+1. Spreadsheet file (.xlsx or Google Sheets link) with:
+   - Cleaned data tab
+   - Pivot tables
+   - Dashboard with visualizations
+   - Documentation tab
+2. 2-3 page analysis report (PDF) with key findings and screenshots
+3. Dashboard user guide
 
 ## Evaluation Criteria
 
-1. **Data Preparation (20%):** Clean, structured data with proper calculations
-2. **Pivot Table Quality (25%):** Comprehensive analysis, proper aggregations
-3. **Visualization Effectiveness (25%):** Clear, informative, well-designed charts
-4. **Dashboard Usability (15%):** Intuitive navigation, interactive features
-5. **Insight Quality (15%):** Meaningful analysis, well-presented findings
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Data Preparation        | 20%    | Clean, structured data and accurate calculations |
+| Pivot Table Analysis    | 25%    | Comprehensive, insightful summaries              |
+| Visualization Quality   | 25%    | Clear, effective, and interactive charts         |
+| Dashboard Usability     | 15%    | Intuitive layout and navigation                  |
+| Insight & Reporting     | 15%    | Well-presented, meaningful findings              |
 
-## Required Deliverables
+## Tips & Common Mistakes
 
-1. **Spreadsheet File (.xlsx or Google Sheets link)**
-   - Raw data tab (cleaned)
-   - Analysis tabs with pivot tables
-   - Dashboard tab with all visualizations
-   - Documentation tab with methodology
+- Spend time cleaning your data before analysis
+- Avoid misleading charts (e.g., truncated axes)
+- Use consistent formatting and clear labels
+- Document your methodology and sources
+- Test all interactive features before submission
 
-2. **Analysis Report (PDF)**
-   - 2-3 page report with key insights
-   - Screenshots of dashboard
-   - Data sources and cleaning steps
-   - Limitations and assumptions
+## Bonus Challenges (Optional)
 
-3. **Presentation (Optional)**
-   - 5-minute video walkthrough
-   - Demonstration of interactive features
-   - Explanation of key insights
+1. Add forecasting using Excel's built-in tools
+2. Implement VBA macros or Google Apps Script for automation
 
-## Common Mistakes to Avoid
+## Submission
 
-- Using unprocessed raw data directly
-- Charts with misleading scales or truncations
-- No data validation or error checking
-- Overcomplicated visualizations
-- Missing axis labels or units
-- Inconsistent formatting across charts
-- No documentation of methodology
-- Ignoring data quality issues
-- Too many colors or chart types
-- No mobile or print consideration
-
-## Bonus Challenges
-
-- Add forecasting using Excel's forecast tools
-- Implement VBA macros for automation
-- Create custom calculated fields with DAX
-- Add geographic mapping with Power Map
-- Integrate real-time data refresh
-- Build comparative scenario analysis
-- Create automated PDF report generation
-- Add statistical significance testing
-
-## Tips for Success
-
-1. **Start with Clean Data:** Spend time on data preparation
-2. **Test Interactivity:** Ensure slicers and filters work correctly
-3. **Keep it Simple:** One clear insight per visualization
-4. **Document Everything:** Note data sources and cleaning steps
-5. **Get Feedback:** Have someone else test your dashboard
-
-## Real-World Application
-
-This project develops skills for:
-- Business intelligence dashboard creation
-- Data analysis and reporting roles
-- Public health data visualization
-- Business performance tracking
-- Data-driven decision making
-
-## Submission Checklist
-
-- [ ] Complete dashboard with all visualizations
-- [ ] 4+ pivot tables with different analyses
-- [ ] 5+ different chart types implemented
-- [ ] Interactive slicers and filters
-- [ ] Clean, documented data preparation
-- [ ] Analysis report with key insights
-- [ ] Professional formatting throughout
-- [ ] All formulas and references working
-- [ ] File properly named and organized
-- [ ] Documentation of methodology
+Submit your spreadsheet file (or shareable link), analysis report, and user guide as specified by your instructor or platform.

@@ -1,47 +1,46 @@
 ---
-title: "Python Core Concepts Practice Scripts"
-description: "Build and document Python scripts demonstrating fundamental programming concepts and algorithms"
+title: "Python Core Concepts Practice"
+description: "Develop and document Python scripts that showcase essential programming concepts, data handling, and algorithmic thinking."
 difficulty: "intermediate"
-unit: "Week 1 Project: Computational Thinking Theory"
+unit: "Week 1 Project: Computational Thinking"
 week: 1
+month: 1
 technologies:
-    - "Python 3"
-    - "Data Structures"
-    - "Algorithms"
-    - "File I/O"
-    - "GitHub"
+  - "Python 3"
+  - "Git & GitHub"
+  - "pytest"
+  - "JSON & CSV"
+  - "VS Code"
 learningOutcomes:
-    - "Implement Python data structures (lists, tuples, dictionaries, sets)"
-    - "Write functions with proper parameters and return values"
-    - "Handle file operations for reading and writing data"
-    - "Apply algorithmic thinking to solve problems"
-    - "Document code effectively with comments and docstrings"
+  - "Design and implement Python data structures and algorithms"
+  - "Write modular, well-documented, and testable code"
+  - "Perform file I/O and data serialization"
+  - "Apply control flow and functional programming concepts"
+  - "Collaborate using Git and GitHub best practices"
 estimatedTime: "8-10 hours"
 requirements:
-    - "Basic Python syntax knowledge"
-    - "Understanding of variables and data types"
-    - "GitHub account for repository creation"
-    - "Python 3 installed locally"
+  - "Basic Python programming experience"
+  - "Python 3 installed locally"
+  - "GitHub account"
+  - "Familiarity with command line"
+  - "VS Code or similar code editor"
 deliverables:
-    - "7 Python scripts covering core programming concepts"
-    - "Comprehensive README explaining each script"
-    - "GitHub repository with organized file structure"
-    - "Sample input/output for each script"
-    - "Code documentation with comments and docstrings"
+  - "7 Python scripts, each demonstrating a core concept"
+  - "Comprehensive README.md with usage and explanations"
+  - "Sample input/output files"
+  - "requirements.txt listing dependencies"
+  - "Well-organized GitHub repository"
 resources:
   - name: "Python Official Documentation"
     url: "https://docs.python.org/3/"
   - name: "PEP 8 – Style Guide for Python Code"
     url: "https://peps.python.org/pep-0008/"
-  - name: "GitHub Guides"
-    url: "https://docs.github.com/en/get-started/quickstart"
   - name: "pytest Documentation"
     url: "https://docs.pytest.org/en/latest/"
-  - name: "Python CSV Module"
-    url: "https://docs.python.org/3/library/csv.html"
-  - name: "Python JSON Module"
-    url: "https://docs.python.org/3/library/json.html"
-
+  - name: "GitHub Docs: Getting Started"
+    url: "https://docs.github.com/en/get-started/quickstart"
+  - name: "Real Python: File I/O"
+    url: "https://realpython.com/read-write-files-python/"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -49,198 +48,89 @@ dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---
 
-# Python Core Concepts Project
+# Python Core Concepts Practice
 
 ## Overview
 
-Create a suite of Python scripts to demonstrate core programming concepts. Each script should be self-contained, well-documented, and include usage examples. This project builds foundational skills for data science and backend development.
+This challenge guides you through building a suite of Python scripts that demonstrate foundational programming concepts, data structures, algorithms, and best practices for code documentation and collaboration. Completing this project will strengthen your skills for data science, automation, and backend development.
 
 ## Objective
 
-Develop seven Python scripts, each covering a key programming concept. Scripts must be clear, modular, and include sample input/output.
+Create seven well-structured Python scripts, each focusing on a key programming concept. Document your code, provide sample inputs/outputs, and organize your work in a GitHub repository.
+
+## Prerequisites
+
+- Python 3 installed
+- Basic knowledge of Python syntax and data types
+- Git and GitHub account
+- Code editor (e.g., VS Code)
+- Familiarity with command line
 
 ## Instructions
 
-### Phase 1: Project Setup
+### Part 1: Project Setup
 
-**Repository Structure:**
-```
-python-core-concepts/
-├── scripts/
-│   ├── 01_data_structures.py
-│   ├── 02_control_flow.py
-│   ├── 03_functions.py
-│   ├── 04_list_comprehensions.py
-│   ├── 05_dictionary_operations.py
-│   ├── 06_file_operations.py
-│   └── 07_algorithm_challenge.py
-├── data/
-│   ├── input.txt
-│   ├── sample.csv
-│   └── output/
-├── tests/
-│   └── test_samples.py
-├── requirements.txt
-└── README.md
-```
+- Create a new GitHub repository (e.g., `python-core-concepts`)
+- Set up the following folder structure:
+  ```
+  python-core-concepts/
+  ├── scripts/
+  ├── data/
+  ├── tests/
+  ├── requirements.txt
+  └── README.md
+  ```
+- Initialize a virtual environment and add dependencies to `requirements.txt`
+- Add a `.gitignore` file and make your first commit
 
-**Environment Setup:**
-- Create virtual environment: `python -m venv venv`
-- Activate virtual environment
-- Add Python version to requirements.txt
-- Initialize Git repository
+### Part 2: Script Development
 
-### Phase 2: Script Development
+- Write seven scripts in `/scripts`, each covering:
+  1. Data Structures (lists, tuples, sets, dictionaries)
+  2. Control Flow (if/else, loops, pattern matching)
+  3. Functions (parameters, return values, decorators)
+  4. List Comprehensions & Generators
+  5. Dictionary Operations (merging, nested, Counter, JSON)
+  6. File I/O (text, CSV, JSON, error handling)
+  7. Algorithm Challenge (sorting/searching/data processing)
+- Include docstrings, type hints, and comments in each script
+- Provide sample input/output files in `/data`
 
-**Script 1: Data Structures**
-- Lists, tuples, sets, dictionaries
-- Structure conversions
-- Stack/queue with lists
-- Set operations
+### Part 3: Documentation & Testing
 
-**Script 2: Control Flow**
-- If-elif-else chains
-- For/while loops
-- Nested loops
-- Pattern matching (Python 3.10+)
+- Write a detailed `README.md` explaining each script, setup, and usage
+- Add example inputs/outputs for each script
+- Write basic tests in `/tests` using `pytest`
 
-**Script 3: Functions**
-- Parameters, return values
-- Default/keyword arguments
-- *args, **kwargs
-- Lambda, map/filter/reduce
-- Basic decorators
+## Deliverables
 
-**Script 4: List Comprehensions & Generators**
-- List comprehensions (basic/nested/conditional)
-- Generator expressions
-- Dict/set comprehensions
-
-**Script 5: Dictionary Operations**
-- Creation, merging
-- Nested dictionaries
-- Comprehensions
-- DefaultDict, Counter
-- JSON serialization/deserialization
-
-**Script 6: File I/O**
-- Read/write text files
-- CSV processing
-- JSON operations
-- Context managers
-- Error handling
-
-**Script 7: Algorithm Challenge**
-- Sorting/search/data processing
-- Clear steps, comments
-- Time complexity analysis
-- Multiple test cases
-
-### Phase 3: Documentation & Testing
-
-**README Requirements:**
-- Project overview
-- Installation instructions
-- Script explanations
-- Example inputs/outputs
-- Running instructions
-- Dependencies
-
-**Code Documentation:**
-- Docstrings for functions
-- Inline comments
-- Type hints
-- Error handling
-- Logging
-
-### Phase 4: GitHub Deployment
-
-**Repository Setup:**
-- Create GitHub repo
-- Add .gitignore
-- Commit with descriptive messages
-- Optional: GitHub Pages docs, badges
-
-**Commit Strategy:**
-- Feature-based commits
-- Descriptive messages
-- No large files
-- Clean history
+1. Seven Python scripts in `/scripts`
+2. Sample input/output files in `/data`
+3. Comprehensive `README.md`
+4. `requirements.txt` with dependencies
+5. Organized GitHub repository
 
 ## Evaluation Criteria
 
-- Code Quality (30%): Clean, readable, PEP-8 compliant
-- Functionality (25%): Works as intended, handles edge cases
-- Documentation (20%): Clear docstrings, comments, README
-- Algorithmic Thinking (15%): Efficient logic
-- Repository Organization (10%): Structure, commit history
+| Criteria            | Weight | Description                                      |
+|---------------------|--------|--------------------------------------------------|
+| Code Quality        | 30%    | Readable, modular, PEP-8 compliant, error handling|
+| Functionality       | 25%    | Scripts work as intended, handle edge cases      |
+| Documentation       | 20%    | Clear docstrings, comments, and README           |
 
-## Required Deliverables
+## Tips & Common Mistakes
 
-- GitHub repository
-- 7 scripts in /scripts
-- README.md
-- Sample data files
-- requirements.txt
-- Documentation
-- Example outputs
-- Challenges faced/solutions
-
-## Code Quality
-
-- PEP-8 compliance (use black/autopep8)
-- Error handling
-- Type hints
-- Modular code
-
-## Common Mistakes
-
-- No error handling
-- Hard-coded values
-- Poor variable naming
-- No documentation
-- Mixing concepts in one script
-- Not testing edge cases
-- Large, monolithic functions
-- Ignoring PEP-8
-- Not using virtual environments
-
-## Bonus Challenges
-
-- Unit tests (pytest/unittest)
-- CLI for script selection
-- Logging
-- Performance benchmarking
-- Jupyter notebook demos
-- Dockerize project
-- CI/CD with GitHub Actions
-- Type checking with mypy
-
-## Tips for Success
-
-- Start simple
-- Test frequently
-- Use version control
-- Follow PEP-8
+- Test scripts frequently and handle errors gracefully
+- Avoid hard-coded values and poor variable names
+- Keep functions small and focused
 - Document as you code
+- Use version control for all changes
 
-## Real-World Application
+## Bonus Challenges (Optional)
 
-- Data preprocessing/cleaning
-- Task automation
-- Backend API foundations
-- Interview algorithm practice
-- Building blocks for larger projects
+1. Add unit tests for each script using `pytest`
+2. Implement a CLI to select and run scripts
 
-## Submission Checklist
+## Submission
 
-- 7 scripts in /scripts
-- Each script demonstrates a core concept
-- Comprehensive README
-- Sample data/example outputs
-- requirements.txt
-- Clean GitHub history
-- PEP-8 compliance
-- Docstrings for functions
-- Error handling
-- .gitignore included
+Push your completed repository to GitHub and submit the link as instructed.

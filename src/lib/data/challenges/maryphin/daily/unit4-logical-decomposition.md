@@ -1,27 +1,36 @@
 ---
 title: "Morning Routine Logical Decomposition"
-description: "Break down a morning routine into systematic, logical steps using computational thinking principles"
+description: "Apply computational thinking to break down and optimize a daily morning routine using logical sequencing and process decomposition."
 difficulty: "beginner"
 unit: "Unit 4: Computational Thinking Theory"
 day: 2
+week: 1
+month: 1
 technologies:
-    - "Computational Thinking"
-    - "Process Decomposition"
-    - "Logical Sequencing"
+     - "Computational Thinking"
+     - "Process Decomposition"
+     - "Logical Sequencing"
+     - "Task Analysis"
+     - "Workflow Optimization"
 learningOutcomes:
-    - "Decompose complex routines into discrete steps"
-    - "Apply logical sequencing to everyday problems"
-    - "Identify dependencies between tasks"
-    - "Optimize workflow efficiency"
+     - "Decompose complex routines into discrete, manageable steps"
+     - "Apply logical sequencing and identify task dependencies"
+     - "Distinguish between parallel and sequential tasks"
+     - "Estimate and optimize time for daily processes"
+     - "Visualize and document process flows"
 estimatedTime: "20-25 minutes"
 requirements:
-    - "Understanding of basic morning activities"
-    - "Textbook: Think Like a Programmer by V. Anton Spraul"
-    - "Note-taking tool"
+     - "Basic understanding of daily routines"
+     - "Ability to analyze and sequence tasks"
+     - "Access to note-taking or diagramming tools"
+     - "Familiarity with flowcharts or process diagrams"
+     - "Textbook: Think Like a Programmer by V. Anton Spraul"
 deliverables:
-    - "Sequential list of morning routine steps"
-    - "Identification of parallel vs sequential tasks"
-    - "Time estimates for each step"
+     - "Numbered sequential list of morning routine steps with time estimates"
+     - "Dependency diagram (textual or visual)"
+     - "Explicitly annotated parallel tasks"
+     - "Time analysis table or list"
+     - "Brief explanation of optimization choices"
 resources:
   - name: "Computational Thinking Process Guide"
     url: "https://www.bbc.co.uk/bitesize/guides/zp92mp3/revision/1"
@@ -33,7 +42,6 @@ resources:
     url: "https://www.interaction-design.org/literature/topics/task-analysis"
   - name: "Daily Routine Optimization"
     url: "https://jamesclear.com/daily-routines"
-
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -43,89 +51,73 @@ unlockDate: "2026-02-10"
 
 # Morning Routine Logical Decomposition Challenge
 
-Overview
-This exercise applies computational thinking to a morning routine. Decompose the process into discrete steps, capture dependencies, and identify opportunities for parallelization and optimization.
+## Overview
 
-Objective
-Produce a clear, realistic sequence of steps for an efficient morning routine, flagging which steps must be sequential and which can run in parallel.
+This challenge guides you through applying computational thinking to your morning routine. You'll break down the process into logical, manageable steps, identify dependencies, and optimize for efficiency using process decomposition and workflow analysis.
 
-Instructions
+## Objective
 
-1. Identify core activities
-     - Brainstorm essential tasks without ordering them.
-     - Categories to consider:
-         - Personal care (wake, hygiene, grooming, dressing)
-         - Preparation (breakfast, lunch prep, packing)
-         - Environment (bed making, lighting, temperature)
-         - Final checks (keys, phone, calendar)
+Create a clear, realistic sequence of morning routine steps, highlighting dependencies, parallelization opportunities, and time estimates to optimize your workflow.
 
-2. Establish dependencies
-     - For each pair, decide which must come first.
-     - Express dependencies as simple relations (e.g., Wake → Brush teeth).
+## Prerequisites
 
-3. Create a sequential flow
-     - Order tasks respecting dependencies, locations, time, and energy.
-     - Include transitions between locations (bedroom → bathroom → kitchen).
+- Understanding of basic morning activities
+- Familiarity with logical sequencing and dependencies
+- Access to note-taking or diagramming tools
+- Ability to estimate time for tasks
+- Textbook: Think Like a Programmer by V. Anton Spraul
 
-4. Identify parallelization opportunities
-     - Mark tasks that can overlap (e.g., boil water while packing lunch).
-     - Use clear indicators (brackets, indentation, or "Parallel:" labels).
+## Instructions
 
-5. Add time estimates and buffers
-     - Provide per-task time, transition time, and a small buffer for delays.
-     - Show cumulative time to validate the routine fits the available window.
+### Part 1: Identify and List Core Activities
 
-Evaluation Criteria
-- Logical Sequencing (30%): Order respects dependencies and efficiency.
-- Completeness (25%): All essential activities and transitions included.
-- Parallelization (20%): Sensible identification of simultaneous tasks.
-- Time Realism (15%): Realistic estimates and buffers.
-- Clarity (10%): Steps and dependencies are unambiguous.
+- Brainstorm all essential morning tasks (e.g., wake up, hygiene, breakfast, packing).
+- Categorize tasks (personal care, preparation, environment, final checks).
 
-Common Mistakes
-- Circular dependencies (A requires B and B requires A)
-- Omitting transitions or location changes
-- Over-optimizing without human considerations (fatigue, choices)
-- Forgetting one-off prep tasks (charging devices, weather check)
+### Part 2: Establish Dependencies and Sequence
 
-Real-World Applications
-- Workflow design and optimization
-- Project task sequencing
-- UX flow mapping
-- Algorithm and process design
+- For each task, determine required order and dependencies (e.g., Wake → Brush teeth).
+- Express dependencies as simple relations or diagrams.
+- Sequence tasks respecting dependencies, locations, and transitions.
 
-Submission Format
-Submit one document (Markdown, PDF, or plain text) containing:
-- Sequential Step List: Numbered steps in optimal order (include timings)
-- Dependency Diagram: Textual or visual representation (e.g., A → B)
-- Parallel Tasks: Explicitly listed or annotated
-- Time Analysis: Table or list with per-task and cumulative times
+### Part 3: Parallelization and Time Optimization
 
-Example (concise)
-MORNING ROUTINE: 6:30 AM — 7:20 AM
+- Identify tasks that can be performed in parallel (e.g., boiling water while packing lunch).
+- Annotate parallel tasks clearly.
+- Estimate time for each task, including transitions and buffers.
+- Create a cumulative time analysis to ensure the routine fits your available window.
 
-SEQUENTIAL STEPS:
-1. Wake & disable alarm (2 min)
-2. Drink water + stretch (3 min)
-3. Shower & hygiene (12 min)
-     [Parallel: Start kettle / quick phone check for urgent messages]
-4. Dress (5 min)
-5. Prepare/eat breakfast (12 min)
-     [Parallel: Pack lunch / check calendar]
-6. Gather belongings & final checks (6 min)
+## Deliverables
 
-DEPENDENCIES:
-- Wake → Drink water → Shower → Dress → Breakfast → Final checks
-- Kettle can start during Shower; lunch packing can overlap with Breakfast
+1. Numbered sequential list of morning routine steps with time estimates
+2. Dependency diagram (textual or visual)
+3. Explicitly annotated parallel tasks
+4. Time analysis table or list
+5. Brief explanation of optimization choices
 
-TIME ANALYSIS:
-- Total core time: 40 min
-- Transitions & buffers: 8–10 min
-- Final window: 48–50 min
+## Evaluation Criteria
 
-Tips for scoring higher
-- Include both a sequential list and an explicit dependency representation
-- Use clear parallel markers and realistic buffers
-- Explain trade-offs (e.g., longer shower vs. reduced breakfast time)
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Logical Sequencing      | 30%    | Order respects dependencies and efficiency       |
+| Completeness            | 25%    | All essential activities and transitions included|
+| Parallelization         | 20%    | Sensible identification of simultaneous tasks    |
+| Time Realism            | 15%    | Realistic estimates and buffers                  |
+| Clarity                 | 10%    | Steps and dependencies are unambiguous           |
 
-Good luck — keep it practical and human-centered.
+## Tips & Common Mistakes
+
+- Avoid circular dependencies (A requires B and B requires A)
+- Include all transitions and location changes
+- Don’t over-optimize at the expense of practicality
+- Remember one-off prep tasks (charging devices, weather check)
+- Use clear parallel markers and realistic time buffers
+
+## Bonus Challenges (Optional)
+
+1. Visualize your routine as a flowchart or swimlane diagram.
+2. Propose an alternative routine for a different scenario (e.g., remote work day).
+
+## Submission
+
+Submit a single document (Markdown, PDF, or plain text) containing all deliverables.

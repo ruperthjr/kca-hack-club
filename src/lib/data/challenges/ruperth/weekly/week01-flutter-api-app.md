@@ -1,109 +1,78 @@
 ---
 title: "Flutter Mobile App with Riverpod and REST API"
-description: "Build a cross-platform Flutter app that consumes a public REST API using Riverpod for state management and follows production best practices"
+description: "Build a production-minded Flutter app that consumes a public REST API using Riverpod for state management, with offline fallback and responsive UI."
 difficulty: "intermediate"
 unit: "Week 1 Project: Web Technologies and Internet Applications"
+day: null
 week: 1
+month: 1
 technologies:
     - "Flutter"
     - "Dart"
     - "Riverpod"
-    - "REST API"
-    - "GitHub"
+    - "Dio"
+    - "SharedPreferences / Hive"
+    - "Git & GitHub"
 learningOutcomes:
     - "Structure Flutter apps with separation of concerns"
-    - "Use Riverpod for state management and DI"
-    - "Integrate REST APIs with robust error and loading handling"
-    - "Build responsive UIs for iOS and Android"
-    - "Implement navigation, routing, and simple persistence"
+    - "Use Riverpod for dependency injection and state management"
+    - "Consume REST APIs with error/loading/caching strategies"
+    - "Build responsive, accessible UIs for mobile platforms"
+    - "Write basic tests and prepare a public repo/demo"
 estimatedTime: "10–14 hours"
 requirements:
-    - "Familiarity with Dart and basic Flutter"
-    - "Flutter SDK and a working emulator/device"
-    - "Understanding of REST API concepts"
-    - "GitHub account for version control"
+    - "Basic Dart & Flutter knowledge"
+    - "Flutter SDK and emulator or device"
+    - "GitHub account"
+    - "API key if chosen API requires one (do not commit secrets)"
 deliverables:
-    - "Flutter app with 3+ screens leveraging Riverpod"
-    - "API integration with clear loading/error states and offline fallback"
-    - "Readable, testable code and README"
-    - "Public GitHub repo (commit history) and a demo build"
+    - "Public GitHub repo with commit history and README"
+    - "Flutter app with 3+ screens using Riverpod and API integration"
+    - "Clear loading/error states and offline fallback"
+    - "Basic tests and demo build or run instructions"
 resources:
-    - name: "Flutter Documentation"
-      url: "https://docs.flutter.dev/"
-    - name: "Riverpod Documentation"
-      url: "https://riverpod.dev/"
-    - name: "Dio (HTTP Client)"
-      url: "https://pub.dev/packages/dio"
-    - name: "OpenWeather API"
-      url: "https://openweathermap.org/api"
-    - name: "GitHub REST API"
-      url: "https://docs.github.com/en/rest"
-
+  - name: "Flutter Documentation"
+    url: "https://docs.flutter.dev/"
+  - name: "Riverpod Documentation"
+    url: "https://riverpod.dev/"
+  - name: "Dio (HTTP Client)"
+    url: "https://pub.dev/packages/dio"
+  - name: "OpenWeather API"
+    url: "https://openweathermap.org/api"
+  - name: "GitHub REST API"
+    url: "https://docs.github.com/en/rest"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
-dateAdded: "2026-02-09"
-unlockDate: "2026-02-09"
+dateAdded: "2026-02-12"
+unlockDate: "2026-02-12"
 ---
 
 # Flutter API Mobile App Project
 
-Overview
-- Build a production-minded Flutter app that consumes a public REST API, uses Riverpod for state, and follows clean architecture and UX best practices.
-- Choose one public API: OpenWeather, News, GitHub, or SpaceX.
+## Overview
 
-Objectives
-- Demonstrate API consumption, dependency injection, error/loading states, caching for offline use, and responsive UI.
-- Deliver a working app in a public repository with documentation and a demo build.
+Build a cross-platform Flutter app that consumes a public REST API, uses Riverpod for state and DI, and demonstrates production-minded architecture, error handling, and offline fallback.
 
-Getting Started
-1. Create a new Flutter app and initialize git.
-2. Choose an API and gather required keys (do not commit secrets).
-3. Plan architecture and define features/screens before coding.
+## Objective
 
-Suggested Project Structure
-```
-lib/
-├── main.dart
-├── app/
-│   ├── app.dart
-│   └── routes.dart
-├── features/
-│   └── [feature]/
-│       ├── presentation/
-│       ├── domain/
-│       └── data/
-├── core/
-│   ├── constants/
-│   ├── theme/
-│   ├── utils/
-│   └── services/
-└── generated/
-```
+Ship a responsive, testable Flutter app that fetches data from a public API, presents clear loading/error states, caches results for offline use, and is published in a public GitHub repository.
 
-Suggested Dependencies (examples)
-```yaml
-dependencies:
-    flutter:
-        sdk: flutter
-    riverpod: ^2.0.0
-    dio: ^5.0.0
-    shared_preferences: ^2.0.0
-    cached_network_image: ^3.0.0
-    intl: ^0.18.0
+## Prerequisites
 
-dev_dependencies:
-    flutter_test:
-        sdk: flutter
-    build_runner: ^2.0.0
-    riverpod_generator: ^2.0.0
-```
+- Familiarity with Dart and basic Flutter widgets
+- Flutter SDK installed and an emulator or device available
+- Git and a GitHub account
+- Optional: API key for the chosen public API
 
-Phase 1 — API Layer & Models
-- Define DTOs and domain models (consider freezed/json_serializable).
-- Implement a data source using Dio or http and map responses to models.
+## Instructions
 
-Example model (freezed)
+### Part 1: API Layer & Models
+
+1. Pick a public API (OpenWeather, News, GitHub, SpaceX).
+2. Define DTOs and domain models (use freezed/json_serializable or plain classes).
+3. Implement a network data source using Dio and map responses to models.
+4. Example model (freezed/json_serializable recommended):
 ```dart
 @freezed
 class Weather with _$Weather {
@@ -114,16 +83,11 @@ class Weather with _$Weather {
         required DateTime lastUpdated,
     }) = _Weather;
 
-    factory Weather.fromJson(Map<String, dynamic> json) => _$WeatherFromJson(json);
+    factory Weather.fromJson(Map<String,dynamic> json) => _$WeatherFromJson(json);
 }
 ```
-
-Example data source
+5. Example data source:
 ```dart
-abstract class WeatherDataSource {
-    Future<Weather> getCurrentWeather(String city);
-}
-
 class WeatherDataSourceImpl implements WeatherDataSource {
     final Dio _dio;
     WeatherDataSourceImpl(this._dio);
@@ -136,87 +100,55 @@ class WeatherDataSourceImpl implements WeatherDataSource {
 }
 ```
 
-Phase 2 — Repository & Caching
-- Use repository pattern to abstract data sources and provide offline fallback via local cache (SharedPreferences, Hive).
-- Handle network errors and return cached data when available.
+### Part 2: Repository, Caching & Riverpod
 
-Phase 3 — Riverpod State Management
-- Expose providers for clients, repositories, and feature state.
-- Use FutureProvider for simple fetches and StateNotifier for richer local state.
-
-Providers example
+1. Create a repository that abstracts remote and local sources; return cached data on network failure.
+2. Use SharedPreferences or Hive for simple offline caching.
+3. Expose providers for Dio, repository, and feature state.
+4. Use FutureProvider for simple fetches and StateNotifierProvider for richer UI state.
 ```dart
-final weatherRepoProvider = Provider<WeatherRepository>((ref) {
-    final dio = ref.watch(dioProvider);
-    final local = ref.watch(weatherLocalProvider);
-    return WeatherRepositoryImpl(WeatherDataSourceImpl(dio), local);
-});
-
-final weatherFuture = FutureProvider.family<Weather, String>((ref, city) {
-    final repo = ref.watch(weatherRepoProvider);
-    return repo.getWeather(city);
-});
+final weatherRepoProvider = Provider<WeatherRepository>((ref) { ... });
+final weatherFuture = FutureProvider.family<Weather, String>((ref, city) { ... });
 ```
+5. Handle loading, success, and error states explicitly and map network exceptions to user-friendly messages.
 
-StateNotifier example
-```dart
-class WeatherState { final Weather? weather; final bool loading; final String? error; /*...*/ }
-class WeatherNotifier extends StateNotifier<WeatherState> { /* fetch logic with repo */ }
-final weatherNotifierProvider = StateNotifierProvider<WeatherNotifier, WeatherState>((ref) { /*...*/ });
-```
+### Part 3: UI, Testing & Deployment
 
-Phase 4 — UI & UX
-- Build responsive screens (list/detail/search/settings).
-- Show clear loading indicators and user-friendly error messages.
-- Support pull-to-refresh and graceful empty states.
+1. Build at least 3 screens (list/search/detail/settings) and ensure responsive layouts.
+2. Show loading indicators, error states with retry, pull-to-refresh, and empty-state UIs.
+3. Add basic unit tests for repository logic and widget tests for one screen.
+4. Prepare README with setup, environment variables (do not commit secrets), and run instructions.
+5. Optionally add GitHub Actions to run tests and build artifacts.
 
-UI example
-```dart
-class WeatherScreen extends ConsumerWidget {
-    @override
-    Widget build(BuildContext context, WidgetRef ref) {
-        final state = ref.watch(weatherNotifierProvider);
-        return Scaffold(
-            appBar: AppBar(title: Text('Weather')),
-            body: _buildBody(state, ref),
-            floatingActionButton: FloatingActionButton(
-                onPressed: () => _showCityDialog(context, ref),
-                child: Icon(Icons.search),
-            ),
-        );
-    }
-}
-```
+## Deliverables
 
-Phase 5 — Advanced Features (optional)
-- Local DB for richer offline mode (Hive/SQLite)
-- Background refresh, deep links, push notifications, analytics
-- Tests: unit, widget, integration; and CI/CD with GitHub Actions
+1. Public GitHub repository with clear commit history.
+2. Flutter app implementing the features above, runnable from instructions in README.
+3. Screenshots or APK/demo build and basic tests included.
 
-Evaluation Criteria
-- Architecture & Code Quality (30%)
-- State Management (25%)
-- API Integration & Resilience (20%)
-- UI/UX & Accessibility (15%)
-- Documentation & Testing (10%)
+## Evaluation Criteria
 
-Submission Checklist
-- Public GitHub repo with commit history
-- README with setup, features, screenshots, and API notes
-- Pubspec.yaml and instructions to run
-- Demo build (APK or instructions for simulator)
-- Basic tests and clear folder structure
+| Criteria | Weight | Description |
+|---------|--------:|-------------|
+| Architecture & Code Quality | 30% | Clean layering, testability, and folder structure |
+| State Management & Providers | 25% | Correct, idiomatic Riverpod usage and separation of concerns |
+| API Integration & Resilience | 20% | Robust error handling, caching, and offline fallback |
+| UI/UX & Accessibility | 15% | Responsive layouts, clear states, accessibility considerations |
+| Documentation & Testing | 10% | README, run instructions, and basic tests |
 
-Common Pitfalls
-- Committing API keys or secrets
-- Ignoring network/error states
-- Blocking UI thread on long ops
-- Not testing on multiple screen sizes
+## Tips & Common Mistakes
 
-Tips
-- Define providers and architecture first
-- Keep UI simple and accessible
-- Add error logging and graceful fallbacks
-- Iterate with small, testable tasks
+- Do not commit API keys or secrets; use environment variables or runtime config.
+- Surface clear loading/error states; avoid blocking the UI thread.
+- Keep providers small and focused; prefer composition over monoliths.
+- Test API parsing and repository fallback behavior.
+- Verify layouts on multiple screen sizes and platform themes.
 
-Good luck — build something that’s maintainable, testable, and delightful to use.
+## Bonus Challenges (Optional)
+
+1. Add local DB (Hive/SQLite) for richer offline mode and sync logic.
+2. Add CI that runs tests and produces a demo build (Android APK or iOS build).
+
+## Submission
+
+Push your project to a public GitHub repo, include a README with setup and API notes, attach screenshots or a demo build, and share the repository URL.

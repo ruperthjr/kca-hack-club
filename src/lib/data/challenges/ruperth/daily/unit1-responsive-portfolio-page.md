@@ -4,6 +4,8 @@ description: "Build a semantic, accessible, and SEO-friendly HTML5 portfolio pag
 difficulty: "intermediate"
 unit: "Unit 1: Web Technologies and Internet Applications"
 day: 1
+week: 1
+month: 1
 technologies:
     - "HTML5"
     - "Semantic Markup"
@@ -27,15 +29,14 @@ deliverables:
     - "Accessibility report (WAVE or Lighthouse)"
     - "semantic-choices.md (200–300 words)"
 resources:
-    - name: "MDN HTML Element Reference"
-      url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
-    - name: "W3C Markup Validation Service"
-      url: "https://validator.w3.org/"
-    - name: "WebAIM: Semantic Structure"
-      url: "https://webaim.org/articles/semanticstructure/"
-    - name: "WAVE Accessibility Tool"
-      url: "https://wave.webaim.org/"
-
+  - name: "MDN HTML Element Reference"
+    url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+  - name: "W3C Markup Validation Service"
+    url: "https://validator.w3.org/"
+  - name: "WebAIM: Semantic Structure"
+    url: "https://webaim.org/articles/semanticstructure/"
+  - name: "WAVE Accessibility Tool"
+    url: "https://wave.webaim.org/"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -47,28 +48,25 @@ unlockDate: "2026-02-09"
 
 ## Overview
 
-This challenge is about building a semantic, accessible, and SEO-friendly portfolio page using HTML5. Focus on structure, meaningful markup, and accessibility — not visual styling. The HTML you create will be styled in a future exercise.
+Create a single-page HTML5 portfolio that demonstrates semantic structure, accessibility, and SEO best practices. This challenge emphasizes meaningful markup and inclusive design, laying a solid foundation for future styling and enhancements.
 
 ## Objective
 
-Produce a single valid HTML5 page that:
-- Uses semantic elements and correct heading hierarchy
-- Includes accessible form elements ready for validation
-- Implements basic SEO meta tags and simple structured data
-- Passes W3C validation and scores highly on accessibility audits
+Build a valid, accessible, and SEO-friendly portfolio page using semantic HTML5 elements, correct heading hierarchy, accessible navigation and forms, and basic SEO meta tags. The page should pass W3C validation and score highly on accessibility audits.
+
+## Prerequisites
+
+- Basic knowledge of HTML5 and semantic elements
+- Familiarity with accessibility concepts
+- Access to a text editor or IDE and a modern web browser
+- Ability to use online validation and accessibility tools
 
 ## Instructions
 
-### Step 1: Document Setup & Head
+### Part 1: Document Structure & Head
 
-Create `index.html` with an HTML5 doctype and a complete `<head>` including:
-- lang attribute on `<html>`
-- charset and viewport meta tags
-- descriptive title and meta description
-- Open Graph and Twitter Card tags (examples)
-- favicon link
-
-Example head snippet:
+- Create `index.html` with `<!DOCTYPE html>` and `<html lang="en">`
+- Add `<head>` with charset, viewport, descriptive title, meta description, favicon, and example Open Graph/Twitter Card tags
 
 ```html
 <!DOCTYPE html>
@@ -79,62 +77,48 @@ Example head snippet:
     <meta name="description" content="Portfolio of Your Name — Full‑Stack Developer specializing in Flutter & AI/ML">
     <title>Your Name — Developer Portfolio</title>
     <link rel="icon" href="favicon.png" type="image/png">
-    <!-- Open Graph & Twitter meta tags (optional placeholders) -->
+    <!-- Open Graph & Twitter meta tags -->
 </head>
 ```
 
-### Step 2: Semantic Page Structure
+### Part 2: Semantic Layout & Navigation
 
-Use semantic regions and a single `<main>`:
+- Structure the page using `<header>`, `<main>`, `<section>`, `<footer>`, and ARIA landmarks
+- Implement a skip link, accessible navigation with list semantics, and a mobile menu button
 
 ```html
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
-
-    <header>...</header>
-
+    <header>
+        <h1><a href="/" aria-label="Home — Your Name">YN <span>Your Name</span></a></h1>
+        <nav aria-label="Main navigation" id="main-navigation">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation">
+            <span aria-hidden="true">☰</span>
+        </button>
+    </header>
     <main id="main-content">
-        <section id="hero">...</section>
-        <section id="about">...</section>
-        <section id="projects">...</section>
-        <section id="skills">...</section>
-        <section id="contact">...</section>
+        <!-- Sections go here -->
     </main>
-
-    <footer>...</footer>
+    <footer>
+        <!-- Footer content -->
+    </footer>
 </body>
 ```
 
-Use `<article>` for self-contained projects and `<aside>` for tangential info.
+### Part 3: Content Sections & Accessibility
 
-### Step 3: Accessible Navigation
-
-Provide a clear nav with list semantics and ARIA where needed:
-
-```html
-<header>
-    <h1><a href="/" aria-label="Home — Your Name">YN <span>Your Name</span></a></h1>
-
-    <nav aria-label="Main navigation" id="main-navigation">
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation">
-        <span aria-hidden="true">☰</span>
-    </button>
-</header>
-```
-
-Ensure keyboard navigation and descriptive link text.
-
-### Step 4: Hero Section
-
-Keep one H1 in the header; use H2 for the hero:
+- Add the following sections inside `<main>`: Hero, About, Projects, Skills, Contact
+- Use semantic elements: `<section>`, `<article>`, `<aside>`, `<figure>`, `<figcaption>`
+- For Projects, wrap each in `<article>` and use schema.org markup if desired
+- Build an accessible contact form with labels, required indicators, and error containers
+- Ensure all images have descriptive alt text and appropriate attributes
 
 ```html
 <section id="hero" aria-labelledby="hero-heading">
@@ -144,7 +128,6 @@ Keep one H1 in the header; use H2 for the hero:
         <a href="#projects" class="cta-primary">View My Work</a>
         <a href="#contact" class="cta-secondary">Get in Touch</a>
     </div>
-
     <figure>
         <img src="images/profile.jpg" alt="Professional headshot of Your Name" width="400" height="400" loading="eager">
         <figcaption class="visually-hidden">Your Name — Developer</figcaption>
@@ -152,120 +135,43 @@ Keep one H1 in the header; use H2 for the hero:
 </section>
 ```
 
-Include alt text and size attributes to reduce layout shift.
+- Validate your HTML using https://validator.w3.org/
+- Run accessibility checks with WAVE or Lighthouse and resolve issues
 
-### Step 5: About Section
+## Deliverables
 
-Use semantic text, lists, and definition lists for education/certifications.
+1. `index.html` with semantic, accessible markup
+2. Screenshot of successful W3C validation
+3. Accessibility report screenshot (WAVE or Lighthouse)
+4. `semantic-choices.md` (200–300 words) explaining key semantic and accessibility decisions
 
-### Step 6: Projects Section (40 min)
+## Evaluation Criteria
 
-Wrap each project in an `<article>` and include schema.org markup if desired:
-
-- Use <h3> for project titles
-- Add descriptive images with figcaption
-- Use external links with rel="noopener noreferrer" and target="_blank"
-- Lazy-load non-critical images with loading="lazy"
-
-Example project header:
-
-```html
-<article itemscope itemtype="https://schema.org/CreativeWork">
-    <header>
-        <h3 itemprop="name">AI-Powered Document Analysis</h3>
-        <p itemprop="description">RAG system with embeddings and Pinecone vector DB.</p>
-    </header>
-    ...
-</article>
-```
-
-### Step 7: Skills Section
-
-Group skill categories into semantic blocks or articles with lists.
-
-### Step 8: Contact Form
-
-Build an accessible form skeleton with labels, required indicators, and error containers:
-
-- Use <label for="...">, appropriate input types, autocomplete attributes
-- Mark required fields with <abbr title="required">*</abbr> and aria-required
-- Provide aria-describedby linking to error message elements with role="alert"
-
-Example:
-
-```html
-<form action="/submit-contact" method="POST" novalidate>
-    <label for="name">Full Name <abbr title="required">*</abbr></label>
-    <input id="name" name="name" type="text" required autocomplete="name" aria-describedby="name-error">
-    <span id="name-error" class="error" role="alert"></span>
-    ...
-    <button type="submit">Send Message</button>
-</form>
-```
-
-Include alternative contact methods in an `<aside>`.
-
-### Step 9: Footer (10 min)
-
-Include site info, footer nav (with aria-label), contact links, and copyright:
-
-- Use `<time>` for the current year
-- Place small print in `<small>`
-
-### Step 10: Validation & Accessibility Testing
-
-W3C Validation:
-- Use https://validator.w3.org/ and fix all errors/warnings
-- Save a screenshot of successful validation
-
-Accessibility:
-- Use WAVE (https://wave.webaim.org/) or Lighthouse (DevTools → Lighthouse)
-- Aim for 90+ accessibility score and resolve critical issues
-- Save a screenshot of the report
-
-Common issues to check:
-- Missing alt text
-- Empty links or buttons
-- Missing form labels
-- Heading hierarchy errors
-- Missing lang attribute
-
-### Step 11: Documentation
-
-Create `semantic-choices.md` (200–300 words) describing key semantic and accessibility choices:
-- Header/nav rationale
-- Sectioning and heading hierarchy
-- Form accessibility decisions
-- Image and figure usage
-- Any schema.org or ARIA choices
-
-Use the following project structure for submission:
-
-```
-portfolio-html-[yourname]/
-├── index.html
-├── semantic-choices.md
-├── validation/
-│   ├── w3c-validation.png
-│   └── accessibility-report.png
-└── README.md
-```
-
-## Evaluation Criteria (summary)
-
-- Semantic structure and heading hierarchy
-- Accessibility and ARIA usage
-- W3C validation (0 errors) and accessibility score (90+)
-- Complete required sections and professional content
-- Documentation of semantic choices (200–300 words)
+| Criteria                       | Weight | Description                                      |
+|---------------------------------|--------|--------------------------------------------------|
+| Semantic structure & headings   | 40%    | Proper use of HTML5 elements and heading order   |
+| Accessibility & ARIA usage      | 30%    | Navigation, forms, and content are accessible    |
+| Validation & documentation      | 30%    | Passes W3C, high accessibility, clear rationale  |
 
 ## Tips & Common Mistakes
 
 - Validate early and often
-- Use semantic elements, not <div> for everything
+- Use semantic elements, not `<div>` for structure
 - Do not skip heading levels
 - Provide alt text for all images
 - Associate labels with inputs
 - Test keyboard navigation and screen readers
 
-Good luck — build semantics first, style later.
+## Bonus Challenges (Optional)
+
+1. Add schema.org structured data to projects or contact info
+2. Implement a responsive mobile menu with accessible toggling
+
+## Submission
+
+Submit a folder named `portfolio-html-[yourname]/` containing:
+- `index.html`
+- `semantic-choices.md`
+- `validation/w3c-validation.png`
+- `validation/accessibility-report.png`
+- `README.md`

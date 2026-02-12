@@ -1,9 +1,11 @@
 ---
-title: "Research and Summarize RISC vs CISC Architecture Differences"
-description: "Comprehensive research and comparison of RISC and CISC processor architectures"
+title: "RISC vs CISC: Architecture Comparison Challenge"
+description: "Hands-on research and analysis of RISC and CISC processor architectures, their evolution, and performance trade-offs."
 difficulty: "intermediate"
 unit: "Unit 3: COMPUTER ORGANIZATION AND ARCHITECTURE"
 day: 3
+week: 1
+month: 1
 technologies:
   - "Processor Architecture"
   - "CPU Design"
@@ -16,14 +18,13 @@ learningOutcomes:
   - "Predict future architectural trends"
 estimatedTime: "75-90 minutes"
 requirements:
-  - "Research materials on processor architecture"
+  - "Access to research materials on processor architecture"
   - "Comparison framework template"
-  - "Performance analysis tools/concepts"
+  - "Basic understanding of CPU design"
 deliverables:
   - "Comprehensive comparison report"
-  - "Historical context analysis"
-  - "Performance trade-off evaluation"
-  - "Future trend predictions"
+  - "Performance trade-off analysis"
+  - "Case studies summary"
 resources:
   - name: "Computer Architecture: A Quantitative Approach, 6th Edition by John Hennessy and David Patterson"
     url: "https://www.elsevier.com/books/computer-architecture-a-quantitative-approach/hennessy/978-0-12-811905-1"
@@ -35,7 +36,6 @@ resources:
     url: "https://www.amazon.com/RISC-V-Reader-Open-Architecture-Atlas/dp/0999249118"
   - name: "Intel® 64 and IA-32 Architectures Software Developer Manuals"
     url: "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html"
-
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -43,98 +43,71 @@ dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---
 
-# RISC vs CISC Architecture: Comprehensive Analysis
+# RISC vs CISC Architecture: Comparison Challenge
 
-## Executive Summary
-Concise comparison of RISC (Reduced Instruction Set Computer) and CISC (Complex Instruction Set Computer) focusing on principles, historical evolution, performance trade-offs, modern convergence, and future trends. Key takeaway: RISC emphasizes simple, regular instructions enabling high clock rates and power efficiency; CISC emphasizes dense instruction encodings and backward compatibility. Modern processors blend both approaches (e.g., x86 → μops).
+## Overview
 
-## Part 1: Fundamental Concepts
-- RISC principles:
-  - Simple, mostly single-cycle instructions
-  - Fixed-length encodings and load/store memory model
-  - Large register files and pipeline-friendly design
-  - Hardwired control for fast decode
-- CISC principles:
-  - Complex instructions that can perform multiple operations
-  - Variable-length encodings and memory-to-memory operations
-  - Fewer registers, microcoded control, higher code density
-- Historical context:
-  - 1970s–80s: CISC dominated due to memory cost and compiler limitations
-  - 1980s: RISC research (Berkeley, Stanford) showed pipeline/clock advantages
-  - 1990s–present: Convergence — x86 uses internal RISC-like μops; ARM and RISC-V grow in mobile, embedded, and servers
+This challenge guides you through a structured comparison of RISC (Reduced Instruction Set Computer) and CISC (Complex Instruction Set Computer) architectures. You'll explore their principles, historical evolution, performance trade-offs, and modern convergence, gaining insight into how these architectures shape today's processors.
 
-## Part 2: Architectural Comparison
-Comparison highlights (summary):
+## Objective
 
-| Dimension | RISC | CISC | Implication |
-|---|---:|---|---|
-| Instruction size | Fixed (e.g., 32-bit) | Variable (1–15 bytes) | RISC: easier fetch/decode; CISC: better code density |
-| Instruction complexity | Simple, single-op | Complex, multi-op | RISC: easier pipelining; CISC: fewer instructions per task |
-| Memory access model | Load/store only | Memory-to-memory allowed | RISC: more registers; CISC: less register pressure |
-| Decode/control | Hardwired | Microcoded | RISC: lower decode latency; CISC: flexible semantics |
-| Cycles/Instruction | Typically low & predictable | Variable, often higher | Affects performance modeling |
-| Code density | Lower (more instructions) | Higher | Influences cache behavior and footprint |
-| Compiler role | Heavier optimization burden | Simpler mapping from high-level code | Compiler maturity is key
+By completing this challenge, you will produce a comprehensive report comparing RISC and CISC architectures, analyze their performance characteristics, and summarize real-world case studies.
 
-Instruction examples (conceptual):
-- RISC (ARM): ADD R0, R1, R2 ; LDR R3, [R4] ; STR R0, [R5]
-- CISC (x86): ADD [mem], EAX  (load-add-store in one instruction; internally broken into μops)
+## Prerequisites
 
-## Part 3: Performance Analysis
-- Performance model: Time = (Instructions/Program) × (Cycles/Instruction) × (Time/Cycle)
-- Typical trade-offs:
-  - RISC: ↑ Instructions/Program, ↓ CPI and Time/Cycle → often better energy efficiency
-  - CISC: ↓ Instructions/Program, ↑ CPI and Time/Cycle → benefits from code density
-- Quantitative example (illustrative):
-  - RISC: 4 instructions × 1 CPI × (1/3 GHz) ≈ 1.33 ns
-  - CISC: 1 instruction × 3 CPI × (1/2 GHz) ≈ 1.5 ns
-  - Example shows RISC can outperform in simple cases; real workloads vary.
-- Modern convergence:
-  - x86 decodes to fixed μops, executes in RISC-like back-end; this reduces the pure RISC/CISC gap but incurs decode power and complexity.
+- Basic knowledge of computer architecture concepts
+- Access to research materials (see Resources)
+- Familiarity with CPU instruction sets
 
-## Part 4: Case Studies
-- Apple M2 (ARM RISC):
-  - ISA: AArch64 (fixed 32-bit encodings)
-  - Wide fetch/decoding, deep pipelines, strong energy efficiency
-  - Design emphasizes power/per-watt for mobile and laptop use
-- Intel Core i9-13900K (x86 CISC externally):
-  - ISA: x86-64 (variable length)
-  - Complex front-end with x86→μop translation, μop cache, many execution ports
-  - Legacy compatibility and single-thread optimizations at cost of front-end complexity
-- Comparative summary:
-  - RISC often leads in power efficiency and simpler design
-  - CISC retains density and legacy software compatibility; modern CISC uses internal RISC-like execution
+## Instructions
 
-## Part 5: Future Trends & Recommendations
-- Emerging trends:
-  - RISC-V growth (open, modular ISA), ARM expanding in servers, continued x86 presence in legacy workloads
-  - Heterogeneous systems (big.LITTLE, performance + efficiency cores)
-  - Domain-specific accelerators (TPUs, NPUs) and ISA extensions
-  - Increased ISA-level security and memory-hierarchy innovations
-- Recommendations:
-  - Architects: Choose RISC (ARM/RISC-V) for new, power-sensitive designs; use x86 where compatibility is required
-  - Developers: Target multi-architecture portability; profile and optimize for hot paths
-  - Analysts: Track RISC-V ecosystem maturity and ARM server adoption
+### Part 1: Research Fundamental Concepts
 
-## References and Further Reading
-- Hennessy & Patterson — Computer Architecture (quantitative approach)
-- Patterson & Hennessy — Computer Organization and Design
-- Intel Software Developer Manuals
-- The RISC-V Reader
-- Modern Processor Design (Shen & Lipasti)
+- Define RISC and CISC architectures, listing their core principles.
+- Summarize the historical context and evolution of both architectures.
+- Identify key differences in instruction set design, memory models, and control logic.
 
-## Evaluation Criteria (for submissions)
-- Research Depth (30%): coverage, correctness, modern context
-- Analytical Rigor (30%): clear comparison, quantitative analysis
-- Critical Insight (25%): convergence, predictions, recommendations
-- Presentation (15%): structure, clarity, correctness
+### Part 2: Comparative Analysis
 
-## Submission Checklist
-- Definitions of RISC and CISC principles
-- Detailed comparison matrix
-- Performance trade-off analysis with quantitative examples
-- Apple M2 and Intel i9 case studies
-- Historical context and future predictions
-- Clear, well-formatted single Markdown or PDF document
+- Create a comparison matrix highlighting differences in instruction size, complexity, memory access, decode/control, cycles per instruction, code density, and compiler roles.
+- Provide code examples illustrating typical RISC and CISC instructions.
+- Analyze performance trade-offs using the performance equation:  
+  `Time = (Instructions/Program) × (Cycles/Instruction) × (Time/Cycle)`
+- Include a quantitative example comparing RISC and CISC execution.
 
-Good luck — aim for precise technical reasoning supported by concrete examples and measured claims.
+### Part 3: Case Studies & Future Trends
+
+- Summarize two real-world processors: one RISC-based (e.g., Apple M2/ARM) and one CISC-based (e.g., Intel Core i9/x86).
+- Discuss how modern processors blend RISC and CISC features.
+- Predict future trends in processor architecture and provide recommendations for architects and developers.
+
+## Deliverables
+
+1. Well-structured comparison report (Markdown or PDF)
+2. Completed comparison matrix and performance analysis
+3. Case study summaries and future trend predictions
+
+## Evaluation Criteria
+
+| Criteria                | Weight | Description                                         |
+|-------------------------|--------|-----------------------------------------------------|
+| Research Depth          | 30%    | Coverage, correctness, and modern context           |
+| Analytical Rigor        | 30%    | Clear comparison and quantitative analysis          |
+| Critical Insight        | 25%    | Convergence, predictions, and recommendations       |
+| Presentation            | 15%    | Structure, clarity, and technical correctness       |
+
+## Tips & Common Mistakes
+
+- Use concrete examples to support your analysis.
+- Avoid superficial comparisons—focus on technical reasoning.
+- Don't overlook the impact of modern convergence (e.g., x86 μops).
+- Ensure your report is well-organized and clearly formatted.
+
+## Bonus Challenges (Optional)
+
+1. Analyze a domain-specific accelerator (e.g., TPU, NPU) and its ISA.
+2. Compare RISC-V and ARM in terms of ecosystem and adoption.
+
+## Submission
+
+Submit your completed report and supporting materials.

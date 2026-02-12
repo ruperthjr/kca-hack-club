@@ -1,40 +1,47 @@
 ---
-title: "HTML Fundamentals Practice"
-description: "Create a simple HTML page with proper structure including headings and basic elements"
+title: "HTML Fundamentals: Structured Webpage Creation"
+description: "Build a well-structured HTML5 page using semantic elements, headings, and basic content organization."
 difficulty: "beginner"
 unit: "Unit 6: Web Design Technology and Internet Applications"
 day: 2
+week: 1
+month: 1
 technologies:
-    - "HTML5"
-    - "Web Development"
-    - "Frontend Basics"
+        - "HTML5"
+        - "Semantic HTML"
+        - "Web Browsers"
+        - "Text Editors"
+        - "Frontend Development"
 learningOutcomes:
-    - "Create valid HTML5 document structure"
-    - "Use heading tags appropriately"
-    - "Add basic text content and formatting"
-    - "Understand HTML element hierarchy"
+        - "Construct a valid HTML5 document"
+        - "Apply semantic HTML elements for structure"
+        - "Organize content with headings and sections"
+        - "Add inline styling for readability"
+        - "Document code with helpful comments"
 estimatedTime: "15-25 minutes"
 requirements:
-    - "Textbook: HTML and CSS: Design and Build Websites by Jon Duckett"
-    - "Text editor (VS Code, Notepad++, Sublime Text)"
-    - "Web browser for testing"
+        - "Access to a modern text editor (VS Code, Sublime Text, Atom, etc.)"
+        - "Web browser for testing (Chrome, Firefox, Edge, or Safari)"
+        - "Basic understanding of HTML tags and attributes"
+        - "Reference: HTML and CSS: Design and Build Websites by Jon Duckett"
+        - "Internet connection for accessing resources"
 deliverables:
-    - "Valid HTML5 file with proper structure"
-    - "Heading with your name"
-    - "Basic content section"
-    - "Comments explaining code sections"
+        - "A single valid HTML5 file named `index.html`"
+        - "Your name as the main heading"
+        - "At least one introduction paragraph"
+        - "Semantic structure using header, main, section, and footer"
+        - "Inline comments explaining code sections"
 resources:
-  - name: "HTML5 Tutorial for Beginners"
-    url: "https://www.w3schools.com/html/html_intro.asp"
-  - name: "HTML Validator Tool"
+  - name: "MDN: HTML Introduction"
+    url: "https://developer.mozilla.org/en-US/docs/Web/HTML"
+  - name: "W3Schools: HTML5 Tutorial"
+    url: "https://www.w3schools.com/html/html5_intro.asp"
+  - name: "HTML Validator"
     url: "https://validator.w3.org/"
-  - name: "HTML Document Structure Guide"
-    url: "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure"
-  - name: "VS Code Setup for Web Development"
-    url: "https://code.visualstudio.com/docs/languages/html"
+  - name: "Semantic HTML Elements Guide"
+    url: "https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html"
   - name: "HTML5 Cheat Sheet"
     url: "https://htmlcheatsheet.com/"
-
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -42,150 +49,76 @@ dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---
 
-# HTML Fundamentals Practice Challenge
+# HTML Fundamentals: Structured Webpage Creation
 
 ## Overview
 
-This hands-on challenge introduces basic HTML structure by creating a simple webpage with your name as the main heading. You'll practice proper HTML5 syntax, document structure, and basic element usage.
+This challenge introduces you to the essentials of HTML5 by guiding you through the creation of a personal webpage. You'll learn to use semantic elements, organize content with headings, and apply basic inline styling for clarity and readability—skills foundational to all web development.
 
 ## Objective
 
-Create a valid HTML5 document that displays your name as the primary heading, includes a brief introduction paragraph, and demonstrates proper HTML structure with essential elements.
+Create a valid, well-structured HTML5 document that displays your name, a brief introduction, and demonstrates the use of semantic elements and inline comments.
+
+## Prerequisites
+
+- Familiarity with basic HTML tags and attributes
+- Access to a text editor and web browser
+- Reference to an HTML guide or textbook
 
 ## Instructions
 
-### Step 1: Set Up Basic HTML5 Structure
+### Part 1: Set Up the HTML5 Document
 
-Create a new file with .html extension and include:
+- Start with `<!DOCTYPE html>` and `<html lang="en">`
+- Add a `<head>` section with:
+        - `<meta charset="UTF-8">`
+        - `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+        - `<title>` with your name or page description
 
-- `<!DOCTYPE html>` declaration
-- `<html>` element with `lang` attribute
-- `<head>` section containing:
-    - `<meta charset="UTF-8">`
-    - `<meta name="viewport">` for responsive design
-    - `<title>` element with descriptive page title
-- `<body>` section for visible content
+### Part 2: Structure Content with Semantic Elements
 
-### Step 2: Create Content Structure
+- Use `<header>` for the top section:
+        - `<h1>` with your full name
+        - `<h2>` with a brief title or descriptor
+- Use `<main>` for primary content:
+        - At least one `<section>` with a `<h3>` and a `<p>` introducing yourself
+        - Optional: Add another section for interests or goals
+- Use `<footer>` for closing info:
+        - `<hr>` for separation
+        - A copyright
 
-Within the `<body>`, add:
+### Part 3: Add Inline Styling and Comments
 
-- **Main Heading:** `<h1>` tag containing your full name
-- **Subheading:** `<h2>` tag with a brief title or descriptor
-- **Introduction Paragraph:** `<p>` tag with 2-3 sentences about yourself
-- **Section Divider:** `<hr>` element for visual separation
-- **Secondary Content:** Additional `<h3>` and `<p>` elements for other information
+- Apply minimal inline styles (e.g., `style="text-align:center;"`)
+- Add HTML comments to explain each section and key elements
 
-### Step 3: Apply Semantic HTML
+## Deliverables
 
-Use semantic elements where appropriate:
-
-- `<header>` for the top section
-- `<main>` for primary content
-- `<section>` to group related content
-- `<footer>` for closing information
-
-### Step 4: Add Basic Styling (Inline)
-
-Apply minimal inline styles for readability:
-
-- Text alignment
-- Font family
-- Padding/margins
-- Background/text colors
-
-### Step 5: Include Helpful Comments
-
-Add HTML comments to:
-
-- Identify different sections
-- Explain purpose of elements
-- Note areas for future expansion
+1. `index.html` file with all required elements
+2. Page displays your name, intro, and organized sections
+3. Inline comments and basic inline styling
 
 ## Evaluation Criteria
 
-1.  **HTML Validity (30%):** Proper DOCTYPE, closing tags, and nesting
-2.  **Semantic Structure (25%):** Appropriate use of HTML5 semantic elements
-3.  **Content Organization (20%):** Logical flow and hierarchy of information
-4.  **Code Readability (15%):** Clear formatting, indentation, and comments
-5.  **Completeness (10%):** All required elements present and functional
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| HTML Validity           | 30%    | Proper structure, closing tags, and nesting      |
+| Semantic Structure      | 25%    | Use of header, main, section, footer             |
+| Content Organization    | 20%    | Logical flow and use of headings                 |
 
-## Submission Format
+## Tips & Common Mistakes
 
-Submit a single HTML file named `index.html` containing:
+- Always close your tags and nest elements properly
+- Use only one `<h1>` per page
+- Prefer semantic elements over generic `<div>`
+- Don’t forget the `lang` attribute in `<html>`
+- Test your file in multiple browsers
 
-- **Complete HTML5 Structure:** All required document elements
-- **Name Display:** Your name in an `<h1>` heading tag
-- **Supporting Content:** At least one paragraph about yourself
-- **Semantic Markup:** Proper use of header, main, section, footer
-- **Comments:** Brief explanations of code sections
-- **Basic Styling:** Minimal inline CSS for readability
+## Bonus Challenges (Optional)
 
-**File Requirements:**
-- Must be valid HTML5
-- Must include your actual name
-- Must display properly in modern browsers
-- File size under 5KB
+1. Add a profile image with appropriate `alt` text
+2. Include a list of your favorite technologies using `<ul>`
 
-### Example Structure:
+## Submission
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daniel's Personal Page</title>
-</head>
-<body>
-        <header>
-                <h1>Daniel Smith</h1>
-                <h2>Computer Science Student & Aspiring Developer</h2>
-        </header>
-        
-        <main>
-                <section>
-                        <h3>About Me</h3>
-                        <p>I'm a second-year computer science student passionate about web development and data science. I enjoy creating practical applications that solve real-world problems.</p>
-                </section>
-                
-                <section>
-                        <h3>Current Focus</h3>
-                        <p>Currently learning HTML, CSS, JavaScript, and Python while working on personal projects that combine my interests in technology and productivity.</p>
-                </section>
-        </main>
-        
-        <footer>
-                <hr>
-                <p>© 2026 Daniel Smith | Student Portfolio Page</p>
-        </footer>
-</body>
-</html>
-```
-
-## Common Mistakes to Avoid
-
-- Missing closing tags or improper nesting
-- Using deprecated tags (like `<font>` or `<center>`)
-- Placing block elements inside inline elements
-- Forgetting the `lang` attribute in `<html>` tag
-- Overusing `<div>` instead of semantic elements
-- Not including character encoding meta tag
-- Using multiple `<h1>` tags on one page
-- Forgetting to close self-closing tags properly (like `<hr>`)
-- Missing `alt` text on images (if included)
-- Not testing in multiple browsers
-
-## Real-World Application
-
-Basic HTML skills form the foundation for:
-
-- Website and web application development
-- Content management system customization
-- Email template creation
-- Technical documentation
-- Digital portfolio development
-- Blog and content publishing
-- E-commerce product pages
-- Online learning content
-- Interactive digital resumes
+Submit your `index.html` file via your course platform or as instructed by your teacher.

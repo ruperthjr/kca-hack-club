@@ -1,45 +1,46 @@
 ---
-title: "Personal Portfolio Website with Bio and Project Goals"
-description: "Design and deploy a responsive, accessible static website that showcases your biography, interests, and semester goals."
+title: "Personal Portfolio Website: Bio & Project Goals"
+description: "Build and deploy a responsive, accessible portfolio website to showcase your biography, skills, and project ambitions."
 difficulty: "beginner"
-unit: "Week 1 Project: Web Design Technology and Internet Applications"
+unit: "Web Design Technology and Internet Applications"
 week: 1
+month: 1
 technologies:
-    - "HTML5"
-    - "CSS3"
-    - "Responsive Design"
-    - "GitHub Pages"
-    - "Web Accessibility"
+  - "HTML5"
+  - "CSS3"
+  - "Responsive Design"
+  - "GitHub Pages"
+  - "Web Accessibility"
 learningOutcomes:
-    - "Use semantic HTML to structure content"
-    - "Style layouts and typography with CSS"
-    - "Build responsive layouts across device sizes"
-    - "Deploy a site using GitHub Pages"
-    - "Apply basic accessibility best practices"
+  - "Structure web content using semantic HTML"
+  - "Style and layout pages with modern CSS"
+  - "Implement responsive design for all devices"
+  - "Deploy static sites using GitHub Pages"
+  - "Apply accessibility best practices"
 estimatedTime: "6-8 hours"
 requirements:
-    - "Basic HTML knowledge (tags, attributes)"
-    - "Familiarity with CSS selectors and properties"
-    - "GitHub account for deployment"
-    - "Text editor (VS Code recommended)"
+  - "Basic HTML and CSS knowledge"
+  - "GitHub account"
+  - "Text editor (e.g., VS Code)"
+  - "Ability to use Git for version control"
+  - "Access to a web browser for testing"
 deliverables:
-    - "Three-page website: index.html, bio.html, projects.html"
-    - "Fully responsive design (mobile, tablet, desktop)"
-    - "Consistent navigation with active state"
-    - "Deployed to GitHub Pages with public URL"
-    - "README with project documentation and screenshots"
+  - "Three-page responsive website: Home, Bio, Projects"
+  - "Consistent navigation with active state"
+  - "Deployed site on GitHub Pages with public URL"
+  - "README with documentation and screenshots"
+  - "Clean, accessible, and well-commented code"
 resources:
-  - name: "MDN Web Docs — HTML Reference"
+  - name: "MDN Web Docs: HTML Reference"
     url: "https://developer.mozilla.org/en-US/docs/Web/HTML"
-  - name: "MDN Web Docs — CSS Reference"
+  - name: "MDN Web Docs: CSS Reference"
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS"
-  - name: "Google Developers — Responsive Web Design"
-    url: "https://developers.google.com/web/fundamentals/design-and-ux/responsive"
+  - name: "Google Web Fundamentals: Responsive Design"
+    url: "https://web.dev/responsive-web-design-basics/"
   - name: "GitHub Pages Documentation"
     url: "https://docs.github.com/en/pages"
-  - name: "W3C WCAG (Accessibility Guidelines)"
+  - name: "W3C Accessibility Guidelines (WCAG)"
     url: "https://www.w3.org/WAI/standards-guidelines/wcag/"
-
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -47,114 +48,76 @@ dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---
 
-# Personal Portfolio Website Project
+# Personal Portfolio Website: Bio & Project Goals
 
 ## Overview
-Create a clean, accessible, and responsive three-page portfolio that introduces your professional identity, background, skills, and semester project goals. Focus on semantic markup, responsive layouts, and a polished, deployable site.
 
-## Objectives
-- Build a three-page static site: Home, Bio, Projects
-- Showcase biography, technical skills, and semester goals
-- Demonstrate responsive design and accessibility
-- Deploy the site using GitHub Pages
+Create a professional, accessible, and responsive three-page portfolio website to introduce yourself, highlight your skills, and outline your project goals. This challenge emphasizes semantic HTML, modern CSS, and deployment best practices.
 
-## Recommended File Structure
-```
-portfolio/
-├── index.html
-├── bio.html
-├── projects.html
-├── css/
-│   ├── variables.css
-│   ├── style.css
-│   └── responsive.css
-├── assets/
-│   ├── images/
-│   └── icons/
-└── README.md
-```
+## Objective
 
-## Project Phases
+Design, build, and deploy a static portfolio site with a Home, Bio, and Projects page, demonstrating responsive layouts and accessibility.
 
-### Phase 1 — Plan & Gather (1–2 hours)
+## Prerequisites
+
+- Basic understanding of HTML and CSS
+- GitHub account and familiarity with Git
+- Text editor (VS Code or similar)
+- Web browser for testing
+
+## Instructions
+
+### Part 1: Plan & Gather Content
+
 - Define content for each page:
-    - Home: headline, tagline, CTA
-    - Bio: education, timeline, skills, interests
-    - Projects: semester goals, tech stack, ideas
-- Collect assets: profile photo/avatar, GitHub/LinkedIn links, screenshots
+  - Home: headline, tagline, call-to-action
+  - Bio: education, skills, interests
+  - Projects: goals, tech stack, ideas
+- Collect assets: profile photo, social links, screenshots
 
-### Phase 2 — HTML Structure (2–3 hours)
-Core requirements:
-- Use semantic elements: header, nav, main, section, article, footer
-- Include a consistent navigation with an active state
-- Add meaningful alt text and meta viewport tag
+### Part 2: Build Semantic HTML Structure
 
-### Phase 3 — CSS Styling (2–3 hours)
-CSS architecture example:
-```css
-/* variables.css */
-:root {
-    --primary: #2563eb;
-    --accent: #7c3aed;
-    --text: #1f2937;
-    --muted: #6b7280;
-    --bg: #ffffff;
-    --surface: #f9fafb;
-    --font-heading: 'Inter', sans-serif;
-    --font-body: 'Inter', sans-serif;
-}
-```
-Key features:
-- Mobile-first responsive styles
-- CSS Grid/Flexbox for layout
-- Custom properties for theme consistency
-- Hover/focus states for interactive elements
-- Proper spacing and visual hierarchy
+- Use semantic elements: `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`
+- Implement consistent navigation with active state
+- Add alt text for images and meta viewport tag
 
-### Phase 4 — Responsive Behavior (1–2 hours)
-Breakpoints:
-- Mobile: 320–639px
-- Tablet: 640–1023px
-- Desktop: 1024px+
+### Part 3: Style & Make Responsive
 
-Adjustments:
-- Hamburger navigation on small screens
-- Stacked columns on mobile
-- Scalable images and touch-friendly controls
+- Organize CSS using variables and modular files
+- Apply mobile-first responsive design with Flexbox/Grid
+- Ensure accessible color contrast and focus states
+- Test layouts on mobile, tablet, and desktop
 
-### Phase 5 — Deploy & Validate (≈1 hour)
-- Create repo (username.github.io)
-- Push code and enable GitHub Pages
-- Validate HTML/CSS, test across browsers and devices
-- Verify links, images, and no console errors
+## Deliverables
+
+1. Three semantic HTML pages: Home, Bio, Projects
+2. Responsive design with external CSS
+3. Working navigation and accessible markup
+4. Deployed site on GitHub Pages (public URL)
+5. README with project overview and screenshots
 
 ## Evaluation Criteria
-- HTML structure & accessibility — 25%
-- CSS quality & responsiveness — 25%
-- Content & design clarity — 20%
-- Functionality (navigation, responsiveness) — 15%
-- Deployment & documentation — 15%
 
-## Common Mistakes to Avoid
-- Non-semantic markup (excessive divs)
-- Inline styles or hard-coded widths
-- Missing viewport/meta tags and alt text
-- Poor color contrast or uncompressed images
-- Broken internal links or missing navigation on pages
+| Criteria                        | Weight | Description                                   |
+|----------------------------------|--------|-----------------------------------------------|
+| Semantic HTML & Accessibility    | 30%    | Proper structure, alt text, keyboard nav      |
+| CSS Quality & Responsiveness     | 30%    | Clean, modular, and adaptive design           |
+| Content & Visual Clarity         | 20%    | Clear, organized, and visually appealing      |
+| Deployment & Documentation       | 20%    | Live site, working links, thorough README     |
 
-## Bonus Challenges
-- Dark/light mode toggle
-- Smooth scroll navigation
-- CSS animations or scroll-triggered reveals
-- Print-friendly styles and social meta tags
-- Contact form (Formspree or static)
+## Tips & Common Mistakes
 
-## Submission Checklist
-- Three semantic HTML pages
-- External CSS files and responsive design
-- Working navigation and no broken links
-- Live site URL (https://username.github.io)
-- README with description, setup, screenshots, and reflection
-- Clean commit history and commented code
+- Start with mobile-first CSS
+- Use semantic tags, not excessive `<div>`s
+- Avoid inline styles and hard-coded widths
+- Check color contrast and alt text
+- Test navigation and links on all pages
 
-Tips: Start mobile-first, test frequently, and prioritize accessibility (alt text, keyboard nav, contrast).
+## Bonus Challenges (Optional)
+
+1. Add a dark/light mode toggle
+2. Implement smooth scroll navigation
+
+## Submission
+
+Submit your GitHub Pages URL and repository link, ensuring all deliverables and documentation are included.

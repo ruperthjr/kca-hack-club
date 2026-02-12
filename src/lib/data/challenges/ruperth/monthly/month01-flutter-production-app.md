@@ -1,8 +1,10 @@
 ---
 title: "Production-Ready Cross-Platform Mobile App (Flutter)"
-description: "Build a production-grade cross-platform mobile app with Riverpod state management, Firebase Authentication, REST API integration, local persistence, and app store deployment."
+description: "Build a production-grade Flutter app with Riverpod state management, Firebase Authentication, REST API integration, local persistence, and app store deployment."
 difficulty: "advanced"
 unit: "Unit 1: Web Technologies & Advanced Systems"
+day: null
+week: null
 month: 1
 technologies:
     - "Flutter"
@@ -10,90 +12,75 @@ technologies:
     - "Riverpod"
     - "Firebase Authentication"
     - "REST API"
-    - "SQLite / Hive"
-    - "Provider Pattern"
+    - "SQLite"
+    - "Hive"
+    - "Dio"
 learningOutcomes:
     - "Build production-grade Flutter applications"
-    - "Master Riverpod state management"
-    - "Implement Firebase authentication"
-    - "Integrate and cache REST APIs"
-    - "Deploy apps to app stores"
-    - "Apply clean architecture principles"
+    - "Apply Riverpod for scalable state management"
+    - "Implement Firebase Authentication securely"
+    - "Integrate, cache, and handle REST APIs robustly"
+    - "Persist and sync local data (SQLite or Hive)"
+    - "Deploy mobile apps to TestFlight or Google Play (beta)"
 estimatedTime: "20–25 hours"
 requirements:
     - "Flutter SDK 3.16+"
-    - "Android Studio / Xcode"
-    - "Firebase account"
-    - "REST API endpoint or mock API"
-    - "Apple Developer account (iOS) or Google Play Console (Android)"
+    - "Android Studio or Xcode"
+    - "Firebase account and project"
+    - "REST API endpoint or mock API (e.g., JSONPlaceholder)"
+    - "Apple Developer or Google Play Console account"
     - "Git and GitHub account"
 deliverables:
-    - "Complete Flutter mobile app with documentation"
-    - "Firebase Authentication integration"
+    - "Complete Flutter app source in a GitHub repository"
+    - "Firebase Authentication integrated and tested"
     - "REST API integration with caching and error handling"
-    - "Local data persistence (SQLite or Hive)"
-    - "Riverpod state management across features"
-    - "App deployed to TestFlight or Google Play Console (beta)"
-    - "Demo video or presentation"
+    - "Local persistence (SQLite or Hive) with CRUD"
+    - "Riverpod-based state management across features"
+    - "Deployment screenshots (TestFlight or Play Console beta)"
+    - "README with setup steps and a demo video link"
 resources:
-    - name: "Flutter Documentation"
-      url: "https://docs.flutter.dev/"
-    - name: "Riverpod Documentation"
-      url: "https://riverpod.dev/"
-    - name: "Firebase for Flutter"
-      url: "https://firebase.google.com/docs/flutter/setup"
-    - name: "Flutter Deployment Guide"
-      url: "https://docs.flutter.dev/deployment"
-    - name: "RESTful API Best Practices"
-      url: "https://restfulapi.net/"
-
+  - name: "Flutter Documentation"
+    url: "https://docs.flutter.dev/"
+  - name: "Riverpod Documentation"
+    url: "https://riverpod.dev/"
+  - name: "Firebase for Flutter"
+    url: "https://firebase.google.com/docs/flutter/setup"
+  - name: "Dio (HTTP client)"
+    url: "https://pub.dev/packages/dio"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
-dateAdded: "2026-02-09"
-unlockDate: "2026-02-09"
+dateAdded: "2026-02-12"
+unlockDate: "2026-02-12"
 ---
 
 # Production-Ready Cross-Platform Mobile App (Flutter)
 
-## Project Overview
+## Overview
 
-Build a production-ready Flutter app that demonstrates modern state management (Riverpod), secure authentication with Firebase, robust REST API integration, local persistence, offline support, and deployment to app stores (TestFlight or Google Play). Emphasize testability, clean architecture, and a polished user experience.
+Build a polished, production-ready Flutter app demonstrating Riverpod state management, Firebase Authentication, REST API integration with caching, local persistence (SQLite or Hive), offline support, test coverage, and deployment to TestFlight or Google Play.
 
-## App Ideas (Pick one)
+## Objective
 
-- Personal Finance Tracker — transactions, budgets, analytics, receipt scanning (optional).
-- Recipe Discovery — search, save, meal planning, shopping list.
-- News Reader — personalized feed, bookmarks, offline reading, notifications.
-- Weather Forecast — location-based forecasts, alerts, maps.
-- Habit Tracker — streaks, reminders, calendar analytics.
+Deliver a cross-platform Flutter application that is production-capable: secure auth, resilient API integration, local caching and sync, clear architecture, tests, and a deployed beta build.
 
-## System Architecture
+## Prerequisites
 
-UI (Presentation) ← Riverpod (State) ← Repositories (Data) → Firebase Auth, REST API, Local Storage (SQLite/Hive)
+- Flutter (3.16+) and basic Dart knowledge
+- Familiarity with REST APIs and JSON
+- Basic Git and GitHub workflow
+- Firebase project access (Authentication enabled)
+- Android Studio or Xcode for builds
 
-Visual:
-```
-┌─────────────────────────────────────────────┐
-│               Flutter Mobile App            │
-│ ┌──────────┐ ┌────────────┐ ┌─────────────┐ │
-│ │  UI/UX   │ │  Riverpod  │ │ Repositories│ │
-│ └──────────┘ └────────────┘ └─────────────┘ │
-│        │              │            │         │
-│        ▼              ▼            ▼         │
-│  Firebase Auth   REST API Client   Local DB  │
-└─────────────────────────────────────────────┘
-```
+## Instructions
 
-## Core Requirements
+### Part 1: Project setup & Authentication
+1. Create a new Flutter project and initialize Git.
+2. Add dependencies: riverpod, flutter_riverpod, firebase_auth, firebase_core, dio, hive or sqflite, and flutter_secure_storage (for tokens).
+3. Initialize Firebase (web/Android/iOS) and enable Email/Password (optional: Google Sign-In).
+4. Implement AuthRepository and expose with Riverpod provider.
 
-### Authentication (Firebase)
-- Email/password sign-in, password reset, email verification.
-- Optional Google Sign-In.
-- Persistent session and logout.
-- User profile management.
-
-Example provider:
+Example:
 ```dart
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
     return AuthRepository(FirebaseAuth.instance);
@@ -102,150 +89,58 @@ final authStateProvider = StreamProvider<User?>(
     (ref) => ref.watch(authRepositoryProvider).authStateChanges,
 );
 ```
+5. Build sign-up, sign-in, password reset, email verification, persistent session, and sign-out flows. Add profile editing.
 
-### REST API Integration
-- Support GET/POST/PUT/PATCH/DELETE with error handling and retries.
-- Use Dio or http, add interceptors for logging and auth tokens.
-- Implement response parsing, caching, and timeouts.
-
-Example client:
+### Part 2: API integration, caching & local persistence
+1. Create an ApiClient using Dio with interceptors for logging and auth token injection.
 ```dart
-final dio = Dio(BaseOptions(baseUrl: 'https://api.example.com'));
-dio.interceptors.add(LogInterceptor(responseBody: true));
+final dio = Dio(BaseOptions(baseUrl: 'https://api.example.com'))
+    ..interceptors.add(LogInterceptor(responseBody: true));
 ```
+2. Implement repository layer for remote data with retry, timeout, and typed parsing.
+3. Add caching: store responses in Hive or SQLite with timestamp and staleness policy.
+4. Implement local persistence service (Hive box or sqflite tables) for user data and cached responses.
+5. Provide sync strategy: read cache first, refresh in background, and surface loading/error UIs.
 
-### State Management (Riverpod)
-- Use StateProvider, StateNotifierProvider, FutureProvider, StreamProvider, and Provider.
-- Keep immutable states, single source of truth, explicit loading/error states.
+### Part 3: State management, UI, testing & deployment
+1. Use Riverpod (StateNotifierProvider / FutureProvider / StreamProvider) for feature state; keep states immutable and explicit (idle/loading/success/error).
+2. Build responsive UI: auth screens, list/detail screens, create/edit flows, loading/empty/error states, and dark theme.
+3. Add navigation (Navigator 2.0 optional), deep links if needed, and smooth animations.
+4. Write unit tests for repositories and models, widget tests for core UI flows, and integration tests for critical paths.
+5. Prepare release builds:
+     - Android: create keystore, configure signing, build AAB.
+     - iOS: set up provisioning, archive with Xcode, upload to TestFlight.
+6. Document setup and CI (optional GitHub Actions for tests and build).
 
-### Local Persistence
-Choose one: SQLite (sqflite) for relational data or Hive for lightweight key-value storage.
-- Persist user preferences, cache API responses, enable offline access and sync.
-- Provide CRUD operations and migration strategy.
+## Deliverables
 
-### UI/UX
-- Responsive layouts, reusable widgets, loading & empty states, error UIs.
-- Navigation with animations, bottom nav or drawer, deep linking optional.
-- Dark mode support recommended.
-
-## Project Structure (recommended)
-```
-lib/
-├─ main.dart
-├─ config/
-├─ core/
-│  ├─ network/
-│  ├─ storage/
-│  └─ utils/
-├─ features/
-│  ├─ auth/
-│  ├─ home/
-│  └─ [feature]/
-├─ shared/
-└─ widgets/
-```
-
-## Implementation Snippets
-
-Auth repository example:
-```dart
-class AuthRepository {
-    final FirebaseAuth _auth;
-    AuthRepository(this._auth);
-
-    Stream<User?> get authStateChanges => _auth.authStateChanges();
-
-    Future<UserCredential> signInWithEmailAndPassword({
-        required String email,
-        required String password,
-    }) async {
-        try {
-            return await _auth.signInWithEmailAndPassword(email: email, password: password);
-        } on FirebaseAuthException catch (e) {
-            throw _handleAuthException(e);
-        }
-    }
-
-    Future<void> signOut() => _auth.signOut();
-
-    String _handleAuthException(FirebaseAuthException e) {
-        switch (e.code) {
-            case 'user-not-found': return 'No user found with this email.';
-            case 'wrong-password': return 'Wrong password provided.';
-            case 'email-already-in-use': return 'An account exists for this email.';
-            default: return 'An error occurred. Please try again.';
-        }
-    }
-}
-```
-
-API client example (Dio):
-```dart
-class ApiClient {
-    final Dio _dio;
-    ApiClient() : _dio = Dio(BaseOptions(baseUrl: 'https://api.example.com')) {
-        _dio.interceptors.add(LogInterceptor(responseBody: true));
-    }
-}
-```
-
-Hive local storage example:
-```dart
-await Hive.initFlutter();
-Hive.registerAdapter(RecipeAdapter());
-await Hive.openBox<Recipe>('recipes');
-
-class LocalStorageService {
-    final Box<Recipe> _box = Hive.box<Recipe>('recipes');
-    Future<void> saveRecipe(Recipe recipe) => _box.put(recipe.id, recipe);
-    Recipe? getRecipe(String id) => _box.get(id);
-    List<Recipe> getAllRecipes() => _box.values.toList();
-    Future<void> deleteRecipe(String id) => _box.delete(id);
-}
-```
-
-UI examples: Login screen, list screens with FutureProvider usage, retry buttons and loading indicators.
-
-## Testing
-- Unit tests for models and repositories.
-- Widget tests for UI flows (validation, navigation).
-- Aim for maintainable tests and ~60%+ coverage for core logic.
-
-## Deployment
-
-Android (Play Console):
-- flutter build appbundle --release
-- Create keystore, configure signing, upload AAB.
-
-iOS (TestFlight):
-- flutter build ios --release
-- Archive and upload via Xcode, configure TestFlight testing.
-
-## Performance Targets
-- Launch time &lt; 3s
-- API responses handled with loading states (&lt; 5s)
-- Smooth animations (60 FPS)
-- Reasonable memory and binary size targets
+1. GitHub repository with source code and commit history.
+2. README with setup, environment variables, and run/build steps.
+3. Screenshots and a demo video; TestFlight or Play Console beta screenshot.
+4. Tests and coverage report (core logic >= ~60%).
+5. Short migration/maintenance notes and architecture overview.
 
 ## Evaluation Criteria
-- Architecture & code quality
-- Effective Riverpod usage
-- Authentication correctness
-- Robust API integration and offline support
-- UI/UX quality
-- Successful deployment & documentation
 
-## Deliverables Checklist
-- Firebase Auth working
-- REST API integration with caching
-- Local storage working
-- Riverpod across features
-- Responsive UI with error/loading states
-- App deployed to TestFlight or Play Console
-- Unit & widget tests
-- README with setup steps
-- Demo video and GitHub repo link
+| Criteria | Weight | Description |
+|---------|--------|-------------|
+| Architecture & code quality | 35% | Clean folder structure, SOLID-like separation, testable code |
+| Functionality & reliability | 35% | Auth correctness, API error handling, caching, offline support |
+| Deployment, docs & tests | 30% | Working beta deployment, README, unit/widget tests |
 
-Submit a GitHub repo with source code, deployment screenshots, README, test links, and demo video.
+## Tips & Common Mistakes
 
-Good luck — build something you’d want to use!
+- Use single source of truth for state and avoid duplicated state sources.
+- Handle token expiration and network errors gracefully (retries, backoff).
+- Don’t block UI on network: show cached data and refresh in background.
+- Migrate Hive/sqflite schemas with versioning to avoid data loss.
+- Keep secrets out of the repo; use secure storage and CI secrets.
+
+## Bonus Challenges (Optional)
+
+1. Add background sync and conflict resolution for offline edits.
+2. Integrate push notifications and feature-flag driven releases.
+
+## Submission
+
+Push your completed project to a public GitHub repo and submit the repo link, README, deployment screenshots, and a short demo video URL to the challenge submission portal.

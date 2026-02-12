@@ -1,9 +1,11 @@
 ---
 title: "Fintech Landing: Responsive Marketing Site"
-description: "Design, build, and deploy a production-ready marketing site for a fintech startup with modern UI, smooth animations, and conversion-focused UX."
+description: "Design, build, and deploy a production-ready, conversion-focused marketing site for a fintech product with accessible, performant UI and smooth interactions."
 difficulty: "advanced"
 unit: "Week 1 Challenge"
+day: null
 week: 1
+month: 1
 technologies:
   - "HTML5"
   - "CSS3"
@@ -37,59 +39,36 @@ resources:
     url: "https://web.dev/responsive-web-design-basics/"
   - name: "Deploying to GitHub Pages"
     url: "https://docs.github.com/en/pages"
-
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
-dateAdded: "2026-02-09"
-unlockDate: "2026-02-09"
+dateAdded: "2026-02-12"
+unlockDate: "2026-02-12"
 ---
 
 # Fintech Marketing Site Challenge
 
 ## Overview
-Build a polished, conversion-focused landing site for a fictional fintech product (payment processor, investing app, budgeting tool, or crypto exchange). Emphasize performance, accessibility, and measurable conversion points (CTAs, lead capture).
+Build a polished, accessible, and high-performance landing site for a fictional fintech product (payments, investing, budgeting, or crypto). Focus on clear conversion paths, responsive layout, and smooth micro‑interactions that improve trust and usability.
 
 ## Objective
-Design and deploy a multi-section marketing site that includes: hero, features, how-it-works, pricing, testimonials, and a final CTA/lead capture form. The site must be responsive, accessible, and production-ready.
+Create and deploy a multi-section marketing site (hero, features, how‑it‑works, pricing, testimonials, CTA) that is responsive, accessible, animated where appropriate, and optimized for production.
 
-## Quick Start / Project Structure
-Suggested layout:
-```
-fintech-landing/
-├── index.html
-├── css/
-├── js/
-├── assets/
-└── README.md
-```
+## Prerequisites
+- HTML & semantic markup
+- CSS layout (Grid, Flexbox), responsive techniques
+- JavaScript for DOM manipulation and small UI logic
+- Git and GitHub for version control and deployment
 
-## Core Sections & Requirements
+## Instructions
 
-- Hero
-  - H1, subheadline, primary/secondary CTAs, hero media, trust indicators
-  - Full viewport height, fade-in on load, responsive typography
+### Part 1: Structure & Markup
+- Build distinct, semantic sections: header/nav, hero, features, how‑it‑works, pricing, testimonials, CTA, footer.
+- Ensure headings follow a clear hierarchy and all interactive elements are keyboard accessible.
+- Include alt text for images and aria labels where necessary.
+- Add trust indicators (logos, security notes, stats) near primary CTAs.
 
-- Features Grid
-  - 6–9 feature cards with icons, descriptions
-  - Grid: 3 → 2 → 1 columns, subtle hover lift, staggered on scroll
-
-- How It Works
-  - 3–5 steps (horizontal timeline desktop, vertical mobile)
-  - Animated progression line, scroll-triggered reveals
-
-- Pricing
-  - 3 tiers (Starter / Growth / Enterprise) with monthly/annual toggle
-  - Featured tier styling, responsive layout, savings display
-
-- Testimonials
-  - 3–6 testimonials (photo, name, role, quote), slider or grid
-
-- CTA / Contact Form
-  - Strong headline, email/demo form, success state, validation
-
-## Interactivity (must-haves)
-- Smooth scroll for internal nav (example)
+Example: smooth internal navigation
 ```javascript
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
@@ -98,47 +77,53 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 ```
-- Intersection Observer for reveal animations and count-ups
-- Pricing toggle that updates prices and shows savings
-- Client-side form validation with real-time feedback
 
-## Styling & Accessibility
-- Use CSS variables for theming and clamp() for fluid type:
+### Part 2: Styling & Responsiveness
+- Use CSS variables for theming and clamp() for fluid typography.
+- Create a responsive features grid (3 → 2 → 1 columns) and a pricing layout that stacks on small screens.
+- Implement accessible components: focus states, visible labels, sufficient color contrast.
+- Add subtle, performant animations (transforms, opacity) and avoid layout-thrashing transitions.
+
+Example CSS variables
 ```css
 :root{
   --primary:#6366f1; --accent:#ec4899; --bg:#fff;
   --font-heading:'Inter',sans-serif; --transition:0.3s;
 }
 ```
-- Semantic HTML, keyboard accessible controls, alt text for images, sufficient color contrast
 
-## Performance & Deployment
-- Optimize images (WebP), lazy-load below the fold, minimize CSS/JS, use caching headers
-- Target: Lighthouse Performance &gt; 90, FCP &lt; 1.5s
-- Deploy to GitHub Pages or Netlify; include live demo URL in the README
+### Part 3: Interactivity, Performance & Deployment
+- Use IntersectionObserver for reveal animations and any count-up effects.
+- Implement a pricing toggle (monthly ↔ annual) that updates UI and shows savings.
+- Validate the contact/demo form on the client with real-time feedback and a clear success state.
+- Optimize images (WebP), lazy-load offscreen assets, and minify CSS/JS.
+- Deploy to GitHub Pages (or Netlify) and include the live URL in the repo README.
+
+## Deliverables
+1. Live site URL (deployed) — accessible and responsive.
+2. GitHub repository with source, README (setup, tech, screenshots, live link).
+3. Short notes on design choices, accessibility decisions, and performance metrics.
 
 ## Evaluation Criteria
-- Design quality and visual hierarchy
-- Responsiveness and touch-friendly interactions
-- Interactive features and smooth animations
-- Code quality: semantic HTML, reusable CSS, well-structured JS
-- Performance and conversion optimization
+
+| Criteria | Weight | Description |
+|---------|--------|-------------|
+| Design & Responsiveness | 30% | Visual hierarchy, layout across breakpoints, mobile usability |
+| Interactivity & Accessibility | 30% | Smooth animations, form UX, keyboard/ARIA support |
+| Code Quality & Performance | 40% | Semantic HTML, maintainable CSS/JS, Lighthouse metrics and optimizations |
+
+## Tips & Common Mistakes
+- Use transforms and opacity for animations (avoid animating width/height).
+- Test keyboard navigation and screen-reader labels early.
+- Don’t ship large images — compress and lazy-load.
+- Keep pricing toggle logic simple and test edge cases (currency/format).
+- Commit incrementally with descriptive messages.
+
+## Bonus Challenges (Optional)
+1. Add an A/B hero variant and document which performs better (brief hypothesis + results).
+2. Implement an accessible, keyboard-friendly testimonial carousel with reduced-motion support.
 
 ## Submission
-- Live site URL
-- GitHub repo URL with README (project overview, tech stack, setup, screenshots)
-- Optional: short notes on design choices and performance metrics
-
-## Checklist
-- [ ] Hero with CTAs and trust indicators
-- [ ] Responsive features grid
-- [ ] How It Works timeline with animations
-- [ ] Pricing table with monthly/annual toggle
-- [ ] Testimonials section
-- [ ] Contact/demo form with validation
-- [ ] Smooth scroll nav and scroll-triggered animations
-- [ ] Accessible markup and mobile-first design
-- [ ] Optimized assets and deployed site
-- [ ] README with live demo and screenshots
-
-Good luck — build something that looks great, performs well, and converts.
+- Push code to a public GitHub repo and include a README with live demo link and screenshots.
+- Share the live URL and repo URL where requested (project board or assignment platform).  
+- Optional: include short performance metrics (Lighthouse scores) and design notes.

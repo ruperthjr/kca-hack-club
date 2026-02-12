@@ -1,28 +1,36 @@
 ---
 title: "Professional Email Composition"
-description: "Draft a professional email to a professor requesting an appointment using proper academic communication etiquette"
+description: "Learn to draft a professional email to a professor, mastering academic communication etiquette and effective request formulation."
 difficulty: "beginner"
 unit: "Unit 5: Communication Skills"
 day: 2
+week: 1
+month: 1
 technologies:
-    - "Professional Communication"
-    - "Email Etiquette"
-    - "Academic Writing"
+  - "Email Communication"
+  - "Academic Writing"
+  - "Professional Etiquette"
+  - "Time Management"
+  - "Digital Literacy"
 learningOutcomes:
-    - "Structure professional emails appropriately"
-    - "Apply academic tone and formality"
-    - "Clearly state requests and context"
-    - "Include necessary details for scheduling"
+  - "Compose structured, professional emails"
+  - "Apply formal academic tone"
+  - "Clearly articulate requests and context"
+  - "Suggest and negotiate meeting logistics"
+  - "Demonstrate attention to detail in written communication"
 estimatedTime: "15-20 minutes"
 requirements:
-    - "Textbook: Business Communication: Process and Product, 9th Edition"
-    - "Understanding of academic hierarchy"
-    - "Access to email formatting guidelines"
+  - "Basic understanding of academic hierarchy"
+  - "Access to email client or platform"
+  - "Familiarity with course/project requirements"
+  - "Ability to identify appropriate meeting times"
+  - "Review of email etiquette guidelines"
 deliverables:
-    - "Properly formatted email to professor"
-    - "Clear subject line"
-    - "Appropriate salutation and closing"
-    - "Specific meeting request with context"
+  - "Well-formatted email draft to professor"
+  - "Clear, informative subject line"
+  - "Professional salutation and closing"
+  - "Concise, complete meeting request"
+  - "Contact information included"
 resources:
   - name: "Academic Email Etiquette Guide"
     url: "https://www.insidehighered.com/advice/2016/05/10/how-write-effective-email-your-professor-essay"
@@ -32,9 +40,8 @@ resources:
     url: "https://owl.purdue.edu/owl/subject_specific_writing/professional_technical_writing/basic_business_letters/index.html"
   - name: "Time Management for Meetings"
     url: "https://hbr.org/2015/01/a-checklist-for-more-productive-meetings"
-  - name: "Networking Communication Skills"
+  - name: "Effective Email Communication Skills"
     url: "https://www.mindtools.com/CommSkll/EmailCommunication.htm"
-
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -42,158 +49,88 @@ dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---
 
-# Professional Email Composition Challenge
+# Professional Email Composition
 
 ## Overview
 
-This challenge focuses on crafting a professional email to request a meeting with a professor. You'll practice academic communication etiquette, clear request formulation, and proper email structure.
+This challenge develops your ability to communicate professionally with academic staff by composing a clear, respectful, and well-structured email to request a meeting with your professor. Mastering this skill is essential for academic success and future workplace communication.
 
 ## Objective
 
-Draft a complete, professional email to Professor Johnson requesting a 20-minute appointment to discuss your course project, including all necessary details and demonstrating proper academic tone.
+Draft a complete, professional email to your professor requesting a 20-minute appointment to discuss your course project, demonstrating proper academic etiquette and including all necessary details.
+
+## Prerequisites
+
+- Familiarity with your course and project requirements
+- Understanding of academic titles and hierarchy
+- Access to an email client or platform
+- Review of email etiquette resources
 
 ## Instructions
 
-### Step 1: Subject Line Creation
+### Part 1: Craft a Specific Subject Line
 
-Create a subject line that is:
-- Specific and informative
-- Includes your course name/number
-- Indicates the purpose briefly
-- Easy to prioritize/filter
+- Include your course name/number and meeting purpose
+- Make it easy to prioritize and filter
 
-**Avoid:** Vague subjects like "Meeting" or "Question"
-**Preferred:** "COMP 101: Meeting Request re: Final Project - Daniel Smith"
+### Part 2: Write a Formal Salutation and Opening
 
-### Step 2: Salutation and Opening
+- Use the correct title and last name (e.g., "Dear Professor Johnson,")
+- Optionally include a brief, professional pleasantry
 
-Begin with appropriate formal address:
-- Use proper title (Professor, Dr.)
-- Include last name
-- Reference the course if applicable
-- Brief pleasantry (optional but professional)
+### Part 3: Provide Context and State Your Request
 
-**Example:** "Dear Professor Johnson," followed by "I hope this email finds you well."
+- Introduce yourself and your course section
+- Clearly explain the reason for the meeting and its importance
+- Mention your project/topic and any specific questions
 
-### Step 3: Context and Purpose
+### Part 4: Suggest Meeting Logistics
 
-Clearly state:
-- Your identity and course enrollment
-- The specific reason for meeting
-- Why this discussion is necessary
-- What you hope to achieve
+- Propose 2-3 specific time windows for a 15-30 minute meeting
+- Indicate your preferred meeting format (in-person, virtual, hybrid)
+- Suggest a location if relevant
 
-**Include:**
-- Course name and section
-- Project/topic needing discussion
-- Brief background (2-3 sentences max)
-- Your specific questions or areas needing clarification
+### Part 5: Mention Preparation and Attachments
 
-### Step 4: Meeting Logistics
+- State what materials you will bring or have attached
+- Indicate your readiness to adjust based on the professor’s preference
 
-Provide:
-- Requested meeting duration (15-30 minutes typical)
-- Your availability (offer 2-3 specific time windows)
-- Preferred format (in-person, virtual, hybrid)
-- Location suggestion if in-person
+### Part 6: Close Professionally
 
-**Important:** Make it easy for the professor to respond by providing clear options.
+- Express appreciation for their time
+- Confirm next steps
+- Use a professional sign-off and include your contact information
 
-### Step 5: Preparation and Attachments
+## Deliverables
 
-Mention:
-- Any materials you'll bring/prepare
-- Attachments included with email
-- What the professor might want to review
-- Your readiness to adjust based on their preference
-
-### Step 6: Professional Closing
-
-Include:
-- Appreciation for their time
-- Confirmation of next steps
-- Professional sign-off
-- Complete contact information
-
-**Example:** "Thank you for considering my request. I look forward to your response."
+1. Complete, properly formatted email draft
+2. Clear subject line and professional structure
+3. Contact information and any referenced attachments
 
 ## Evaluation Criteria
 
-Your submission will be assessed on:
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Professional Tone       | 25%    | Formality, respect, and academic appropriateness |
+| Clarity of Request      | 20%    | Specific, unambiguous meeting purpose/logistics  |
+| Completeness            | 20%    | All necessary information included               |
+| Conciseness             | 15%    | Efficient, focused communication                 |
+| Formatting              | 10%    | Proper structure and organization                |
+| Grammar/Spelling        | 10%    | Error-free, academic language                    |
 
-1.  **Professional Tone (25%):** Appropriate formality and respect for academic hierarchy
-2.  **Clarity of Request (20%):** Specific, unambiguous meeting purpose and logistics
-3.  **Completeness (20%):** All necessary information included without redundancy
-4.  **Conciseness (15%):** Efficient communication without unnecessary details
-5.  **Formatting (10%):** Proper email structure, spacing, and visual organization
-6.  **Grammar/Spelling (10%):** Error-free writing with proper academic language
+## Tips & Common Mistakes
 
-## Common Mistakes to Avoid
+- Use formal language; avoid slang or abbreviations
+- Clearly identify yourself and your course
+- Offer reasonable, specific meeting times
+- Proofread for errors before sending
+- Don’t forget your contact information
 
-- Using casual language or abbreviations (u, thx, etc.)
-- Failing to identify yourself and your course clearly
-- Making demands instead of requests
-- Providing unavailable or unreasonable time options
-- Writing overly long emails without clear structure
-- Forgetting to include contact information
-- Sending during unreasonable hours (late night/weekends)
-- Not proofreading for typos and errors
-- Missing subject line or using inappropriate one
-- Assuming immediate response without allowing reasonable time
+## Bonus Challenges (Optional)
 
-## Real-World Application
+1. Draft a follow-up email if you do not receive a response within 3 days
+2. Adapt your email for a different academic or professional context
 
-Professional email skills are essential for:
-- Academic correspondence with faculty and administrators
-- Business communication with colleagues and supervisors
-- Client and stakeholder communication
-- Job application follow-ups
-- Networking and professional relationship building
-- Remote work communication
-- Formal request submissions in organizational settings
+## Submission
 
-## Submission Format
-
-Submit a complete email draft with the following sections clearly labeled:
-- **Subject Line:** [Your proposed subject]
-- **Salutation:** [Formal greeting]
-- **Body Content:** [3-4 concise paragraphs]
-    - Introduction and context
-    - Meeting purpose and value
-    - Logistics and options
-    - Preparation and next steps
-- **Closing:** [Professional sign-off]
-- **Signature:** [Your name, student ID, course, contact info]
-
-**Format:** Plain text, PDF, or properly formatted email file
-**Length:** 150-250 words maximum
-**Context:** Assume you're in COMP 101 (Introduction to Programming) and need to discuss your final project proposal
-
-## Sample Structure Framework
-
-```text
-Subject: COMP 101: Appointment Request - Final Project Discussion
-
-Dear Professor Johnson,
-
-I hope this email finds you well. My name is Daniel Smith, and I'm a student in your COMP 101 Tuesday/Thursday 10 AM section.
-
-I'm writing to request a brief meeting to discuss my final project proposal for the course. I've chosen to develop a personal habit tracker application and would appreciate your feedback on my technical approach before I begin implementation.
-
-Would you have 20 minutes available next week for a meeting? I'm available:
-- Tuesday between 2-4 PM
-- Wednesday between 10 AM-12 PM
-- Thursday between 1-3 PM
-
-I'm happy to meet in your office or via Zoom, whichever is more convenient. I've attached my initial project outline for your review.
-
-Thank you for your time and consideration. I look forward to your response.
-
-Best regards,
-
-Daniel Smith
-Student ID: S123456
-COMP 101 - T/Th 10 AM
-Email: dsmith@student.university.edu
-Phone: (555) 123-4567
-```
+Submit your email draft as plain text, PDF, or a formatted email file. Ensure all sections are clearly labeled and the content is between 150-250 words.
