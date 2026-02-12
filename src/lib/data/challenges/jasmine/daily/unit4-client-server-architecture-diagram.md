@@ -2,7 +2,7 @@
 title: "Client-Server Architecture Diagram"
 description: "Design and explain a clear diagram of the client-server architecture for a web application, labeling all core components and illustrating the flow of requests and responses."
 difficulty: "beginner"
-unit: "4"
+unit: "Unit 4: Electronic Business Systems"
 day: 6
 week: 1
 month: 1

@@ -2,7 +2,7 @@
 title: "Annotated Bibliography for Research Methodology in Computing"
 description: "Create a high-quality annotated bibliography entry for a research methodology book, focusing on its application to computing research."
 difficulty: "beginner/intermediate"
-unit: "1"
+unit: "Unit 1: Computing Research Skills and Design"
 day: 4
 week: 1
 month: 1

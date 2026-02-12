@@ -2,7 +2,7 @@
 title: "File Upload Button: Alternative UI Designs"
 description: "Design and annotate two distinct file upload button alternatives, focusing on usability, accessibility, and user feedback. Compare their strengths and weaknesses using HCI principles."
 difficulty: "beginner/intermediate"
-unit: "7"
+unit: "Unit 7: Human-Computer Interaction"
 day: 6
 week: 1
 month: 1

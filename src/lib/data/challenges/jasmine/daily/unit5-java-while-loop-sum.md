@@ -2,7 +2,7 @@
 title: "Summation with Sentinel While Loop"
 description: "Create a Java program that reads integers from the user, sums them, and stops when the sentinel value -1 is entered. The program then displays the total sum, excluding the sentinel."
 difficulty: "beginner"
-unit: "5"
+unit: "Unit 5: Object Oriented Programming with Java"
 day: 6
 week: 1
 month: 1

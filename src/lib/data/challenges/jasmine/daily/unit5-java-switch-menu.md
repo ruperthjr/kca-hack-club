@@ -2,7 +2,7 @@
 title: "Java Console Menu with Switch Statement"
 description: "Build a robust console-based menu system in Java using switch statements and Scanner for user input."
 difficulty: "beginner"
-unit: "5"
+unit: "Unit 5: Object Oriented Programming with Java"
 day: 4
 week: 1
 month: 1

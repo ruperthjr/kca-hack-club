@@ -2,7 +2,7 @@
 title: "Agile vs Waterfall: Methodological Comparison"
 description: "Write a concise report outlining the fundamental differences between Agile and Waterfall software development methodologies, including their principles, processes, and suitable project types."
 difficulty: "beginner"
-unit: "6"
+unit: "Unit 6: Software Engineering Principles"
 day: 5
 week: null
 month: null

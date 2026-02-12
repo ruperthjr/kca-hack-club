@@ -2,7 +2,7 @@
 title: "As-Is Process Mapping: Library Book Borrowing"
 description: "Map and analyze the current workflow for borrowing a book from the KCA University library, identifying actors, steps, and decision points using industry-standard process modeling techniques."
 difficulty: "beginner"
-unit: "8"
+unit: "BUSINESS PROCESS RE-ENGINEERING"
 day: 4
 week: 1
 month: 1

@@ -2,7 +2,7 @@
 title: "Number Printing with For Loop"
 description: "Practice C++ for loops by printing numbers from 1 to 100, reinforcing loop syntax and console output."
 difficulty: "beginner"
-unit: "2"
+unit: "Unit 2: Object Oriented Programming with C++"
 day: 5
 week: 1
 month: 1

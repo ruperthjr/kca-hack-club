@@ -2,7 +2,7 @@
 title: "Customer Interview Mastery: Applying The Mom Test"
 description: "Learn to conduct unbiased customer interviews using The Mom Test framework to uncover real user problems and actionable insights."
 difficulty: "intermediate"
-unit: "3"
+unit: "Unit 3: Entrepreneurship Principles and Practice"
 day: 5
 week: 1
 month: 1
