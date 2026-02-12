@@ -1,39 +1,45 @@
 ---
 title: "Literature Review Matrix"
-description: "Compare and analyze 5 HCI research papers using systematic review methodology"
+description: "Systematically compare and analyze recent HCI research papers using a structured review matrix."
 difficulty: "intermediate"
 unit: "Unit 1: Computing Research Skills and Design"
 day: 1
+week: 1
+month: 1
 technologies:
   - "Academic Research"
-  - "HCI"
-  - "Critical Analysis"
+  - "Human-Computer Interaction"
+  - "Systematic Review"
+  - "Data Analysis"
+  - "Citation Management"
 learningOutcomes:
-  - "Develop systematic literature review skills"
-  - "Compare research methodologies across multiple papers"
-  - "Identify patterns and gaps in HCI research"
-  - "Create structured comparison matrices"
+  - "Conduct a systematic literature review in HCI"
+  - "Critically compare research methodologies and findings"
+  - "Identify research gaps and propose future directions"
+  - "Create and interpret structured comparison matrices"
+  - "Apply proper academic citation practices"
 estimatedTime: "1-2 hours"
 requirements:
   - "Access to academic databases (Google Scholar, IEEE Xplore, ACM Digital Library)"
-  - "Citation management tool (Zotero recommended)"
-  - "Spreadsheet software or markdown editor"
+  - "Spreadsheet or markdown editor"
+  - "Citation management tool (e.g., Zotero, Mendeley)"
+  - "Basic understanding of HCI concepts"
+  - "Ability to read and interpret academic papers"
 deliverables:
   - "Completed literature review matrix comparing 5 HCI papers"
-  - "Summary document highlighting key findings and research gaps"
-  - "Properly formatted citations for all papers"
+  - "500-word analysis document summarizing findings and research gaps"
+  - "Properly formatted bibliography (APA or IEEE style)"
 resources:
-    - name: "How to Conduct a Systematic Literature Review"
-      url: "https://www.scribbr.com/methodology/systematic-review/"
-    - name: "ACM Digital Library - HCI Venue"
-      url: "https://dl.acm.org/conference/chi"
-    - name: "Google Scholar"
-      url: "https://scholar.google.com/"
-    - name: "Zotero | Your personal research assistant"
-      url: "https://www.zotero.org/"
-    - name: "Purdue OWL: APA Style (7th Edition)"
-      url: "https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_style_introduction.html"
-
+  - name: "How to Conduct a Systematic Literature Review"
+    url: "https://www.scribbr.com/methodology/systematic-review/"
+  - name: "ACM Digital Library - HCI Venue"
+    url: "https://dl.acm.org/conference/chi"
+  - name: "Google Scholar"
+    url: "https://scholar.google.com/"
+  - name: "Zotero | Your personal research assistant"
+    url: "https://www.zotero.org/"
+  - name: "Research Methods in Human-Computer Interaction (Lazar et al.)"
+    url: "https://www.wiley.com/en-us/Research+Methods+in+Human+Computer+Interaction%2C+2nd+Edition-p-9780128053904"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -45,113 +51,84 @@ unlockDate: "2026-02-09"
 
 ## Overview
 
-In this challenge, you'll develop systematic literature review skills by comparing 5 research papers in the field of Human-Computer Interaction. You'll create a structured matrix that allows for easy comparison of methodologies, findings, and contributions.
+This challenge guides you through conducting a systematic literature review in Human-Computer Interaction (HCI). You'll select recent research papers, extract key information, and synthesize your findings using a structured comparison matrix—an essential skill for academic research and critical analysis in computing.
 
 ## Objective
 
-Create a comprehensive literature review matrix that compares 5 HCI research papers across multiple dimensions including research questions, methodologies, key findings, and limitations.
+By completing this challenge, you will develop the ability to systematically compare HCI research papers, identify patterns and gaps, and communicate your findings through a structured matrix and analytical summary.
+
+## Prerequisites
+
+- Familiarity with basic HCI concepts
+- Access to academic databases (e.g., Google Scholar, ACM Digital Library)
+- Spreadsheet or markdown editing skills
+- Experience using citation management tools (e.g., Zotero)
 
 ## Instructions
 
-### Step 1: Paper Selection
+### Part 1: Select Relevant Papers
 
-Select 5 HCI research papers from the last 5 years that focus on a specific topic such as:
-- Mobile interface design
-- Accessibility in digital products
-- Voice user interfaces
-- Gesture-based interactions
-- AR/VR user experience
+1. Choose 5 peer-reviewed HCI research papers published between 2019–2024 on a focused topic (e.g., accessibility, mobile interfaces, AR/VR, gesture interaction).
+2. Ensure papers are full-length, from reputable venues (CHI, CSCW, UIST, etc.).
 
-**Criteria for paper selection:**
-- Published in reputable venues (CHI, CSCW, UIST, etc.)
-- Peer-reviewed
-- Full research papers (not short papers or posters)
-- Recent (2019-2024)
+### Part 2: Build the Literature Review Matrix
 
-### Step 2: Create the Matrix
+1. Create a table with these columns:
+   - Paper Title
+   - Authors
+   - Year
+   - Venue
+   - Citation Count
+   - Research Question/Objective
+   - Methodology (Qualitative/Quantitative/Mixed)
+   - Sample Size
+   - Data Collection Methods
+   - Analysis Techniques
+   - Key Findings
+   - Contributions to HCI
+   - Limitations
+   - Future Work Suggestions
+2. Fill in the matrix with details from each paper.
 
-Build a table with the following columns:
+### Part 3: Analyze and Synthesize
 
-**Basic Information:**
-- Paper Title
-- Authors
-- Year
-- Publication Venue
-- Citation Count
+1. Write a 500-word analysis covering:
+   - Common themes and patterns across papers
+   - Methodological trends and their rationale
+   - Research gaps and unanswered questions
+   - Evolution of research in your chosen topic
 
-**Research Design:**
-- Research Question/Objective
-- Methodology (Qualitative/Quantitative/Mixed)
-- Sample Size
-- Data Collection Methods
-- Analysis Techniques
+## Deliverables
 
-**Results:**
-- Key Findings
-- Contributions to HCI
-- Limitations
-- Future Work Suggestions
-
-### Step 3: Analysis
-
-After completing the matrix, write a 500-word analysis covering:
-
-1. **Common Themes:** What patterns emerge across the papers?
-2. **Methodological Approaches:** Which methods are most common? Why?
-3. **Research Gaps:** What questions remain unanswered?
-4. **Evolution:** How has the research evolved over time?
-
-### Step 4: Documentation
-
-Organize your submission with:
-- The completed matrix (Excel, Google Sheets, or Markdown table)
-- Analysis document
-- Properly formatted bibliography using APA or IEEE citation style
-
-## Example Matrix Structure
-
-```markdown
-| Paper | Authors | Year | Venue | Research Question | Method | Sample | Key Finding | Limitation |
-|-------|---------|------|-------|-------------------|--------|--------|-------------|------------|
-| ... | ... | ... | ... | ... | ... | ... | ... | ... |
-```
+1. Completed literature review matrix (Excel, Google Sheets, or Markdown table)
+2. 500-word analysis document summarizing findings and gaps
+3. Properly formatted bibliography (APA or IEEE style)
 
 ## Evaluation Criteria
 
-Your work will be assessed on:
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Paper Selection         | 20%    | Relevance, quality, and recency of chosen papers |
+| Matrix Completeness     | 30%    | All required fields filled with accurate details |
+| Analysis Depth          | 30%    | Insightful synthesis and critical evaluation     |
+| Academic Rigor          | 20%    | Proper citations and scholarly writing           |
 
-1. **Paper Selection** (20%): Relevance and quality of chosen papers
-2. **Matrix Completeness** (30%): All required fields filled with accurate information
-3. **Analysis Depth** (30%): Insightful synthesis of findings
-4. **Academic Rigor** (20%): Proper citations and scholarly writing
+## Tips & Common Mistakes
 
-## Tips for Success
-
-- Start by reading abstracts to ensure papers fit your chosen theme
+- Start with abstracts to filter relevant papers quickly
 - Take detailed notes while reading each paper
-- Look for contradictions or confirmations across studies
-- Consider how each paper builds on or challenges previous work
-- Use your citation manager from the start to avoid scrambling later
+- Avoid including short papers or posters
+- Double-check citation formatting
+- Don’t overlook limitations or future work sections
 
-## Stretch Goals
+## Bonus Challenges (Optional)
 
-If you complete the basic challenge, consider:
-- Expanding to 10 papers for a more comprehensive review
-- Creating a visual concept map showing relationships between papers
-- Writing a mini systematic literature review following PRISMA guidelines
-- Identifying 3 potential research questions for future study
+1. Expand your matrix to 10 papers for a broader review
+2. Create a visual concept map showing relationships between studies
 
 ## Submission
 
-Submit your completed matrix and analysis document to your repository with clear filenames:
+Submit your matrix and analysis document to your repository with clear filenames:
 - `literature-review-matrix.xlsx` (or `.csv`, `.md`)
 - `literature-analysis.pdf` (or `.md`)
 - `references.bib` (if using BibTeX)
-
-## Resources for Deep Dive
-
-- **Systematic Reviews in HCI:** Look up papers on methodology in CHI proceedings
-- **Research Design:** "Research Methods in Human-Computer Interaction" by Lazar et al.
-- **Citation Practices:** APA 7th edition guidelines or IEEE citation guide
-
-Good luck with your literature review!

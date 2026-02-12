@@ -1,40 +1,47 @@
 ---
-title: "Software Developer Productivity Research Question"
-description: "Draft a clear, researchable question and supporting elements for studying software developer productivity"
-difficulty: "beginner"
+title: "Software Developer Productivity Research Challenge"
+description: "Formulate a research question, sub-questions, and supporting materials to design a study on software developer productivity."
+difficulty: "intermediate"
 unit: "Unit 1: Computing Research Skills and Design"
 day: 2
+week: 1
+month: 1
 technologies:
-  - "Research Methods"
-  - "Software Engineering"
+  - "Empirical Software Engineering"
   - "Data Analysis"
+  - "Research Methodology"
+  - "Human-Computer Interaction"
+  - "Project Management"
 learningOutcomes:
-  - "Formulate clear research questions"
-  - "Apply basic research methodology principles"
-  - "Design measurable productivity studies"
-  - "Identify and operationalize software development metrics"
+  - "Develop clear, researchable questions in software engineering"
+  - "Apply empirical research methods to productivity studies"
+  - "Design and operationalize measurable variables"
+  - "Critically evaluate productivity metrics"
+  - "Communicate research design and justification effectively"
 estimatedTime: "45–60 minutes"
 requirements:
-  - "Basic knowledge of software development"
+  - "Basic understanding of software development processes"
   - "Familiarity with research question components"
+  - "Ability to analyze and interpret data"
+  - "Experience with collaborative development tools (e.g., Git, issue trackers)"
+  - "Critical thinking and academic writing skills"
 deliverables:
   - "One main research question"
-  - "Three sub-questions"
-  - "Problem statement (100 words)"
-  - "Research justification paragraph (150 words)"
-  - "List of 3 measurable variables with measurement details"
+  - "Three supporting sub-questions"
+  - "100-word problem statement"
+  - "150-word research justification"
+  - "List of three measurable variables with details"
 resources:
-    - name: "Research Design: Qualitative, Quantitative, and Mixed Methods Approaches"
-      url: "https://www.google.com/search?q=Research+Design+5th+Edition"
-    - name: "The Craft of Research, 4th Edition"
-      url: "https://www.google.com/search?q=The+Craft+of+Research+4th+Edition"
-    - name: "Research Methods in Human-Computer Interaction"
-      url: "https://www.google.com/search?q=Research+Methods+in+HCI+2nd+Edition"
-    - name: "Writing for Computer Science, 3rd Edition"
-      url: "https://www.google.com/search?q=Writing+for+Computer+Science+3rd+Edition"
-    - name: "Research Proposal: A Step-by-Step Guide for Beginners"
-      url: "https://www.google.com/search?q=Research+Proposal+Step+by+Step+Guide"
-
+  - name: "ACM Digital Library: Software Productivity Research"
+    url: "https://dl.acm.org/topic/software-productivity"
+  - name: "IEEE Software: Measuring Developer Productivity"
+    url: "https://ieeexplore.ieee.org/document/9052389"
+  - name: "Google Scholar: Empirical Studies of Software Engineering"
+    url: "https://scholar.google.com/scholar?q=empirical+software+engineering+productivity"
+  - name: "Research Methods in Human-Computer Interaction"
+    url: "https://www.taylorfrancis.com/books/mono/10.4324/9781315749003/research-methods-human-computer-interaction-paul-lazar-jonathan-lazar-jinjuan-heidi-feng-harry-hochheiser"
+  - name: "The Craft of Research, 4th Edition"
+    url: "https://press.uchicago.edu/ucp/books/book/chicago/C/bo23521696.html"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -42,116 +49,81 @@ dateAdded: "2026-02-10"
 unlockDate: "2026-02-10"
 ---
 
-# Software Developer Productivity Research Question
+# Software Developer Productivity Research Challenge
 
 ## Overview
-Measuring software developer productivity is difficult: common metrics can miss meaningful signals, context matters, and measurement choices influence conclusions. This activity guides you to craft a focused, measurable research question and supporting materials for a realistic study.
+
+Measuring software developer productivity is a complex challenge due to the limitations of traditional metrics, the influence of team and project context, and the evolving nature of software work. This challenge guides you through designing a focused, researchable question and supporting materials for a practical productivity study.
 
 ## Objective
-Produce a single, clear research question and supporting elements (problem statement, sub-questions, justification, and measurable variables) that together form a feasible study plan.
+
+By completing this challenge, you will craft a clear research question, sub-questions, a concise problem statement, a research justification, and define measurable variables for a study on software developer productivity.
+
+## Prerequisites
+
+- Basic knowledge of software development practices
+- Familiarity with research question structure
+- Understanding of empirical research methods
+- Experience with collaborative tools (e.g., Git, issue trackers)
+- Academic writing skills
 
 ## Instructions
 
-### Part 1 — Problem Statement (exactly 100 words)
-Write a concise problem statement that:
-- Identifies 2–3 specific measurement problems
-- Explains why existing metrics are insufficient
-- States the need for improved understanding
-- Mentions specific contexts where this matters (e.g., distributed teams, junior developers, enterprise systems)
+### Part 1: Problem Statement
 
-Use this template to guide structure:
-Current software development productivity measurement faces [problem 1], [problem 2], and [problem 3]. This is problematic because [consequence 1] and [consequence 2]. There is a need to [what needs to be understood better], particularly in [specific context]. Understanding [key aspect] could lead to [potential benefit].
+Write a 100-word statement identifying key measurement problems, explaining why existing metrics fall short, stating the need for improved understanding, and specifying relevant contexts (e.g., distributed teams, junior developers).
 
-### Part 2 — Main Research Question
-Craft one main research question that is:
-- Clear, focused, researchable, relevant, and feasible.
-Choose a format: comparative, explanatory, or exploratory. Avoid being too broad or vague.
+### Part 2: Main Research Question
 
-Examples of good formats:
-- Comparative: How does [A] compare with [B] in terms of [outcome] for [population]?
-- Explanatory: What factors influence [phenomenon] in [context]?
-- Exploratory: What are the characteristics of [phenomenon] in [context]?
+Formulate one clear, focused, and researchable question using a comparative, explanatory, or exploratory format relevant to software developer productivity.
 
-### Part 3 — Three Sub-Questions
-Provide three concise sub-questions that support the main question:
-1. One that breaks down the main question into a measurable component.
-2. One that addresses methodology or data collection.
-3. One that addresses application, boundary conditions, or moderation.
+### Part 3: Sub-Questions
 
-### Part 4 — Research Justification (150 words)
-Write a single 150-word paragraph that explains:
-- Practical importance to industry
-- Theoretical contribution to software engineering knowledge
-- Benefits to stakeholders (developers, managers, organizations)
-- How it fills a gap in existing research
-Be specific about impact and feasibility.
+Develop three concise sub-questions:
+1. Break down the main question into a measurable component.
+2. Address methodology or data collection.
+3. Explore application, boundary conditions, or moderation.
 
-### Part 5 — Measurable Variables
-List three variables with clear measurement plans:
+### Part 4: Research Justification
 
-### Independent Variable
-- Variable: [Name]
-- Measurement: [How to manipulate or observe it]
-- Scale: [Nominal / Ordinal / Interval / Ratio]
+Write a 150-word paragraph explaining the practical and theoretical importance, stakeholder benefits, and how your study fills a research gap.
 
-### Dependent Variable
-- Variable: [Name]
-- Measurement: [How to measure outcome]
-- Scale: [Nominal / Ordinal / Interval / Ratio]
+### Part 5: Measurable Variables
 
-### Control Variable
-- Variable: [Name]
-- Control Method: [How to hold constant or account for it]
-- Reason: [Why controlling it matters]
+List three variables with measurement details:
+- Independent Variable: Name, measurement method, and scale.
+- Dependent Variable: Name, measurement method, and scale.
+- Control Variable: Name, control method, and reason for control.
 
-## Formatting Your Response
-Provide your submission using this structure:
+## Deliverables
 
-```markdown
-# Software Developer Productivity Research
+1. Main research question
+2. Three supporting sub-questions
+3. 100-word problem statement
+4. 150-word research justification
+5. List of three measurable variables with details
 
-## Part 1: Problem Statement
-[100-word statement]
+## Evaluation Criteria
 
-## Part 2: Main Research Question
-[One clear, focused question]
+| Criteria                      | Weight | Description                                         |
+|-------------------------------|--------|-----------------------------------------------------|
+| Clarity and focus of questions| 30%    | Research question and sub-questions are precise     |
+| Problem statement & justification | 30% | Meets word count, relevance, and depth              |
+| Variable definition & measurability | 25% | Variables are well-defined and measurable           |
+| Formatting & language         | 15%    | Submission is well-structured and error-free        |
 
-## Part 3: Sub-Questions
-1. ...
-2. ...
-3. ...
+## Tips & Common Mistakes
 
-## Part 4: Research Justification
-[150-word paragraph]
+- Be specific about context and variables
+- Avoid vague or overly broad questions
+- Ensure variables are measurable with available tools
+- Double-check word counts for statements
 
-## Part 5: Measurable Variables
-### Independent Variable
-- Variable:
-- Measurement:
-- Scale:
+## Bonus Challenges (Optional)
 
-### Dependent Variable
-- Variable:
-- Measurement:
-- Scale:
+1. Propose an alternative productivity metric and justify its use
+2. Suggest a data collection plan for a remote development team
 
-### Control Variable
-- Variable:
-- Control Method:
-- Reason:
-```
+## Submission
 
-## Evaluation Checklist
-- Problem statement = 100 words
-- Justification = 150 words
-- Main question is clear and researchable
-- Sub-questions logically support the main question
-- Variables are measurable and correctly classified
-- Submission is well-formatted and free of grammatical errors
-
-## Tips
-- Be as specific as possible about context (language, team type, project size).
-- Prefer variables you can actually measure with accessible tools (e.g., commit data, issue trackers, surveys).
-- Keep scope feasible for a short empirical study.
-
-Good luck — focus on clarity, feasibility, and measurable outcomes.
+Submit your completed markdown document following the structure above via your course platform or designated submission system.

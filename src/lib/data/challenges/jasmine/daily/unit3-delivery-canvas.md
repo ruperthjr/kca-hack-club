@@ -1,40 +1,47 @@
 ---
-title: "Campus Food Delivery Lean Canvas"
-description: "Sketch a Lean Canvas for a campus food delivery service"
-difficulty: "beginner"
+title: "Campus Food Delivery Lean Canvas Challenge"
+description: "Design and validate a Lean Canvas for a campus food delivery startup, focusing on real student needs and business viability."
+difficulty: "intermediate"
 unit: "Unit 3: Entrepreneurship Principles and Practice"
 day: 2
+week: 1
+month: 1
 technologies:
-    - "Business Modeling"
-    - "Lean Startup"
-    - "Canvas Methodology"
+     - "Lean Canvas"
+     - "Business Model Generation"
+     - "Customer Development"
+     - "Startup Validation"
+     - "Market Research"
 learningOutcomes:
-    - "Create Lean Canvas models"
-    - "Identify customer segments"
-    - "Define value propositions"
-    - "Analyze business problems and solutions"
+     - "Develop a complete Lean Canvas tailored to a campus environment"
+     - "Identify and validate customer segments and pain points"
+     - "Formulate actionable value propositions and solution features"
+     - "Design a practical solution validation and MVP testing plan"
+     - "Analyze and present business model logic with supporting evidence"
 estimatedTime: "60-75 minutes"
 requirements:
-    - "Basic understanding of business concepts"
-    - "Familiarity with campus environment"
+     - "Basic understanding of business models and entrepreneurship"
+     - "Familiarity with Lean Canvas methodology"
+     - "Awareness of campus life and student needs"
+     - "Ability to conduct basic market research"
+     - "Critical thinking and clear written communication"
 deliverables:
-    - "Complete Lean Canvas with all 9 blocks"
-    - "Customer persona description"
-    - "Solution validation plan"
-    - "Key metrics identification"
-    - "Revenue model sketch"
+     - "Three campus-specific problems with supporting evidence"
+     - "Two detailed customer segments"
+     - "A fully completed Lean Canvas (all 9 blocks)"
+     - "One comprehensive customer persona"
+     - "A three-phase solution validation plan"
 resources:
-    - name: "The Lean Startup by Eric Ries"
-      url: "https://www.google.com/search?q=The+Lean+Startup"
-    - name: "Business Model Generation by Osterwalder & Pigneur"
-      url: "https://www.google.com/search?q=Business+Model+Generation"
-    - name: "The Startup Owner's Manual by Steve Blank"
-      url: "https://www.google.com/search?q=The+Startup+Owner%27s+Manual"
-    - name: "Running Lean by Ash Maurya"
-      url: "https://www.google.com/search?q=Running+Lean+3rd+Edition"
-    - name: "The Mom Test by Rob Fitzpatrick"
-      url: "https://www.google.com/search?q=The+Mom+Test"
-
+  - name: "Lean Canvas Explained (LeanStack)"
+    url: "https://leanstack.com/leancanvas"
+  - name: "The Lean Startup by Eric Ries"
+    url: "https://www.amazon.com/Lean-Startup-Entrepreneurs-Continuous-Innovation/dp/0307887898"
+  - name: "Business Model Generation by Osterwalder & Pigneur"
+    url: "https://strategyzer.com/books/business-model-generation"
+  - name: "The Mom Test by Rob Fitzpatrick"
+    url: "https://momtestbook.com/"
+  - name: "Campus Food Delivery Trends (NACUFS)"
+    url: "https://www.nacufs.org/resources/research/marketplace-trends/"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -46,241 +53,95 @@ unlockDate: "2026-02-10"
 
 ## Overview
 
-This challenge guides you through creating a Lean Canvas for a campus food delivery service. You'll identify business problems, define customer segments, complete all nine Lean Canvas blocks, build a customer persona, and outline a solution validation plan.
+This challenge immerses you in the process of designing a Lean Canvas for a campus food delivery service. You'll identify real student pain points, define customer segments, map out a business model, and create a validation plan to test your assumptions—building entrepreneurial skills grounded in practical campus needs.
 
 ## Objective
 
-- Complete all nine Lean Canvas sections for a campus food delivery service.
-- Demonstrate understanding of business model components and customer-focused design.
+Complete a campus-specific Lean Canvas, including customer research, persona development, and a stepwise validation plan, demonstrating your ability to connect business model logic with real-world student problems.
+
+## Prerequisites
+
+- Familiarity with Lean Canvas and business model concepts
+- Understanding of campus life and student routines
+- Basic research and interviewing skills
+- Ability to synthesize information into structured formats
 
 ## Instructions
 
-### 1. Problem Identification
+### Part 1: Problem Identification
 
-List the top 3 problems your service solves. For each problem, include:
+List the top 3 problems your campus food delivery service will solve. For each, provide:
+- Evidence (survey, observation, data)
+- Who is affected
+- Frequency and context
 
-- Evidence: What shows this is a real problem?
-- Affected: Who experiences this?
-- Frequency: How often does this occur?
+### Part 2: Customer Segments
 
-**Example Problems:**
-- Long queues at campus dining halls during peak hours
-- Limited food options for students with dietary restrictions
-- Inconvenience of going off-campus for diverse food choices
+Define your primary and secondary customer segments:
+- Demographics (age, year, major, living situation)
+- Behaviors (eating habits, tech use, spending)
+- Pain points and estimated segment size
 
-### 2. Customer Segments
+### Part 3: Complete the Lean Canvas
 
-Define your primary and secondary customer segments. For each segment, specify:
+Fill out all 9 Lean Canvas blocks:
+- Problem
+- Solution
+- Key Metrics
+- Unique Value Proposition
+- Unfair Advantage
+- Channels
+- Customer Segments
+- Cost Structure
+- Revenue Streams
 
-- Demographics: Age, year, major, living situation
-- Behaviors: Eating habits, spending patterns, tech usage
-- Pain Points: Specific frustrations related to food
-- Size: Estimated number on campus
+Use an ASCII/table format for clarity.
 
-### 3. Complete Lean Canvas
+### Part 4: Customer Persona
 
-Fill in all nine sections of the Lean Canvas:
-
-```
-┌─────────────────────────────────────────────────────┐
-│ LEAN CANVAS                                        │
-├────────────────────────────┬────────────────────────┤
-│ Problem                    │ Solution               │
-│ [Top 3 problems]           │ [Top 3 features]       │
-├────────────────────────────┼────────────────────────┤
-│ Key Metrics                │ Unique Value Proposition│
-│ [Success indicators]       │ [Compelling message]   │
-├────────────────────────────┼────────────────────────┤
-│ Unfair Advantage           │ Channels               │
-│ [Hard to copy asset]       │ [Customer reach paths] │
-├────────────────────────────┼────────────────────────┤
-│ Customer Segments          │ Cost Structure         │
-│ [Target customers]         │ [Major costs]          │
-├────────────────────────────┼────────────────────────┤
-│ Revenue Streams            │                        │
-│ [How you make money]       │                        │
-└────────────────────────────┴────────────────────────┘
-```
-
-**Requirements for Each Section:**
-- Problem: Alternatives, workarounds, pain points
-- Solution: MVP features, rollout plan
-- Key Metrics: Acquisition, activation, retention, revenue, referral
-- Unique Value Proposition: Clear, compelling, differentiated
-- Unfair Advantage: Not easily copied (e.g., partnerships, exclusive rights)
-- Channels: Acquisition, activation, retention, campus-specific
-- Customer Segments: Early adopters, mass market, user vs payer
-- Cost Structure: Fixed/variable costs, biggest expenses
-- Revenue Streams: Pricing model, segment revenue, lifetime value
-
-### 4. Customer Persona
-
-Create a detailed persona for your primary segment. Include:
-
+Create a detailed persona for your primary segment, including:
 - Name, age, year/major
-- Background: Living situation, schedule, activities
-- Tech proficiency, device usage
-- Eating habits, food preferences
-- Goals & motivations (academic, social, practical)
-- Pain points (food-related frustrations)
-- Typical day (morning, afternoon, evening, late night)
-- Technology use (devices, apps, payment preferences)
-- Quote expressing food-related frustration or desire
+- Background, tech use, eating habits
+- Goals, motivations, pain points
+- Typical day and a direct quote
 
-### 5. Solution Validation Plan
+### Part 5: Solution Validation Plan
 
-Outline a three-phase validation plan:
-
+Outline a three-phase plan:
 - Week 1-2: Problem Validation (method, target, questions, success metric)
 - Week 3-4: Solution Validation (method, target, test, success metric)
 - Week 5-6: MVP Test (method, scope, measurement, pivot criteria)
 
-## Formatting Your Response
+## Deliverables
 
-```markdown
-# Campus Food Delivery Service - Lean Canvas
-
-## Part 1: Problem Identification
-
-### 1. [Problem 1]
-- Evidence: [Evidence]
-- Affected: [Who]
-- Frequency: [How often]
-
-### 2. [Problem 2]
-- Evidence: [Evidence]
-- Affected: [Who]
-- Frequency: [How often]
-
-### 3. [Problem 3]
-- Evidence: [Evidence]
-- Affected: [Who]
-- Frequency: [How often]
-
-## Part 2: Customer Segments
-
-### Primary Segment
-- Demographics: [Details]
-- Behaviors: [Details]
-- Pain Points: [Details]
-- Size: [Estimate]
-
-### Secondary Segment
-- Demographics: [Details]
-- Behaviors: [Details]
-- Pain Points: [Details]
-- Size: [Estimate]
-
-## Part 3: Complete Lean Canvas
-[Your ASCII or text representation of the Lean Canvas with all 9 sections]
-
-## Part 4: Customer Persona
-
-[Your detailed persona following the specified format]
-
-## Part 5: Solution Validation Plan
-
-### Week 1-2: Problem Validation
-- Method: [Details]
-- Target: [Details]
-- Question: [Details]
-- Success Metric: [Details]
-
-### Week 3-4: Solution Validation
-- Method: [Details]
-- Target: [Details]
-- Test: [Details]
-- Success Metric: [Details]
-
-### Week 5-6: MVP Test
-- Method: [Details]
-- Scope: [Details]
-- Measurement: [Details]
-- Pivot Criteria: [Details]
-```
+1. Three campus-specific problems with evidence
+2. Two detailed customer segments
+3. Completed Lean Canvas (all 9 sections)
+4. One comprehensive customer persona
+5. Three-phase solution validation plan
 
 ## Evaluation Criteria
 
-- Canvas Completeness (40%): All 9 sections completed, detailed, campus-specific, logical connections
-- Customer Focus (25%): Clear problems, segmentation, realistic persona, solution addresses pain points
-- Business Logic (20%): Realistic revenue/costs, key metrics, feasible channels/unfair advantage, logical validation plan
-- Presentation (15%): Clear canvas visualization, organized, professional formatting, no errors
+| Criteria                | Weight | Description                                                      |
+|-------------------------|--------|------------------------------------------------------------------|
+| Canvas Completeness     | 40%    | All 9 sections, campus-specific, logical connections             |
+| Customer Focus          | 25%    | Clear problems, realistic segments/persona, solution fit         |
+| Business Logic          | 20%    | Feasible revenue/costs, metrics, channels, validation plan       |
+| Presentation            | 15%    | Clear canvas/table, organized, professional formatting, no errors|
 
-## Required Deliverables
+## Tips & Common Mistakes
 
-- Three identified problems with evidence
-- Two customer segments with details
-- Complete Lean Canvas with all 9 sections
-- One detailed customer persona
-- Three-phase validation plan
+- Validate problems before proposing solutions
+- Be specific about customer segments and pain points
+- Avoid generic or unrealistic unfair advantages
+- Ensure revenue model matches student willingness to pay
+- Connect each solution directly to a problem
 
-## Common Mistakes to Avoid
+## Bonus Challenges (Optional)
 
-- Vague problems ("students are hungry")
-- Assuming all students are the same
-- Unrealistic unfair advantages
-- Missing campus-specific considerations
-- Revenue model not matching willingness to pay
-- Overcomplicated solutions
-- Not connecting solutions to specific problems
-- Ignoring existing alternatives
+1. Map three competitors and their weaknesses
+2. Draft a 12-month revenue/cost projection
 
-## Example Lean Canvas Section
+## Submission
 
-**Problem:**
-1. 45-minute wait times at dining halls between 12-1 PM  
-     - Evidence: Student surveys showing 78% complain about wait times  
-     - Alternative: Skip meals or eat unhealthy snacks
-
-2. Limited options for vegan/gluten-free students  
-     - Evidence: Only 2 dining halls out of 7 offer special diet options  
-     - Alternative: Cook in dorms or go off-campus
-
-3. No late-night food options after 10 PM  
-     - Evidence: 65% of students study past 10 PM, vending machines only option  
-     - Alternative: Stockpile snacks or order expensive off-campus delivery
-
-**Solution:**
-1. Pre-order system for campus dining hall pickup  
-     - Solves: Wait time problem  
-     - MVP: Basic web app with 3 dining hall partners
-
-2. Dedicated dietary filter and restaurant partnerships  
-     - Solves: Limited options problem  
-     - MVP: 2 specialized restaurant partners
-
-3. Extended hours delivery from campus restaurants  
-     - Solves: Late-night options problem  
-     - MVP: 1 restaurant open until 2 AM
-
-**Unique Value Proposition:**  
-"Skip the line, eat on your time - Campus dining delivered to your dorm, library, or classroom in 20 minutes or less."
-
-## Tips for Success
-
-- Start with Problems: Validate problems exist before building solutions
-- Be Specific: "Students in engineering building between classes" not "students"
-- Think Campus-Scale: Consider campus geography, schedules, policies
-- Research Existing: What food options already exist on/near campus?
-- Consider Logistics: How will food actually get from kitchen to student?
-- Test Assumptions: Which parts of your canvas are assumptions vs. facts?
-- Keep it Simple: MVP should solve one problem well, not all problems poorly
-
-## Bonus Challenges
-
-- Competitor Analysis: Map 3 existing solutions and their weaknesses
-- Financial Projection: 12-month revenue and cost projection
-- Partnership Plan: Which campus entities would you partner with and why?
-- Risk Assessment: Top 5 risks and mitigation strategies
-
-## Submission Checklist
-
-- 3 problems identified with evidence
-- 2 customer segments described
-- All 9 Lean Canvas sections completed
-- Canvas shows logical flow between sections
-- Detailed customer persona created
-- 3-phase validation plan outlined
-- All elements are campus-specific
-- Realistic business assumptions
-- Professional formatting throughout
+Submit your markdown document with all sections completed, using clear formatting and campus-specific details.
