@@ -1,41 +1,47 @@
 ---
-title: "Binary Addition - Computer Arithmetic Fundamentals"
-description: "Add binary numbers 1101 and 1011 with complete step-by-step work and verification"
+title: "Binary Addition: Fundamentals and Verification"
+description: "Master binary addition by adding 1101₂ and 1011₂, verifying results, and exploring hardware relevance."
 difficulty: "beginner"
 unit: "Unit 3: Fundamentals of Computer Systems"
 day: 3
+week: 1
+month: 1
 technologies:
     - "Binary Arithmetic"
-    - "Computer Arithmetic"
-    - "Number Systems"
     - "Digital Logic"
+    - "Number Systems"
+    - "Logic Gates"
+    - "Computer Architecture"
 learningOutcomes:
-    - "Perform binary addition with carries"
-    - "Convert between binary and decimal"
-    - "Explain binary addition rules"
-    - "Verify binary arithmetic results"
+    - "Perform multi-bit binary addition with carries"
+    - "Convert between binary and decimal representations"
+    - "Explain binary addition rules and carry propagation"
+    - "Verify binary arithmetic using multiple methods"
+    - "Relate binary addition to hardware implementations"
 estimatedTime: "45-60 minutes"
 requirements:
-    - "Understanding of binary number system"
-    - "Basic addition skills"
-    - "Pen and paper for working"
+    - "Basic understanding of binary numbers"
+    - "Familiarity with decimal system"
+    - "Ability to follow step-by-step procedures"
+    - "Pen and paper for calculations"
+    - "Interest in computer hardware concepts"
 deliverables:
-    - "Step-by-step binary addition"
-    - "Decimal conversion verification"
-    - "Carry propagation explanation"
-    - "Error checking methods"
+    - "Step-by-step binary addition with carries"
+    - "Decimal verification of results"
+    - "Explanation of addition rules and carry logic"
+    - "Alternative addition method"
+    - "Brief note on hardware implementation"
 resources:
-  - name: "Bryant: Computer Systems: A Programmer's Perspective, 3rd Ed."
-    url: "http://csapp.cs.cmu.edu/"
-  - name: "Petzold: Code: The Hidden Language"
-    url: "https://www.charlespetzold.com/code/"
   - name: "Khan Academy: Binary Addition"
     url: "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/binary-addition"
   - name: "NANDGame: Build a Binary Adder"
     url: "https://nandgame.com/"
   - name: "Binary Calculator Tool"
     url: "https://www.calculator.net/binary-calculator.html"
-
+  - name: "Computer Systems: A Programmer's Perspective"
+    url: "http://csapp.cs.cmu.edu/"
+  - name: "Wikipedia: Binary Addition"
+    url: "https://en.wikipedia.org/wiki/Binary_number#Addition"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -43,152 +49,86 @@ dateAdded: "2026-02-11"
 unlockDate: "2026-02-11"
 ---
 
-# Binary Addition Challenge: 1101 + 1011
+# Binary Addition Challenge: 1101₂ + 1011₂
 
 ## Overview
 
-Binary addition is the fundamental arithmetic operation in digital computers, implemented using logic gates at the hardware level. Understanding binary addition is essential for computer architecture, digital logic design, and low-level programming.
+Binary addition is a core operation in digital computers, forming the basis of arithmetic logic units and digital circuit design. Mastering binary addition deepens your understanding of how computers process numbers at the hardware level and supports skills in programming, electronics, and computer architecture.
 
 ## Objective
 
-Add the binary numbers 1101₂ and 1011₂ using proper binary addition rules with carry propagation. Show complete step-by-step work, verify using decimal conversion, and explain the process.
+Add the binary numbers 1101₂ and 1011₂ using proper binary addition rules, show all steps with carries, verify your result by converting to decimal, and explain the process and its hardware relevance.
+
+## Prerequisites
+
+- Understanding of binary and decimal number systems
+- Basic addition skills
+- Familiarity with positional notation
+- Pen and paper for working out steps
+- Interest in digital logic
 
 ## Instructions
 
-### 1. Binary Addition Rules
+### Part 1: State Binary Addition Rules
 
-- **Basic Rules (without carry-in):**
-    - 0 + 0 = 0
-    - 0 + 1 = 1
-    - 1 + 0 = 1
-    - 1 + 1 = 0, carry 1 (written as 10₂)
+- 0 + 0 = 0
+- 0 + 1 = 1
+- 1 + 0 = 1
+- 1 + 1 = 0, carry 1
+- With carry-in: 1 + 1 + 1 = 1, carry 1
 
-- **Complete Rules (with carry-in):**
-    - 0 + 0 + 0 = 0
-    - 0 + 0 + 1 = 1
-    - 0 + 1 + 0 = 1
-    - 0 + 1 + 1 = 0, carry 1
-    - 1 + 0 + 0 = 1
-    - 1 + 0 + 1 = 0, carry 1
-    - 1 + 1 + 0 = 0, carry 1
-    - 1 + 1 + 1 = 1, carry 1
+### Part 2: Perform Step-by-Step Binary Addition
 
-- **Positional Notation:**
-    - Binary is base-2, so each position represents a power of 2.
-    - Example: 1 1 0 1 (positions: 2³ 2² 2¹ 2⁰; values: 8 4 0 1)
+1. Align the numbers by position:
+        ```
+            1101₂
+        + 1011₂
+        ```
+2. Add from right (least significant bit) to left, tracking carries:
+        - 1 + 1 = 0, carry 1
+        - 0 + 1 + 1 (carry) = 0, carry 1
+        - 1 + 0 + 1 (carry) = 0, carry 1
+        - 1 + 1 + 1 (carry) = 1, carry 1
+        - Final carry: 1 (write as leftmost bit)
+3. Result: **11000₂**
 
-### 2. Step-by-Step Binary Addition
+### Part 3: Verify and Explain
 
-- **Given Numbers:**
-    - A = 1101₂
-    - B = 1011₂
+- Convert 1101₂ to decimal: 13
+- Convert 1011₂ to decimal: 11
+- Add: 13 + 11 = 24
+- Convert 24 to binary: 11000₂
+- Explain how carries propagate and why the result needs 5 bits.
 
-- **Step 1: Align Numbers by Position**
-    ```
-    Position: 2³ 2² 2¹ 2⁰
-                        1  1  0  1   (1101₂)
-                    + 1  0  1  1   (1011₂)
-                    ──────────────
-    ```
+## Deliverables
 
-- **Step 2: Add Least Significant Bit (2⁰ position)**
-    - 1 (A) + 1 (B) = 0, carry 1
+1. Step-by-step binary addition with carries
+2. Decimal conversion and verification
+3. Explanation of binary addition rules and carry logic
+4. Alternative method (e.g., sequential addition)
+5. Brief note on hardware (full adder, ripple carry adder)
 
-- **Step 3: Add 2¹ position (include carry)**
-    - 0 (A) + 1 (B) + 1 (carry) = 0, carry 1
+## Evaluation Criteria
 
-- **Step 4: Add 2² position (include carry)**
-    - 1 (A) + 0 (B) + 1 (carry) = 0, carry 1
+| Criteria                        | Weight | Description                                   |
+|----------------------------------|--------|-----------------------------------------------|
+| Correct step-by-step addition    | 40%    | All steps and carries shown accurately        |
+| Decimal verification             | 20%    | Inputs and result correctly converted         |
+| Explanation of rules and carries | 20%    | Clear, concise, and technically correct       |
+| Alternative/hardware relevance   | 20%    | Shows understanding beyond basic calculation  |
 
-- **Step 5: Add 2³ position (include carry)**
-    - 1 (A) + 1 (B) + 1 (carry) = 1, carry 1
+## Tips & Common Mistakes
 
-- **Step 6: Handle Final Carry**
-    - Carry from 2³ position goes to 2⁴ position
+- Always add from right to left
+- Track carries at each step
+- Double-check decimal conversions
+- Don’t forget the final carry bit
 
-- **Complete Vertical Addition:**
-    ```
-        1111   ← Carries
-        1101₂  ← A
-     +1011₂  ← B
-     ───────
-     11000₂  ← Result
-    ```
+## Bonus Challenges (Optional)
 
-### 3. Verification
+1. Add two larger binary numbers (e.g., 10110₂ + 11101₂)
+2. Implement binary addition in your favorite programming language
 
-- **Decimal Conversion:**
-    - 1101₂ = (1×8) + (1×4) + (0×2) + (1×1) = 13₁₀
-    - 1011₂ = (1×8) + (0×4) + (1×2) + (1×1) = 11₁₀
-    - 13 + 11 = 24₁₀
+## Submission
 
-- **Convert Result Back to Binary:**
-    - 24₁₀ = 11000₂
-
-### 4. Alternative Methods
-
-- **Group Addition:** Add by breaking into groups (e.g., 1000 + 1000, etc.).
-- **Sequential Addition:** Add each bit sequentially with carries.
-
-### 5. Hardware Implementation
-
-- **Half Adder:** Sum = A XOR B, Carry = A AND B
-- **Full Adder:** Sum = A XOR B XOR Carry-in, Carry-out = (A AND B) OR (Carry-in AND (A XOR B))
-- **Ripple Carry Adder:** Connect full adders in series for multi-bit addition.
-
-### 6. Error Checking
-
-- **Parity Check:** Odd + Odd = Even parity
-- **Range Check:** 4-bit numbers overflow, result needs 5 bits
-- **Two's Complement Check:** Signed interpretation changes meaning
-
-### 7. Related Binary Operations
-
-- **Subtraction:** 1101₂ - 1011₂ = 0010₂
-- **Multiplication:** 1101₂ × 1011₂ = 10001111₂
-- **Division:** 1101₂ ÷ 1011₂ = 1 remainder 10₂
-
-### 8. Real-World Applications
-
-- **Computer Arithmetic Units:** ALU, CPU addition circuits
-- **Network Protocols:** Checksums, sequence numbers
-- **File Systems:** Addressing, parity
-- **Graphics Programming:** Color blending, coordinate arithmetic
-
-### 9. Common Errors and Pitfalls
-
-- Incorrect carry handling
-- Misalignment of numbers
-- Confusing binary with decimal
-- Adding from left instead of right
-
-### 10. Assessment Criteria
-
-- Step-by-step addition with carries
-- Decimal verification
-- Explanation of rules and carry propagation
-- Alternative method shown
-
-### 11. Extension Challenges
-
-- Add larger numbers
-- Add multiple numbers
-- Signed (two's complement) addition
-- Hexadecimal conversion
-- Programming implementation
-
-## Submission Checklist
-
-- [ ] Step-by-step binary addition shown
-- [ ] All carries clearly indicated
-- [ ] Final result: 11000₂
-- [ ] Decimal conversion of inputs
-- [ ] Decimal addition: 13 + 11 = 24
-- [ ] Back-conversion: 24 = 11000₂
-- [ ] Binary addition rules stated
-- [ ] Alternative method shown
-- [ ] Hardware relevance discussed
-- [ ] All calculations verified
-- [ ] No arithmetic errors
-
-This binary addition exercise builds foundational skills for computer architecture, digital logic design, assembly programming, and understanding how computers perform arithmetic at the hardware level.
+Submit your step-by-step addition, decimal verification, explanations, and any bonus work as a markdown file or clear photos/scans of your handwritten work.

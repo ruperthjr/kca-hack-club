@@ -1,42 +1,47 @@
 ---
-title: "Proposition Logic - The Liar Paradox Analysis"
-description: "Determine if 'This statement is false' is a proposition using formal logic principles"
+title: "Analyzing the Liar Paradox in Propositional Logic"
+description: "Explore the logical structure and implications of the Liar Paradox: 'This statement is false.'"
 difficulty: "intermediate"
 unit: "Unit 4: Discrete Mathematics"
 day: 2
+week: 1
+month: 1
 technologies:
     - "Propositional Logic"
-    - "Logical Paradoxes"
-    - "Truth Values"
     - "Mathematical Logic"
+    - "Truth Tables"
+    - "Formal Proof"
+    - "Self-Reference"
 learningOutcomes:
-    - "Define what constitutes a proposition in logic"
-    - "Identify self-referential statements"
-    - "Analyze the Liar Paradox structure"
-    - "Distinguish between propositions and paradoxes"
+    - "Define and identify propositions in formal logic"
+    - "Analyze self-referential statements and paradoxes"
+    - "Apply truth tables and logical reasoning to paradoxical statements"
+    - "Distinguish between valid propositions and paradoxes"
+    - "Connect logical paradoxes to computer science concepts"
 estimatedTime: "60-75 minutes"
 requirements:
-    - "Understanding of basic logic terms"
-    - "Knowledge of truth values"
-    - "Critical thinking skills"
+    - "Basic understanding of propositional logic"
+    - "Familiarity with truth values and logical connectives"
+    - "Ability to construct and interpret truth tables"
+    - "Critical thinking and analytical skills"
+    - "Interest in logic and computer science foundations"
 deliverables:
-    - "Formal definition of a proposition"
-    - "Step-by-step analysis of the statement"
-    - "Truth value assignment attempt"
-    - "Resolution explanation"
-    - "Examples of valid propositions"
+    - "Written analysis (500-800 words) of the Liar Paradox"
+    - "Completed truth table and classification table"
+    - "Examples of valid and invalid propositions"
+    - "Summary of historical and computing context"
+    - "References to all sources used"
 resources:
-  - name: "Rosen: Discrete Mathematics and Its Applications, 8th Ed. - Chapter 1.1"
-    url: "https://www.mheducation.com/highered/product/discrete-mathematics-applications-rosen/M9781259676512.html"
   - name: "Stanford Encyclopedia: The Liar Paradox"
     url: "https://plato.stanford.edu/entries/liar-paradox/"
-  - name: "MIT OpenCourseWare: Mathematics for Computer Science - Logic"
-    url: "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/pages/lecture-notes/"
+  - name: "Rosen: Discrete Mathematics and Its Applications, 8th Ed. - Chapter 1.1"
+    url: "https://www.mheducation.com/highered/product/discrete-mathematics-applications-rosen/M9781259676512.html"
   - name: "Khan Academy: Propositional Logic"
     url: "https://www.khanacademy.org/computing/computer-science/cryptography/crypt/v/propositional-logic"
+  - name: "MIT OpenCourseWare: Mathematics for Computer Science - Logic"
+    url: "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/pages/lecture-notes/"
   - name: "Wikipedia: Proposition"
     url: "https://en.wikipedia.org/wiki/Proposition"
-
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -48,173 +53,68 @@ unlockDate: "2026-02-10"
 
 ## Overview
 
-In discrete mathematics, a proposition is a declarative statement that is either true or false, but not both. The Liar Paradox presents a fundamental challenge to this binary classification, exposing limitations in classical logic systems.
+The Liar Paradox—"This statement is false"—is a classic example that challenges the foundations of propositional logic. Understanding why this statement cannot be classified as a proposition is essential for grasping the limits of formal logic and its applications in mathematics and computer science.
 
 ## Objective
 
-Determine whether the statement "This statement is false" qualifies as a proposition according to formal logic principles. Analyze its structure, attempt to assign truth values, and explain why it creates a paradox.
+Determine whether "This statement is false" qualifies as a proposition using formal logic principles. Analyze its logical structure, attempt to assign truth values, and explain the resulting paradox.
+
+## Prerequisites
+
+- Understanding of basic propositional logic concepts
+- Familiarity with truth values and logical connectives
+- Ability to construct and interpret truth tables
+- Critical thinking skills
 
 ## Instructions
 
-### Section 1: Proposition Definition Analysis
+### Part 1: Define and Classify Propositions
 
-- **Formal Definition of a Proposition:**  
-    A proposition must be declarative, truth-valued, well-defined, non-self-referential (standard requirement), and consistent.
+- Provide the formal definition of a proposition.
+- List and explain the criteria for a statement to be a proposition.
+- Apply these criteria to "This statement is false" and document your findings.
 
-- **Checklist for "This statement is false":**
-    - Declarative form? ✓
-    - Single truth value assignable? ?
-    - Clear meaning? ✓
-    - Self-referential? ✓
-    - Consistent? ?
+### Part 2: Truth Value Analysis
 
-### Section 2: Step-by-Step Truth Value Analysis
+- Attempt to assign both TRUE and FALSE to the statement.
+- Construct a truth table or logical analysis showing the contradictions.
+- Clearly explain why the statement cannot be consistently classified as true or false.
 
-- **Assume TRUE:**  
-    If true, it claims to be false, so it must be false — contradiction.
+### Part 3: Context and Applications
 
-- **Assume FALSE:**  
-    If false, its claim is incorrect, so it must be true — contradiction.
+- Summarize the historical and philosophical context of the Liar Paradox.
+- Discuss its significance in mathematics and computer science (e.g., self-reference, undecidability, recursion).
+- Provide examples of valid propositions and contrast them with paradoxical or invalid statements.
 
-- **Truth Table Attempt:**
+## Deliverables
 
-    | Assigned Truth Value      | Implication      | Result            |
-    |--------------------------|------------------|-------------------|
-    | TRUE                     | Must be false    | Contradiction     |
-    | FALSE                    | Must be true     | Contradiction     |
-    | BOTH TRUE AND FALSE      | Violates LNC     | Invalid assignment|
-    | NEITHER TRUE NOR FALSE   | Not a prop       | Violates bivalence|
+1. Written analysis (500-800 words) covering all required points
+2. Completed truth table and classification table
+3. Examples of valid and invalid propositions
+4. Summary of historical and computing context
+5. References to all sources used
 
-    (LNC = Law of Non-Contradiction)
+## Evaluation Criteria
 
-### Section 3: Formal Logic Representation
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Conceptual Understanding| 30%    | Accurate definitions and logical criteria         |
+| Logical Analysis        | 40%    | Correct truth value analysis and contradiction   |
+| Contextual Knowledge    | 20%    | Historical and computing context explained       |
+| Communication          | 10%    | Clarity, organization, and proper formatting     |
 
-- Let **P** represent "This statement is false".
-- Symbolically: P ≡ F(P)
-- Logical analysis:
-    - Assume T(P): T(P) → F(P) ⇒ Contradiction
-    - Assume F(P): F(P) → ¬F(P) ⇒ Contradiction
+## Tips & Common Mistakes
 
-- **Truth Value Graph:**  
-    Assigning T or F leads to an infinite loop.
+- Ensure all five criteria for propositions are addressed
+- Clearly show contradictions in truth value assignment
+- Avoid confusing paradoxes with valid propositions
+- Cite all resources and examples used
 
-### Section 4: Historical and Philosophical Context
+## Bonus Challenges (Optional)
 
-- **Ancient:** Eubulides' and Epimenides' paradoxes.
-- **Medieval:** Buridan, Ockham on self-reference and truth gaps.
-- **Modern:** Tarski's hierarchy, Kripke's fixed points.
+1. Explore three-valued or paraconsistent logic as alternative approaches
+2. Research how programming languages and proof assistants handle self-reference
 
-- **Mathematical Significance:**  
-    Impact on Frege, Russell, Gödel, Tarski, Kripke.
+## Submission
 
-### Section 5: Resolution Approaches
-
-- **Truth Value Gaps (Kripke):** Some statements have no truth value.
-- **Hierarchical Languages (Tarski):** Truth predicates require metalanguage.
-- **Paraconsistent Logic:** Allows true contradictions (dialetheism).
-- **Fixed Point Theory (Kripke):** Some sentences have no fixed truth value.
-
-### Section 6: Examples for Comparison
-
-- **Valid Propositions:**  
-    "2 + 2 = 4", "Paris is in Germany", "All squares have four sides", "Some cats are blue".
-
-- **Invalid Statements:**  
-    Questions, commands, paradoxical/self-referential statements, open sentences, meaningless statements.
-
-- **Borderline Cases:**  
-    "This sentence contains five words." (verifiable),  
-    "I am lying right now." (potential paradox),  
-    "The next sentence is true. The previous sentence is false." (circular).
-
-### Section 7: Formal Conclusion
-
-- **Standard Logic:**  
-    "This statement is false" violates LNC and LEM, cannot be assigned a stable truth value, and is not a proposition.
-
-- **Classification Table:**
-
-    | Classification         | Verdict    |
-    |------------------------|------------|
-    | Proposition            | NO         |
-    | Paradox                | YES        |
-    | Statement              | YES        |
-    | Truth-apt              | NO         |
-    | Well-formed formula    | YES        |
-    | Meaningful             | YES        |
-    | Consistent             | NO         |
-
-### Section 8: Applications in Computer Science
-
-- **Halting Problem:** Self-reference and undecidability.
-- **Gödel Numbering:** Statements about their own provability.
-- **Type Theory:** Prevents self-reference.
-- **Database Theory:** Self-referential queries and recursion.
-- **Programming Languages:** Recursive functions, fixed-point combinators, infinite loops.
-
-- **Example (SQL):**
-    ```sql
-    WITH RECURSIVE cte AS (
-        SELECT 1 AS n
-        UNION ALL
-        SELECT n + 1 FROM cte WHERE n < 10
-    )
-    ```
-    (Termination condition prevents infinite recursion.)
-
-### Section 9: Related Paradoxes
-
-- **Berry Paradox:** "The smallest positive integer not definable in fewer than twelve words."
-- **Russell's Paradox:** R = `&#123;x &#124; x not in x&#125;`; does R in R?
-- **Quine's Paradox:** "Yields falsehood when preceded by its quotation" yields falsehood when preceded by its quotation.
-
-### Section 10: Assessment Criteria
-
-- **Analysis Must Include:**
-    - Definition and criteria for proposition
-    - Truth value assignment and contradiction
-    - Formal representation and classification
-    - Context, applications, and related paradoxes
-
-- **Grading Rubric:**
-    - Conceptual Understanding (30%)
-    - Logical Analysis (40%)
-    - Contextual Knowledge (20%)
-    - Communication (10%)
-
-### Section 11: Submission Requirements
-
-- **Deliverables:**
-    1. Written analysis (500-800 words) covering all required points
-    2. Supporting materials: truth table, classification table, examples, references
-    3. Format: PDF or Markdown, clear headings, citations, name and date
-
-- **Submission Checklist:**
-    - [ ] Proposition definition with all 5 criteria
-    - [ ] Truth value analysis (both cases)
-    - [ ] Contradiction clearly shown
-    - [ ] Formal conclusion (is/is not a proposition)
-    - [ ] Historical context mentioned
-    - [ ] Computing applications discussed
-    - [ ] Related paradoxes identified
-    - [ ] Examples of valid propositions provided
-    - [ ] Proper formatting and organization
-    - [ ] All calculations/logical steps shown
-
-### Section 12: Advanced Considerations
-
-- **Further Study:**
-    - Three-valued logic (Łukasiewicz, Kleene)
-    - Fuzzy logic
-    - Provability logic (Gödel, Löb)
-    - Game semantics
-
-- **Research Questions:**
-    1. How do programming languages handle self-reference?
-    2. What computational problems are undecidable due to similar structures?
-    3. How do proof assistants avoid liar-like paradoxes?
-    4. Implications for AI and truth assessment
-
----
-
-This challenge develops critical thinking about foundational logic concepts essential for computer science theory, programming language design, and formal verification.
+Submit your completed analysis and supporting materials as a PDF or Markdown file with clear headings, tables, and citations. Include your name and the date at the top of your submission.

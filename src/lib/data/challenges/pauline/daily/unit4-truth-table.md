@@ -1,41 +1,47 @@
 ---
-title: "Truth Table - Logical AND Operator Analysis"
-description: "Write the complete truth table for the logical AND operator with all possible inputs"
+title: "Truth Table Challenge: Logical AND Operator"
+description: "Construct and analyze the complete truth table for the logical AND operator, exploring its properties, applications, and implementations."
 difficulty: "beginner"
 unit: "Unit 4: Discrete Mathematics"
 day: 3
+week: 1
+month: 1
 technologies:
     - "Propositional Logic"
-    - "Truth Tables"
     - "Boolean Algebra"
-    - "Logical Operators"
+    - "Truth Tables"
+    - "Logic Gates"
+    - "Programming Logic"
 learningOutcomes:
-    - "Construct complete truth tables"
-    - "Define logical AND operator"
-    - "Apply truth values systematically"
-    - "Interpret logical conjunction"
+    - "Construct and interpret truth tables for logical operators"
+    - "Explain the mathematical definition and properties of AND"
+    - "Apply logical AND in programming and real-world scenarios"
+    - "Compare AND with related logical operators"
+    - "Identify and avoid common logical errors"
 estimatedTime: "45-60 minutes"
 requirements:
-    - "Understanding of true/false values"
-    - "Basic logic concepts"
-    - "Systematic thinking"
+    - "Basic understanding of true/false values"
+    - "Familiarity with logical operators"
+    - "Ability to read and write simple tables"
+    - "Interest in logic or computer science"
+    - "Access to a code editor or notebook"
 deliverables:
-    - "Complete AND truth table"
-    - "Mathematical definition"
-    - "Logical equivalence examples"
-    - "Real-world applications"
+    - "Complete AND truth table (2 and 3 variables)"
+    - "Mathematical definition and notation"
+    - "Explanation of at least 3 properties with examples"
+    - "Programming and real-world application examples"
+    - "Comparison with OR, XOR, and NAND"
 resources:
-  - name: "Rosen: Discrete Mathematics and Its Applications, 8th Ed. - Chapter 1.1"
-    url: "https://www.mheducation.com/highered/product/discrete-mathematics-applications-rosen/M9781259676512.html"
-  - name: "Epp: Discrete Mathematics with Applications, 5th Ed."
-    url: "https://www.cengage.com/c/discrete-mathematics-with-applications-5e-epp/9781337694193PF/"
   - name: "Wolfram MathWorld: Logical AND"
     url: "https://mathworld.wolfram.com/AND.html"
   - name: "Boolean Algebra Tutorial"
     url: "https://www.electronics-tutorials.ws/boolean/bool_1.html"
-  - name: "Truth Table Generator Tool"
+  - name: "Stanford Truth Table Generator"
     url: "https://web.stanford.edu/class/cs103/tools/truth-table-tool/"
-
+  - name: "Khan Academy: Intro to Logic"
+    url: "https://www.khanacademy.org/computing/computer-science/cryptography/logic/a/logic-operators"
+  - name: "Wikipedia: Logical Conjunction"
+    url: "https://en.wikipedia.org/wiki/Logical_conjunction"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -47,180 +53,67 @@ unlockDate: "2026-02-11"
 
 ## Overview
 
-Understand the logical AND operator (conjunction), a fundamental binary operation in propositional logic. Truth tables enumerate all possible input combinations and their outputs.
+The logical AND operator is a cornerstone of propositional logic, digital circuits, and programming. Understanding its truth table and properties is essential for analyzing logical statements, designing circuits, and writing robust code.
 
 ## Objective
 
-Construct the complete truth table for the logical AND operator. Include all input combinations, the mathematical definition, logical equivalences, and real-world applications.
+Construct the complete truth table for the logical AND operator, explain its mathematical definition and properties, and demonstrate its use in programming and real-world contexts.
+
+## Prerequisites
+
+- Familiarity with true/false (Boolean) values
+- Basic logic concepts (propositions, operators)
+- Ability to read and create tables
+- Access to a code editor or notebook
 
 ## Instructions
 
-### 1. Basic AND Truth Table
+### Part 1: Build the AND Truth Table
 
-- **Definition:**  
-    - Symbols: ∧, ·, &, AND  
-    - Meaning: p AND q is true if and only if both p and q are true  
-    - Formal: p ∧ q = TRUE when p = TRUE and q = TRUE; FALSE otherwise
+- Write the truth table for AND with two variables (p, q) using both TRUE/FALSE and 1/0 notation.
+- Extend the table to three variables (p, q, r).
+- Clearly label all columns and rows.
 
-- **Truth Table (Two Variables):**
+### Part 2: Define and Analyze AND
 
-    | p     | q     | p ∧ q |
-    |-------|-------|-------|
-    | FALSE | FALSE | FALSE |
-    | FALSE | TRUE  | FALSE |
-    | TRUE  | FALSE | FALSE |
-    | TRUE  | TRUE  | TRUE  |
+- State the formal definition and common symbols for AND (∧, ·, &, AND).
+- List and explain at least three key properties (commutative, associative, identity, etc.) with examples.
+- Provide the general formula for the AND truth table with n variables.
 
-- **Alternative Notation (1 = TRUE, 0 = FALSE):**
+### Part 3: Apply AND in Context
 
-    | p | q | p ∧ q |
-    |---|---|-------|
-    | 0 | 0 | 0     |
-    | 0 | 1 | 0     |
-    | 1 | 0 | 0     |
-    | 1 | 1 | 1     |
+- Show programming examples in at least two languages (e.g., Python, JavaScript).
+- Give three real-world scenarios where AND is used (e.g., access control, circuit design, database queries).
+- Compare AND with OR, XOR, and NAND using a summary table.
 
-- **Verbal Description:**  
-    AND is TRUE only when both p and q are TRUE; otherwise, FALSE.
+## Deliverables
 
-### 2. Extended Truth Tables
+1. Complete AND truth tables (2 and 3 variables)
+2. Written definitions, properties, and examples
+3. Code snippets and real-world applications
+4. Operator comparison table
 
-- **Three-Variable AND (p ∧ q ∧ r):**
+## Evaluation Criteria
 
-    | p | q | r | p ∧ q ∧ r |
-    |---|---|---|-----------|
-    | 0 | 0 | 0 | 0         |
-    | 0 | 0 | 1 | 0         |
-    | 0 | 1 | 0 | 0         |
-    | 0 | 1 | 1 | 0         |
-    | 1 | 0 | 0 | 0         |
-    | 1 | 0 | 1 | 0         |
-    | 1 | 1 | 0 | 0         |
-    | 1 | 1 | 1 | 1         |
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Truth tables complete   | 30%    | All combinations, clear labeling                 |
+| Properties explained    | 25%    | At least 3, with examples                        |
+| Applications & code     | 25%    | Real-world and programming examples              |
+| Comparison & clarity    | 20%    | Operator table, clear and organized presentation |
 
-- **Pattern:**  
-    For n variables, result is TRUE only if all are TRUE.
+## Tips & Common Mistakes
 
-- **General Formula:**  
-    - Total rows: 2ⁿ  
-    - TRUE output: 1 row  
-    - FALSE output: 2ⁿ - 1 rows
+- Double-check all input combinations in your tables.
+- Don’t confuse AND with OR—AND requires all conditions to be true.
+- Remember: order doesn’t matter for AND (commutative property).
+- In programming, watch for short-circuit evaluation.
 
-### 3. Mathematical Properties
+## Bonus Challenges (Optional)
 
-- **Commutative:** p ∧ q ≡ q ∧ p  
-- **Associative:** (p ∧ q) ∧ r ≡ p ∧ (q ∧ r)  
-- **Idempotent:** p ∧ p ≡ p  
-- **Identity:** p ∧ TRUE ≡ p; p ∧ FALSE ≡ FALSE  
-- **Annihilator:** p ∧ FALSE ≡ FALSE  
-- **Distributive:** p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)  
-- **Absorption:** p ∧ (p ∨ q) ≡ p
+1. Explore AND in fuzzy logic or quantum logic.
+2. Implement a function to generate AND truth tables for any number of variables.
 
-### 4. Logical Equivalences
+## Submission
 
-- **De Morgan's Law:** ¬(p ∧ q) ≡ ¬p ∨ ¬q  
-- **Contradiction:** p ∧ ¬p ≡ FALSE  
-- **Tautology:** p ∧ (q ∨ ¬q) ≡ p  
-- **Implication:** ¬(p ∧ ¬q) ≡ p → q
-
-### 5. Circuit Implementation
-
-- **AND Gate Symbol:**  
-    ```
-    ┌─────┐
-    p ─┤   │
-            │AND│─ p∧q
-    q ─┤   │
-    └─────┘
-    ```
-- **Truth Table (Electrical):**  
-    | Input A | Input B | Output |
-    |---------|---------|--------|
-    | Low     | Low     | Low    |
-    | Low     | High    | Low    |
-    | High    | Low     | Low    |
-    | High    | High    | High   |
-
-### 6. Programming Implementations
-
-- **C/C++/Java:**  
-    ```c
-    int result = p && q;
-    ```
-- **Python:**  
-    ```python
-    result = p and q
-    ```
-- **JavaScript:**  
-    ```javascript
-    let result = p && q;
-    ```
-- **SQL:**  
-    ```sql
-    WHERE condition1 AND condition2
-    ```
-
-### 7. Real-World Applications
-
-- **Access Control:** User AND password correct  
-- **Database Queries:** Both conditions must be true  
-- **Programming:** Both conditions in an if-statement  
-- **Circuit Design:** Safety systems require multiple conditions  
-- **Legal Contracts:** Both parties must agree
-
-### 8. Common Mistakes
-
-- Confusing AND with OR  
-- Misunderstanding "both"  
-- Assuming order matters (it doesn't)  
-- Overlooking short-circuit evaluation in programming
-
-### 9. Related Operators Comparison
-
-- **AND vs OR:**  
-    | Input        | AND   | OR    |
-    |--------------|-------|-------|
-    | FALSE, FALSE | FALSE | FALSE |
-    | FALSE, TRUE  | FALSE | TRUE  |
-    | TRUE, FALSE  | FALSE | TRUE  |
-    | TRUE, TRUE   | TRUE  | TRUE  |
-
-- **AND vs XOR:**  
-    XOR is TRUE when exactly one input is TRUE.
-
-- **AND vs NAND:**  
-    NAND is the negation of AND.
-
-### 10. Assessment Criteria
-
-- Complete truth table (all combinations, labeled)
-- Mathematical definition and notation
-- At least 3 properties with proofs
-- Real-world and programming examples
-- Clear, organized presentation
-
-### 11. Advanced Concepts
-
-- **Multiple-Valued Logic:** AND as min(p, q) in fuzzy logic  
-- **Quantum Logic:** AND on qubits  
-- **Temporal Logic:** AND means both true at the same time  
-- **Modal Logic:** Necessity operator and AND
-
-### 12. Historical Context
-
-- **George Boole:** Invented Boolean algebra  
-- **Claude Shannon:** Applied Boolean algebra to circuits  
-- **Early Computing:** AND gates in hardware
-
----
-
-**Submission Checklist:**
-
-- Complete AND truth table (2 variables)
-- Mathematical definition and alternative notations
-- At least 3 properties explained with proofs
-- 3+ real-world applications
-- Programming examples
-- Operator comparisons
-- Clear, error-free presentation
-
+Submit your completed truth tables, written explanations, code snippets, and comparison table as a single markdown file or notebook.
