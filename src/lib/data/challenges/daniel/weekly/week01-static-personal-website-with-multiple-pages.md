@@ -1,43 +1,45 @@
 ---
-title: "Static Personal Website with Multiple Pages"
-description: "Deploy a professional personal website with HTML and CSS featuring multiple pages and responsive design"
+title: "Academic Research Portfolio Website"
+description: "Build and deploy a professional academic portfolio website to showcase your research, skills, and achievements."
 difficulty: "beginner"
-unit: "Week 1 Challenge"
+unit: "Week 1 Project: Computing Research Skills and Design"
 week: 1
+month: 1
 technologies:
   - "HTML5"
   - "CSS3"
-  - "Responsive Design"
   - "GitHub Pages"
+  - "Responsive Design"
+  - "Web Accessibility"
 learningOutcomes:
-  - "Structure semantic HTML documents"
-  - "Apply CSS styling for professional layouts"
-  - "Create multi-page websites with navigation"
-  - "Deploy static websites to the internet"
-estimatedTime: "4-6 hours"
+  - "Develop a professional academic web presence."
+  - "Apply responsive and accessible web design principles."
+  - "Organize and present research, CV, and projects online."
+  - "Deploy a live website using GitHub Pages."
+  - "Communicate academic and technical skills effectively."
+estimatedTime: "6-8 hours"
 requirements:
-  - "Text editor (VS Code recommended)"
-  - "Modern web browser"
-  - "GitHub account"
-  - "Basic understanding of HTML tags and CSS properties"
+  - "Basic knowledge of HTML and CSS."
+  - "GitHub account for deployment."
+  - "Academic content: CV, research, publications, and projects."
+  - "Understanding of responsive and accessible design."
 deliverables:
-  - "Live website deployed to GitHub Pages or Netlify"
-  - "At least 3 HTML pages (Home, About, Projects)"
-  - "External CSS stylesheet with organized styles"
-  - "Responsive design that works on mobile devices"
-  - "README.md with deployment URL and screenshots"
+  - "Live academic portfolio website hosted on GitHub Pages."
+  - "Sections for research, CV, projects, and contact information."
+  - "Responsive and accessible design for all devices."
+  - "Well-documented GitHub repository with README."
+  - "Professional, standards-compliant web presentation."
 resources:
-    - name: "MDN Web Docs - HTML"
-      url: "https://developer.mozilla.org/en-US/docs/Web/HTML"
-    - name: "MDN Web Docs - CSS"
-      url: "https://developer.mozilla.org/en-US/docs/Web/CSS"
-    - name: "CSS Tricks - Flexbox Guide"
-      url: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
-    - name: "GitHub Pages Deployment Guide"
-      url: "https://pages.github.com/"
-    - name: "Google Fonts"
-      url: "https://fonts.google.com/"
-
+  - name: "MDN Web Docs: Learn Web Development"
+    url: "https://developer.mozilla.org/en-US/docs/Learn"
+  - name: "GitHub Pages Documentation"
+    url: "https://docs.github.com/en/pages"
+  - name: "WebAIM: Accessibility Principles"
+    url: "https://webaim.org/articles/principles/"
+  - name: "W3Schools: Responsive Web Design"
+    url: "https://www.w3schools.com/css/css_rwd_intro.asp"
+  - name: "Purdue OWL: Writing the Curriculum Vitae"
+    url: "https://owl.purdue.edu/owl/job_search_writing/writing_the_curriculum_vitae/index.html"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -45,247 +47,76 @@ dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---
 
-# Static Personal Website Challenge
+# Academic Research Portfolio Website
 
-## Project Overview
+## Overview
 
-Build and deploy a professional personal website that showcases your identity, skills, and aspirations as a budding developer. This multi-page site will serve as your digital presence and the foundation for more advanced web projects.
+Create a professional academic portfolio website to showcase your research, skills, and achievements. This project emphasizes clear communication, responsive design, and web accessibility, providing a strong digital presence for academic and industry audiences.
 
-## Core Requirements
+## Objective
 
-### Technical Requirements
+Build a responsive, multi-page website that highlights your research profile, technical expertise, and career objectives, organized for clarity and accessibility.
 
-**Must Include:**
-- Minimum of 3 distinct HTML pages (Home, About, Projects/Goals)
-- External CSS stylesheet (no inline styles except for rare exceptions)
-- Responsive navigation menu that works on mobile
-- At least one form element (contact form or newsletter signup)
-- Proper semantic HTML5 tags (`<header>`, `<nav>`, `<main>`, `<footer>`, `<section>`, `<article>`)
-- Mobile-responsive design (looks good on phones, tablets, desktops)
+## Prerequisites
 
-### Page Structure
+- Basic understanding of HTML and CSS
+- GitHub account for hosting
+- Academic content: CV, research, publications, projects
+- Familiarity with responsive and accessible design principles
 
-**1. Home Page (index.html)**
-- Hero section with your name and tagline
-- Brief introduction (2-3 sentences)
-- Call-to-action (e.g., "View My Projects" button)
-- Navigation to other pages
-- Footer with social media links or contact info
+## Instructions
 
-**2. About Page (about.html)**
-- Your background and story
-- Why you're learning programming
-- Your interests and hobbies
-- Skills you have or are learning
-- Profile photo (optional but recommended)
+### Part 1: Content Preparation
 
-**3. Projects/Goals Page (projects.html)**
-- Current projects you're working on (even if just starting)
-- Learning goals for the semester
-- Technologies you want to master
-- Future project ideas
+1. Define your academic identity, research focus, and goals.
+2. Gather your CV, publication list, and project summaries.
+3. Plan website structure: research, CV, projects, contact.
 
-### Design Requirements
+### Part 2: Website Development
 
-**Layout:**
-- Clean, professional appearance
-- Consistent color scheme (choose 2-3 main colors)
-- Readable fonts (system fonts or Google Fonts)
-- Adequate spacing and padding
-- Clear visual hierarchy
+1. Set up project folders for HTML, CSS, and assets.
+2. Build a homepage with introduction and navigation.
+3. Create pages for research, CV, projects, and contact.
+4. Apply responsive and accessible design throughout.
 
-**Responsive Design:**
-- Mobile-first approach
-- Uses media queries for different screen sizes
-- Navigation collapses on mobile (hamburger menu or stacked links)
-- Images scale appropriately
-- Text remains readable at all sizes
+### Part 3: Deployment
 
-## Step-by-Step Guide
+1. Push your site to a GitHub repository.
+2. Enable GitHub Pages for deployment.
+3. Test the live site for responsiveness and accessibility.
 
-### Phase 1: Planning
-**1. Sketch Your Layout**
+## Deliverables
 
-Draw rough wireframes for each page:
-```
-Home Page Wireframe:
-┌─────────────────────────────┐
-│  Logo/Name      Navigation  │
-├─────────────────────────────┤
-│                             │
-│   Hero Section with Photo   │
-│                             │
-├─────────────────────────────┤
-│   About Me Preview          │
-├─────────────────────────────┤
-│   Footer (Social Links)     │
-└─────────────────────────────┘
-```
-
-**2. Choose Your Color Scheme**
-
-Pick 2-3 colors that work well together:
-- Use tools like [Coolors.co](https://coolors.co/) or [Adobe Color](https://color.adobe.com/)
-- Example palette: Navy Blue (#2C3E50), Teal (#18BC9C), White (#FFFFFF)
-
-**3. Select Fonts**
-
-Choose 2 fonts:
-- One for headings (bold, distinctive)
-- One for body text (readable, clean)
-- Google Fonts recommendations: Poppins + Open Sans, Montserrat + Lato, Raleway + Roboto
-
-### Phase 2: HTML Structure
-### Phase 3: CSS Styling
-### Phase 4: Content Creation
-### Phase 5: Deployment
-
-**Option 1: GitHub Pages (Recommended)**
-
-1. Create a GitHub account if you don't have one
-2. Create a new repository named `your-username.github.io`
-3. Upload your files (or use Git commands):
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial portfolio website"
-   git remote add origin https://github.com/your-username/your-username.github.io.git
-   git push -u origin main
-   ```
-4. Wait 1-2 minutes, then visit `https://your-username.github.io`
-
-**Option 2: Netlify**
-
-1. Create a Netlify account
-2. Drag and drop your project folder to Netlify
-3. Get your custom URL (e.g., `your-name-portfolio.netlify.app`)
-4. Optional: Configure custom domain
-
-**Option 3: Vercel**
-
-1. Create a Vercel account
-2. Import from GitHub or upload files
-3. Deploy with one click
-4. Get instant URL
+1. Live academic portfolio website on GitHub Pages
+2. GitHub repository with clean commit history and README
+3. Responsive, accessible design for all devices
+4. Sections for research, CV, projects, and contact
+5. Professional, standards-compliant presentation
 
 ## Evaluation Criteria
 
-Your project will be assessed on:
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Academic Content        | 30%    | Quality and clarity of research presentation     |
+| Design & Responsiveness | 25%    | Professional appearance and mobile compatibility |
+| Technical Implementation| 20%    | Code quality and best practices                  |
+| Content Organization    | 15%    | Logical structure and navigation                 |
+| Deployment & Polish     | 10%    | Live deployment and attention to detail          |
 
-1. **Functionality** (30%)
-   - All pages load correctly
-   - Navigation works on all pages
-   - No broken links or missing images
-   - Site is successfully deployed
+## Tips & Common Mistakes
 
-2. **Design & User Experience** (25%)
-   - Clean, professional appearance
-   - Consistent styling across pages
-   - Good color choices and typography
-   - Intuitive navigation
+- Use consistent citation formats for academic content
+- Add descriptive alt text to all images and figures
+- Prioritize readability and simplicity in layout
+- Test on multiple devices and browsers
 
-3. **Responsive Design** (20%)
-   - Works on mobile, tablet, and desktop
-   - Navigation adapts to screen size
-   - Content is readable at all sizes
-   - Images scale appropriately
+## Bonus Challenges (Optional)
 
-4. **Code Quality** (15%)
-   - Semantic HTML tags used correctly
-   - CSS is organized and well-commented
-   - Proper indentation and formatting
-   - External stylesheet (no inline styles)
+1. Add a filterable publication database
+2. Implement a dark mode toggle
+3. Create an interactive research timeline
+4. Add multilingual support
 
-5. **Content & Creativity** (10%)
-   - Authentic, well-written content
-   - Personality shines through
-   - Original design (not just copied template)
+## Submission
 
-## Required Deliverables
-
-Submit the following:
-
-1. **Live Website URL**
-   - GitHub Pages, Netlify, or Vercel link
-
-2. **GitHub Repository**
-   - Complete source code
-   - README.md with:
-     - Project description
-     - Live site URL
-     - Screenshots
-     - Technologies used
-     - Future improvements planned
-
-3. **Screenshots**
-   - Desktop view (at least 2 pages)
-   - Mobile view (at least 1 page)
-   - Navigation demonstration
-
-## Common Mistakes to Avoid
-
-- Using inline styles instead of external CSS
-- Forgetting the viewport meta tag (breaks mobile)
-- Broken navigation links (wrong file paths)
-- Inconsistent styling across pages
-- Not testing on mobile devices
-- Images that are too large (slow loading)
-- Forgetting alt text on images
-- No README file in repository
-
-## Bonus Features
-
-If you finish early and want to level up:
-
-- Add a contact form (use Formspree or EmailJS for backend)
-- Implement a dark mode toggle
-- Add smooth scrolling between sections
-- Create custom 404 page
-- Add favicon
-- Include subtle CSS animations
-- Add a blog section
-- Implement accessibility features (ARIA labels, keyboard navigation)
-
-## Tips for Success
-
-1. **Start Simple:** Get a basic version working first, then enhance
-2. **Test Often:** View in browser after each major change
-3. **Mobile First:** Design for mobile, then adapt for desktop
-4. **Use Real Content:** Don't use "Lorem ipsum"—write authentic text
-5. **Ask for Feedback:** Show friends/family and get their input
-6. **Validate Your Code:** Use W3C HTML/CSS validators
-7. **Commit Frequently:** Make small Git commits as you build
-
-## Resources for Inspiration
-
-Browse these for design ideas (but don't copy directly):
-
-- [Awwwards.com](https://www.awwwards.com/) - Award-winning web designs
-- [Dribbble.com](https://dribbble.com/tags/portfolio) - Portfolio design concepts
-- [CodePen.io](https://codepen.io/search/pens?q=portfolio) - Code examples
-
-## Submission Checklist
-
-- [ ] All 3 HTML pages created and linked
-- [ ] External CSS stylesheet with organized styles
-- [ ] Responsive navigation menu
-- [ ] Mobile-responsive design (tested on phone or emulator)
-- [ ] Website deployed and accessible via URL
-- [ ] README.md with live URL and screenshots
-- [ ] GitHub repository with all source code
-- [ ] No broken links or missing images
-- [ ] Semantic HTML5 tags used
-- [ ] Consistent design across all pages
-
-## Next Steps After Completion
-
-Once your static site is live:
-
-1. Share it on social media (LinkedIn, Twitter)
-2. Add the URL to your email signature
-3. Use it when applying for internships
-4. Plan your next feature additions
-
-This portfolio is just the beginning—you'll continue to improve and expand it throughout your learning journey!
-
-Good luck building your first deployed website!
+Submit your live website URL and GitHub repository link. Ensure the repository includes a README explaining the project structure and design choices.

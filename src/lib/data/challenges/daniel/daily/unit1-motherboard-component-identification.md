@@ -1,39 +1,47 @@
 ---
 title: "Motherboard Component Identification"
-description: "Identify and label the CPU, RAM, and Hard Drive on a motherboard diagram"
+description: "Identify, label, and describe key motherboard components to build foundational hardware knowledge."
 difficulty: "beginner"
 unit: "Unit 1: Fundamentals of Computer Systems"
 day: 1
+week: 1
+month: 1
 technologies:
   - "Computer Hardware"
-  - "System Architecture"
-  - "Component Recognition"
+  - "Motherboard Architecture"
+  - "Component Identification"
+  - "System Assembly"
+  - "Troubleshooting Basics"
 learningOutcomes:
-  - "Identify key motherboard components visually"
-  - "Understand the physical location of CPU, RAM, and storage"
-  - "Recognize different form factors and layouts"
-  - "Develop hardware troubleshooting foundations"
+  - "Visually identify and label CPU, RAM, and storage connectors on a motherboard."
+  - "Explain the function and importance of each major component."
+  - "Differentiate between SATA and M.2 storage interfaces."
+  - "Apply best practices for hardware documentation and labeling."
+  - "Develop skills for diagnosing and assembling computer systems."
 estimatedTime: "30-45 minutes"
 requirements:
-  - "Internet access for research"
-  - "Image editing tool (MS Paint, GIMP, or online editor)"
-  - "Textbook: Computer Systems: A Programmer's Perspective"
+  - "Access to a clear motherboard image (photo or online resource)."
+  - "Image editing tool (e.g., MS Paint, GIMP, or online editor)."
+  - "Basic understanding of computer hardware components."
+  - "Textbook or online reference for motherboard diagrams."
+  - "Ability to submit image and written documentation."
 deliverables:
-  - "Labeled motherboard diagram with CPU, RAM, and Hard Drive clearly marked"
-  - "Brief description (2-3 sentences) of each component's function"
-  - "Screenshot or exported image file"
+  - "Labeled motherboard diagram with CPU, RAM, and storage connectors clearly marked."
+  - "Brief written descriptions (2-3 sentences each) for CPU, RAM, and storage connectors."
+  - "Screenshot or exported image file of the labeled diagram."
+  - "Motherboard model and form factor identification."
+  - "Well-organized documentation file (TXT, MD, or PDF)."
 resources:
   - name: "How to Identify Motherboard Components"
     url: "https://www.computerhope.com/issues/ch001359.htm"
-  - name: "PC Part Picker - Motherboard Gallery"
-    url: "https://pcpartpicker.com/products/motherboard/"
-  - name: "Motherboard Anatomy Guide"
+  - name: "Crucial: Motherboard Anatomy Guide"
     url: "https://www.crucial.com/articles/about-motherboards/support-what-is-a-motherboard"
   - name: "ASUS Motherboard Layout Reference"
     url: "https://www.asus.com/support/FAQ/1040820/"
   - name: "MSI Motherboard User Manuals"
     url: "https://www.msi.com/support/motherboard"
-
+  - name: "PC Part Picker - Motherboard Gallery"
+    url: "https://pcpartpicker.com/products/motherboard/"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -41,157 +49,78 @@ dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---
 
-# Motherboard Component Identification Challenge
+# Motherboard Component Identification
 
 ## Overview
 
-In this foundational challenge, you'll develop essential hardware knowledge by identifying the three most critical components on a computer motherboard: the CPU, RAM, and Hard Drive connection. This hands-on exercise builds your understanding of physical computer architecture.
+This challenge introduces you to the essential components of a computer motherboard. By identifying, labeling, and describing the CPU socket, RAM slots, and storage connectors, you'll gain practical skills crucial for hardware troubleshooting, upgrades, and system assembly.
 
 ## Objective
 
-Accurately identify and label the CPU socket, RAM slots, and Hard Drive (SATA/M.2) connections on a motherboard diagram or photo, then explain the function of each component.
+Accurately identify and label the CPU socket, RAM slots, and storage connectors (SATA/M.2) on a motherboard diagram or photo, and provide concise descriptions of each component's function.
+
+## Prerequisites
+
+- Basic knowledge of computer hardware.
+- Access to a motherboard image (photo or online).
+- Image editing software.
+- Reference materials (textbook or online guides).
 
 ## Instructions
 
-### Step 1: Find a Motherboard Image
+### Part 1: Obtain a Motherboard Image
 
-Choose ONE of these options:
+- Find a high-resolution image of a modern ATX motherboard (2018 or newer) or take a clear photo of a physical motherboard.
+- Ensure the image shows the CPU socket, RAM slots, and storage connectors.
 
-**Option A: Use a Provided Image**
-Search for "modern ATX motherboard labeled" on Google Images and select a clear, high-resolution photo showing a complete motherboard.
+### Part 2: Identify and Label Components
 
-**Option B: Physical Inspection**
-If you have access to a desktop computer, carefully open the case (with permission) and photograph the motherboard. Ensure good lighting and focus.
+- Using your references, locate and label:
+  - CPU Socket
+  - RAM Slots
+  - SATA Ports
+  - M.2 Slot(s)
+- Use arrows or boxes and color-code each component type.
+- Add a title to your diagram: "Motherboard Component Map - [Your Name]".
 
-**Recommended:** Look for modern boards (2018+) with clearly visible components like ASUS ROG, MSI Gaming, or Gigabyte AORUS series.
+### Part 3: Write Component Descriptions
 
-### Step 2: Identify the Components
+- For each component (CPU, RAM, Storage Connectors), write 2-3 sentences explaining:
+  - Its function in the system.
+  - Key characteristics or identifiers.
+  - Importance for system operation.
 
-Using your textbook and online resources, locate these components:
+## Deliverables
 
-**1. CPU (Central Processing Unit)**
-- Look for: Large square socket, often covered by a heatsink/fan
-- Common types: LGA1700 (Intel), AM5 (AMD)
-- Usually located: Center or upper-center of motherboard
-- Key identifier: Metal retention bracket or large cooler mounting holes
-
-**2. RAM Slots (Memory)**
-- Look for: Long parallel slots with clips on each end
-- Common configuration: 2 or 4 slots, usually color-coded
-- Usually located: Right side of CPU socket
-- Key identifier: DIMM slots approximately 5-6 inches long
-
-**3. Hard Drive Connections**
-- Look for TWO types:
-  - **SATA Ports:** Small L-shaped connectors (usually 4-6 ports)
-  - **M.2 Slots:** Horizontal slots for NVMe SSDs (1-3 slots)
-- Usually located: Bottom-right area or between PCIe slots
-- Key identifier: SATA ports labeled "SATA_0, SATA_1" etc.
-
-### Step 3: Label Your Diagram
-
-Use an image editor to:
-
-1. Draw arrows or boxes pointing to each component
-2. Label clearly: "CPU Socket," "RAM Slots," "SATA Ports," "M.2 Slot"
-3. Use different colors for each component type (e.g., red for CPU, blue for RAM, green for storage)
-4. Add a title: "Motherboard Component Map - [Your Name]"
-
-### Step 4: Write Component Descriptions
-
-For each component, write 2-3 sentences covering:
-
-**CPU:**
-- What it does (processing calculations, running programs)
-- Why it's called the "brain" of the computer
-- How it connects to the motherboard
-
-**RAM:**
-- What it does (temporary data storage, active program memory)
-- Why more RAM improves performance
-- How it differs from permanent storage
-
-**Hard Drive Connection:**
-- What it does (connects storage devices)
-- Difference between SATA and M.2/NVMe
-- Why storage is essential for the operating system
-
-### Step 5: Create Your Submission
-
-Organize your work:
-
-```
-motherboard-identification-[yourname].png (labeled diagram)
-component-descriptions.txt (or .md)
-
-Content of component-descriptions.txt:
-================================
-MOTHERBOARD COMPONENT IDENTIFICATION
-By: [Your Name]
-Date: February 9, 2026
-================================
-
-CPU (Central Processing Unit):
-[Your 2-3 sentence description]
-
-RAM (Random Access Memory):
-[Your 2-3 sentence description]
-
-Hard Drive Connections (SATA/M.2):
-[Your 2-3 sentence description]
-
-Motherboard Model Identified: [e.g., ASUS ROG Strix B550-F]
-Form Factor: [e.g., ATX]
-```
+1. Labeled motherboard diagram (PNG, JPG, or PDF).
+2. Written descriptions for CPU, RAM, and storage connectors.
+3. Documentation file including motherboard model and form factor.
+4. Screenshot or exported image of your labeled diagram.
+5. Organized submission with clear file names.
 
 ## Evaluation Criteria
 
-Your submission will be assessed on:
+| Criteria         | Weight | Description                                      |
+|------------------|--------|--------------------------------------------------|
+| Accuracy         | 40%    | Correct identification and labeling of components|
+| Clarity          | 30%    | Clear, readable labels and organized diagram     |
+| Explanations     | 20%    | Quality and completeness of component descriptions|
+| Presentation     | 10%    | Professional appearance and documentation        |
 
-1. **Accuracy** (40%): All three components correctly identified
-2. **Clarity** (30%): Labels are clear, readable, and well-positioned
-3. **Descriptions** (20%): Explanations demonstrate understanding
-4. **Presentation** (10%): Clean, organized, professional appearance
+## Tips & Common Mistakes
 
-## Common Mistakes to Avoid
+- Double-check component locations using manufacturer diagrams.
+- Don’t confuse RAM slots with PCIe slots—RAM slots have clips on both ends.
+- Ensure your image is clear and labels are legible.
+- Specify which SATA or M.2 ports you are labeling if there are multiples.
 
-- Confusing the CPU socket with the chipset heatsink
-- Labeling PCIe slots as RAM slots (RAM slots have clips on both ends)
-- Missing M.2 slots (they're smaller and easy to overlook)
-- Using blurry or low-resolution images
-- Not specifying WHICH SATA ports or M.2 slots you're identifying
+## Bonus Challenges (Optional)
 
-## Bonus Challenges
+1. Identify and label the chipset, PCIe x16 slot, and 24-pin power connector.
+2. Research and note the specific CPU socket type (e.g., LGA1700, AM5).
+3. Find and describe the CMOS battery’s function.
+4. Compare desktop and laptop motherboard layouts.
 
-If you finish early, try these:
+## Submission
 
-- Identify and label the chipset, PCIe x16 slot, and 24-pin power connector
-- Research and note the specific CPU socket type (e.g., LGA1700, AM5)
-- Find the CMOS battery and explain its purpose
-- Identify the audio chip and network interface controller
-- Compare your motherboard to a laptop motherboard and note differences
-
-## Real-World Application
-
-Understanding motherboard layout helps you:
-- Build or upgrade your own PC
-- Diagnose hardware problems
-- Understand computer specifications when shopping
-- Communicate with IT professionals
-- Prepare for CompTIA A+ certification
-
-## Tips for Success
-
-1. Start with a clear, well-lit image
-2. Zoom in to see small text labels on the board itself
-3. Cross-reference with your textbook's motherboard diagrams
-4. Use the manufacturer's website to confirm component locations
-5. Don't rush—accuracy is more important than speed
-
-## Submission Format
-
-Submit both files:
-- `motherboard-identification-[yourname].png` (or .jpg)
-- `component-descriptions.txt` (or .md or .pdf)
-
-Good luck with your first hardware challenge!
+Submit your labeled diagram and documentation file (TXT, MD, or PDF). Include your name and the date in your files.

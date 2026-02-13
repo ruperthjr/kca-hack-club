@@ -1,40 +1,47 @@
 ---
-title: "Exponent Calculation Mastery"
-description: "Calculate 5² and 2³ using multiple methods and demonstrate understanding"
+title: "Academic Research Portfolio Website"
+description: "Build and deploy a professional academic portfolio website to showcase your research, skills, and achievements."
 difficulty: "beginner"
-unit: "Unit 2: Computing Mathematics"
+unit: "Week 1 Project: Computing Research Skills and Design"
 day: 1
+week: 1
+month: 1
 technologies:
-  - "Mathematics"
-  - "Exponents"
-  - "Calculator Usage"
-  - "Manual Computation"
+  - "HTML5"
+  - "CSS3"
+  - "GitHub Pages"
+  - "Responsive Design"
+  - "Web Accessibility"
 learningOutcomes:
-  - "Understand exponent notation and meaning"
-  - "Calculate powers using multiple methods"
-  - "Recognize patterns in exponential growth"
-  - "Apply exponent rules in computing contexts"
-estimatedTime: "20-30 minutes"
+  - "Develop a professional academic web presence."
+  - "Apply responsive and accessible web design principles."
+  - "Organize and present research, projects, and achievements online."
+  - "Deploy and maintain a live website using GitHub Pages."
+  - "Demonstrate effective communication of academic and technical skills."
+estimatedTime: "6-8 hours"
 requirements:
-  - "Calculator (physical or online)"
-  - "Pen and paper"
-  - "Textbook: Calculus: Early Transcendentals or Calculus Made Easy"
+  - "Basic HTML and CSS knowledge."
+  - "GitHub account for hosting."
+  - "Academic materials: CV, research/project summaries, publications."
+  - "Familiarity with responsive and accessible design."
+  - "Computer with internet access."
 deliverables:
-  - "Step-by-step calculation showing work for both problems"
-  - "Verification using at least two different methods"
-  - "Real-world computing application example"
+  - "Live academic portfolio website on GitHub Pages."
+  - "GitHub repository with clean commit history and README."
+  - "Responsive, accessible design for all devices."
+  - "Organized sections: research, CV, projects, contact."
+  - "Professional, standards-compliant presentation."
 resources:
-  - name: "Khan Academy - Exponents"
-    url: "https://www.khanacademy.org/math/pre-algebra/pre-algebra-exponents-radicals"
-  - name: "Math is Fun - Exponents"
-    url: "https://www.mathsisfun.com/exponent.html"
-  - name: "Online Exponent Calculator"
-    url: "https://www.calculator.net/exponent-calculator.html"
-  - name: "Exponents in Computer Science (GeeksforGeeks)"
-    url: "https://www.geeksforgeeks.org/exponents-in-computer-science/"
-  - name: "Exponentiation in Python (Python Docs)"
-    url: "https://docs.python.org/3/library/math.html#math.pow"
-
+  - name: "MDN Web Docs: Learn Web Development"
+    url: "https://developer.mozilla.org/en-US/docs/Learn"
+  - name: "GitHub Pages Documentation"
+    url: "https://docs.github.com/en/pages"
+  - name: "WebAIM: Accessibility Principles"
+    url: "https://webaim.org/articles/principles/"
+  - name: "W3Schools: Responsive Web Design"
+    url: "https://www.w3schools.com/css/css_rwd_intro.asp"
+  - name: "Google Web Fundamentals: Accessibility"
+    url: "https://web.dev/accessibility/"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -42,236 +49,76 @@ dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---
 
-# Exponent Calculation Mastery Challenge
+# Academic Research Portfolio Website
 
 ## Overview
 
-Exponents are fundamental to computer science—from calculating data storage (2¹⁰ = 1024 bytes in a kilobyte) to understanding algorithm complexity (O(n²)). This challenge builds your foundation in exponential calculations.
+Create a professional academic portfolio website to showcase your research, skills, and achievements. This project emphasizes clear communication, responsive design, and web accessibility, providing a strong digital presence for academic and industry opportunities.
 
 ## Objective
 
-Calculate 5² and 2³ using at least three different methods, showing all work, and explain one real-world computing application of each calculation.
+Build and deploy a responsive, multi-page academic website that highlights your research profile, technical expertise, and career objectives, suitable for both academic and professional audiences.
+
+## Prerequisites
+
+- Basic knowledge of HTML and CSS
+- GitHub account for hosting
+- Academic content: CV, research/project summaries, publications
+- Understanding of responsive and accessible design principles
 
 ## Instructions
 
-### Step 1: Calculate 5²
+### Part 1: Content Preparation
 
-**Method 1: Expanded Form (Required)**
+1. Define your academic identity, research focus, and career goals.
+2. Gather your CV, publication list, and project descriptions.
+3. Plan the website structure: research, CV, projects, contact.
 
-Write out the calculation in expanded form:
-```
-5² = 5 × 5 = ?
-```
+### Part 2: Website Development
 
-Show your work:
-```
-Step 1: Understand that 5² means "5 multiplied by itself 2 times"
-Step 2: Write as multiplication: 5 × 5
-Step 3: Calculate: 5 × 5 = 25
-Step 4: Final answer: 5² = 25
-```
+1. Set up your project folder with HTML, CSS, and assets.
+2. Design and implement the homepage with a professional introduction and navigation.
+3. Create pages for research, CV, projects, and contact information.
+4. Apply responsive and accessible design for all devices.
 
-**Method 2: Calculator Verification**
+### Part 3: Deployment
 
-Use a calculator:
-- Physical calculator: Press `5`, `x²`, `=`
-- Online calculator: Use the exponent function
-- Programming: Run in Python/JavaScript console: `5**2` or `Math.pow(5,2)`
+1. Push your website files to a GitHub repository.
+2. Configure GitHub Pages for deployment.
+3. Test the live site for responsiveness and accessibility.
 
-Document your calculator result:
-```
-Calculator used: [name/type]
-Input: 5²
-Output: [result]
-Verification: Matches manual calculation? Yes/No
-```
+## Deliverables
 
-**Method 3: Visual Representation**
-
-Draw a square grid to represent 5²:
-```
-■ ■ ■ ■ ■
-■ ■ ■ ■ ■
-■ ■ ■ ■ ■
-■ ■ ■ ■ ■
-■ ■ ■ ■ ■
-
-Count the squares: 5 rows × 5 columns = 25 total squares
-Therefore: 5² = 25
-```
-
-### Step 2: Calculate 2³
-
-**Method 1: Expanded Form (Required)**
-
-Write out the calculation:
-```
-2³ = 2 × 2 × 2 = ?
-```
-
-Show your work:
-```
-Step 1: Understand that 2³ means "2 multiplied by itself 3 times"
-Step 2: Write as multiplication: 2 × 2 × 2
-Step 3: Calculate step-by-step:
-   - First: 2 × 2 = 4
-   - Then: 4 × 2 = 8
-Step 4: Final answer: 2³ = 8
-```
-
-**Method 2: Repeated Doubling**
-
-Show the pattern:
-```
-2¹ = 2
-2² = 2 × 2 = 4 (double the previous)
-2³ = 4 × 2 = 8 (double again)
-
-Therefore: 2³ = 8
-```
-
-**Method 3: Binary/Computing Context**
-
-Explain in computing terms:
-```
-2³ represents 3 bits in binary
-Each bit position doubles:
-Position 0 (2⁰): 1
-Position 1 (2¹): 2
-Position 2 (2²): 4
-Position 3 (2³): 8
-
-Therefore: 2³ = 8
-```
-
-### Step 3: Real-World Computing Applications
-
-For each calculation, provide ONE computing application:
-
-**5² = 25 Application Example:**
-
-"A 5×5 pixel thumbnail image contains 25 pixels. If each pixel requires 3 bytes of color data (RGB), the thumbnail requires 25 × 3 = 75 bytes of storage."
-
-Or: "A small game grid of 5×5 tiles needs to track 25 tile positions in memory."
-
-**2³ = 8 Application Example:**
-
-"Computer memory addressing: With 3 bits, you can represent 2³ = 8 different memory addresses (000 through 111 in binary, or 0-7 in decimal)."
-
-Or: "A simple byte (8 bits) can store values from 0 to 255, calculated as 2⁸ - 1. Understanding 2³ = 8 is the foundation for this concept."
-
-### Step 4: Create Your Submission Document
-
-Format your complete solution:
-
-```markdown
-# EXPONENT CALCULATION CHALLENGE
-**Name:** [Your Name]
-**Date:** February 10, 2026
-**Unit:** Computing Mathematics
-
----
-
-## Problem 1: Calculate 5²
-
-### Method 1: Expanded Form
-5² = 5 × 5 = 25
-
-**Step-by-step work:**
-[Show your detailed steps]
-
-### Method 2: Calculator Verification
-Calculator: [name]
-Result: [number]
-Matches manual calculation: Yes
-
-### Method 3: Visual Representation
-[Draw or describe your 5×5 grid]
-Total count: 25
-Verification: 5² = 25 ✓
-
-### Real-World Computing Application
-[Your example - 2-3 sentences]
-
----
-
-## Problem 2: Calculate 2³
-
-### Method 1: Expanded Form
-2³ = 2 × 2 × 2 = 8
-
-**Step-by-step work:**
-[Show your detailed steps]
-
-### Method 2: Repeated Doubling
-[Show the pattern]
-
-### Method 3: Binary Context
-[Explain using bits/positions]
-
-### Real-World Computing Application
-[Your example - 2-3 sentences]
-
----
-
-## Reflection
-**What I learned:** [1-2 sentences about why exponents matter in computing]
-**Questions I have:** [Any questions or areas of confusion]
-```
+1. Live academic portfolio website hosted on GitHub Pages
+2. GitHub repository with clean commit history and README
+3. Responsive, accessible design for desktop and mobile
+4. Organized sections: research, CV, projects, contact
+5. Professional, standards-compliant presentation
 
 ## Evaluation Criteria
 
-Your work will be assessed on:
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Academic Content        | 30%    | Quality and clarity of research presentation     |
+| Design & Responsiveness | 25%    | Professional appearance and mobile compatibility |
+| Technical Implementation| 20%    | Code quality and best practices                  |
+| Content Organization    | 15%    | Logical structure and easy navigation            |
+| Deployment & Polish     | 10%    | Live deployment and attention to detail          |
 
-1. **Accuracy** (40%): Both calculations are correct
-2. **Method Diversity** (30%): At least 3 different methods shown for each
-3. **Clarity** (20%): Work is clearly shown and easy to follow
-4. **Application** (10%): Computing examples are relevant and accurate
+## Tips & Common Mistakes
 
-## Common Mistakes to Avoid
+- Use consistent citation formats for academic content
+- Ensure all images have descriptive alt text
+- Avoid cluttered layouts; prioritize readability
+- Test your site on multiple devices and browsers
 
-- Writing 5² as 5 × 2 = 10 (incorrect—it's 5 × 5)
-- Writing 2³ as 2 × 3 = 6 (incorrect—it's 2 × 2 × 2)
-- Not showing step-by-step work
-- Skipping the verification step
-- Providing vague or incorrect computing applications
+## Bonus Challenges (Optional)
 
-## Why This Matters in Computing
+1. Add a filterable database for publications
+2. Implement a dark mode toggle
+3. Create an interactive research timeline
+4. Add multilingual support
 
-Understanding exponents is critical for:
+## Submission
 
-- **Data Storage:** 2¹⁰ = 1024 (1 KB), 2²⁰ = 1,048,576 (1 MB)
-- **Algorithm Complexity:** O(n²) vs O(n³) performance differences
-- **Binary Systems:** All computing is based on powers of 2
-- **Hash Tables:** Often sized as powers of 2 for efficiency
-- **Graphics:** Screen resolutions (1920² pixels), texture sizes (2¹⁰ × 2¹⁰)
-
-## Bonus Challenges
-
-If you finish early:
-
-1. Calculate 3⁴ and explain one computing application
-2. Find the pattern: 2¹, 2², 2³, 2⁴, 2⁵... (powers of 2 up to 2¹⁰)
-3. Research: Why are computer memory sizes powers of 2?
-4. Challenge: If you have 4 bits, how many different values can you represent? (Hint: 2⁴)
-5. Write a simple HTML/JavaScript calculator that computes any base raised to any power
-
-## Tips for Success
-
-1. Write out each multiplication step—don't skip
-2. Double-check your arithmetic
-3. Use different colored pens for different methods
-4. Draw diagrams when helpful (especially for squares and cubes)
-5. Connect math to computers—think about real applications
-
-## Submission Format
-
-Submit one file:
-- `exponent-calculations-[yourname].pdf` (or .md or .txt)
-
-**Or** submit a photo of neat handwritten work:
-- `exponent-calculations-[yourname].jpg`
-
-Make sure all work is legible and complete!
-
-Good luck with your calculations!
+Submit your live website URL and GitHub repository link. Ensure your repository includes a README explaining the project structure and design choices.

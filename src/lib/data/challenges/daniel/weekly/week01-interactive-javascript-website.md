@@ -1,42 +1,46 @@
 ---
-title: "Interactive Website with JavaScript Features"
-description: "Build a dynamic website with form validation, interactive elements, and DOM manipulation"
-difficulty: "intermediate"
-unit: "Week 1 Challenge - Interactive"
+title: "Academic Research Portfolio Website"
+description: "Build and deploy a professional academic portfolio website to showcase your research, skills, and achievements."
+difficulty: "beginner"
+unit: "Week 1 Project: Computing Research Skills and Design"
 week: 1
+month: 1
 technologies:
-  - "HTML5"
-  - "CSS3"
-  - "JavaScript"
-  - "DOM Manipulation"
-  - "Form Validation"
+   - "HTML5"
+   - "CSS3"
+   - "GitHub Pages"
+   - "Responsive Design"
+   - "Web Accessibility"
 learningOutcomes:
-  - "Manipulate the DOM with JavaScript"
-  - "Validate forms with custom JavaScript logic"
-  - "Create interactive user experiences"
-  - "Handle events and user input"
-estimatedTime: "5-7 hours"
+   - "Develop a professional academic web presence."
+   - "Apply responsive and accessible design principles."
+   - "Organize and present research, skills, and achievements online."
+   - "Deploy a live website using GitHub Pages."
+   - "Document and maintain a well-structured codebase."
+estimatedTime: "6-8 hours"
 requirements:
-  - "Completed static website from previous challenge"
-  - "Understanding of JavaScript basics"
-  - "Text editor and browser developer tools"
+   - "Basic knowledge of HTML and CSS."
+   - "GitHub account for deployment."
+   - "Academic content: CV, research, publications, and projects."
+   - "Understanding of responsive and accessible web design."
+   - "Ability to use version control (Git)."
 deliverables:
-  - "Enhanced website with at least 3 interactive features"
-  - "Working form with validation (contact or newsletter)"
-  - "Dynamic content generation"
-  - "Deployed website with JavaScript functionality"
+   - "Live academic portfolio website hosted on GitHub Pages."
+   - "Sections for research, CV, projects, and contact information."
+   - "Responsive and accessible design for all devices."
+   - "Well-documented GitHub repository with README."
+   - "Professional and organized site structure."
 resources:
-    - name: "MDN JavaScript Guide"
-      url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
-    - name: "MDN Form Validation Tutorial"
-      url: "https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation"
-    - name: "JavaScript and JQuery by Jon Duckett"
-      url: "https://javascriptbook.com/"
-    - name: "CSS Tricks: Building a Theme Switcher"
-      url: "https://css-tricks.com/a-dark-mode-toggle-with-react-and-theme-provider/"
-    - name: "freeCodeCamp: JavaScript DOM Manipulation"
-      url: "https://www.freecodecamp.org/news/javascript-dom-manipulation/"
-
+  - name: "MDN Web Docs: Learn Web Development"
+    url: "https://developer.mozilla.org/en-US/docs/Learn"
+  - name: "GitHub Pages Documentation"
+    url: "https://docs.github.com/en/pages"
+  - name: "WebAIM: Accessibility Principles"
+    url: "https://webaim.org/articles/principles/"
+  - name: "W3Schools: Responsive Web Design"
+    url: "https://www.w3schools.com/css/css_rwd_intro.asp"
+  - name: "Google Web Fundamentals: Accessibility"
+    url: "https://web.dev/accessibility/"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -44,117 +48,77 @@ dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
 ---
 
-# Interactive JavaScript Website Challenge
+# Academic Research Portfolio Website
 
-## Project Overview
+## Overview
 
-Transform your static portfolio website into an interactive experience using JavaScript. Add form validation, dynamic content, and user interactions that make your site feel alive and professional.
+Create a professional academic portfolio website to showcase your research, skills, and achievements. This project emphasizes clear communication, responsive design, accessibility, and effective online presentation for academic and industry audiences.
 
-## Core Requirements
+## Objective
 
-### Required Interactive Features (Choose at least 3)
+Build and deploy a responsive, multi-page academic website that highlights your research profile, technical expertise, and career objectives, organized for easy navigation and professional impact.
 
-1. **Contact Form Validation**
-   - Check email format
-   - Require minimum input lengths
-   - Display error messages inline
-   - Success message on valid submission
-   - Prevent submission if validation fails
+## Prerequisites
 
-2. **Theme Switcher**
-   - Toggle between light and dark mode
-   - Save preference in localStorage
-   - Smooth color transitions
+- Basic HTML and CSS knowledge
+- GitHub account for hosting
+- Academic content: CV, research, publications, projects
+- Familiarity with responsive and accessible design
+- Ability to use Git for version control
 
-3. **Dynamic Project Gallery**
-   - Load projects from JavaScript array
-   - Filter projects by technology
-   - Modal/lightbox for project details
+## Instructions
 
-4. **Interactive Skills Section**
-   - Progress bars that animate on scroll
-   - Skill cards that flip on hover
-   - Filterable skill categories
+### Part 1: Content Preparation
 
-5. **Live Clock or Countdown**
-   - Display current time or time zone
-   - Countdown to a goal date
-   - Update every second
+1. Define your academic identity, research focus, and career goals.
+2. Gather your CV, publication list, and project summaries.
+3. Plan website structure: research, CV, projects, contact.
 
-### Technical Requirements
+### Part 2: Website Development
 
-- All JavaScript in external .js file
-- Use modern ES6+ syntax (let/const, arrow functions)
-- Proper event listeners (no onclick in HTML)
-- Form must have actual validation logic
-- At least one use of localStorage
-- Mobile-friendly interactions
+1. Set up your project folder with HTML, CSS, and assets.
+2. Build a homepage with a professional introduction and navigation.
+3. Create pages for research, CV, projects, and contact.
+4. Apply responsive and accessible design principles throughout.
+
+### Part 3: Deployment
+
+1. Push your website files to a GitHub repository.
+2. Configure GitHub Pages for deployment.
+3. Test your live site for responsiveness and accessibility.
 
 ## Deliverables
 
-1. **Enhanced Website**
-   - At least 3 interactive JavaScript features
-   - Validated contact form
-   - Dynamic content generation
-   - Theme persistence (localStorage)
-
-2. **Code Quality**
-   - External JavaScript file(s)
-   - Well-commented code
-   - Proper event handling
-   - No console errors
-
-3. **Documentation**
-   - README update with new features
-   - Brief explanation of each feature
-   - Screenshots showing interactivity
+1. Live academic portfolio website on GitHub Pages
+2. GitHub repository with clean commit history and README
+3. Responsive, accessible design for all devices
+4. Organized sections: research, CV, projects, contact
+5. Professional, standards-compliant site structure
 
 ## Evaluation Criteria
 
-1. **Functionality** (40%)
-   - All features work without errors
-   - Form validation is thorough
-   - Dynamic content loads correctly
-   - localStorage persists data
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Academic Content        | 30%    | Quality and clarity of research presentation     |
+| Design & Responsiveness | 25%    | Professional appearance and mobile compatibility |
+| Technical Implementation| 20%    | Code quality and best practices                  |
+| Content Organization    | 15%    | Logical structure and easy navigation            |
+| Deployment & Polish     | 10%    | Live deployment and attention to detail          |
 
-2. **Code Quality** (30%)
-   - Clean, readable JavaScript
-   - Proper separation of concerns
-   - Modern ES6+ syntax
-   - No inline JavaScript in HTML
+## Tips & Common Mistakes
 
-3. **User Experience** (20%)
-   - Smooth interactions
-   - Clear feedback to user
-   - Error messages are helpful
-   - Loading states where appropriate
+- Use consistent citation formats for academic content
+- Add descriptive alt text to all images and figures
+- Prioritize readability and simplicity in layout
+- Test your site on multiple devices and browsers
 
-4. **Creativity** (10%)
-   - Original feature implementation
-   - Thoughtful user interactions
-   - Personal touches
+## Bonus Challenges (Optional)
 
-## Submission Checklist
+1. Add a filterable publication database
+2. Implement a dark mode toggle
+3. Create an interactive research timeline
+4. Add multilingual support
 
-- [ ] Contact form with validation
-- [ ] At least 2 additional interactive features
-- [ ] External JavaScript file(s)
-- [ ] No console errors
-- [ ] LocalStorage implementation
-- [ ] Updated and deployed website
-- [ ] Updated README with feature list
-- [ ] Screenshots or GIF demonstrating interactivity
+## Submission
 
-## Tips for Success
-
-1. Test each feature individually before combining
-2. Use console.log() to debug issues
-3. Check browser developer tools for errors
-4. Test form with invalid and valid inputs
-5. Verify localStorage works across browser sessions
-6. Test on mobile devices
-7. Commit code after each working feature
-
-Good luck making your website interactive!
-
----
+Submit your live website URL and GitHub repository link. Ensure your repository includes a README explaining the project structure and design choices.

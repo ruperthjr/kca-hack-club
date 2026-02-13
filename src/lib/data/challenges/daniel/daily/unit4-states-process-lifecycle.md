@@ -1,39 +1,46 @@
 ---
 title: "Process Lifecycle State Identification"
-description: "Identify and describe the five states in a process lifecycle: New, Ready, Running, Waiting, Terminated"
+description: "Master process lifecycle states by diagramming, describing, and analyzing transitions in modern operating systems."
 difficulty: "beginner"
 unit: "Unit 4: Operating Systems"
 day: 2
+week: 1
+month: 1
 technologies:
     - "Operating Systems"
     - "Process Management"
     - "System Calls"
+    - "UNIX/Linux"
+    - "System Monitoring Tools"
 learningOutcomes:
-    - "Identify all five process lifecycle states"
-    - "Understand transitions between process states"
-    - "Recognize system events that trigger state changes"
-    - "Diagram process state transitions"
+    - "Diagram and explain all five process lifecycle states."
+    - "Analyze and describe state transitions and triggers."
+    - "Apply process state knowledge to debugging and system monitoring."
+    - "Differentiate between Ready and Waiting states with real-world examples."
+    - "Interpret process state diagrams in OS documentation and tools."
 estimatedTime: "25-35 minutes"
 requirements:
-    - "Textbook: Operating System Concepts, 10th Edition"
-    - "Diagramming tool (draw.io, Lucidchart, or paper/pencil)"
-    - "Access to UNIX/Linux command line (optional)"
+    - "Access to a UNIX/Linux system (physical or virtual)."
+    - "Textbook: Operating System Concepts, 10th Edition or equivalent."
+    - "Diagramming tool (draw.io, Lucidchart, or paper/pencil)."
+    - "Basic understanding of process scheduling."
+    - "Ability to read and interpret process state outputs (e.g., ps, top)."
 deliverables:
-    - "Diagram showing all five process states with arrows indicating transitions"
-    - "Brief description (1-2 sentences) of each state"
-    - "Three real-world examples of when a process might enter the Waiting state"
+    - "A clear, labeled process state transition diagram."
+    - "Concise descriptions (1-2 sentences) for each state."
+    - "Three specific, real-world examples of the Waiting state."
+    - "A brief reflection on how process states impact debugging or performance."
 resources:
-  - name: "Process States in Operating Systems"
-    url: "https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/"
-  - name: "Operating Systems: Three Easy Pieces - Process API"
-    url: "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
-  - name: "Linux Process States"
-    url: "https://www.baeldung.com/linux/process-states"
-  - name: "Process Management in OS"
-    url: "https://www.javatpoint.com/process-management-in-os"
-  - name: "Process State Transition Diagram"
-    url: "https://www.tutorialspoint.com/process-states-in-operating-system"
-
+    - name: "Process States in Operating Systems (GeeksforGeeks)"
+      url: "https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/"
+    - name: "Operating Systems: Three Easy Pieces – Process API"
+      url: "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+    - name: "Linux Process States Explained (Baeldung)"
+      url: "https://www.baeldung.com/linux/process-states"
+    - name: "Process State Transition Diagram (TutorialsPoint)"
+      url: "https://www.tutorialspoint.com/process-states-in-operating-system"
+    - name: "UNIX ps Command and Process States"
+      url: "https://www.ibm.com/docs/en/aix/7.2?topic=p-ps-command"
 completed: false
 completedDate: ""
 watermarkStyle: "diagonal"
@@ -45,103 +52,73 @@ unlockDate: "2026-02-10"
 
 ## Overview
 
-In this operating systems challenge, you'll master one of the fundamental concepts in process management: the five states in a process lifecycle. Understanding these states is crucial for grasping how operating systems schedule and manage multiple processes efficiently.
+Understanding the process lifecycle is fundamental for anyone working with operating systems. This challenge will help you visualize, describe, and apply knowledge of process states and transitions, which is essential for debugging, system monitoring, and efficient resource management.
 
 ## Objective
 
-Identify all five process lifecycle states (New, Ready, Running, Waiting, Terminated) and create a diagram showing how processes transition between these states based on system events.
+Diagram the five process lifecycle states, describe each state and its transitions, and provide real-world examples of processes entering the Waiting state.
+
+## Prerequisites
+
+- Familiarity with basic operating system concepts.
+- Access to a UNIX/Linux environment (optional for hands-on exploration).
+- Ability to use a diagramming tool or draw diagrams by hand.
 
 ## Instructions
 
-### 1. Research Process States
+### Part 1: Research and Describe Process States
 
-Use your textbook and online resources to understand each state:
+- Study the five process states: New, Ready, Running, Waiting, Terminated.
+- For each state, write 1-2 sentences describing:
+  - What defines the state.
+  - What triggers entry and exit.
 
-- **New**  
-    The process is being created. The operating system allocates memory and sets up the process control block (PCB). This is the initialization phase before the process can be scheduled.
+### Part 2: Create a State Transition Diagram
 
-- **Ready**  
-    The process is loaded into main memory and has all resources except CPU time. It waits in the ready queue for the CPU scheduler.
+- Draw a diagram with labeled boxes for each state.
+- Show all six required transitions:
+  - New → Ready (admitted)
+  - Ready → Running (CPU scheduler dispatch)
+  - Running → Ready (time quantum expired)
+  - Running → Waiting (I/O request or event wait)
+  - Waiting → Ready (I/O completion or event occurs)
+  - Running → Terminated (process completes)
+- Label each arrow with the event that causes the transition.
+- Use clear, consistent styling.
 
-- **Running**  
-    The process instructions are being executed. The CPU is actively processing this process. Only one process per CPU core can be in this state at a time.
+### Part 3: Waiting State Examples
 
-- **Waiting**  
-    The process cannot proceed until some event occurs (also called the "blocked" state). Examples: waiting for I/O completion or user input.
+- Provide three specific, real-world scenarios where a process enters the Waiting state.
+  - For each: Situation, Reason, and Transition (Running → Waiting).
 
-- **Terminated**  
-    The process has finished execution. The operating system cleans up resources and deletes the process control block.
+## Deliverables
 
-### 2. Create State Transition Diagram
-
-Create a diagram showing transitions between states. Required transitions:
-
-- New → Ready (Process admitted)
-- Ready → Running (CPU scheduler dispatch)
-- Running → Ready (Time quantum expired)
-- Running → Waiting (I/O request, wait for event)
-- Waiting → Ready (I/O completion, event occurs)
-- Running → Terminated (Process completes)
-
-Use any diagramming tool (draw.io, Lucidchart, or paper/pencil).
-
-**Diagram requirements:**
-
-- Clear boxes for each state
-- Arrows showing all six transitions
-- Brief label on each arrow (e.g., "admitted", "I/O request")
-- Professional appearance with consistent styling
-
-### 3. Write State Descriptions
-
-For each state, write 1-2 sentences covering:
-
-- What characterizes this state
-- What triggers entry into this state
-- What triggers exit from this state
-
-### 4. Identify Waiting State Examples
-
-Provide three specific examples of when a process would enter the Waiting state. Example format:
-
-- **Situation:** Process requests keyboard input from user  
-    **Reason:** Process cannot continue until user types something  
-    **Transition:** Running → Waiting
-
-- [Your second example]
-- [Your third example]
+1. Labeled process state transition diagram.
+2. Five concise state descriptions.
+3. Three real-world Waiting state examples.
+4. Brief reflection on how process state knowledge aids debugging or performance analysis.
 
 ## Evaluation Criteria
 
-- **Completeness (40%)**: All five states and six transitions included
-- **Accuracy (30%)**: Correct understanding of state definitions and transitions
-- **Examples (20%)**: Realistic, specific Waiting state examples
-- **Presentation (10%)**: Clean, readable diagram and descriptions
+| Criteria                | Weight | Description                                      |
+|-------------------------|--------|--------------------------------------------------|
+| Completeness            | 40%    | All states, transitions, and examples included.  |
+| Accuracy                | 30%    | Correct state definitions and transitions.       |
+| Examples                | 20%    | Realistic, specific Waiting state scenarios.     |
+| Presentation            | 10%    | Clear, professional diagram and documentation.   |
 
-## Common Mistakes to Avoid
+## Tips & Common Mistakes
 
-- Confusing "Ready" with "Waiting" (Ready = needs CPU, Waiting = needs I/O/event)
-- Missing the "New" state (creation phase is important)
-- Forgetting that "Terminated" is a state
-- Not showing transitions back from Waiting to Ready
-- Creating overly complex diagrams (keep it to the five basic states)
+- Don’t confuse Ready (waiting for CPU) with Waiting (waiting for I/O/event).
+- Always include the New and Terminated states.
+- Label all transitions clearly.
+- Keep diagrams simple and focused on the five basic states.
 
-## Real-World Application
+## Bonus Challenges (Optional)
 
-Understanding process states helps you:
+1. Explore how process states differ in multithreaded environments.
+2. Use the `ps` or `top` command to observe real process states on your system.
 
-- Write more efficient multi-threaded programs
-- Debug performance issues in applications
-- Understand system monitoring tools (like top or Task Manager)
-- Design systems that effectively manage resources
-- Prepare for operating system interviews and certifications
+## Submission
 
-## Submission Format
-
-Submit a single PDF or image containing:
-
-- State transition diagram
-- Five state descriptions
-- Three Waiting state examples
-
-**Filename:** `process-states-[yourname].pdf` (or `.png`/`.jpg`)
+Submit a single PDF or image containing your diagram, state descriptions, examples, and reflection. Name your file: `process-states-[yourname].pdf` (or `.png`/`.jpg`).
