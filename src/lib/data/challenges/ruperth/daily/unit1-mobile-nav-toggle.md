@@ -40,8 +40,8 @@ resources:
     url: "https://javascript.info/introduction-browser-events"
   - name: "web.dev: Accessible Navigation"
     url: "https://web.dev/accessible/"
-completed: false
-completedDate: ""
+completed: true
+completedDate: "2026-02-09"
 watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
