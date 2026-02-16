@@ -38,8 +38,8 @@ resources:
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"
   - name: "Can I Use: Flexbox"
     url: "https://caniuse.com/flexbox"
-completed: false
-completedDate: ""
+completed: true
+completedDate: "2026-02-09"
 watermarkStyle: "diagonal"
 dateAdded: "2026-02-09"
 unlockDate: "2026-02-09"
@@ -163,4 +163,4 @@ body {
 
 ## Submission
 
-Commit your `styles.css`, screenshots, and `css-documentation.md` to your repository. Submit the repository link as instructed.
+Commit your `styles.css` and screenshots. Submit the repository link as instructed.
