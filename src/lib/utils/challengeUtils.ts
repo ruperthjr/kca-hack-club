@@ -3,88 +3,90 @@ export interface Challenge {
   title: string;
   member: string;
   type: 'daily' | 'weekly' | 'monthly';
-  day?: number;
-  week?: number;
-  month?: number;
+  day?: number | null;
+  week?: number | null;
+  month?: number | null;
   unlockDate: string;
   difficulty: string;
   unit: string;
+  description?: string;
+  technologies?: string[];
+  learningOutcomes?: string[];
+  estimatedTime?: string;
+  dateAdded?: string;
+  // Completion is sourced from markdown frontmatter — no localStorage
+  completed?: boolean;
+  completedDate?: string | null;
   [key: string]: any;
 }
 
 export function isChallengeUnlocked(challenge: Challenge, currentDate: Date = new Date()): boolean {
-  // Try to parse the date string with timezone handling
   let unlockDate: Date;
-  
-  // Check if the date string is in YYYY-MM-DD format
+
   if (/^\d{4}-\d{2}-\d{2}$/.test(challenge.unlockDate)) {
-    // Parse as local date (not UTC)
     const parts = challenge.unlockDate.split('-').map(Number);
-    const [year, month, day] = [parts[0] || 0, parts[1] || 1, parts[2] || 1];
-    unlockDate = new Date(year, month - 1, day);
+    unlockDate = new Date(parts[0]!, parts[1]! - 1, parts[2]!);
   } else {
-    // Try parsing as ISO or other format
     unlockDate = new Date(challenge.unlockDate);
-    
-    // If still invalid, fall back to current date
-    if (isNaN(unlockDate.getTime())) {
-      unlockDate = new Date();
-    }
+    if (isNaN(unlockDate.getTime())) unlockDate = new Date();
   }
-  
+
   unlockDate.setHours(0, 0, 0, 0);
-  currentDate.setHours(0, 0, 0, 0);
-  return currentDate >= unlockDate;
+  // Clone so we don't mutate the argument
+  const today = new Date(currentDate);
+  today.setHours(0, 0, 0, 0);
+  return today >= unlockDate;
+}
+
+export function getDaysUntilUnlock(challenge: Challenge, currentDate: Date = new Date()): number {
+  let unlockDate: Date;
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(challenge.unlockDate)) {
+    const parts = challenge.unlockDate.split('-').map(Number);
+    unlockDate = new Date(parts[0]!, parts[1]! - 1, parts[2]!);
+  } else {
+    unlockDate = new Date(challenge.unlockDate);
+    if (isNaN(unlockDate.getTime())) unlockDate = new Date();
+  }
+
+  unlockDate.setHours(0, 0, 0, 0);
+  const today = new Date(currentDate);
+  today.setHours(0, 0, 0, 0);
+  const diffMs = unlockDate.getTime() - today.getTime();
+  const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+  return diffDays > 0 ? diffDays : 0;
 }
 
 export function getNextChallenge(
   currentChallenge: Challenge,
   allChallenges: Challenge[]
 ): Challenge | null {
-  const sameMemberTypeChallenges = allChallenges
+  const siblings = allChallenges
     .filter(c => c.member === currentChallenge.member && c.type === currentChallenge.type)
     .sort((a, b) => {
-      if (currentChallenge.type === 'daily') {
-        return (a.day || 0) - (b.day || 0);
-      } else if (currentChallenge.type === 'weekly') {
-        return (a.week || 0) - (b.week || 0);
-      } else {
-        return (a.month || 0) - (b.month || 0);
-      }
+      if (currentChallenge.type === 'daily') return (a.day || 0) - (b.day || 0);
+      if (currentChallenge.type === 'weekly') return (a.week || 0) - (b.week || 0);
+      return (a.month || 0) - (b.month || 0);
     });
 
-  const currentIndex = sameMemberTypeChallenges.findIndex(c => c.slug === currentChallenge.slug);
-  
-  if (currentIndex >= 0 && currentIndex < sameMemberTypeChallenges.length - 1) {
-    return sameMemberTypeChallenges[currentIndex + 1] || null;
-  }
-  
-  return null;
+  const idx = siblings.findIndex(c => c.slug === currentChallenge.slug);
+  return idx >= 0 && idx < siblings.length - 1 ? siblings[idx + 1]! : null;
 }
 
 export function getPreviousChallenge(
   currentChallenge: Challenge,
   allChallenges: Challenge[]
 ): Challenge | null {
-  const sameMemberTypeChallenges = allChallenges
+  const siblings = allChallenges
     .filter(c => c.member === currentChallenge.member && c.type === currentChallenge.type)
     .sort((a, b) => {
-      if (currentChallenge.type === 'daily') {
-        return (a.day || 0) - (b.day || 0);
-      } else if (currentChallenge.type === 'weekly') {
-        return (a.week || 0) - (b.week || 0);
-      } else {
-        return (a.month || 0) - (b.month || 0);
-      }
+      if (currentChallenge.type === 'daily') return (a.day || 0) - (b.day || 0);
+      if (currentChallenge.type === 'weekly') return (a.week || 0) - (b.week || 0);
+      return (a.month || 0) - (b.month || 0);
     });
 
-  const currentIndex = sameMemberTypeChallenges.findIndex(c => c.slug === currentChallenge.slug);
-  
-  if (currentIndex > 0) {
-    return sameMemberTypeChallenges[currentIndex - 1] || null;
-  }
-  
-  return null;
+  const idx = siblings.findIndex(c => c.slug === currentChallenge.slug);
+  return idx > 0 ? siblings[idx - 1]! : null;
 }
 
 export function getChallengeStatus(
@@ -97,72 +99,37 @@ export function getChallengeStatus(
   return 'locked';
 }
 
-export function getDaysUntilUnlock(challenge: Challenge, currentDate: Date = new Date()): number {
-  // Try to parse the date string with timezone handling
-  let unlockDate: Date;
-  
-  // Check if the date string is in YYYY-MM-DD format
-  if (/^\d{4}-\d{2}-\d{2}$/.test(challenge.unlockDate)) {
-    // Parse as local date (not UTC)
-    const [year, month, day] = challenge.unlockDate.split('-').map(Number);
-    unlockDate = new Date(year ?? 0, (month ?? 1) - 1, day ?? 1);
-  } else {
-    // Try parsing as ISO or other format
-    unlockDate = new Date(challenge.unlockDate);
-    
-    // If still invalid, fall back to current date
-    if (isNaN(unlockDate.getTime())) {
-      unlockDate = new Date();
-    }
-  }
-  
-  unlockDate.setHours(0, 0, 0, 0);
-  currentDate.setHours(0, 0, 0, 0);
-  const diffTime = unlockDate.getTime() - currentDate.getTime();
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  return diffDays > 0 ? diffDays : 0;
-}
-
+// Kept for any components that still import it, but streak display is removed from the UI
 export function getChallengeStreak(
   challenges: Challenge[],
   completedChallenges: { [slug: string]: { completed: boolean; completedAt?: string } }
 ): number {
-  const sortedChallenges = [...challenges]
+  const sorted = [...challenges]
     .filter(c => completedChallenges[c.slug]?.completed)
     .sort((a, b) => {
-      const dateA = new Date(completedChallenges[a.slug]?.completedAt || 0);
-      const dateB = new Date(completedChallenges[b.slug]?.completedAt || 0);
-      return dateB.getTime() - dateA.getTime();
+      const dA = new Date(completedChallenges[a.slug]?.completedAt || 0).getTime();
+      const dB = new Date(completedChallenges[b.slug]?.completedAt || 0).getTime();
+      return dB - dA;
     });
 
-  if (sortedChallenges.length === 0) return 0;
+  if (sorted.length === 0) return 0;
 
   let streak = 1;
-  for (let i = 1; i < sortedChallenges.length; i++) {
-    const prevSorted = sortedChallenges[i - 1];
-    const currSorted = sortedChallenges[i];
+  for (let i = 1; i < sorted.length; i++) {
+    const prev = completedChallenges[sorted[i - 1]!.slug];
+    const curr = completedChallenges[sorted[i]!.slug];
+    if (!prev?.completedAt || !curr?.completedAt) break;
 
-    if (!prevSorted || !currSorted) continue;
-
-    const prevChallenge = completedChallenges[prevSorted.slug];
-    const currChallenge = completedChallenges[currSorted.slug];
-
-    if (!prevChallenge || !currChallenge || !prevChallenge.completedAt || !currChallenge.completedAt) continue;
-
-    const prevDate = new Date(prevChallenge.completedAt);
-    const currDate = new Date(currChallenge.completedAt);
-
+    const prevDate = new Date(prev.completedAt);
+    const currDate = new Date(curr.completedAt);
     prevDate.setHours(0, 0, 0, 0);
     currDate.setHours(0, 0, 0, 0);
 
-    const diffDays = Math.floor((prevDate.getTime() - currDate.getTime()) / (1000 * 60 * 60 * 24));
-
-    if (diffDays === 1) {
+    if (Math.floor((prevDate.getTime() - currDate.getTime()) / 86400000) === 1) {
       streak++;
     } else {
       break;
     }
   }
-  
   return streak;
 }

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { fly } from 'svelte/transition';
-	import { challengeProgress } from '$lib/stores/challengeProgress';
-	import { isChallengeUnlocked, getDaysUntilUnlock, getChallengeStreak, type Challenge } from '$lib/utils/challengeUtils';
-	import { Check, Lock, Flame, Trophy, Calendar } from 'lucide-svelte';
+	import { Check, Lock, Trophy, Calendar } from 'lucide-svelte';
+	import type { Challenge } from '$lib/utils/challengeUtils';
+	import { isChallengeUnlocked, getDaysUntilUnlock } from '$lib/utils/challengeUtils';
 
 	export let data: PageData;
 
@@ -80,55 +80,52 @@
 	let selectedMember = 'all';
 	let selectedType = 'all';
 	let searchQuery = '';
-	let currentStreak = 0;
-	let totalCompleted = 0;
+
+	// Completion is derived entirely from markdown metadata — no localStorage
+	$: totalCompleted = data.challenges.filter((c: Challenge) => c.completed).length;
+	$: totalChallenges = data.challenges.length;
+
+	// Per-member completion counts from metadata
+	function getMemberCompletedCount(member: string): number {
+		return data.challenges.filter((c: Challenge) => c.member === member && c.completed).length;
+	}
+
+	function getMemberTotalCount(member: string): number {
+		return data.challenges.filter((c: Challenge) => c.member === member).length;
+	}
 
 	$: filteredChallenges = data.challenges.filter((challenge: Challenge) => {
 		const matchesMember = selectedMember === 'all' || challenge.member === selectedMember;
 		const matchesType = selectedType === 'all' || challenge.type === selectedType;
-		const matchesSearch = searchQuery === '' || 
+		const matchesSearch =
+			searchQuery === '' ||
 			challenge.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-			challenge.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+			(challenge.description?.toLowerCase().includes(searchQuery.toLowerCase()) || false) ||
 			challenge.unit.toLowerCase().includes(searchQuery.toLowerCase());
 		return matchesMember && matchesType && matchesSearch;
 	});
 
 	$: groupedByMember = filteredChallenges.reduce(
 		(acc: Record<string, Record<string, Challenge[]>>, challenge: Challenge) => {
-			if (!acc[challenge.member]) {
-				acc[challenge.member] = {};
-			}
-			const memberGroup = acc[challenge.member] ?? (acc[challenge.member] = {});
-			if (!memberGroup[challenge.type]) {
-				memberGroup[challenge.type] = [];
-			}
-			(memberGroup[challenge.type] ?? (memberGroup[challenge.type] = [])).push(challenge);
+			if (!acc[challenge.member]) acc[challenge.member] = {};
+			const mg = acc[challenge.member]!;
+			if (!mg[challenge.type]) mg[challenge.type] = [];
+			mg[challenge.type]!.push(challenge);
 			return acc;
 		},
 		{} as Record<string, Record<string, Challenge[]>>
 	);
 
-	$: totalChallenges = data.challenges.length;
-
-	$: {
-		totalCompleted = Object.values($challengeProgress).filter(p => p.completed).length;
-		currentStreak = getChallengeStreak(data.challenges, $challengeProgress);
-	}
-
 	function getChallengeClass(challenge: Challenge): string {
-		const isCompleted = $challengeProgress[challenge.slug]?.completed;
-		const isUnlocked = isChallengeUnlocked(challenge);
-		
-		if (isCompleted) return 'border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-950/20';
-		if (!isUnlocked) return 'opacity-60 cursor-not-allowed border-neutral-300 dark:border-neutral-700';
+		if (challenge.completed)
+			return 'border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-950/20';
+		if (!isChallengeUnlocked(challenge))
+			return 'opacity-60 cursor-not-allowed border-neutral-300 dark:border-neutral-700';
 		return '';
 	}
 
 	function handleChallengeClick(challenge: Challenge, event: MouseEvent) {
-		const isCompleted = $challengeProgress[challenge.slug]?.completed;
-		const isUnlocked = isChallengeUnlocked(challenge);
-		
-		if (!isUnlocked && !isCompleted) {
+		if (!isChallengeUnlocked(challenge) && !challenge.completed) {
 			event.preventDefault();
 		}
 	}
@@ -140,6 +137,7 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
+	<!-- Hero -->
 	<div class="relative overflow-hidden border-b border-neutral-200 dark:border-neutral-800 bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950">
 		<div class="absolute inset-0 bg-grid-neutral-200/50 dark:bg-grid-neutral-800/50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -149,17 +147,18 @@
 						<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
 						<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
 					</span>
-					<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Feb 9 - Apr 10, 2026</span>
+					<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Feb 9 – Apr 10, 2026</span>
 				</div>
-				
+
 				<h1 class="font-display font-bold text-5xl md:text-6xl lg:text-7xl mb-6 text-neutral-900 dark:text-neutral-50">
 					Coding <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Challenges</span>
 				</h1>
-				
+
 				<p class="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
 					Daily, weekly, and monthly challenges designed to sharpen your programming skills
 				</p>
 
+				<!-- Search -->
 				<div class="relative max-w-2xl mx-auto mb-8">
 					<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 						<svg class="h-5 w-5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -174,6 +173,7 @@
 					/>
 				</div>
 
+				<!-- Global stats — streaks removed -->
 				<div class="flex flex-wrap justify-center gap-6 text-sm">
 					<div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
 						<svg class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -186,10 +186,6 @@
 						<span>{totalCompleted} Completed</span>
 					</div>
 					<div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
-						<Flame class="w-5 h-5 text-orange-500" />
-						<span>{currentStreak} Day Streak</span>
-					</div>
-					<div class="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
 						<svg class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
 						</svg>
@@ -200,31 +196,32 @@
 		</div>
 	</div>
 
+	<!-- Main content -->
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+		<!-- Filters -->
 		<div class="mb-12 space-y-6">
 			<div>
 				<h3 class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Filter by Member</h3>
 				<div class="flex flex-wrap gap-3">
 					<button
-						on:click={() => selectedMember = 'all'}
-						class="px-4 py-2 rounded-xl font-medium transition-all duration-200 {selectedMember === 'all' 
-							? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' 
+						on:click={() => (selectedMember = 'all')}
+						class="px-4 py-2 rounded-xl font-medium transition-all duration-200 {selectedMember === 'all'
+							? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105'
 							: 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
 					>
 						All Members
 					</button>
 					{#each Object.keys(data.groupedChallenges) as member}
-						{@const memberData = data.groupedChallenges[member]}
+						{@const completedCount = getMemberCompletedCount(member)}
+						{@const totalCount = getMemberTotalCount(member)}
 						<button
-							on:click={() => selectedMember = member}
-							class="group relative px-4 py-2 rounded-xl font-medium transition-all duration-200 {selectedMember === member 
-								? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' 
+							on:click={() => (selectedMember = member)}
+							class="group relative px-4 py-2 rounded-xl font-medium transition-all duration-200 {selectedMember === member
+								? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105'
 								: 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
 						>
 							<span class="capitalize">{memberConfig[member]?.name || member}</span>
-							{#if memberData}
-								<span class="text-xs opacity-75 ml-1">({Object.values(memberData).flat().length})</span>
-							{/if}
+							<span class="text-xs opacity-75 ml-1">({completedCount}/{totalCount})</span>
 						</button>
 					{/each}
 				</div>
@@ -235,9 +232,9 @@
 				<div class="flex flex-wrap gap-3">
 					{#each ['all', 'daily', 'weekly', 'monthly'] as type}
 						<button
-							on:click={() => selectedType = type}
-							class="px-4 py-2 rounded-xl font-medium transition-all duration-200 {selectedType === type 
-								? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105' 
+							on:click={() => (selectedType = type)}
+							class="px-4 py-2 rounded-xl font-medium transition-all duration-200 {selectedType === type
+								? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg scale-105'
 								: 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'}"
 						>
 							<span class="capitalize">{type}</span>
@@ -247,6 +244,7 @@
 			</div>
 		</div>
 
+		<!-- Empty state -->
 		{#if Object.keys(groupedByMember).length === 0}
 			<div class="text-center py-16">
 				<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-neutral-100 dark:bg-neutral-800 mb-4">
@@ -259,15 +257,25 @@
 			</div>
 		{:else}
 			{#each Object.entries(groupedByMember) as [member, types], i}
-				<div 
+				<!-- Member anchor so the detail page back button can deep-link here -->
+				<div
+					id="member-{member}"
 					class="mb-16"
 					in:fly={{ y: 20, duration: 400, delay: i * 100 }}
 				>
+					<!-- Member header with per-member completion count -->
 					<div class="flex items-center gap-4 mb-8">
-						<div class="flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r {memberConfig[member]?.gradient ?? 'from-neutral-500 to-neutral-600'} text-white shadow-xl">
+						<div class="flex items-center gap-4 px-6 py-3 rounded-2xl bg-gradient-to-r {memberConfig[member]?.gradient ?? 'from-neutral-500 to-neutral-600'} text-white shadow-xl">
 							<div>
 								<h2 class="font-display font-bold text-2xl">{memberConfig[member]?.name ?? member}</h2>
 								<p class="text-sm opacity-90">{memberConfig[member]?.program ?? ''}</p>
+							</div>
+							<!-- Per-member progress pill -->
+							<div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30">
+								<Trophy class="w-4 h-4 text-white" />
+								<span class="text-sm font-bold text-white">
+									{getMemberCompletedCount(member)}/{getMemberTotalCount(member)}
+								</span>
 							</div>
 						</div>
 						<div class="h-px flex-1 bg-gradient-to-r from-neutral-200 dark:from-neutral-800 to-transparent"></div>
@@ -282,13 +290,14 @@
 										{typeConfig[type as keyof typeof typeConfig]?.icon}
 									</div>
 									<h3 class="font-semibold text-lg text-neutral-900 dark:text-neutral-50 capitalize">{type} Challenges</h3>
-									<span class="text-sm text-neutral-600 dark:text-neutral-400">({challenges.length})</span>
+									<span class="text-sm text-neutral-600 dark:text-neutral-400">
+										({challenges.filter(c => c.completed).length}/{challenges.length} completed)
+									</span>
 								</div>
 							</div>
 
 							<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 								{#each challenges as challenge}
-									{@const isCompleted = $challengeProgress[challenge.slug]?.completed}
 									{@const isUnlocked = isChallengeUnlocked(challenge)}
 									{@const daysUntil = getDaysUntilUnlock(challenge)}
 									<a
@@ -296,9 +305,11 @@
 										on:click={(e) => handleChallengeClick(challenge, e)}
 										class="group relative p-6 rounded-2xl bg-white dark:bg-neutral-900 border-2 {memberConfig[member]?.border ?? 'border-neutral-200 dark:border-neutral-800'} {memberConfig[member]?.hover ?? 'hover:border-neutral-400 dark:hover:border-neutral-600'} transition-all duration-300 hover:shadow-xl hover:-translate-y-1 {getChallengeClass(challenge)}"
 									>
-										{#if isCompleted}
-											<div class="absolute top-4 right-4 p-2 rounded-full bg-green-500 shadow-lg">
-												<Check class="w-4 h-4 text-white" />
+										<!-- Status badge top-right -->
+										{#if challenge.completed}
+											<div class="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500 shadow-lg">
+												<Check class="w-3.5 h-3.5 text-white" />
+												<span class="text-xs font-bold text-white">Completed</span>
 											</div>
 										{:else if !isUnlocked}
 											<div class="absolute top-4 right-4 p-2 rounded-full bg-orange-500 shadow-lg">
@@ -308,7 +319,7 @@
 
 										<div class="mb-4">
 											<div class="flex items-start justify-between mb-3">
-												<div class="flex-1 pr-8">
+												<div class="flex-1 pr-24">
 													<h4 class="font-bold text-xl mb-2 text-neutral-900 dark:text-neutral-50 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:{memberConfig[member]?.gradient ?? 'from-neutral-500 to-neutral-600'} group-hover:bg-clip-text transition-all">
 														{challenge.title}
 													</h4>
@@ -345,7 +356,7 @@
 										</div>
 
 										<div class="space-y-2 text-xs text-neutral-500 dark:text-neutral-500">
-											{#if !isUnlocked && !isCompleted}
+											{#if !isUnlocked && !challenge.completed}
 												<div class="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold">
 													<Calendar class="w-4 h-4" />
 													<span>Unlocks in {daysUntil} {daysUntil === 1 ? 'day' : 'days'}</span>
@@ -387,7 +398,6 @@
 			linear-gradient(90deg, rgb(229 229 229 / 0.5) 1px, transparent 1px);
 		background-size: 50px 50px;
 	}
-
 	:global(.dark) .bg-grid-neutral-800\/50 {
 		background-image: linear-gradient(rgb(38 38 38 / 0.5) 1px, transparent 1px),
 			linear-gradient(90deg, rgb(38 38 38 / 0.5) 1px, transparent 1px);

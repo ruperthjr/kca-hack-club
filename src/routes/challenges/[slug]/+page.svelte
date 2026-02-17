@@ -2,11 +2,11 @@
   import type { PageData } from './$types';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { 
-    getNextChallenge, 
-    getPreviousChallenge, 
+  import {
+    getNextChallenge,
+    getPreviousChallenge,
     isChallengeUnlocked,
-    getDaysUntilUnlock 
+    getDaysUntilUnlock
   } from '$lib/utils/challengeUtils';
   import { ChevronLeft, ChevronRight, Calendar, Trophy, ArrowLeft, Lock } from 'lucide-svelte';
   import CompletedWatermark from '$lib/components/CompletedWatermark.svelte';
@@ -72,6 +72,10 @@
     accent: 'text-neutral-600 dark:text-neutral-400'
   };
 
+  // Back link: challenges page anchored to this member's section
+  const backHref = `/challenges#member-${data.challenge.member}`;
+  const backLabel = `Back to ${config.name}'s Challenges`;
+
   $: isCompleted = data.challenge.completed || false;
   $: completedDate = data.challenge.completedDate;
   $: watermarkStyle = data.challenge.watermarkStyle || 'diagonal';
@@ -79,49 +83,44 @@
   onMount(async () => {
     isUnlocked = isChallengeUnlocked(data.challenge as any);
     daysUntilUnlock = getDaysUntilUnlock(data.challenge as any);
-    
+
     const challengeFiles = import.meta.glob('$lib/data/challenges/**/*.md', { eager: true });
     const allChallenges: any[] = [];
-    
+
     for (const path in challengeFiles) {
-      const challengeModule: any = challengeFiles[path];
+      const mod: any = challengeFiles[path];
       const pathParts = path.split('/');
       const fileName = pathParts.pop()?.replace('.md', '') || '';
-      const type = pathParts[pathParts.length - 1] || 'daily';
-      const memberName = pathParts[pathParts.length - 2] || 'unknown';
-      const metadata = challengeModule.metadata || {};
-      
+      const t = pathParts[pathParts.length - 1] || 'daily';
+      const m = pathParts[pathParts.length - 2] || 'unknown';
+      const meta = mod.metadata || {};
+
       allChallenges.push({
         slug: fileName,
-        title: metadata.title || fileName,
-        member: memberName,
-        type: type as 'daily' | 'weekly' | 'monthly',
-        day: metadata.day || null,
-        week: metadata.week || null,
-        month: metadata.month || null,
-        unlockDate: metadata.unlockDate || metadata.dateAdded || new Date().toISOString().split('T')[0]
+        title: meta.title || fileName,
+        member: m,
+        type: t as 'daily' | 'weekly' | 'monthly',
+        day: meta.day || null,
+        week: meta.week || null,
+        month: meta.month || null,
+        unlockDate: meta.unlockDate || meta.dateAdded || new Date().toISOString().split('T')[0]
       });
     }
-    
+
     nextChallenge = getNextChallenge(data.challenge as any, allChallenges);
     previousChallenge = getPreviousChallenge(data.challenge as any, allChallenges);
   });
 
   function handleNext() {
     if (nextChallenge) {
-      const nextUnlocked = isChallengeUnlocked(nextChallenge);
-      if (nextUnlocked) {
-        goto(`/challenges/${nextChallenge.slug}`);
-      }
+      if (isChallengeUnlocked(nextChallenge)) goto(`/challenges/${nextChallenge.slug}`);
     } else {
       goto('/challenges');
     }
   }
 
   function handlePrevious() {
-    if (previousChallenge) {
-      goto(`/challenges/${previousChallenge.slug}`);
-    }
+    if (previousChallenge) goto(`/challenges/${previousChallenge.slug}`);
   }
 </script>
 
@@ -132,15 +131,19 @@
 
 <div class="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Top nav row -->
     <div class="mb-8 flex items-center justify-between gap-4">
-      <a 
-        href="/challenges" 
+      <!-- Back to this member's section -->
+      <a
+        href={backHref}
         class="group inline-flex items-center gap-2 px-4 py-2 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-white dark:hover:bg-neutral-900 transition-all border border-transparent hover:border-neutral-200 dark:hover:border-neutral-800"
       >
         <ArrowLeft class="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-        <span class="font-medium">Back to Challenges</span>
+        <span class="font-medium">{backLabel}</span>
       </a>
 
+      <!-- Prev / Next within the same member+type -->
       <div class="flex items-center gap-2">
         {#if previousChallenge}
           <button
@@ -170,6 +173,7 @@
       </div>
     </div>
 
+    <!-- Locked banner -->
     {#if !isUnlocked && !isCompleted}
       <div class="mb-8 p-8 rounded-3xl bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30 border-2 border-orange-200 dark:border-orange-800 text-center">
         <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
@@ -177,7 +181,10 @@
         </div>
         <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-50 mb-2">Challenge Locked</h2>
         <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
-          This challenge will unlock in <span class="font-bold text-orange-600 dark:text-orange-400">{daysUntilUnlock} {daysUntilUnlock === 1 ? 'day' : 'days'}</span>
+          This challenge will unlock in
+          <span class="font-bold text-orange-600 dark:text-orange-400">
+            {daysUntilUnlock} {daysUntilUnlock === 1 ? 'day' : 'days'}
+          </span>
         </p>
         <div class="flex items-center justify-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
           <Calendar class="w-4 h-4" />
@@ -190,17 +197,18 @@
       </div>
     {/if}
 
+    <!-- Challenge header card -->
     <div class="mb-12 p-8 md:p-10 rounded-3xl bg-white dark:bg-neutral-900 border-2 {config.border} shadow-2xl relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br {config.bgGradient} opacity-50"></div>
-      
+
       {#if isCompleted}
-        <CompletedWatermark 
+        <CompletedWatermark
           memberGradient={config.gradient as any}
           style={watermarkStyle}
           completedDate={completedDate}
         />
       {/if}
-      
+
       <div class="relative">
         <div class="flex flex-wrap items-center gap-3 mb-6">
           <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r {config.gradient} text-white shadow-lg">
@@ -227,7 +235,6 @@
               Month {data.challenge.month}
             </span>
           {/if}
-          
           {#if isCompleted}
             <span class="px-4 py-2 rounded-xl text-sm font-semibold bg-green-100 dark:bg-green-950/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800 flex items-center gap-2 animate-pulse">
               <Trophy class="w-4 h-4" />
@@ -235,17 +242,17 @@
             </span>
           {/if}
         </div>
-        
+
         <h1 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl mb-6 text-neutral-900 dark:text-neutral-50 leading-tight">
           {data.challenge.title}
         </h1>
-        
+
         {#if data.challenge.description}
           <p class="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
             {data.challenge.description}
           </p>
         {/if}
-        
+
         <div class="flex flex-wrap items-center gap-4 text-sm text-neutral-500 dark:text-neutral-500">
           {#if data.challenge.unit}
             <div class="flex items-center gap-2">
@@ -277,6 +284,7 @@
       </div>
     </div>
 
+    <!-- Body content (only shown when unlocked or completed) -->
     {#if isUnlocked || isCompleted}
       <div class="grid md:grid-cols-2 gap-6 mb-8">
         {#if data.challenge.technologies && data.challenge.technologies.length > 0}
@@ -351,6 +359,7 @@
         </div>
       {/if}
 
+      <!-- Markdown content -->
       <div class="relative prose prose-lg prose-neutral dark:prose-invert max-w-none
         prose-headings:font-display prose-headings:font-bold
         prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl
@@ -360,16 +369,57 @@
         prose-p:text-neutral-700 dark:prose-p:text-neutral-300 prose-p:leading-relaxed
         prose-code:text-blue-600 dark:prose-code:text-blue-400 prose-code:bg-blue-50 dark:prose-code:bg-blue-950/30 prose-code:px-2 prose-code:py-1 prose-code:rounded-md
         mb-12 p-8 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-neutral-200 dark:border-neutral-800 overflow-hidden">
-        
+
         {#if isCompleted}
-          <CompletedWatermark 
+          <CompletedWatermark
             memberGradient={config.gradient as any}
             style={watermarkStyle}
             completedDate={completedDate}
           />
         {/if}
-        
+
         <ChallengeComponent />
+      </div>
+
+      <!-- Bottom navigation row (mirrors top, for convenience after reading) -->
+      <div class="flex items-center justify-between gap-4 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+        <a
+          href={backHref}
+          class="group inline-flex items-center gap-2 px-4 py-2 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-white dark:hover:bg-neutral-900 transition-all border border-transparent hover:border-neutral-200 dark:hover:border-neutral-800"
+        >
+          <ArrowLeft class="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+          <span class="font-medium">{backLabel}</span>
+        </a>
+
+        <div class="flex items-center gap-2">
+          {#if previousChallenge}
+            <button
+              on:click={handlePrevious}
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors text-sm font-medium"
+            >
+              <ChevronLeft class="w-4 h-4" />
+              Previous
+            </button>
+          {/if}
+
+          {#if nextChallenge}
+            {@const nextUnlocked = isChallengeUnlocked(nextChallenge)}
+            <button
+              on:click={handleNext}
+              disabled={!nextUnlocked}
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              title={nextUnlocked ? 'Next Challenge' : `Unlocks in ${getDaysUntilUnlock(nextChallenge)} days`}
+            >
+              {#if !nextUnlocked}
+                <Lock class="w-4 h-4" />
+                Locked
+              {:else}
+                Next
+                <ChevronRight class="w-4 h-4" />
+              {/if}
+            </button>
+          {/if}
+        </div>
       </div>
     {/if}
   </div>
