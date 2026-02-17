@@ -39,8 +39,8 @@ resources:
     url: "https://pixabay.com/"
   - name: "WebAIM: Alternative Text"
     url: "https://webaim.org/techniques/alttext/"
-completed: false
-completedDate: ""
+completed: true
+completedDate: "2026-02-13"
 watermarkStyle: "diagonal"
 dateAdded: "2026-02-13"
 unlockDate: "2026-02-13"
