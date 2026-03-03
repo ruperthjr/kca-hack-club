@@ -1,59 +1,16 @@
-# KCA Hack Club
+# GRU HACK
 
-[![Built with SvelteKit](https://img.shields.io/badge/Built%20with-SvelteKit-FF3E00?style=flat&logo=svelte)](https://kit.svelte.dev/)
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=flat&logo=vercel)](https://vercel.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+## THE MISSION
+To execute a series of increasingly challenges that prove one thing: **I did it better alone.**
 
-## Mission
+## THE SCHEMES (CHALLENGES)
+* **Daily** Syntax mastery.
+* **Weekly:** Feature-length architectural designs.
+* **Monthly** Full-scaled deployment.
 
-KCA Hack Club is a student-led community dedicated to building, learning, and innovating together. We provide structured challenges, curated resources, and collaborative opportunities.
-
-## Features
-
-- **Curated Learning Resources** - Books, tools, courses, and tutorials
-- **Daily/Weekly/Monthly Challenges** - Progressive skill-building system
-- **Team Profiles** - Showcase member achievements and projects
-- **Hackathon Hub** - Upcoming events and past victories
-- **Dark Mode** - Beautiful UI with theme switching
-- **Lightning Fast** - Optimized performance with SvelteKit
-
-## Tech Stack
-
-- **Framework:** SvelteKit 5
-- **Styling:** Tailwind CSS 4
-- **Content:** MDsveX (Markdown + Svelte)
-- **Animations:** Three.js
-- **Syntax Highlighting:** Shiki
-- **Search:** Fuse.js
-- **Deployment:** Vercel
-- **Package Manager:** pnpm
-
-## Quick Start
-
-### Prerequisites
-
-- Node.js 20+ (or 22+)
-- pnpm 9+
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/ruperthjr/kca-hack-club.git
-cd kca-hack-club
-
-# Install dependencies
-pnpm install
-
-# Start development server
-pnpm dev
-```
-
-Visit `http://localhost:5173` to see the app.
-
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-
-## Contact
-- **Discord:** [Join our server](https://discord.com/channels/1464698304406225106/1464698305823903867)
+## TECH STACK
+* **Engine:** SvelteKit 5
+* **Suit:** Tailwind CSS 4 
+* **Blueprints:** MDsveX 
+* **Visuals:** Three.js
+* **Intelligence:** Fuse.js & Shiki 
